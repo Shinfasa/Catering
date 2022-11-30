@@ -17,46 +17,43 @@
 -- Dumping structure for table catering.akses
 CREATE TABLE IF NOT EXISTS `akses` (
   `id_akses` int NOT NULL AUTO_INCREMENT,
-  `hak_akses` varchar(50) NOT NULL,
+  `hak_akses` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id_akses`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table catering.akses: ~0 rows (approximately)
-REPLACE INTO `akses` (`id_akses`, `hak_akses`) VALUES
-	(1, 'Admin'),
-	(2, 'Customer');
+-- Data exporting was unselected.
 
 -- Dumping structure for table catering.kategori
 CREATE TABLE IF NOT EXISTS `kategori` (
   `id_kategori` int NOT NULL AUTO_INCREMENT,
-  `nama_kategori` varchar(100) NOT NULL,
+  `nama_kategori` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id_kategori`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table catering.kategori: ~0 rows (approximately)
+-- Data exporting was unselected.
 
 -- Dumping structure for table catering.menu
 CREATE TABLE IF NOT EXISTS `menu` (
   `id_menu` int NOT NULL AUTO_INCREMENT,
-  `nama_menu` varchar(100) NOT NULL,
-  `harga` varchar(50) NOT NULL,
-  `detail` text NOT NULL,
-  `gambar` varchar(50) NOT NULL,
+  `nama_menu` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `harga` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `detail` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gambar` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_kategori` int NOT NULL,
   PRIMARY KEY (`id_menu`),
   KEY `id_kategori` (`id_kategori`),
   CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table catering.menu: ~0 rows (approximately)
+-- Data exporting was unselected.
 
 -- Dumping structure for table catering.order
 CREATE TABLE IF NOT EXISTS `order` (
   `id_order` int NOT NULL AUTO_INCREMENT,
   `tgl_pesan` date NOT NULL,
   `tgl_pakai` datetime NOT NULL,
-  `harga satuan` varchar(50) NOT NULL,
-  `jumlah` varchar(50) NOT NULL,
+  `harga satuan` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jumlah` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_user` int NOT NULL,
   `id_menu` int NOT NULL,
   PRIMARY KEY (`id_order`),
@@ -66,17 +63,17 @@ CREATE TABLE IF NOT EXISTS `order` (
   CONSTRAINT `order_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table catering.order: ~0 rows (approximately)
+-- Data exporting was unselected.
 
 -- Dumping structure for table catering.orderdetail
 CREATE TABLE IF NOT EXISTS `orderdetail` (
   `id_ordetail` int NOT NULL AUTO_INCREMENT,
   `id_order` int NOT NULL,
-  `total_harga` varchar(50) NOT NULL,
+  `total_harga` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_bayar` date NOT NULL,
   `id_pengiriman` int NOT NULL,
-  `catatan_order` varchar(255) NOT NULL,
-  `status_pesanan` enum('Belum Dibayar','Sedang Diproses','Selesai') NOT NULL,
+  `catatan_order` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_pesanan` enum('Belum Dibayar','Sedang Diproses','Selesai') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id_ordetail`),
   KEY `id_order` (`id_order`),
   KEY `id_pengiriman` (`id_pengiriman`),
@@ -84,33 +81,30 @@ CREATE TABLE IF NOT EXISTS `orderdetail` (
   CONSTRAINT `orderdetail_ibfk_2` FOREIGN KEY (`id_pengiriman`) REFERENCES `pengiriman` (`id_pengiriman`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table catering.orderdetail: ~0 rows (approximately)
+-- Data exporting was unselected.
 
 -- Dumping structure for table catering.pengiriman
 CREATE TABLE IF NOT EXISTS `pengiriman` (
   `id_pengiriman` int NOT NULL AUTO_INCREMENT,
-  `metode_pengiriman` varchar(100) NOT NULL,
+  `metode_pengiriman` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id_pengiriman`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table catering.pengiriman: ~0 rows (approximately)
+-- Data exporting was unselected.
 
 -- Dumping structure for table catering.user
 CREATE TABLE IF NOT EXISTS `user` (
   `id_user` int NOT NULL AUTO_INCREMENT,
-  `nama_user` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `nama_user` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_akses` int NOT NULL,
   PRIMARY KEY (`id_user`),
   KEY `id_akses` (`id_akses`),
   CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_akses`) REFERENCES `akses` (`id_akses`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table catering.user: ~0 rows (approximately)
-REPLACE INTO `user` (`id_user`, `nama_user`, `email`, `password`, `id_akses`) VALUES
-	(3, 'Yasin Alfaruq', 'yasin@gmail.com', '123', 1),
-	(4, 'Karisma Agustiningtyas', 'karisma@gmail.com', '456', 2);
+-- Data exporting was unselected.
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
