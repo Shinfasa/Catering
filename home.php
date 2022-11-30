@@ -1,6 +1,8 @@
-<?php include('header.php') ?>
+<?php
+    include ('header.php');
+?>
 
-<main id="main">
+  <main id="main">
 
     <!-- ======= Carousel ======= -->
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -58,17 +60,77 @@
       </button>
     </div><!-- End Carousel -->
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
+    <!-- Order Tracking -->
+    <section class="order-tracking pt-1">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pesanan Saya</h2>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12">
+                    <div class="card card-stepper text-black" style="border-radius: 16px;">
+                    
+                        <div class="card-body p-5">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div>
+                                    <h5 class="mb-0">INVOICE <span class="text-primary font-weight-bold">#Y34XDHR</span>
+                                    </h5>
+                                </div>
+                                <div class="text-end">
+                                    <p class="mb-0">Expected Arrival <span>01/12/19</span></p>
+                                    <p class="mb-0">USPS <span class="font-weight-bold">234094567242423422898</span>
+                                    </p>
+                                </div>
+                            </div>
 
-        <div class="section-title">
-          <h2>Tentang Kami</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <ul id="progressbar-2" class="d-flex justify-content-between mx-0 mt-0 mb-5 px-0 pt-0 pb-2">
+                                <li class="bi bi-check step0 active text-center" id="step1"></li>
+                                <li class="bi bi-check step0 active text-center" id="step2"></li>
+                                <li class="bi bi-check step0 active text-center" id="step3"></li>
+                                <li class="bi bi-check step0 text-muted text-end" id="step4"></li>
+                            </ul>
+
+                            <div class="d-flex justify-content-between">
+                                <div class="d-lg-flex align-items-center">
+                                    <i class="bi bi-clipboard-check bi-3x me-lg-4 mb-3
+                                        mb-lg-0" style="font-size: 30px;"></i>
+                                    <div>
+                                        <p class="fw-bold mb-1">Sudah</p>
+                                        <p class="fw-bold mb-0">Dibayar</p>
+                                    </div>
+                                </div>
+                                <div class="d-lg-flex align-items-center">
+                                    <i class="bi bi-box bi-3x me-lg-4 mb-3 mb-lg-0" style="font-size: 30px;"></i>
+                                    <div>
+                                        <p class="fw-bold mb-1">Pesanan</p>
+                                        <p class="fw-bold mb-0">Diproses</p>
+                                    </div>
+                                </div>
+                                <div class="d-lg-flex align-items-center">
+                                    <i class="bi bi-truck bi-3x me-lg-3 mb-3 mb-lg-0"
+                                        style="font-size: 30px;"></i>
+                                    <div>
+                                        <p class="fw-bold mb-1">Pesanan</p>
+                                        <p class="fw-bold mb-0">Diantar</p>
+                                    </div>
+                                </div>
+                                <div class="d-lg-flex align-items-center">
+                                    <i class="bi bi-house-check bi-3x me-lg-4 mb-3 mb-lg-0" style="font-size: 30px;"></i>
+                                    <div>
+                                        <p class="fw-bold mb-1">Pesanan</p>
+                                        <p class="fw-bold mb-0">Selesai</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
-
-      </div>
-    </section><!-- End About Section -->
+    </section>
+    <!-- End Order Tracking -->
 
     <!-- ======= Categories Section ======= -->
     <section id="what-we-do" class="what-we-do">
@@ -120,7 +182,7 @@
 
         <div class="box">
             <span class="price">Rp 10.000</span>
-            <img src="assets/img/p-1.jpg" alt="">
+            <img src="images/p-1.jpg" alt="">
             <h3>tasty burger</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
@@ -133,7 +195,7 @@
         </div>
         <div class="box">
             <span class="price">Rp 15.000</span>
-            <img src="assets/img/p-2.jpg" alt="">
+            <img src="images/p-2.jpg" alt="">
             <h3>tasty cakes</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
@@ -146,7 +208,7 @@
         </div>
         <div class="box">
             <span class="price">Rp 20.000</span>
-            <img src="assets/img/p-3.jpg" alt="">
+            <img src="images/p-3.jpg" alt="">
             <h3>tasty sweets</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
@@ -159,7 +221,7 @@
         </div>
         <div class="box">
             <span class="price">Rp 25.000</span>
-            <img src="assets/img/p-4.jpg" alt="">
+            <img src="images/p-4.jpg" alt="">
             <h3>tasty cupcakes</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
@@ -172,7 +234,7 @@
         </div>
         <div class="box">
             <span class="price">Rp 30.000</span>
-            <img src="assets/img/p-5.jpg" alt="">
+            <img src="images/p-5.jpg" alt="">
             <h3>cold drinks</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
@@ -185,7 +247,7 @@
         </div>
         <div class="box">
             <span class="price">Rp 35.000</span>
-            <img src="assets/img/p-6.jpg" alt="">
+            <img src="images/p-6.jpg" alt="">
             <h3>cold ice-cream</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
@@ -205,4 +267,6 @@
 
   </main><!-- End #main -->
 
-<?php include('footer.php') ?>
+<?php
+    include ('footer.php');
+?>
