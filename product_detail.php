@@ -49,32 +49,17 @@ include "header.php";
                 </ol>
             </nav>
         <div class="row mt-1">
-            <div class="col-lg-5 col-md-12 col-12">
-                <img class="img-fluid w-100 pb-1" src="img/service-2.jpg" id="maining" alt="">
-                <div class="small-img-group">
-                    <div class="small-img-col">
-                        <img src="image/Matcha.png" width="100%" class="small-img" alt="">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="image/Strawberry.png" width="100%" class="small-img" alt="">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="image/Vanilla.png" width="100%" class="small-img" alt="">
-                    </div>
-                    <div class="small-img-col">
-                        <img src="image/Chocolate.png" width="100%" class="small-img" alt="">
-                    </div>
-                </div>
-            </div>
             <div class="col-lg-6 col-md-12 col-12">
                 <h2 class="py-2">Ice Cream Cone</h3>
                     <h4 class="py-3">Rp 10.000</h4>
                     <select class="my-3">
-                        <option>Select Varian</option>
-                        <option>Matcha</option>
-                        <option>Strawberry</option>
-                        <option>Vanilla</option>
-                        <option>Chocolate</option>
+                        <option>Pilih Paket</option>
+                        <option>Senin</option>
+                        <option>Selasa</option>
+                        <option>Rabu</option>
+                        <option>Kamis</option>
+                        <option>Jumat</option>
+                        <option>Sabtu</option>
                     </select>
                     <input type="number" value="1">
                     <button class="buy-btn"><b>Add to Cart</b></button>
