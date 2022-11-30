@@ -28,9 +28,9 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/carousel.css">
-  <link href="assets/css/order.css" rel="stylesheet">
+  <link rel="stylesheet"href="assets/css/order.css" >
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 
 </head>
@@ -99,7 +99,6 @@
           <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
             <rect width="100%" height="100%" fill="#777" /></svg>
-
           <div class="container">
             <div class="carousel-caption text-start">
               <h1>Example headline.</h1>
@@ -112,7 +111,6 @@
           <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
             <rect width="100%" height="100%" fill="#777" /></svg>
-
           <div class="container">
             <div class="carousel-caption">
               <h1>Another example headline.</h1>
@@ -125,7 +123,6 @@
           <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
             <rect width="100%" height="100%" fill="#777" /></svg>
-
           <div class="container">
             <div class="carousel-caption text-end">
               <h1>One more for good measure.</h1>
