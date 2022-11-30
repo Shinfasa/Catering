@@ -35,10 +35,6 @@ include "header.php";
 </style>
 </head>
 
-<?php
-include 'header.php';
-?>
-
 <br>
 <br>
 
