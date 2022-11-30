@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `akses` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table catering.akses: ~2 rows (approximately)
-REPLACE INTO `akses` (`id_akses`, `hak_akses`) VALUES
+INSERT INTO `akses` (`id_akses`, `hak_akses`) VALUES
 	(1, 'Admin'),
 	(2, 'Customer');
 
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table catering.user: ~2 rows (approximately)
-REPLACE INTO `user` (`id_user`, `nama_user`, `email`, `password`, `id_akses`) VALUES
+INSERT INTO `user` (`id_user`, `nama_user`, `email`, `password`, `id_akses`) VALUES
 	(3, 'Yasin Alfaruq', 'yasin@gmail.com', '123', 1),
 	(4, 'Karisma Agustiningtyas', 'karisma@gmail.com', '456', 2);
 
