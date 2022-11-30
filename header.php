@@ -11,6 +11,9 @@
   <!-- Customized Bootstrap Stylesheet -->
   <link href="css/style.css" rel="stylesheet">
   <link href="img/Logo rumah hitam.PNG" rel="shortcut icon">
+  <!-- Bootstrap core CSS -->
+    <link href="assets1/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="assets1/bootstrap/css/datetimepicker.css" rel="stylesheet">
 </head>
 <body>
   <!-- Main Navigation -->
