@@ -35,23 +35,20 @@ include "header.php";
 </style>
 </head>
 
-<?php
-include 'header.php';
-?>
 
 <br>
 <br>
 
 <body>
     <section class="container sproduct my-5 pt-1">
-        <div class="row mt-1">
-            <nav aria-label="breadcrumb">
+    <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item"><a href="#">Ice Cream</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Ice Cream Cone</li>
                 </ol>
             </nav>
+        <div class="row mt-1">
             <div class="col-lg-5 col-md-12 col-12">
                 <img class="img-fluid w-100 pb-1" src="img/service-2.jpg" id="maining" alt="">
                 <div class="small-img-group">
