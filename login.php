@@ -11,24 +11,24 @@
         $passCheck  = mysqli_real_escape_string($koneksi, $pass);
 
         if (!empty (trim($email)) && !empty (trim($pass))) {
-            $query  = "SELECT * FROM user_detail WHERE user_email = '$email'";
+            $query  = "SELECT * FROM user WHERE email = '$email'";
             $result = mysqli_query($koneksi, $query);
             $num    = mysqli_num_rows($result);
 
             while ($row = mysqli_fetch_array($result)) {
-                $id         = $row['id'];
-                $userMail   = $row['user_email'];
-                $userPass   = $row['user_password'];
-                $userName   = $row['user_fullname'];
-                $level      = $row['level'];
+                $idUser     = $row['id_user'];
+                $userName   = $row['nama_user'];
+                $userMail   = $row['email'];
+                $userPass   = $row['password'];
+                $akses      = $row['id_akses'];
             }
 
             if ($num != 0) {
                 if ($userMail == $email && $userPass == $pass) {
                     // header('Location: index.php?user_fullname=' . urlencode($userName));
-                    $_SESSION['id'] = $id;
+                    $_SESSION['id'] = $idUser;
                     $_SESSION['name'] = $userName;
-                    $_SESSION['level'] = $level;
+                    $_SESSION['akses'] = $akses;
                     header('Location: index.php');
                 } else {
                     $error = 'Username atau Password Salah!!!';
@@ -49,7 +49,7 @@
         $userPass   = $_POST['logpass'];
         $userName   = $_POST['logname'];
 
-        $query  = "INSERT INTO user_detail VALUES (NULL, '$userMail', '$userPass', '$userName', '2')";
+        $query  = "INSERT INTO user VALUES ('', '$userName', '$userMail', '$userPass', 2)";
         $result = mysqli_query($koneksi, $query);
 
         header('Location: login.php');
