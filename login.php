@@ -3,7 +3,7 @@
 
 	session_start();
 
-    if (isset ($_POST['submit'])) {
+    if (isset ($_POST['login'])) {
         $email  = $_POST['logemail'];
         $pass   = $_POST['logpass'];
 
@@ -85,6 +85,7 @@
 									<div class="center-wrap">
 										<div class="section text-center">
 											<h4 class="mb-4 pb-3">Log In</h4>
+											<form action="login.php" method="POST" class="user">
 											<div class="form-group">
 												<input type="email" name="logemail" class="form-style" placeholder="Email" id="logemail" autocomplete="off">
 												<i class="input-icon uil uil-at"></i>
@@ -93,7 +94,8 @@
 												<input type="password" name="logpass" class="form-style" placeholder="Password" id="logpass" autocomplete="off">
 												<i class="input-icon uil uil-lock-alt"></i>
 											</div>
-											<button href="#" class="btn mt-4">Log In</button>
+											<button type="submit" name="login" class="btn mt-4">Log In</button>
+											</form>
                             				<p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
 				      					</div>
 			      					</div>
@@ -102,6 +104,7 @@
 									<div class="center-wrap">
 										<div class="section text-center">
 											<h4 class="mb-4 pb-3">Sign Up</h4>
+											<form action="login.php" method="POST" class="user">
 											<div class="form-group">
 												<input type="text" name="logname" class="form-style" placeholder="Full Name" id="logname" autocomplete="off">
 												<i class="input-icon uil uil-user"></i>
@@ -114,7 +117,8 @@
 												<input type="password" name="logpass" class="form-style" placeholder="Password" id="logpass" autocomplete="off">
 												<i class="input-icon uil uil-lock-alt"></i>
 											</div>
-											<button href="#" class="btn mt-4">Sign Up</button>
+											<button type="submit" name="register" class="btn mt-4">Sign Up</button>
+											</form>
 				      					</div>
 			      					</div>
 			      				</div>
