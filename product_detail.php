@@ -49,6 +49,9 @@ include "header.php";
                 </ol>
             </nav>
         <div class="row mt-1">
+            <div class="col-lg-5 col-md-12 col-12">
+                <img class="img-fluid w-100 pb-1" src="img/service-2.jpg" id="maining" alt="">
+            </div>
             <div class="col-lg-6 col-md-12 col-12">
                 <h2 class="py-2">Ice Cream Cone</h3>
                     <h4 class="py-3">Rp 10.000</h4>
