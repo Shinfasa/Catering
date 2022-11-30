@@ -21,7 +21,10 @@ CREATE TABLE IF NOT EXISTS `akses` (
   PRIMARY KEY (`id_akses`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table catering.akses: ~0 rows (approximately)
+REPLACE INTO `akses` (`id_akses`, `hak_akses`) VALUES
+	(1, 'Admin'),
+	(2, 'Customer');
 
 -- Dumping structure for table catering.kategori
 CREATE TABLE IF NOT EXISTS `kategori` (
@@ -30,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `kategori` (
   PRIMARY KEY (`id_kategori`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table catering.kategori: ~0 rows (approximately)
 
 -- Dumping structure for table catering.menu
 CREATE TABLE IF NOT EXISTS `menu` (
@@ -45,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table catering.menu: ~0 rows (approximately)
 
 -- Dumping structure for table catering.order
 CREATE TABLE IF NOT EXISTS `order` (
@@ -63,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `order` (
   CONSTRAINT `order_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table catering.order: ~0 rows (approximately)
 
 -- Dumping structure for table catering.orderdetail
 CREATE TABLE IF NOT EXISTS `orderdetail` (
@@ -81,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `orderdetail` (
   CONSTRAINT `orderdetail_ibfk_2` FOREIGN KEY (`id_pengiriman`) REFERENCES `pengiriman` (`id_pengiriman`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table catering.orderdetail: ~0 rows (approximately)
 
 -- Dumping structure for table catering.pengiriman
 CREATE TABLE IF NOT EXISTS `pengiriman` (
@@ -90,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `pengiriman` (
   PRIMARY KEY (`id_pengiriman`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table catering.pengiriman: ~0 rows (approximately)
 
 -- Dumping structure for table catering.user
 CREATE TABLE IF NOT EXISTS `user` (
@@ -104,7 +107,10 @@ CREATE TABLE IF NOT EXISTS `user` (
   CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_akses`) REFERENCES `akses` (`id_akses`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table catering.user: ~0 rows (approximately)
+REPLACE INTO `user` (`id_user`, `nama_user`, `email`, `password`, `id_akses`) VALUES
+	(3, 'Yasin Alfaruq', 'yasin@gmail.com', '123', 1),
+	(4, 'Karisma Agustiningtyas', 'karisma@gmail.com', '456', 2);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
