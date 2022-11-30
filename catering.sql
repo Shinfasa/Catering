@@ -20,7 +20,6 @@ CREATE DATABASE IF NOT EXISTS `catering` /*!40100 DEFAULT CHARACTER SET utf8mb4 
 USE `catering`;
 
 -- Dumping structure for table catering.akses
-DROP TABLE IF EXISTS `akses`;
 CREATE TABLE IF NOT EXISTS `akses` (
   `id_akses` int NOT NULL AUTO_INCREMENT,
   `hak_akses` varchar(50) NOT NULL,
@@ -28,12 +27,11 @@ CREATE TABLE IF NOT EXISTS `akses` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table catering.akses: ~2 rows (approximately)
-REPLACE INTO `akses` (`id_akses`, `hak_akses`) VALUES
+INSERT INTO `akses` (`id_akses`, `hak_akses`) VALUES
 	(1, 'Admin'),
 	(2, 'Customer');
 
 -- Dumping structure for table catering.kategori
-DROP TABLE IF EXISTS `kategori`;
 CREATE TABLE IF NOT EXISTS `kategori` (
   `id_kategori` int NOT NULL AUTO_INCREMENT,
   `nama_kategori` varchar(100) NOT NULL,
@@ -43,7 +41,6 @@ CREATE TABLE IF NOT EXISTS `kategori` (
 -- Dumping data for table catering.kategori: ~0 rows (approximately)
 
 -- Dumping structure for table catering.menu
-DROP TABLE IF EXISTS `menu`;
 CREATE TABLE IF NOT EXISTS `menu` (
   `id_menu` int NOT NULL AUTO_INCREMENT,
   `nama_menu` varchar(100) NOT NULL,
@@ -59,7 +56,6 @@ CREATE TABLE IF NOT EXISTS `menu` (
 -- Dumping data for table catering.menu: ~0 rows (approximately)
 
 -- Dumping structure for table catering.order
-DROP TABLE IF EXISTS `order`;
 CREATE TABLE IF NOT EXISTS `order` (
   `id_order` int NOT NULL AUTO_INCREMENT,
   `tgl_pesan` date NOT NULL,
@@ -78,7 +74,6 @@ CREATE TABLE IF NOT EXISTS `order` (
 -- Dumping data for table catering.order: ~0 rows (approximately)
 
 -- Dumping structure for table catering.orderdetail
-DROP TABLE IF EXISTS `orderdetail`;
 CREATE TABLE IF NOT EXISTS `orderdetail` (
   `id_ordetail` int NOT NULL AUTO_INCREMENT,
   `id_order` int NOT NULL,
@@ -97,7 +92,6 @@ CREATE TABLE IF NOT EXISTS `orderdetail` (
 -- Dumping data for table catering.orderdetail: ~0 rows (approximately)
 
 -- Dumping structure for table catering.pengiriman
-DROP TABLE IF EXISTS `pengiriman`;
 CREATE TABLE IF NOT EXISTS `pengiriman` (
   `id_pengiriman` int NOT NULL AUTO_INCREMENT,
   `metode_pengiriman` varchar(100) NOT NULL,
@@ -107,7 +101,6 @@ CREATE TABLE IF NOT EXISTS `pengiriman` (
 -- Dumping data for table catering.pengiriman: ~0 rows (approximately)
 
 -- Dumping structure for table catering.user
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id_user` int NOT NULL AUTO_INCREMENT,
   `nama_user` varchar(100) NOT NULL,
@@ -120,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dumping data for table catering.user: ~2 rows (approximately)
-REPLACE INTO `user` (`id_user`, `nama_user`, `email`, `password`, `id_akses`) VALUES
+INSERT INTO `user` (`id_user`, `nama_user`, `email`, `password`, `id_akses`) VALUES
 	(3, 'Yasin Alfaruq', 'yasin@gmail.com', '123', 1),
 	(4, 'Karisma Agustiningtyas', 'karisma@gmail.com', '456', 2);
 
