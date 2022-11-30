@@ -1,251 +1,35 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Nov 09, 2022 at 08:50 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               8.0.30 - MySQL Community Server - GPL
+-- Server OS:                    Win64
+-- HeidiSQL Version:             12.1.0.6537
+-- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Database: `catering`
---
+-- Data exporting was unselected.
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- Table structure for table `akses`
---
+-- Data exporting was unselected.
 
-CREATE TABLE `akses` (
-  `id_akses` int(11) NOT NULL,
-  `hak_akses` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- Data exporting was unselected.
 
--- --------------------------------------------------------
+-- Data exporting was unselected.
 
---
--- Table structure for table `kategori`
---
+-- Data exporting was unselected.
 
-CREATE TABLE `kategori` (
-  `id_kategori` int(11) NOT NULL,
-  `nama_kategori` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- Data exporting was unselected.
 
--- --------------------------------------------------------
-
---
--- Table structure for table `menu`
---
-
-CREATE TABLE `menu` (
-  `id_menu` int(11) NOT NULL,
-  `nama_menu` varchar(100) NOT NULL,
-  `harga` varchar(50) NOT NULL,
-  `detail` text NOT NULL,
-  `gambar` varchar(50) NOT NULL,
-  `id_kategori` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `order`
---
-
-CREATE TABLE `order` (
-  `id_order` int(11) NOT NULL,
-  `tgl_pesan` date NOT NULL,
-  `tgl_pakai` datetime NOT NULL,
-  `harga satuan` varchar(50) NOT NULL,
-  `jumlah` varchar(50) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_menu` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `orderdetail`
---
-
-CREATE TABLE `orderdetail` (
-  `id_ordetail` int(11) NOT NULL,
-  `id_order` int(11) NOT NULL,
-  `total_harga` varchar(50) NOT NULL,
-  `tgl_bayar` date NOT NULL,
-  `id_pengiriman` int(11) NOT NULL,
-  `catatan_order` varchar(255) NOT NULL,
-  `status_pesanan` enum('Belum Dibayar','Sedang Diproses','Selesai') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pengiriman`
---
-
-CREATE TABLE `pengiriman` (
-  `id_pengiriman` int(11) NOT NULL,
-  `metode_pengiriman` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `id_user` int(11) NOT NULL,
-  `nama_user` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `no_tlp` varchar(13) NOT NULL,
-  `alamat` varchar(255) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `id_akses` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `akses`
---
-ALTER TABLE `akses`
-  ADD PRIMARY KEY (`id_akses`);
-
---
--- Indexes for table `kategori`
---
-ALTER TABLE `kategori`
-  ADD PRIMARY KEY (`id_kategori`);
-
---
--- Indexes for table `menu`
---
-ALTER TABLE `menu`
-  ADD PRIMARY KEY (`id_menu`),
-  ADD KEY `id_kategori` (`id_kategori`);
-
---
--- Indexes for table `order`
---
-ALTER TABLE `order`
-  ADD PRIMARY KEY (`id_order`),
-  ADD KEY `id_menu` (`id_menu`),
-  ADD KEY `id_user` (`id_user`);
-
---
--- Indexes for table `orderdetail`
---
-ALTER TABLE `orderdetail`
-  ADD PRIMARY KEY (`id_ordetail`),
-  ADD KEY `id_order` (`id_order`),
-  ADD KEY `id_pengiriman` (`id_pengiriman`);
-
---
--- Indexes for table `pengiriman`
---
-ALTER TABLE `pengiriman`
-  ADD PRIMARY KEY (`id_pengiriman`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`),
-  ADD KEY `id_akses` (`id_akses`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `akses`
---
-ALTER TABLE `akses`
-  MODIFY `id_akses` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `kategori`
---
-ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `menu`
---
-ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `order`
---
-ALTER TABLE `order`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `orderdetail`
---
-ALTER TABLE `orderdetail`
-  MODIFY `id_ordetail` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pengiriman`
---
-ALTER TABLE `pengiriman`
-  MODIFY `id_pengiriman` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `menu`
---
-ALTER TABLE `menu`
-  ADD CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`) ON UPDATE CASCADE;
-
---
--- Constraints for table `order`
---
-ALTER TABLE `order`
-  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON UPDATE CASCADE;
-
---
--- Constraints for table `orderdetail`
---
-ALTER TABLE `orderdetail`
-  ADD CONSTRAINT `orderdetail_ibfk_1` FOREIGN KEY (`id_order`) REFERENCES `order` (`id_order`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `orderdetail_ibfk_2` FOREIGN KEY (`id_pengiriman`) REFERENCES `pengiriman` (`id_pengiriman`) ON UPDATE CASCADE;
-
---
--- Constraints for table `user`
---
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_akses`) REFERENCES `akses` (`id_akses`) ON UPDATE CASCADE;
-COMMIT;
-
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
