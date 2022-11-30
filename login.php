@@ -29,7 +29,7 @@
                     $_SESSION['id'] = $idUser;
                     $_SESSION['name'] = $userName;
                     $_SESSION['akses'] = $akses;
-                    header('Location: index.php');
+                    header('Location: home.php');
                 } else {
                     $error = 'Username atau Password Salah!!!';
                     header('Location: login.php');

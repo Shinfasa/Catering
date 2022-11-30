@@ -43,17 +43,17 @@ include "header.php";
     <section class="container sproduct my-5 pt-1">
     <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Ice Cream</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Ice Cream Cone</li>
+                    <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+                    <li class="breadcrumb-item"><a href="#">Kategori</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Harian</li>
                 </ol>
             </nav>
         <div class="row mt-1">
             <div class="col-lg-5 col-md-12 col-12">
-                <img class="img-fluid w-100 pb-1" src="img/service-2.jpg" id="maining" alt="">
+                <img class="img-fluid w-100 pb-1" src="assets/img/p-1.jpg" id="maining" alt="">
             </div>
             <div class="col-lg-6 col-md-12 col-12">
-                <h2 class="py-2">Ice Cream Cone</h3>
+                <h2 class="py-2">Tasty Burger</h3>
                     <h4 class="py-3">Rp 10.000</h4>
                     <select class="my-3">
                         <option>Pilih Paket</option>

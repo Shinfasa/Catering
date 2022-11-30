@@ -4,12 +4,12 @@ body {
 }
 
 a {
-  color: #3498db;
+  color: #E8853D; 
   text-decoration: none;
 }
 
 a:hover {
-  color: #5faee3;
+  color: #E8853D;
   text-decoration: none;
 }
 
@@ -32,7 +32,7 @@ h6 {
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: #3498db;
+  background: #E8853D;
   width: 40px;
   height: 40px;
   border-radius: 4px;
@@ -46,7 +46,7 @@ h6 {
 }
 
 .back-to-top:hover {
-  background: #57aae1;
+  background: #E8853D;
   color: #fff;
 }
 
@@ -87,35 +87,6 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Header Social Links
---------------------------------------------------------------*/
-.header-social-links {
-  margin: 0 0 0 30px;
-}
-
-.header-social-links a {
-  color: #9ba6af;
-  padding-left: 8px;
-  display: inline-block;
-  line-height: 0px;
-  transition: 0.3s;
-}
-
-.header-social-links a i {
-  line-height: 0;
-}
-
-.header-social-links a:hover {
-  color: #3498db;
-}
-
-@media (max-width: 768px) {
-  .header-social-links {
-    margin: 0 15px 0 0;
-  }
-}
-
-/*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
 /**
@@ -153,7 +124,7 @@ h6 {
 
 .navbar a i,
 .navbar a:focus i {
-  font-size: 12px;
+  font-size: 15px;
   line-height: 0;
   margin-left: 5px;
 }
@@ -162,10 +133,11 @@ h6 {
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
-  color: #3498db;
+  color: #E8853D;
 }
 
 .navbar .dropdown ul {
+  font-size: 15px;
   display: block;
   position: absolute;
   left: 14px;
@@ -182,23 +154,24 @@ h6 {
 
 .navbar .dropdown ul li {
   min-width: 200px;
+  font-size: 15px;
 }
 
 .navbar .dropdown ul a {
   padding: 10px 20px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 400;
   color: #21262a;
 }
 
 .navbar .dropdown ul a i {
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
 .navbar .dropdown ul li:hover>a {
-  color: #3498db;
+  color: #E8853D;
 }
 
 .navbar .dropdown:hover>ul {
@@ -297,7 +270,7 @@ h6 {
 .navbar-mobile a:hover,
 .navbar-mobile .active,
 .navbar-mobile li:hover>a {
-  color: #3498db;
+  color: #E8853D;
 }
 
 .navbar-mobile .getstarted,
@@ -332,7 +305,7 @@ h6 {
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
 .navbar-mobile .dropdown ul li:hover>a {
-  color: #3498db;
+  color: #E8853D;
 }
 
 .navbar-mobile .dropdown>.dropdown-active {
@@ -384,88 +357,6 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Hero Section
---------------------------------------------------------------*/
-#hero {
-  width: 100%;
-  height: 60vh;
-  background: url("../img/carousels/catering-1.jpeg") center center;
-  background-size: cover;
-  position: relative;
-  margin-top: 70px;
-  padding: 0;
-}
-
-#hero:before {
-  content: "";
-  background: rgba(56, 64, 70, 0.7);
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-#hero .container {
-  z-index: 2;
-}
-
-#hero h1 {
-  margin: 0 0 10px 0;
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 56px;
-  color: #fff;
-}
-
-#hero h1 span {
-  border-bottom: 4px solid #3498db;
-}
-
-#hero h2 {
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 30px;
-  font-size: 24px;
-}
-
-#hero .btn-get-started {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 13px;
-  letter-spacing: 2px;
-  display: inline-block;
-  padding: 12px 28px;
-  border-radius: 4px;
-  transition: ease-in-out 0.3s;
-  color: #fff;
-  background: #3498db;
-  text-transform: uppercase;
-}
-
-#hero .btn-get-started:hover {
-  background: #4ea5e0;
-}
-
-@media (max-width: 992px) {
-  #hero {
-    height: calc(100vh - 70px);
-  }
-}
-
-@media (max-width: 768px) {
-  #hero h1 {
-    font-size: 30px;
-    line-height: 36px;
-  }
-
-  #hero h2 {
-    font-size: 18px;
-    line-height: 24px;
-    margin-bottom: 30px;
-  }
-}
-
-/*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
 section {
@@ -506,7 +397,7 @@ section {
   display: block;
   width: 40px;
   height: 3px;
-  background: #3498db;
+  background: #E8853D;
   bottom: 0;
   left: calc(50% - 20px);
 }
@@ -539,7 +430,7 @@ section {
 }
 
 .what-we-do .icon-box .icon i {
-  color: #3498db;
+  color: #E8853D;
   font-size: 28px;
 }
 
@@ -567,7 +458,7 @@ section {
 
 .what-we-do .icon-box:hover h4 a,
 .what-we-do .icon-box:hover .icon i {
-  color: #3498db;
+  color: #E8853D;
 }
 
 /*--------------------------------------------------------------
@@ -602,7 +493,7 @@ section {
   left: 0;
   top: 0;
   font-size: 22px;
-  color: #3498db;
+  color: #E8853D;
 }
 
 .about .icon-boxes {
@@ -617,59 +508,12 @@ section {
 
 .about .icon-boxes i {
   font-size: 48px;
-  color: #3498db;
+  color: #E8853D;
 }
 
 .about .icon-boxes p {
   font-size: 15px;
   color: #848484;
-}
-
-/*--------------------------------------------------------------
-# Breadcrumbs
---------------------------------------------------------------*/
-.breadcrumbs {
-  padding: 40px 0;
-  margin-top: 70px;
-}
-
-.breadcrumbs h2 {
-  font-size: 26px;
-  font-weight: 300;
-}
-
-.breadcrumbs ol {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 15px;
-}
-
-.breadcrumbs ol li+li {
-  padding-left: 10px;
-}
-
-.breadcrumbs ol li+li::before {
-  display: inline-block;
-  padding-right: 10px;
-  color: #4f5a62;
-  content: "/";
-}
-
-@media (max-width: 768px) {
-  .breadcrumbs .d-flex {
-    display: block !important;
-  }
-
-  .breadcrumbs ol {
-    display: block;
-  }
-
-  .breadcrumbs ol li {
-    display: inline-block;
-  }
 }
 
 /*--------------------------------------------------------------
@@ -726,7 +570,7 @@ section {
 
 #footer .footer-top .footer-links ul i {
   padding-right: 2px;
-  color: #3498db;
+  color: #E8853D;
   font-size: 18px;
   line-height: 1;
 }
@@ -750,7 +594,7 @@ section {
 
 #footer .footer-top .footer-links ul a:hover {
   text-decoration: none;
-  color: #3498db;
+  color: #E8853D;
 }
 
 #footer .footer-newsletter {
@@ -761,6 +605,13 @@ section {
   font-size: 16px;
   font-weight: bold;
   color: #444444;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+#footer .footer-newsletter p {
+  font-size: 16px;
+  color: #777777;
   position: relative;
   padding-bottom: 12px;
 }
@@ -790,7 +641,7 @@ section {
   background: none;
   font-size: 16px;
   padding: 0 20px 2px 20px;
-  background: #3498db;
+  background: #E8853D;
   color: #fff;
   transition: 0.3s;
   border-radius: 0 4px 4px 0;
@@ -798,20 +649,20 @@ section {
 }
 
 #footer .footer-newsletter form input[type=submit]:hover {
-  background: #57aae1;
+  background: #E8853D;
 }
 
 #footer .credits {
   padding-top: 5px;
   font-size: 13px;
-  color: #444444;
+  color: #fff;
 }
 
 #footer .social-links a {
   font-size: 18px;
   display: inline-block;
-  background: #3498db;
-  color: #fff;
+  background: #fff;
+  color: #E8853D;
   line-height: 1;
   padding: 8px 0;
   margin-right: 4px;
@@ -823,7 +674,7 @@ section {
 }
 
 #footer .social-links a:hover {
-  background: #5faee3;
-  color: #fff;
+  background: #fff;
+  color: #E8853D;
   text-decoration: none;
 }
