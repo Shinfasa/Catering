@@ -60,18 +60,6 @@
         </button>
       </div><!-- End Carousel -->
   
-      <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
-
-          <div class="section-title">
-            <h2>Tentang Kami</h2>
-          <p style="font-size: 15px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-
-        </div>
-      </section><!-- End About Section -->
-  
       <!-- ======= Categories Section ======= -->
     <section id="what-we-do" class="what-we-do">
       <div class="container">
@@ -204,7 +192,7 @@
   
 <!-- popular section ends -->
 
-  </main><!-- End #main -->
+</main><!-- End #main -->
 
 <?php 
   include('footer.php')

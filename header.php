@@ -54,9 +54,9 @@
   
         <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="#carousel">Beranda</a></li>
+          <li><a class="nav-link scrollto active" href="#myCarousel">Beranda</a></li>
 
-          <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
+          <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
           <li class="dropdown"><a href="#what-we-do"><span  style="font-size: 18px;">Kategori</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
                 <li class="dropdown"><a href="#"><span style="font-size: 16px;">Harian</span> <i class="bi bi-chevron-right"></i></a>
@@ -75,7 +75,7 @@
                 <li><a href="#">Kotakan</a></li>
               </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#footer">Contact</a></li>
+          <li><a class="nav-link scrollto" href="#footer">Kontak Kami</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
