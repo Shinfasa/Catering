@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 01, 2022 at 02:13 AM
+-- Generation Time: Dec 01, 2022 at 02:37 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `akses` (
   `id_akses` int NOT NULL,
-  `hak_akses` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `hak_akses` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `akses`
@@ -48,8 +48,8 @@ INSERT INTO `akses` (`id_akses`, `hak_akses`) VALUES
 
 CREATE TABLE `kategori` (
   `id_kategori` int NOT NULL,
-  `nama_kategori` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `nama_kategori` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -59,12 +59,12 @@ CREATE TABLE `kategori` (
 
 CREATE TABLE `menu` (
   `id_menu` int NOT NULL,
-  `nama_menu` varchar(100) NOT NULL,
-  `harga` varchar(50) NOT NULL,
-  `detail` text NOT NULL,
-  `gambar` varchar(50) NOT NULL,
+  `nama_menu` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `harga` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `detail` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gambar` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_kategori` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -76,11 +76,11 @@ CREATE TABLE `order` (
   `id_order` int NOT NULL,
   `tgl_pesan` date NOT NULL,
   `tgl_pakai` datetime NOT NULL,
-  `harga satuan` varchar(50) NOT NULL,
-  `jumlah` varchar(50) NOT NULL,
+  `harga satuan` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jumlah` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_user` int NOT NULL,
   `id_menu` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -91,12 +91,12 @@ CREATE TABLE `order` (
 CREATE TABLE `orderdetail` (
   `id_ordetail` int NOT NULL,
   `id_order` int NOT NULL,
-  `total_harga` varchar(50) NOT NULL,
+  `total_harga` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_bayar` date NOT NULL,
   `id_pengiriman` int NOT NULL,
-  `catatan_order` varchar(255) NOT NULL,
-  `status_pesanan` enum('Belum Dibayar','Sedang Diproses','Selesai') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `catatan_order` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_pesanan` enum('Belum Dibayar','Sedang Diproses','Selesai') COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -106,8 +106,8 @@ CREATE TABLE `orderdetail` (
 
 CREATE TABLE `pengiriman` (
   `id_pengiriman` int NOT NULL,
-  `metode_pengiriman` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `metode_pengiriman` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -117,11 +117,11 @@ CREATE TABLE `pengiriman` (
 
 CREATE TABLE `user` (
   `id_user` int NOT NULL,
-  `nama_user` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `nama_user` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_akses` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `user`
