@@ -204,7 +204,7 @@
   
 <!-- popular section ends -->
 
-  </main><!-- End #main -->
+</main><!-- End #main -->
 
 <?php 
   include('footer.php')
