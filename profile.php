@@ -20,7 +20,7 @@
   <link id="pagestyle" href="../Catering/dashboard/assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
 </head>
 
-<body class="g-sidenav-show" style="background-color: #E8853D;">
+<body class="g-sidenav-show" style="background-color: #FFDA72;">
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-md-8">
@@ -28,26 +28,10 @@
             <div class="card-header pb-0">
               <div class="d-flex align-items-center">
                 <p class="mb-0">Edit Profile</p>
-                <button class="btn btn-primary btn-sm ms-auto">Simpan</button>
+                <button class="btn btn-sm ms-auto text-light" style="background-color:#E8853D"><b>Simpan</b></button>
               </div>
             </div>
-            <div class="row gx-4">
-          <div class="col-auto item-center">
-            <div class="avatar avatar-xl position-relative">
-              <img src="../Catering/dashboard/assets/img/team-1.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
-            </div>
-          </div>
-          <div class="col-auto my-auto">
-            <div class="h-100">
-              <h5 class="mb-1">
-                Sayo Kravits
-              </h5>
-              <p class="mb-0 font-weight-bold text-sm">
-                Public Relations
-              </p>
-            </div>
-          </div>
-        </div>
+            <hr class="horizontal dark">
             <div class="card-body">
               <p class="text-uppercase text-sm">User Information</p>
               <div class="row">
@@ -79,43 +63,38 @@
               <hr class="horizontal dark">
               <p class="text-uppercase text-sm">Contact Information</p>
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Address</label>
                     <input class="form-control" type="text" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">City</label>
-                    <input class="form-control" type="text" value="New York">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Country</label>
-                    <input class="form-control" type="text" value="United States">
-                  </div>
-                </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                   <div class="form-group">
                     <label for="example-text-input" class="form-control-label">Postal code</label>
                     <input class="form-control" type="text" value="437300">
                   </div>
                 </div>
               </div>
-              <hr class="horizontal dark">
-              <p class="text-uppercase text-sm">About me</p>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">About me</label>
-                    <input class="form-control" type="text" value="A beautiful Dashboard for Bootstrap 5. It is Free and Open Source.">
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-profile">
+            <!-- Profile picture card-->
+            <div class="card mb-4 mb-xl-0">
+                <div class="card-header pb-0">Profile Picture</div>
+                <hr class="horizontal dark">
+                <div class="card-body text-center">
+                    <!-- Profile picture image-->
+                    <img class="img-account-profile rounded-circle m-4" width="150px" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                    <!-- Profile picture help block-->
+                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                    <!-- Profile picture upload button-->
+                    <button class="btn m-2 text-light" style="background-color:#E8853D" type="button"><b>Ubah Foto Profil</b></button>
+                    <button class="btn m-2 btn-danger" type="button">Hapus Foto Profil</button>
+                </div>
+            </div>
         </div>
       </div>
     </div>
