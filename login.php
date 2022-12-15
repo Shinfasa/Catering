@@ -26,10 +26,20 @@
             if ($num != 0) {
                 if ($userMail == $email && $userPass == $pass) {
                     // header('Location: index.php?user_fullname=' . urlencode($userName));
-                    $_SESSION['id'] = $idUser;
-                    $_SESSION['name'] = $userName;
-                    $_SESSION['akses'] = $akses;
                     header('Location: home.php');
+                    if($akses==1){
+						session_start();
+						$_SESSION['id'] = $idUser;
+                    	$_SESSION['name'] = $userName;
+                    	$_SESSION['akses'] = $akses;
+						header('location:dashboard/');
+					}elseif($akses==2){
+						session_start();
+						$_SESSION['id'] = $idUser;
+                    	$_SESSION['name'] = $userName;
+                    	$_SESSION['akses'] = $akses;
+						header('location:index.php');
+					}
                 } else {
                     $error = 'Username atau Password Salah!!!';
                     header('Location: login.php');
