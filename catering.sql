@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2022 at 05:21 AM
+-- Generation Time: Dec 15, 2022 at 06:45 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -39,6 +39,18 @@ CREATE TABLE `akses` (
 INSERT INTO `akses` (`id_akses`, `hak_akses`) VALUES
 (1, 'Admin'),
 (2, 'Customer');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `breadcrumb`
+--
+
+CREATE TABLE `breadcrumb` (
+  `id_breadcrumb` int(11) NOT NULL,
+  `kategori` int(11) NOT NULL,
+  `nama_folder` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -89,7 +101,7 @@ INSERT INTO `menu` (`id_menu`, `nama_menu`, `harga`, `detail`, `gambar`, `id_kat
 (7, 'Semur Ayam', '15000', '', 'semur_ayam.jpg', 1),
 (8, 'Telur Geprek', '12000', '', 'telur_geprek.jpg', 1),
 (9, 'Tumis Kerang', '15000', '', 'tumis_kerang.jpg', 1),
-(10, 'Tumpeng', '150000', '', 'tumpeng.jpg', 2),
+(10, 'Tumpeng Ayam', '150000', '', 'tumpeng_ayam.jpg', 2),
 (11, 'Telur Teriyaki', '12000', '', 'telur_teriyaki.jpg', 1),
 (12, 'Kimlo Soup', '12000', '', 'kimlo_soup.jpg', 1);
 
@@ -120,7 +132,7 @@ CREATE TABLE `orderdetail` (
   `id_order` int(11) NOT NULL,
   `total_harga` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_bayar` date NOT NULL,
-  `id_pengiriman` int(11) NOT NULL,
+  `id_pembayaran` int(11) NOT NULL,
   `catatan_order` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status_pesanan` enum('Belum Dibayar','Sedang Diproses','Selesai') COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -179,6 +191,12 @@ ALTER TABLE `akses`
   ADD PRIMARY KEY (`id_akses`);
 
 --
+-- Indexes for table `breadcrumb`
+--
+ALTER TABLE `breadcrumb`
+  ADD PRIMARY KEY (`id_breadcrumb`);
+
+--
 -- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
@@ -205,7 +223,7 @@ ALTER TABLE `order`
 ALTER TABLE `orderdetail`
   ADD PRIMARY KEY (`id_ordetail`),
   ADD KEY `id_order` (`id_order`),
-  ADD KEY `id_pengiriman` (`id_pengiriman`);
+  ADD KEY `id_pengiriman` (`id_pembayaran`);
 
 --
 -- Indexes for table `pembayaran`
@@ -229,6 +247,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `akses`
   MODIFY `id_akses` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `breadcrumb`
+--
+ALTER TABLE `breadcrumb`
+  MODIFY `id_breadcrumb` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -288,7 +312,7 @@ ALTER TABLE `order`
 --
 ALTER TABLE `orderdetail`
   ADD CONSTRAINT `orderdetail_ibfk_1` FOREIGN KEY (`id_order`) REFERENCES `order` (`id_order`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `orderdetail_ibfk_2` FOREIGN KEY (`id_pengiriman`) REFERENCES `pembayaran` (`id_pembayaran`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `orderdetail_ibfk_2` FOREIGN KEY (`id_pembayaran`) REFERENCES `pembayaran` (`id_pembayaran`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user`
