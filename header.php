@@ -65,9 +65,9 @@
                     <li><a href="#">Selasa</a></li>
                     <li><a href="#">Rabu</a></li>
                     <li><a href="#">Kamis</a></li>
-                  <li><a href="#">Jumat</a></li>
-                  <li><a href="#">Sabtu</a></li>
-                  <li><a href="#">Minggu</a></li>
+                    <li><a href="#">Jumat</a></li>
+                    <li><a href="#">Sabtu</a></li>
+                    <li><a href="#">Minggu</a></li>
                     <li><a href="#">Paket 1 Minggu</a></li>
                   </ul>
                 </li>
@@ -80,7 +80,7 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
   
-      <div class="input-group rounded m-3" style="width: 150px;">
+      <div class="input-group rounded m-3" style="width: 200px; padding-left:30px;">
         <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" style="height: 30px; font-size: 15px;"/>
       </div>
   

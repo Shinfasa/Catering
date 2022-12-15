@@ -1,6 +1,7 @@
 <?php 
 include "header.php";
 ?>
+<head>
     <style>
     .small-img-group {
         display: flex;
@@ -32,22 +33,14 @@ include "header.php";
         opacity: 1;
         transition: 0.3s all;
     }
-</style>
+    </style>
 </head>
-
 
 <br>
 <br>
 
 <body>
     <section class="container sproduct my-5 pt-1">
-    <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Beranda</a></li>
-                    <li class="breadcrumb-item"><a href="#">Kategori</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Harian</li>
-                </ol>
-            </nav>
         <div class="row mt-1">
             <div class="col-lg-5 col-md-12 col-12">
                 <img class="img-fluid w-100 pb-1" src="assets/img/p-1.jpg" id="maining" alt="">
