@@ -32,11 +32,11 @@ include('header.php')
                       $previous = $halaman - 1;
                       $next = $halaman + 1;
         
-                      $data = mysqli_query($koneksi,"SELECT * FROM user");
+                      $data = mysqli_query($koneksi,"SELECT * FROM user JOIN akses ON user.id_akses = akses.id_akses;");
                       $jumlah_data = mysqli_num_rows($data);
                       $total_halaman = ceil($jumlah_data / $batas);
  
-                      $data_pegawai = mysqli_query($koneksi,"SELECT * FROM user LIMIT $halaman_awal, $batas");
+                      $data_pegawai = mysqli_query($koneksi,"SELECT * FROM user JOIN akses ON user.id_akses = akses.id_akses LIMIT $halaman_awal, $batas");
                       $nomor = $halaman_awal+1;
                       while($d = mysqli_fetch_array($data_pegawai)){
                     ?>
@@ -47,7 +47,7 @@ include('header.php')
                         <td class="text-center"><?php echo $d['password']; ?></td>
                         <td class="text-center"><?php echo $d['alamat']; ?></td>
                         <td class="text-center"><?php echo $d['nohp']; ?></td>
-                        <td class="text-center"><?php echo $d['id_akses']; ?></td>
+                        <td class="text-center"><?php echo $d['hak_akses']; ?></td>
                         <td class="align-middle text-center">
                           <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                           Edit
