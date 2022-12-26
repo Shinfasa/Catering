@@ -24,8 +24,45 @@ include('header.php')
                     </tr>
                   </thead>
                   <tbody>
+                    <?php 
+                      $batas = 10;
+                      $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+                      $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
+ 
+                      $previous = $halaman - 1;
+                      $next = $halaman + 1;
+        
+                      $data = mysqli_query($koneksi,"SELECT * FROM user");
+                      $jumlah_data = mysqli_num_rows($data);
+                      $total_halaman = ceil($jumlah_data / $batas);
+ 
+                      $data_pegawai = mysqli_query($koneksi,"SELECT * FROM user LIMIT $halaman_awal, $batas");
+                      $nomor = $halaman_awal+1;
+                      while($d = mysqli_fetch_array($data_pegawai)){
+                    ?>
+                      <tr>
+                        <td class="text-center"><?php echo $nomor++; ?></td>
+                        <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['nama_user']; ?></h6></td>
+                        <td class="text-center"><?php echo $d['email']; ?></td>
+                        <td class="text-center"><?php echo $d['password']; ?></td>
+                        <td class="text-center"><?php echo $d['alamat']; ?></td>
+                        <td class="text-center"><?php echo $d['nohp']; ?></td>
+                        <td class="text-center"><?php echo $d['id_akses']; ?></td>
+                        <td class="align-middle text-center">
+                          <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          Edit
+                          </a>
+                          &nbsp;
+                          <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                            Delete
+                          </a>
+                        </td>
+                      </tr>
+                    <?php
+                      }
+                    ?>
                     <tr>
-                      <td class="text-center">1</td>
+                      <td class="text-center">2</td>
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
@@ -61,6 +98,23 @@ include('header.php')
 
                   </tbody>
                 </table>
+                <nav>
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                      <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$Previous'"; } ?>>Previous</a>
+                    </li>
+                    <?php 
+                    for($x=1;$x<=$total_halaman;$x++){
+                      ?> 
+                      <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+                      <?php
+                    }
+                    ?>        
+                    <li class="page-item">
+                      <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>Next</a>
+                    </li>
+                  </ul>
+                </nav>
               </div>
             </div>
           </div>
