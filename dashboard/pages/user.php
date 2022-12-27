@@ -6,7 +6,12 @@ include('header.php')
 
           <div class="card" style="height:100vh; max-height: 540px;">
             <div class="card-header pb-0">
-              <h6>User</h6>
+              <div class="d-flex align-items-center mb-3">
+                  <h6 class="mb-0">User</h6>
+                  <div class="text-end" style="flex: 0 0 auto; width: 96%;">
+                  <a href="#" class="btn btn-outline-primary btn-xs mb-0">+</a>
+                  </div>
+                </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -42,6 +47,7 @@ include('header.php')
                     ?>
                       <tr>
                         <td class="text-center"><?php echo $nomor++; ?></td>
+                        <td class="text-center" hidden><?php echo $d['id_user']; ?></td>
                         <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['nama_user']; ?></h6></td>
                         <td class="text-center"><?php echo $d['email']; ?></td>
                         <td class="text-center"><?php echo $d['password']; ?></td>
@@ -53,7 +59,7 @@ include('header.php')
                           Edit
                           </a>
                           &nbsp;
-                          <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="hapus_user.php?id_user=<?php echo $d['id_user'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete user">
                             Delete
                           </a>
                         </td>
