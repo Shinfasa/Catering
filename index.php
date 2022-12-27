@@ -203,22 +203,8 @@
               </div>
               <a href="#" class="btn">order now</a>
           </div>
-
   
     </div>
-    <div class="box d-flex justify-content-center align-items-center">
-              <span class="price">Rp 35.000</span>
-            <img src="assets/img/p-6.jpg" alt="">
-            <h3>cold ice-cream</h3>
-            <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="far fa-star"></i>
-              </div>
-              <a href="#" class="btn">order now</a>
-          </div>
 
 </section>
   
