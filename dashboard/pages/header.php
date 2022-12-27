@@ -1,20 +1,7 @@
 <?php 
 require ('../../koneksi.php');
 ?>
-<!--
-=========================================================
-* Argon Dashboard 2 - v2.0.4
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +31,7 @@ require ('../../koneksi.php');
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="../index.php">
-        <img src="../../assets/img/logo/logo.png" class="navbar-brand-img h-100" alt="main_logo">
+        <img src="../../assets/img/logo/logo.png" class="navbar-brand-img h-100" alt="main_logo" style="margin-left:25px;">
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -58,7 +45,7 @@ require ('../../koneksi.php');
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="../pages/order.php">
+          <a class="nav-link " href="../pages/order.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
             </div>
@@ -90,11 +77,11 @@ require ('../../koneksi.php');
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../pages/rtl.html">
+          <a class="nav-link " href="./pages/pembayaran.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Pengiriman</span>
+            <span class="nav-link-text ms-1">Pembayaran</span>
           </a>
         </li>
         <li class="nav-item mt-3">
