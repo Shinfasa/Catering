@@ -37,17 +37,17 @@ include('header.php');
                       $previous = $halaman - 1;
                       $next = $halaman + 1;
         
-                      $data = mysqli_query($koneksi,"SELECT * FROM order JOIN orderdetail ON orderdetail.id_order = order.id_order JOIN user ON order.id_user = user.id_user JOIN menu ON order.id_menu = menu.id_menu;");
+                      $data = mysqli_query($koneksi,"SELECT * FROM orders JOIN orderdetail ON orders.id_order = orderdetail.id_order JOIN user ON orders.id_user = user.id_user JOIN menu ON orders.id_menu = menu.id_menu;");
                       $jumlah_data = mysqli_num_rows($data);
                       $total_halaman = ceil($jumlah_data / $batas);
  
-                      $data_order = mysqli_query($koneksi,"SELECT * FROM order JOIN orderdetail ON order.id_order = orderdetail.id_order JOIN user ON order.id_user = user.id_user JOIN menu ON order.id_menu = menu.id_menu LIMIT $halaman_awal, $batas");
+                      $data_order = mysqli_query($koneksi,"SELECT * FROM orders JOIN orderdetail ON orders.id_order = orderdetail.id_order JOIN user ON orders.id_user = user.id_user JOIN menu ON orders.id_menu = menu.id_menu LIMIT $halaman_awal, $batas");
                       $nomor = $halaman_awal+1;
                       while($d = mysqli_fetch_array($data_order)){
                     ?>
                       <tr>
                         <td class="text-center"><?php echo $nomor++; ?></td>
-                        <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['nama_user']; ?></h6></td>
+                        <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['']; ?></h6></td>
                         <td class="text-center"><?php echo $d['tgl_pesan']; ?></td>
                         <td class="text-center"><?php echo $d['tgl_pakai']; ?></td>
                         <td class="text-center"><?php echo $d['nama_menu']; ?></td>
