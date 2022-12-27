@@ -7,14 +7,14 @@ include 'header.php';
   <div class="container wow fadeIn">
 
     <!-- Heading -->
-    <h2 class="my-5 h2 text-center">Checkout form</h2>
+    <h1 class="my-5 h1 text-center">Checkout form</h1>
 
 
         <!-- Cart -->
         <ul class="list-group mb-3 z-depth-1">
           <li class="list-group-item d-flex justify-content-between lh-condensed">
             <div>
-              <h6 class="my-0">Ice Cream Cone</h6>
+              <h4 class="my-0">Ice Cream Cone</h4>
               <p>Matcha</p>
             </div>
             <span class="text-muted">Rp.10.000</span>
