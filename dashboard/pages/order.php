@@ -37,17 +37,17 @@ include('header.php');
                       $previous = $halaman - 1;
                       $next = $halaman + 1;
         
-                      $data = mysqli_query($koneksi,"SELECT * FROM orders JOIN orderdetail ON orders.id_order = orderdetail.id_order JOIN user ON orders.id_user = user.id_user JOIN menu ON orders.id_menu = menu.id_menu;");
+                      $data = mysqli_query($koneksi,"SELECT * FROM orders JOIN orderdetail ON orders.id_order = orderdetail.id_order JOIN user ON orders.id_user = user.id_user JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orderdetail.id_pembayaran = pembayaran.id_pembayaran;");
                       $jumlah_data = mysqli_num_rows($data);
                       $total_halaman = ceil($jumlah_data / $batas);
  
-                      $data_order = mysqli_query($koneksi,"SELECT * FROM orders JOIN orderdetail ON orders.id_order = orderdetail.id_order JOIN user ON orders.id_user = user.id_user JOIN menu ON orders.id_menu = menu.id_menu LIMIT $halaman_awal, $batas");
+                      $data_order = mysqli_query($koneksi,"SELECT * FROM orders JOIN orderdetail ON orders.id_order = orderdetail.id_order JOIN user ON orders.id_user = user.id_user JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orderdetail.id_pembayaran = pembayaran.id_pembayaran LIMIT $halaman_awal, $batas");
                       $nomor = $halaman_awal+1;
                       while($d = mysqli_fetch_array($data_order)){
                     ?>
                       <tr>
                         <td class="text-center"><?php echo $nomor++; ?></td>
-                        <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['']; ?></h6></td>
+                        <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['nama_user']; ?></h6></td>
                         <td class="text-center"><?php echo $d['tgl_pesan']; ?></td>
                         <td class="text-center"><?php echo $d['tgl_pakai']; ?></td>
                         <td class="text-center"><?php echo $d['nama_menu']; ?></td>
@@ -55,7 +55,7 @@ include('header.php');
                         <td class="text-center"><?php echo $d['harga_satuan']; ?></td>
                         <td class="text-center"><?php echo $d['jumlah']; ?></td>
                         <td class="text-center"><?php echo $d['total_harga']; ?></td>
-                        <td class="text-center"><?php echo $d['']; ?></td>
+                        <td class="text-center"><?php echo $d['metode_pembayaran']; ?></td>
                         <td class="text-center"><?php echo $d['tgl_bayar']; ?></td>
                         <td class="text-center"><?php echo $d['status_pesanan']; ?></td>
                         <td class="align-middle text-center">
