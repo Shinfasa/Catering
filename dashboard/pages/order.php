@@ -55,7 +55,7 @@ include('header.php');
                         <td class="text-center"><?php echo $d['harga_satuan']; ?></td>
                         <td class="text-center"><?php echo $d['jumlah']; ?></td>
                         <td class="text-center"><?php echo $d['total_harga']; ?></td>
-                        <td class="text-center"><?php echo $d['metode_pembayaran']; ?></td>
+                        <td class="text-center"><?php echo $d['']; ?></td>
                         <td class="text-center"><?php echo $d['tgl_bayar']; ?></td>
                         <td class="text-center"><?php echo $d['status_pesanan']; ?></td>
                         <td class="align-middle text-center">
