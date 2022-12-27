@@ -106,11 +106,26 @@
           <h2>Menu</h2>
         </div>
       <div class="box-container">
-  
+          <?php 
+            $batas = 10;
+            $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+            $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
+ 
+            $previous = $halaman - 1;
+            $next = $halaman + 1;
+        
+            $data = mysqli_query($koneksi,"SELECT * FROM menu;");
+            $jumlah_data = mysqli_num_rows($data);
+            $total_halaman = ceil($jumlah_data / $batas);
+ 
+            $data_menu = mysqli_query($koneksi,"SELECT * FROM menu LIMIT $halaman_awal, $batas");
+            $nomor = $halaman_awal+1;
+            while($d = mysqli_fetch_array($data_menu)){
+          ?>
           <div class="box">
-              <span class="price">Rp 10.000</span>
+              <span class="price"><?php echo $d['harga']; ?></span>
               <a href="product_detail.php"><img src="assets/img/p-1.jpg" alt=""></a>
-              <h3>tasty burger</h3>
+              <h3><?php echo $d['nama_menu']; ?></h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -120,6 +135,9 @@
             </div>
               <a href="#" class="btn">order now</a>
             </div>
+            <?php
+              }
+            ?>
           <div class="box">
             <span class="price">Rp 15.000</span>
             <img src="assets/img/p-2.jpg" alt="">
