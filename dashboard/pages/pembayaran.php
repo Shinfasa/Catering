@@ -6,7 +6,7 @@ include('header.php')
 
           <div class="card" style="height:100vh; max-height: 540px;">
             <div class="card-header pb-0">
-              <h6>User</h6>
+              <h6>Metode Pembayaran</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -14,12 +14,7 @@ include('header.php')
                   <thead>
                     <tr>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama User</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Password</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Alamat</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No. Hp</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Level Akses</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Metode Pembayaran</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                     </tr>
                   </thead>
@@ -32,22 +27,17 @@ include('header.php')
                       $previous = $halaman - 1;
                       $next = $halaman + 1;
         
-                      $data = mysqli_query($koneksi,"SELECT * FROM user JOIN akses ON user.id_akses = akses.id_akses;");
+                      $data = mysqli_query($koneksi,"SELECT * FROM pembayaran;");
                       $jumlah_data = mysqli_num_rows($data);
                       $total_halaman = ceil($jumlah_data / $batas);
  
-                      $data_pegawai = mysqli_query($koneksi,"SELECT * FROM user JOIN akses ON user.id_akses = akses.id_akses LIMIT $halaman_awal, $batas");
+                      $data_pegawai = mysqli_query($koneksi,"SELECT * FROM pembayaran LIMIT $halaman_awal, $batas");
                       $nomor = $halaman_awal+1;
                       while($d = mysqli_fetch_array($data_pegawai)){
                     ?>
                       <tr>
                         <td class="text-center"><?php echo $nomor++; ?></td>
-                        <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['nama_user']; ?></h6></td>
-                        <td class="text-center"><?php echo $d['email']; ?></td>
-                        <td class="text-center"><?php echo $d['password']; ?></td>
-                        <td class="text-center"><?php echo $d['alamat']; ?></td>
-                        <td class="text-center"><?php echo $d['nohp']; ?></td>
-                        <td class="text-center"><?php echo $d['hak_akses']; ?></td>
+                        <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['metode_pembayaran']; ?></h6></td>
                         <td class="align-middle text-center">
                           <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                           Edit

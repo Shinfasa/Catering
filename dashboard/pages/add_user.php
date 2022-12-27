@@ -19,7 +19,7 @@
                     <!-- DataTables Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h5 class="m-0 font-weight-bold">Edit Data User</h5>
+                            <h5 class="m-0 font-weight-bold">Tambah Data User</h5>
                         </div>
                         <div>
                             <div class="m-4">
@@ -28,8 +28,15 @@
                                         <input type="hidden" name="txt_id" value="">
                                     </div>
                                     <div class="form-group">
+                                        <label for="txt_level">Level Akses</label>
+                                        <div style="font-size:15px;">
+                                            <input type="radio" name="txt_level" value="1" style="margin-left:20px;">  1 - Admin
+                                            <input type="radio" name="txt_level" value="2" style="margin-left: 100px;">  2 - Customer
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="txt_email">Email</label>
-                                        <input type="email" class="form-control form-control-user"  placeholder="Email" name="txt_email" value="" readonly>
+                                        <input type="email" class="form-control form-control-user" placeholder="Email" name="txt_email" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="txt_nama">Nama Lengkap</label>
@@ -46,8 +53,8 @@
                                     <div class="form-group">
                                         <label for="txt_pass">Password</label>
                                         <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="">
-                                    </div>
-                                    <button type="submit" name="update" class="btn btn-user btn-block text-light" style="background-color: #E8853D;"><b>Update</b></button>
+                                    </div>        
+                                    <button type="submit" name="submit" class="btn btn-user btn-block text-light" style="background-color: #E8853D;"><b>Simpan</b></button>
                                     <button class="btn btn-light btn-user btn-block"><a href="user.php">Kembali</button>
                                 </form>
                             </div>

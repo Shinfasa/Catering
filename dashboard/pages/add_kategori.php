@@ -19,7 +19,7 @@
                     <!-- DataTables Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h5 class="m-0 font-weight-bold">Edit Data User</h5>
+                            <h5 class="m-0 font-weight-bold">Tambah Data Kategori</h5>
                         </div>
                         <div>
                             <div class="m-4">
@@ -28,26 +28,10 @@
                                         <input type="hidden" name="txt_id" value="">
                                     </div>
                                     <div class="form-group">
-                                        <label for="txt_email">Email</label>
-                                        <input type="email" class="form-control form-control-user"  placeholder="Email" name="txt_email" value="" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txt_nama">Nama Lengkap</label>
-                                        <input type="text" class="form-control form-control-user" placeholder="Nama Lengkap" name="txt_nama" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txt_alamat">Alamat</label>
-                                        <input type="text" class="form-control form-control-user" placeholder="Alamat" name="txt_alamat" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txt_nohp">No. Handphone</label>
-                                        <input type="number" class="form-control form-control-user" placeholder="No. Handphone" name="txt_nohp" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txt_pass">Password</label>
-                                        <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="">
-                                    </div>
-                                    <button type="submit" name="update" class="btn btn-user btn-block text-light" style="background-color: #E8853D;"><b>Update</b></button>
+                                        <label for="txt_nama">Nama Kategori</label>
+                                        <input type="text" class="form-control form-control-user" placeholder="Nama Kategori" name="txt_nama" value="">
+                                    </div> 
+                                    <button type="submit" name="submit" class="btn btn-user btn-block text-light" style="background-color: #E8853D;"><b>Simpan</b></button>
                                     <button class="btn btn-light btn-user btn-block"><a href="user.php">Kembali</button>
                                 </form>
                             </div>
