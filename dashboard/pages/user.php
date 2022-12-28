@@ -9,7 +9,7 @@ include('header.php')
               <div class="d-flex align-items-center mb-3">
                   <h6 class="mb-0">User</h6>
                   <div class="text-end" style="flex: 0 0 auto; width: 96%;">
-                  <a href="#" class="btn btn-outline-primary btn-xs mb-0">+</a>
+                  <a href="add_user.php" class="btn btn-outline-primary btn-xs mb-0">+</a>
                   </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@ include('header.php')
                         <td class="text-center"><?php echo $d['nohp']; ?></td>
                         <td class="text-center"><?php echo $d['hak_akses']; ?></td>
                         <td class="align-middle text-center">
-                          <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          <a href="edit_user.php?id_user=<?php echo $d['id_user'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                           Edit
                           </a>
                           &nbsp;
