@@ -1,16 +1,16 @@
 <?php
       require ('koneksi.php');
-  ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
   
- <h ead>
+<head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>WM Hana Asri</title>
-    <meta content="" name="description">
+  <title>WM Hana Asri</title>
+  <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
@@ -27,20 +27,15 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   
-    <!-- Template Main CSS File -->
-    <link rel="stylesheet" href="assets/css/index.css">
-    <link rel="stylesheet" href="assets/css/carousel.css">
-    <link rel="stylesheet" href="assets/css/order.css">
-    <link rel="stylesheet" href="assets/css/food.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="assets/css/index.css">
+  <link rel="stylesheet" href="assets/css/carousel.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
   
-    <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <!-- font awesome cdn link  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-  </h>
+</head>
   
  <body>
 
@@ -56,10 +51,10 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#myCarousel">Beranda</a></li>
 
-          <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
-          <li class="dropdown"><a href="#what-we-do"><span  style="font-size: 18px;">Kategori</span> <i class="bi bi-chevron-down"></i></a>
+          <li><a class="nav-link scrollto" href="#footer">Tentang</a></li>
+          <li class="dropdown"><a href="#what-we-do"><span>Kategori</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-                <li class="dropdown"><a href="#"><span style="font-size: 16px;">Harian</span> <i class="bi bi-chevron-right"></i></a>
+                <li class="dropdown"><a href="#"><span>Harian</span> <i class="bi bi-chevron-right"></i></a>
                   <ul>
                     <li><a href="#">Senin</a></li>
                     <li><a href="#">Selasa</a></li>
