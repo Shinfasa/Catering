@@ -1,71 +1,53 @@
 <?php
-    include('header.php')
-?>
+include('header.php')
 
-<body id="page-top">
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+  ?>
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content">
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- DataTables Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h5 class="m-0 font-weight-bold">Tambah Data Kategori</h5>
-                        </div>
-                        <div>
-                            <div class="m-4">
-                                <form action="edit_user.php" method="POST" class="user">
-                                    <div class="form-group">
-                                        <input type="hidden" name="txt_id" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txt_nama">Nama Kategori</label>
-                                        <input type="text" class="form-control form-control-user" placeholder="Nama Kategori" name="txt_nama" value="">
-                                    </div> 
-                                    <button type="submit" name="submit" class="btn btn-user btn-block text-light" style="background-color: #E8853D;"><b>Simpan</b></button>
-                                    <button class="btn btn-light btn-user btn-block"><a href="user.php">Kembali</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.container-fluid -->
-
-            </div>
-            <!-- End of Main Content -->
-
+  <div class="container-fluid py-3">
+    <div class="row">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h5 class="m-0 font-weight-bold">Tambah Data Kategori</h5>
         </div>
-        <!-- End of Content Wrapper -->
-
+        <div>
+          <div class="m-4">
+            <form action="add_kategori.php" method="POST" class="user">
+              <div class="form-group">
+                <input type="hidden" name="txt_id" value="">
+              </div>
+              <div class="form-group">
+                <label for="txt_nama">Nama Kategori</label>
+                <input type="text" class="form-control form-control-user" placeholder="Nama Kategori" name="txt_nama" value="">
+              </div> 
+              <button type="submit" name="create" class="btn btn-user btn-block text-light" style="background-color: #E8853D;"><b>Simpan</b></button>
+              <button class="btn btn-light btn-user btn-block"><a href="kategori.php">Kembali</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-
+  </div>
+</main>
+<!--   Core JS Files   -->
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap.min.js"></script>
+<script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+<script>
+  var win = navigator.platform.indexOf('Win') > -1;
+  if (win && document.querySelector('#sidenav-scrollbar')) {
+    var options = {
+      damping: '0.5'
+    }
+    Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+  }
+</script>
+<!-- Github buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="../assets/js/argon-dashboard.min.js?v=2.0.4"></script>
 </body>
 
 </html>

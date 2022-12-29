@@ -6,7 +6,13 @@ include('header.php')
 
           <div class="card" style="height:100vh; max-height: 540px;">
             <div class="card-header pb-0">
-              <h6>Kategori</h6>
+            <div class="d-flex align-items-center mb-3">
+                  <h6 class="mb-0">Kategori</h6>
+                  <div class="text-end" style="flex: 0 0 auto; width: 96%;">
+                  <a href="add_kategori.php" class="btn btn-outline-primary btn-xs mb-0">+</a>
+                  </div>
+                
+              </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
