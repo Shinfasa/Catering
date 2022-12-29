@@ -59,15 +59,15 @@
   
     <nav id="navbar" class="navbar order-last order-lg-0">
       <ul>
-        <li><a class="nav-link scrollto active" href="#home">Beranda</a></li>
+        <li><a class="nav-link scrollto active" href="home.php">Beranda</a></li>
         <li class="dropdown"><a href="#categories"><span>Kategori</span><i class="bi bi-chevron-down"></i></a>
           <ul>
-            <li><a href="#">Harian</a></li>
-            <li><a href="#">Prasmanan</a></li>
-            <li><a href="#">Kotakan</a></li>
+            <li><a href="categories.php">Harian</a></li>
+            <li><a href="categories.php">Prasmanan</a></li>
+            <li><a href="categories.php">Kotakan</a></li>
           </ul>
         </li>
-        <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
+        <li><a class="nav-link scrollto" href="menu.php">Menu</a></li>
         <li><a class="nav-link scrollto" href="order.php">Pesanan Saya</a></li>
         <li class="dropdown"><a href="#search"><span class="bi-search"></span></a>
           <ul>

@@ -136,7 +136,7 @@
               <img src="img/ayam_geprek.jpg" alt="" width="300px" height="250px" style="margin-left: 10px; margin-right: 15px; border-radius: 20px;">
             </div>
             <br>
-            <h4><?php echo $d['nama_menu']; ?></h4>
+            <h4><a href="product_detail.php"><?php echo $d['nama_menu']; ?></a></h4>
             <h5 class="text-secondary" style="font-family: 'Open Sans', sans-serif;">Rp <?php echo $d['harga']; ?></h5>
           <div>
           <button href="#" class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Beli Sekarang</button>

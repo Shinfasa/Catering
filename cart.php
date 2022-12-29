@@ -1,12 +1,5 @@
 <?php
-session_start();
-include 'koneksi.php';
-
-if(!isset($_SESSION['log'])){
-	header('location:login.php');
-} else {
-	
-};
+include('header.php');
 	
 	$uid = $_SESSION['id'];
 	$caricart = mysqli_query($koneksi,"select * from keranjang where id_user='$uid' and status='keranjang'");
@@ -37,6 +30,7 @@ if(isset($_POST["update"])){
 	}
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
