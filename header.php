@@ -1,5 +1,5 @@
 <?php
-      require ('koneksi.php');
+  require ('koneksi.php');
 ?>
 
 <!DOCTYPE html>
@@ -51,18 +51,7 @@
         <li><a class="nav-link scrollto active" href="#home">Beranda</a></li>
         <li class="dropdown"><a href="#categories"><span>Kategori</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
-            <li class="dropdown"><a href="#"><span>Harian</span> <i class="bi bi-chevron-right"></i></a>
-              <ul>
-                <li><a href="#">Senin</a></li>
-                <li><a href="#">Selasa</a></li>
-                <li><a href="#">Rabu</a></li>
-                <li><a href="#">Kamis</a></li>
-                <li><a href="#">Jumat</a></li>
-                <li><a href="#">Sabtu</a></li>
-                <li><a href="#">Minggu</a></li>
-                <li><a href="#">Paket 1 Minggu</a></li>
-              </ul>
-            </li>
+            <li><a href="#">Harian</a></li>
             <li><a href="#">Prasmanan</a></li>
             <li><a href="#">Kotakan</a></li>
           </ul>
