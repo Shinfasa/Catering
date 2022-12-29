@@ -4,7 +4,7 @@ include('header.php')
     <div class="container-fluid py-3">
       <div class="row">
 
-          <div class="card" style="height:100vh; max-height: 540px;">
+          <div class="card" style="height:130vh; max-height: 1000px;">
             <div class="card-header pb-0">
               <div class="d-flex align-items-center mb-3">
                   <h6 class="mb-0">Menu</h6>
@@ -29,7 +29,7 @@ include('header.php')
                   </thead>
                   <tbody>
                     <?php 
-                      $batas = 9;
+                      $batas = 5;
                       $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
                       $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
  
@@ -49,7 +49,10 @@ include('header.php')
                         <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['nama_menu']; ?></h6></td>
                         <td class="text-center"><?php echo $d['harga']; ?></td>
                         <td class="text-center"><?php echo $d['detail']; ?></td>
-                        <td class="text-center"><?php echo $d['gambar']; ?></td>
+                        <td class="text-center">
+                          <div>
+                            <img src="../../assets/img/menu/<?php echo $d['gambar']; ?>" class="avatar avatar-xxl me-3">
+                          </div></td>
                         <td class="text-center"><?php echo $d['nama_kategori']; ?></td>
                         <td class="align-middle text-center">
                           <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
@@ -66,6 +69,7 @@ include('header.php')
                     ?>
                   </tbody>
                 </table>
+                <br>
                 <nav>
                   <ul class="pagination justify-content-center">
                     <li class="page-item">
