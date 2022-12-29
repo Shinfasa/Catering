@@ -47,6 +47,10 @@
                                         <label for="txt_nama">Nama Kategori</label>
                                         <input type="text" class="form-control form-control-kategori" placeholder="Nama Kategori" name="txt_nama" value="">
                                     </div> 
+                                    <div class="form-group">
+                                        <label for="txt_des">Deskripsi</label>
+                                        <input type="text" class="form-control form-control-kategori" placeholder="Deskripsi" name="txt_des" value="">
+                                    </div>
                                     <button type="submit" name="update" class="btn btn-kategori btn-block text-light" style="background-color: #E8853D;"><b>Update</b></button>
                                     <button class="btn btn-light btn-kategori btn-block"><a href="kategori.php">Kembali</button>
                                 </form>
