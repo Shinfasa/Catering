@@ -1,5 +1,21 @@
 <?php
-    include('header.php')
+    include('header.php');
+
+    if(isset($_POST['update'])){
+        $id = ($_POST['txt_id']);
+        $user = ($_POST['txt_nama']);
+      
+        $update=mysqli_query($koneksi,"UPDATE kategori SET nama_kategori='$kategori' WHERE id_kategori='$id'");
+        if($update){
+          echo "<script>alert('Data di Update')</script>";
+          echo "<script>location='kategori.php'</script>";
+        }
+      }
+    
+    $id_kategori = $_GET['id_kategori'];
+    $query = "SELECT * FROM kategori WHERE id_kategori = '$id_kategori'";
+    $result = mysqli_query($koneksi, $query);
+    $u = mysqli_fetch_array($result);
 ?>
 
 <body id="page-top">
@@ -23,16 +39,16 @@
                         </div>
                         <div>
                             <div class="m-4">
-                                <form action="edit_user.php" method="POST" class="user">
+                                <form action="edit_kategori.php" method="POST" class="kategori">
                                     <div class="form-group">
                                         <input type="hidden" name="txt_id" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="txt_nama">Nama Kategori</label>
-                                        <input type="text" class="form-control form-control-user" placeholder="Nama Kategori" name="txt_nama" value="">
+                                        <input type="text" class="form-control form-control-kategori" placeholder="Nama Kategori" name="txt_nama" value="">
                                     </div> 
-                                    <button type="submit" name="update" class="btn btn-user btn-block text-light" style="background-color: #E8853D;"><b>Update</b></button>
-                                    <button class="btn btn-light btn-user btn-block"><a href="user.php">Kembali</button>
+                                    <button type="submit" name="update" class="btn btn-kategori btn-block text-light" style="background-color: #E8853D;"><b>Update</b></button>
+                                    <button class="btn btn-light btn-kategori btn-block"><a href="kategori.php">Kembali</button>
                                 </form>
                             </div>
                         </div>
