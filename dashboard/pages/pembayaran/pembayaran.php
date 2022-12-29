@@ -8,7 +8,7 @@ include('../header.php');
             <div class="card-header pb-0">
             <div class="d-flex align-items-center mb-3">
                   <h6 class="mb-0">Metode Pembayaran</h6>
-                  <div class="text-end" style="flex: 0 0 auto; width: 96%;">
+                  <div class="text-end" style="flex: 0 0 auto; width: 90%;">
                   <a href="add_pembayaran.php" class="btn btn-outline-primary btn-xs mb-0">+</a>
                   </div>
               </div>
