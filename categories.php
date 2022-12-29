@@ -7,7 +7,7 @@
 
 <body>
     
-<!-- popular section starts  -->
+<!-- popular section starts -->
 <section id="menu" class="what-we-do">
   <div class="container">
 

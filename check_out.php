@@ -9,96 +9,79 @@ include 'header.php';
     <!-- Heading -->
     <div class="section-title">
       <br><br>
-      <h2>Chek Out</h2>
+      <h2>Check Out</h2>
     </div>
 
-        <!-- Cart -->
-        <ul class="list-group mb-3 z-depth-1">
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h4 class="my-0">Ice Cream Cone</h4>
-              <p>Matcha</p>
+    <!-- DataTables -->
+    <div>                        
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="text-center">No.</th>
+                            <th class="text-center">Gambar</th>
+                            <th class="text-center">Nama Menu</th>
+                            <th class="text-center">Jumlah Pesanan</th>
+                            <th class="text-center">Total Harga</th>
+                        </tr>
+                    </thead>                                    
+                    <tbody> 
+                        <tr>
+                            <td class="text-center">1</td>
+                            <td class="text-center"><img src="assets/img/p-1.jpg" width="100px"></td>
+                            <td class="text-center">Tasty Burger</td>
+                            <td class="text-center">1</td>
+                            <td class="text-center">Rp 10000</td>
+                        </tr>                                       
+                    </tbody>
+                </table>
             </div>
-            <span class="text-muted">Rp.10.000</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">Ice Cream Cone</h6>
-              <p>Strawberry</p>
-            </div>
-            <span class="text-muted">Rp.10.000</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">Ice Cream Cone</h6>
-              <p>Vanilla</p>
-            </div>
-            <span class="text-muted">Rp.10.000</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">Ice Cream Cone</h6>
-              <p>Chocolate</p>
-            </div>
-            <span class="text-muted">Rp.10.000</span>
-          </li>
-
-          <li class="list-group-item d-flex justify-content-between">
-            <span>Total (IDR)</span>
-            <strong>Rp.40.000</strong>
-          </li>
-        </ul>
-        <!-- Cart -->
-        <!--Card-->
-        <div class="card">
-
-          <!--Card content-->
-          <form class="card-body" action="" method="post" name="frmShopping" id="frmShopping" enctype="multipart/form-data">
-
-
-            <!--Username-->
-            <div class="md-form input-group pl-0 mb-5">
-              <input type="text" class="form-control px-0" name="nama" id="nama" placeholder="Nama Lengkap" aria-describedby="basic-addon1">
-            </div>
-
-            <!--email-->
-            <div class="md-form mb-5">
-              <input type="text" name="email" id="email" class="form-control" placeholder="youremail@gmail.com">
-              <label for="email" class="">Email</label>
-            </div>
-
-            <!--address-->
-            <div class="md-form mb-5">
-              <input type="text" name="alamat" id="alamat" class="form-control" placeholder="1234 Main St">
-              <label for="alamat" class="">Alamat</label>
-            </div>
-
-            <div class="md-form mb-5">
-              <input type="text" name="no_hp" id="no_hp" class="form-control" placeholder="08xxxxxxxxxx">
-              <label for="no_hp" class="">No HP</label>
-            </div>
-
-            <label>Waktu Pengiriman</label><br>
-            <div class="form-group">
-              <div class='input-group date' id='datetimepicker'>
-                <input type='text' class="form-control" name="tanggal_digunakan"
-                value="<?php echo (!empty($_POST['tanggal_digunakan'])) ? $_POST['tanggal_digunakan'] : ''; ?>"
-                required />
-                <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-              </div>
-            </div>
-            
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-
-          </form>
-
         </div>
-        <!--/.Card-->
+    </div>
 
-
-
+    <!--Card-->
+    <div class="card">
+        <div>
+          <div class="m-4">
+            <form action="" method="POST" class="user">
+              <div class="form-group pb-3">
+                <label for="txt_nama">Tanggal Pemesanan</label>
+                <input type="text" class="form-control form-control-user" placeholder="29/12/2022" name="txt_nama" value="" readonly>
+              </div>
+              <div class="form-group pb-3">
+                <label for="txt_nama">Tanggal Pemakaian</label>
+                <input type="datetime-local" class="form-control form-control-user" name="txt_nama" value="">
+              </div> 
+              <div class="form-group pb-3">
+                <label for="txt_harga">Username</label>
+                <input type="text" class="form-control form-control-user" placeholder="Username" name="txt_harga" value="">
+              </div>
+              <div class="form-group pb-3">
+                <label for="txt_detail">Alamat</label>
+                <input type="text" class="form-control form-control-user" placeholder="Alamat" name="txt_detail" value="">
+              </div>
+              <div class="form-group pb-3">
+                <label for="txt_gambar">No. Handphone</label>
+                <input type="text" class="form-control form-control-user" placeholder="628*****" name="txt_gambar" value="">
+              </div>
+              <div class="form-group pb-3">
+                <label for="txt_bayar">Metode Pembayaran</label>
+                  <div style="font-size:15px;">
+                    <input type="radio" name="txt_bayar" value="1" style="margin-left:20px;">  BRI
+                    <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;">  BCA
+                    <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;">  Shopee Pay
+                    <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;">  Dana
+                    <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;">  COD
+                  </div>
+              </div>
+              <button type="submit" name="submit" class="btn btn-user btn-block text-light" style="background-color: #E8853D;"><b>Check Out</b></button>
+              <button type="submit" name="submit" class="btn btn-user btn-block" style="color: #E8853D;"><b>Kembali</b></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 </main>
 <!--Main layout-->
