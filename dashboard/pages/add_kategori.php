@@ -1,6 +1,16 @@
 <?php
-include('header.php')
+include('header.php');
 
+if(isset($_POST['create'])){
+  $nama = ($_POST['txt_nama']);
+  $deskripsi = ($_POST['txt_des']);
+
+  $query=mysqli_query($koneksi,"INSERT INTO kategori VALUES (NULL, '$nama', '$deskripsi')");
+    if($query){
+      echo "<script>alert('Data Ditambahkan')</script>";
+      echo "<script>location='kategori.php'</script>";
+    }
+  }
 
   ?>
 
