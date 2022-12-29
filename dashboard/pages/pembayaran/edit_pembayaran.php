@@ -28,11 +28,11 @@ $u = mysqli_fetch_array($result);
             <div class="m-4">
                 <form action="edit_pembayaran.php" method="POST" class="pembayaran">
                     <div class="form-group">
-                        <input type="hidden" name="txt_id" value="">
+                        <input type="hidden" name="txt_id" value="<?php echo $u['id_pembayaran']; ?>">
                     </div>
                     <div class="form-group">
                         <label for="txt_metode">Metode Pembayaran</label>
-                        <input type="text" class="form-control form-control-pembayaran" placeholder="Nama Metode Pembayaran" name="txt_metode" value="">
+                        <input type="text" class="form-control form-control-pembayaran" placeholder="Nama Metode Pembayaran" name="txt_metode" value="<?php echo $u['metode_pembayaran']; ?>">
                     </div> 
                     <button type="submit" name="update" class="btn btn-pembayaran btn-block text-light" style="background-color: #E8853D;"><b>Update</b></button>
                     <button class="btn btn-light btn-pembayaran btn-block"><a href="pembayaran.php">Kembali</button>
