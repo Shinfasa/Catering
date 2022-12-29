@@ -77,6 +77,9 @@
           </ul>
         </li>
         <li><a href="cart.php"><span class="bi-cart3"></span></a></li>
+        <?php  
+        
+        ?>
         <li><a href="login.php"><button action="login.php" class="btn">Log In</button></a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
