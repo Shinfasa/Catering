@@ -77,7 +77,6 @@
           </ul>
         </li>
         <li><a href="cart.php"><span class="bi-cart3"></span></a></li>
-        <li><a href="login.php"><button action="login.php" class="btn">Log In</button></a></li>
         <!-- Nav Item - User Information -->
         <li class="dropdown">
           <a href="#">
