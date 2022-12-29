@@ -1,5 +1,16 @@
 <?php
-      require ('koneksi.php');
+  require ('koneksi.php');
+
+  session_start();
+
+    if(!isset($_SESSION['id'])) {
+        $_SESSION['msg'] = 'Anda harus login untuk mengakses halaman ini';
+        header('Location: login.php');
+    }
+
+    $idUser      = $_SESSION['id'];
+    $userName    = $_SESSION['name'];
+    $akses       = $_SESSION['akses'];
 ?>
 
 <!DOCTYPE html>
@@ -49,20 +60,9 @@
     <nav id="navbar" class="navbar order-last order-lg-0">
       <ul>
         <li><a class="nav-link scrollto active" href="#home">Beranda</a></li>
-        <li class="dropdown"><a href="#categories"><span>Kategori</span> <i class="bi bi-chevron-down"></i></a>
+        <li class="dropdown"><a href="#categories"><span>Kategori</span><i class="bi bi-chevron-down"></i></a>
           <ul>
-            <li class="dropdown"><a href="#"><span>Harian</span> <i class="bi bi-chevron-right"></i></a>
-              <ul>
-                <li><a href="#">Senin</a></li>
-                <li><a href="#">Selasa</a></li>
-                <li><a href="#">Rabu</a></li>
-                <li><a href="#">Kamis</a></li>
-                <li><a href="#">Jumat</a></li>
-                <li><a href="#">Sabtu</a></li>
-                <li><a href="#">Minggu</a></li>
-                <li><a href="#">Paket 1 Minggu</a></li>
-              </ul>
-            </li>
+            <li><a href="#">Harian</a></li>
             <li><a href="#">Prasmanan</a></li>
             <li><a href="#">Kotakan</a></li>
           </ul>
@@ -77,7 +77,18 @@
           </ul>
         </li>
         <li><a href="cart.php"><span class="bi-cart3"></span></a></li>
-        <li><a href="login.php"><button action="login.php" class="btn">Log In</button></a></li>
+        <!-- Nav Item - User Information -->
+        <li class="dropdown">
+          <a href="#">
+            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $userName; ?></span>
+            <img class="img-profile rounded-circle" src="#">
+            <i class="bi bi-chevron-down"></i>
+          </a>
+          <ul>
+            <li><a href="profile.php" class="bi bi-person-fill text-secondary">Profile</a></li>
+            <li><a href="logout.php" class="bi bi-box-arrow-right text-secondary">Logout</a></li>
+          </ul>
+        </li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav>    
