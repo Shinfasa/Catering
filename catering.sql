@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2022 at 12:26 PM
+-- Generation Time: Dec 29, 2022 at 05:55 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -126,18 +126,18 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id_menu`, `nama_menu`, `harga`, `detail`, `gambar`, `id_kategori`) VALUES
-(1, 'Ayam Brewok', '15000', '', 'ayam_brewok.jpg', 3),
-(2, 'Ayam Geprek', '15000', '', 'ayam_geprek.jpg', 3),
-(3, 'Lele Terbang', '15000', '', 'lele_terbang.jpg', 3),
-(4, 'Nasi Kuning', '12000', '', 'nasi_kuning.jpg', 3),
-(5, 'Nasi Kuning Spesial', '15000', '', 'nasi_kuning_spesial', 3),
-(6, 'Ramen', '10000', '', 'ramen.jpg', 1),
-(7, 'Semur Ayam', '15000', '', 'semur_ayam.jpg', 1),
-(8, 'Telur Geprek', '12000', '', 'telur_geprek.jpg', 1),
-(9, 'Tumis Kerang', '15000', '', 'tumis_kerang.jpg', 1),
-(10, 'Tumpeng Ayam', '150000', '', 'tumpeng_ayam.jpg', 2),
-(11, 'Telur Teriyaki', '12000', '', 'telur_teriyaki.jpg', 1),
-(12, 'Kimlo Soup', '12000', '', 'kimlo_soup.jpg', 1);
+(1, 'Ayam Brewok', '15000', 'Haloooo…..\r\n\r\nSiapa nih yang suka dengan ayam brewok, spesial menu dari kitaa\r\n\r\nYukk list menu ini di acaramu 🥰', 'ayam_brewok.jpg', 3),
+(2, 'Ayam Geprek', '15000', 'Siapa yang kangen Ayam Geprek dari @wm.hanaasri???\r\n\r\nEnduls banget pedesnya sesuai selera, yukk chat untuk pemesanan 🤗', 'ayam_geprek.jpg', 3),
+(3, 'Lele Terbang', '15000', 'Siapa yang suka lele? 😳\r\n\r\nMenu spesial kali ini adalah lele terbang atau bahasa gaulnya nih yee Flying catfish.\r\n\r\nDagingnya sudah di pisah untuk sayap jadi mudah untuk di makan apalagi untuk si kecil.\r\n', 'lele_terbang.jpg', 3),
+(4, 'Nasi Kuning', '12000', 'Halo Gengss…..\r\n\r\nSiapa nih yang suka dengan Nasi Kuning ?\r\nKali ini @wm.hanaasri lagi bikin Paket 4 Nasi Kuning versi 12K ya ☺️☺️☺️\r\n\r\nYuk… Agendakan acaramu dengan catering di @wm.hanaasri\r\n', 'nasi_kuning.jpg', 3),
+(5, 'Nasi Kuning Spesial', '15000', 'Selamat pagi Gengs !!\r\n\r\nGimana kabarnya hari ini? Awal taun, yuk bikin resolusi baru😘\r\n\r\nKali ini ada menu Nasi Kuning Spesial, yuk buruan cobain', 'nasi_kuning_spesial', 3),
+(6, 'Ramen', '10000', 'Pingin ramen tapi bingung karna harga mahal? 😱\r\nMau bikin tapi takut salah resep? 👀\r\n\r\nTenang disini kamu bisa dapetin ramen dengan harga terjangkau dan bisa req sesuai selera\r\nDimana lagi kalo bukan di @wm.hanaasri 😆', 'ramen.jpg', 1),
+(7, 'Semur Ayam', '15000', 'Morningggg......\r\nLumayan lama ya Mimin ga upld di medsos 😁😁\r\n\r\nMau cerita sedikit,\r\nJadi tadi pagi nyoba bikin semur ayam dan nyoba foto kaya orang di IG² walaupun agak riweh ternyata hasilnya lumayan juga wkwkw walaupun masih belum sama seperti yg lain. Oiya, kalo kalian suka sama menu yg satu ini boleh banget req buat catering lohhh atau bisa Dateng di lokasi untuk makan prasmanan. 🤭\r\n\r\nHARGA MURAH TAPI RASA & KUALITAS TERJAMIN!🤩🤩', 'semur_ayam.jpg', 1),
+(8, 'Telur Geprek', '12000', 'Ada yang tau ini apa?🤔🤔\r\n\r\nMasakan baru dari @wm.hanaasri Catering Jember\r\nIni namanya Telur Geprek guys bisa banget buat kamu yang bosen makan telur gitu² aja 😄\r\n\r\nYukkk order sekarang juga di @wm.hanaasri', 'telur_geprek.jpg', 1),
+(9, 'Tumis Kerang', '15000', 'Selamat pagi Gengs !!\r\n\r\nGimana kabarnya hari ini? Awal taun, yuk bikin resolusi baru😘\r\n\r\nKali ini ada menu Tumis Kerang, yuk buruan cobain', 'tumis_kerang.jpg', 1),
+(10, 'Tumpeng Ayam', '150000', 'Mau bikin acara tumpengan tapi gaada waktu?\r\nMau pesen tapi mau yang bisa req isian makanan dan harga miring?\r\n\r\nDimana lagi kalo ga di @wm.hanaasri ,yuk simpan gambar ini untuk jadi referensi Tumpenganmu selanjutnya 🤗\r\n', 'tumpeng_ayam.jpg', 2),
+(11, 'Telur Teriyaki', '12000', 'Telur Teriyaki???? 😮😮\r\n\r\nPernah denger ga gaiss?? Atau udah pernah coba ?\r\nKalau belum pas banget sih, kamu bisa bilang Mimin ya buat bikinin menu ini di catering kamu 🤗🤗', 'telur_teriyaki.jpg', 1),
+(12, 'Kimlo Soup', '12000', 'Siapa nih yang suka Soup?🤔\r\nNah.... Kali ini mimin masak Kimlo Soup lohhh\r\n\r\nIsinya banyak banget ya, komplit lagi. Ada telur puyuh, wortel, jamur, brokoli, baso, tofu dll\r\n\r\nYukkk segera merapat ke mimin buat catering menu ini 😉😉', 'kimlo_soup.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -223,6 +223,7 @@ CREATE TABLE `user` (
   `alamat` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `nohp` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gambar` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_akses` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -230,9 +231,10 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `nama_user`, `email`, `alamat`, `nohp`, `password`, `id_akses`) VALUES
-(1, 'Yasin Alfaruq', 'yasin@gmail.com', 'Jl.Karimata Sumbersari Jember', '082334567890', '123', 1),
-(2, 'Karisma Ayu', 'karisma@gmail.com', 'Jl.Jawa 6 Sumbersari Jember', '085678903422', '456', 2);
+INSERT INTO `user` (`id_user`, `nama_user`, `email`, `alamat`, `nohp`, `password`, `gambar`, `id_akses`) VALUES
+(1, 'Yasin Alfaruq', 'yasin@gmail.com', 'Jl.Karimata Sumbersari Jember', '082334567890', '123', 'team-3.jpg', 1),
+(2, 'Karisma Ayu', 'karisma@gmail.com', 'Jl.Jawa 6 Sumbersari Jember', '085678903422', '456', 'ivana-squar', 2),
+(3, 'Laura Figustina', 'laura@gmail.com', 'jl.Kaliurang Sumbersari Jember', '085345789066', '789', 'default_pro', 2);
 
 --
 -- Indexes for dumped tables
@@ -367,7 +369,7 @@ ALTER TABLE `pembayaran`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

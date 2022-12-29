@@ -48,7 +48,14 @@ include('header.php')
                       <tr>
                         <td class="text-center"><?php echo $nomor++; ?></td>
                         <td class="text-center" hidden><?php echo $d['id_user']; ?></td>
-                        <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['nama_user']; ?></h6></td>
+                        <td class="text-center">
+                          <div class="d-flex px-2 py-1">
+                            <div>
+                              <img src="../../assets/img/user/<?php echo $d['gambar']; ?>" class="avatar avatar-sm me-3">
+                            </div>
+                          <h6 class="mb-0 text-sm"><?php echo $d['nama_user']; ?></h6>
+                        </div>
+                        </td>
                         <td class="text-center"><?php echo $d['email']; ?></td>
                         <td class="text-center"><?php echo $d['password']; ?></td>
                         <td class="text-center"><?php echo $d['alamat']; ?></td>

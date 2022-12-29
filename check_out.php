@@ -7,8 +7,10 @@ include 'header.php';
   <div class="container wow fadeIn">
 
     <!-- Heading -->
-    <h1 class="my-5 h1 text-center">Checkout form</h1>
-
+    <div class="section-title">
+      <br><br>
+      <h2>Chek Out</h2>
+    </div>
 
         <!-- Cart -->
         <ul class="list-group mb-3 z-depth-1">
