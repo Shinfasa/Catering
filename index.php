@@ -51,13 +51,13 @@
         <li><a class="nav-link scrollto active" href="#home">Beranda</a></li>
         <li class="dropdown"><a href="#categories"><span>Kategori</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
-            <li><a href="#">Harian</a></li>
-            <li><a href="#">Prasmanan</a></li>
-            <li><a href="#">Kotakan</a></li>
+            <li><a href="categories.php">Harian</a></li>
+            <li><a href="categories.php">Prasmanan</a></li>
+            <li><a href="categories.php">Kotakan</a></li>
           </ul>
         </li>
         <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
-        <li><a class="nav-link scrollto" href="login.php">Pesanan Saya</a></li>
+        <li><a class="nav-link scrollto" href="order.php">Pesanan Saya</a></li>
         <li class="dropdown"><a href="#search"><span class="bi-search"></span></a>
           <ul>
             <li>
@@ -213,9 +213,9 @@
             <h4><a href="product_detail.php"><?php echo $d['nama_menu']; ?></a></h4>
             <h5 class="text-secondary" style="font-family: 'Open Sans', sans-serif;">Rp <?php echo $d['harga']; ?></h5>
           <div>
-          <button href="#" class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Beli Sekarang</button>
-          <button href="#" class="btn m-2" style="background-color: #E8853D;">
-            <a href="#" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
+          <a href="check_out.php"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Beli Sekarang</button></a>
+          <button class="btn m-2" style="background-color: #E8853D;">
+            <a href="cart.php" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
           </button>
         </div>
       </div>

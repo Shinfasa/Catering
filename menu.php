@@ -12,7 +12,7 @@
   <div class="container">
 
     <div class="section-title">
-      <h2>Kategori Harian</h2>
+      <h2>Menu</h2>
     </div>
 
     <div class="row">
