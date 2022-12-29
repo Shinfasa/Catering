@@ -29,7 +29,6 @@
   
   <!-- Template Main CSS File -->
   <link rel="stylesheet" href="assets/css/index.css">
-  <link rel="stylesheet" href="assets/css/carousel.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
   
   <!-- font awesome cdn link  -->
@@ -37,51 +36,53 @@
 
 </head>
   
- <body>
+<body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
-      <div class="container d-flex align-items-center">
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top d-flex align-items-center">
+  <div class="container d-flex align-items-center">
   
-      <div class="logo me-auto">
-        <a href="index.php"><img src="assets/img/logo/logo.png" alt="" class="img-fluid"></a>
-      </div>
-  
-        <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#myCarousel">Beranda</a></li>
-
-          <li><a class="nav-link scrollto" href="#footer">Tentang</a></li>
-          <li class="dropdown"><a href="#what-we-do"><span>Kategori</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-                <li class="dropdown"><a href="#"><span>Harian</span> <i class="bi bi-chevron-right"></i></a>
-                  <ul>
-                    <li><a href="#">Senin</a></li>
-                    <li><a href="#">Selasa</a></li>
-                    <li><a href="#">Rabu</a></li>
-                    <li><a href="#">Kamis</a></li>
-                    <li><a href="#">Jumat</a></li>
-                    <li><a href="#">Sabtu</a></li>
-                    <li><a href="#">Minggu</a></li>
-                    <li><a href="#">Paket 1 Minggu</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Prasmanan</a></li>
-                <li><a href="#">Kotakan</a></li>
-              </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#footer">Kontak Kami</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
-  
-      <div class="input-group rounded m-3" style="width: 200px; padding-left:30px;">
-        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" style="height: 30px; font-size: 15px;"/>
-      </div>
-  
-      <a href="#" class="js-search-open" style="font-size: 15px;"><span class="bi-search"></span></a>
-
-      <a href="login.php"><button action="" class="btn m-3">Log In</button></a>
-
+    <div class="logo me-auto">
+      <a href="index.php"><img src="assets/img/logo/logo.png" alt="" class="img-fluid"></a>
     </div>
-  </header><!-- End Header -->
+  
+    <nav id="navbar" class="navbar order-last order-lg-0">
+      <ul>
+        <li><a class="nav-link scrollto active" href="#home">Beranda</a></li>
+        <li class="dropdown"><a href="#categories"><span>Kategori</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li class="dropdown"><a href="#"><span>Harian</span> <i class="bi bi-chevron-right"></i></a>
+              <ul>
+                <li><a href="#">Senin</a></li>
+                <li><a href="#">Selasa</a></li>
+                <li><a href="#">Rabu</a></li>
+                <li><a href="#">Kamis</a></li>
+                <li><a href="#">Jumat</a></li>
+                <li><a href="#">Sabtu</a></li>
+                <li><a href="#">Minggu</a></li>
+                <li><a href="#">Paket 1 Minggu</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Prasmanan</a></li>
+            <li><a href="#">Kotakan</a></li>
+          </ul>
+        </li>
+        <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
+        <li><a class="nav-link scrollto" href="order.php">Pesanan Saya</a></li>
+        <li class="dropdown"><a href="#search"><span class="bi-search"></span></a>
+          <ul>
+            <li>
+              <input type="search" class="form-control border-1 small" placeholder="Search for...">
+            </li>
+          </ul>
+        </li>
+        <li><a href="cart.php"><span class="bi-cart3"></span></a></li>
+        <li><a href="login.php"><button action="login.php" class="btn">Log In</button></a></li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>    
+
+  </div>
+
+</header>
+<!-- End Header -->

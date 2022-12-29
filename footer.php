@@ -1,5 +1,5 @@
   <!-- ======= Footer ======= -->
-  <footer id="footer">
+  <footer id="footer" class="footer">
 
       <div class="footer-top" style="background-color: #FFDA72;">
       <div class="container">
@@ -15,10 +15,9 @@
               <h4>Link Terkait</h4>
               <ul class="pt-4">
                 <li><i class="bx bx-chevron-right"></i> <a href="#myCarousel">Beranda</a></li>
-                <li><i class="bx bx-chevron-right"></i> <a href="#about">Tentang</a></li>
                 <li><i class="bx bx-chevron-right"></i> <a href="#what-we-do">Kategori</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#menu">Menu</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Pesanan Saya</a></li>
             </ul>
           </div>
   
