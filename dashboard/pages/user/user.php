@@ -51,7 +51,7 @@ include('../header.php')
                   <td class="text-center">
                     <div class="d-flex px-2 py-1">
                       <div>
-                        <img src="../../assets/img/user/<?php echo $d['gambar']; ?>" class="avatar avatar-sm me-3">
+                        <img src="../../../assets/img/user/<?php echo $d['gambar']; ?>" class="avatar avatar-sm me-3">
                       </div>
                       <h6 class="mb-0 text-sm"><?php echo $d['nama_user']; ?></h6>
                     </div>
@@ -99,25 +99,6 @@ include('../header.php')
   </div>
 </div>
 </div>
-</main>
-<!--   Core JS Files   -->
-<script src="../assets/js/core/popper.min.js"></script>
-<script src="../assets/js/core/bootstrap.min.js"></script>
-<script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-<script>
-  var win = navigator.platform.indexOf('Win') > -1;
-  if (win && document.querySelector('#sidenav-scrollbar')) {
-    var options = {
-      damping: '0.5'
-    }
-    Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-  }
-</script>
-<!-- Github buttons -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="../assets/js/argon-dashboard.min.js?v=2.0.4"></script>
-</body>
-
-</html>
+<?php
+include('../footer.php')
+?>
