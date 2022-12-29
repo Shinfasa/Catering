@@ -1,5 +1,16 @@
 <?php
   require ('koneksi.php');
+
+  session_start();
+
+    if(!isset($_SESSION['id'])) {
+        $_SESSION['msg'] = 'Anda harus login untuk mengakses halaman ini';
+        header('Location: login.php');
+    }
+
+    $idUser      = $_SESSION['id'];
+    $userName    = $_SESSION['name'];
+    $akses       = $_SESSION['akses'];
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +77,20 @@
           </ul>
         </li>
         <li><a href="cart.php"><span class="bi-cart3"></span></a></li>
-        <li><a href="login.php"><button action="login.php" class="btn">Log In</button></a></li>
+        <!-- Nav Item - User Information -->
+        <li class="dropdown">
+          <a href="#">
+            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $userName; ?></span>
+            <img class="img-profile rounded-circle" src="#">
+            <i class="bi bi-chevron-down"></i>
+          </a>
+          <ul>
+            <li><a href="" class="fas fa-user text-secondary">Profile</a></li>
+            <li><a href="" class="fas fa-cogs text-secondary">Settings</a></li>
+            <li><a href="" class="fas fa-list text-secondary"></a>Activity Log</a></li>
+            <li><a href="" class="fas fa-sign-out-alt text-secondary">Logout</a></li>
+          </ul>
+        </li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav>    
