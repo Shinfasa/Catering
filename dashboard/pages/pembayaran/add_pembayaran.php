@@ -2,10 +2,9 @@
 include('../header.php');
 
 if(isset($_POST['create'])){
-    $id = ($_POST['txt_id']);
     $pembayaran = ($_POST['txt_metode']);
   
-    $query=mysqli_query($koneksi,"INSERT INTO pembayaran VALUES (NULL, '$id', '$pembayaran')");
+    $query=mysqli_query($koneksi,"INSERT INTO pembayaran VALUES (NULL, '$pembayaran')");
       if($query){
         echo "<script>alert('Data Ditambahkan')</script>";
         echo "<script>location='pembayaran.php'</script>";
