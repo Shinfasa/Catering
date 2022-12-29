@@ -12,6 +12,7 @@ include('header.php')
                   <a href="add_user.php" class="btn btn-outline-primary btn-xs mb-0">+</a>
                   </div>
                 </div>
+              </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
