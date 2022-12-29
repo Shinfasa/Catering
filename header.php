@@ -60,7 +60,7 @@
     <nav id="navbar" class="navbar order-last order-lg-0">
       <ul>
         <li><a class="nav-link scrollto active" href="#home">Beranda</a></li>
-        <li class="dropdown"><a href="#categories"><span>Kategori</span> <i class="bi bi-chevron-down"></i></a>
+        <li class="dropdown"><a href="#categories"><span>Kategori</span><i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="#">Harian</a></li>
             <li><a href="#">Prasmanan</a></li>
@@ -85,10 +85,8 @@
             <i class="bi bi-chevron-down"></i>
           </a>
           <ul>
-            <li><a href="" class="fas fa-user text-secondary">Profile</a></li>
-            <li><a href="" class="fas fa-cogs text-secondary">Settings</a></li>
-            <li><a href="" class="fas fa-list text-secondary"></a>Activity Log</a></li>
-            <li><a href="" class="fas fa-sign-out-alt text-secondary">Logout</a></li>
+            <li><a href="profile.php" class="bi bi-person-fill text-secondary">Profile</a></li>
+            <li><a href="logout.php" class="bi bi-box-arrow-right text-secondary">Logout</a></li>
           </ul>
         </li>
       </ul>
