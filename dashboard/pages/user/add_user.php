@@ -12,7 +12,7 @@ if(isset($_POST['create'])){
   $query=mysqli_query($koneksi,"INSERT INTO user VALUES (NULL, '$user', '$email', '$alamat', '$nohp', '$password', '$akses')");
     if($query){
       echo "<script>alert('Data Ditambahkan')</script>";
-      echo "<script>location='kategori.php'</script>";
+      echo "<script>location='user.php'</script>";
     }
   }
 
