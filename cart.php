@@ -1,34 +1,16 @@
 <?php
-include('header.php');
+	include('header.php');
 	
-	$uid = $_SESSION['id'];
-	$caricart = mysqli_query($koneksi,"select * from keranjang where id_user='$uid' and status='keranjang'");
-	$fetc = mysqli_fetch_array($caricart);
-	$orderidd = $fetc['id_order'];
-	$itungtrans = mysqli_query($koneksi,"select count(id_detail) as jumlahtrans from orderdetail where id_order='$orderidd'");
-	$itungtrans2 = mysqli_fetch_assoc($itungtrans);
-	$itungtrans3 = $itungtrans2['jumlahtrans'];
-	
-if(isset($_POST["update"])){
-	$kode = $_POST['idproduknya'];
-	$jumlah = $_POST['jumlah'];
-	$q1 = mysqli_query($conn, "update detailorder set qty='$jumlah' where idproduk='$kode' and orderid='$orderidd'");
-	if($q1){
-		echo "Berhasil Update Cart
-		<meta http-equiv='refresh' content='1; url= cart.php'/>";
-	} else {
-		echo "Gagal update cart
-		<meta http-equiv='refresh' content='1; url= cart.php'/>";
-	}
-} else if(isset($_POST["hapus"])){
-	$kode = $_POST['idproduknya'];
-	$q2 = mysqli_query($conn, "delete from detailorder where idproduk='$kode' and orderid='$orderidd'");
-	if($q2){
-		echo "Berhasil Hapus";
-	} else {
-		echo "Gagal Hapus";
-	}
-}
+	session_start();
+
+    if(!isset($_SESSION['id'])) {
+        $_SESSION['msg'] = 'Anda harus login untuk mengakses halaman ini';
+        header('Location: login.php');
+    }
+
+    $sesID      = $_SESSION['id'];
+    $sesName    = $_SESSION['name'];
+    $sesLevel   = $_SESSION['level'];
 ?>
 
 <!DOCTYPE html>

@@ -1,5 +1,16 @@
 <?php
     include "header.php";
+
+    session_start();
+
+    if(!isset($_SESSION['id'])) {
+        $_SESSION['msg'] = 'Anda harus login untuk mengakses halaman ini';
+        header('Location: login.php');
+    }
+
+    $sesID      = $_SESSION['id'];
+    $sesName    = $_SESSION['name'];
+    $sesLevel   = $_SESSION['level'];
 ?>
 
 <br>
