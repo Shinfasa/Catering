@@ -1,16 +1,5 @@
 <?php
-    include('header.php');
-    
-    session_start();
-
-    if(!isset($_SESSION['id'])) {
-        $_SESSION['msg'] = 'Anda harus login untuk mengakses halaman ini';
-        header('Location: login.php');
-    }
-
-    $sesID      = $_SESSION['id'];
-    $sesName    = $_SESSION['name'];
-    $sesLevel   = $_SESSION['level'];
+    include('header.php');    
 ?>
 
 <!--Main layout -->
@@ -28,7 +17,7 @@
         <div>
           <div class="m-4">
             <div>
-              <h6 style="text-align: right;">Tanggal Pemesanan : 29/12/2022</h6>
+              <h6 style="text-align: right;">Upload Bukti Pembayaran</h6>
             </div>            
             <form action="" method="POST" class="user">
               <div class="form-group pb-3">

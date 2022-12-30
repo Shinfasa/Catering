@@ -1,16 +1,5 @@
 <?php
   include 'header.php';
-
-  session_start();
-
-  if(!isset($_SESSION['id'])) {
-      $_SESSION['msg'] = 'Anda harus login untuk mengakses halaman ini';
-      header('Location: login.php');
-  }
-
-  $sesID      = $_SESSION['id'];
-  $sesName    = $_SESSION['name'];
-  $sesLevel   = $_SESSION['level'];
 ?>
 
 <!--Main layout -->
@@ -101,13 +90,13 @@
                     <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;">  COD
                   </div>
               </div>
-              <button type="submit" name="submit" class="btn btn-user btn-block text-light" style="background-color: #E8853D;"><b>Lanjutkan</b></button>
+              <a href="payment.php"><button class="btn btn-user btn-block text-light font-weight-bold" style="background-color: #E8853D;">Lanjutkan</button></a>
               <button type="submit" name="submit" class="btn btn-user btn-block" style="color: #E8853D;"><b>Kembali</b></button>
-              </form>
-            </div>
+            </form>
           </div>
         </div>
       </div>
+    </div>
   </div>
 </main>
 <!--Main layout-->
