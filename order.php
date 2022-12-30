@@ -1,16 +1,5 @@
 <?php
     include "header.php";
-
-    session_start();
-
-    if(!isset($_SESSION['id'])) {
-        $_SESSION['msg'] = 'Anda harus login untuk mengakses halaman ini';
-        header('Location: login.php');
-    }
-
-    $sesID      = $_SESSION['id'];
-    $sesName    = $_SESSION['name'];
-    $sesLevel   = $_SESSION['level'];
 ?>
 
 <br>
@@ -32,27 +21,29 @@
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
+                        <tr>                            
+                            <th colspan="3" style="text-align: left;">Tanggal Pemesanan : 29/12/2022 10:00:00 AM</th>                            
+                        </tr>
                         <tr>
                             <th class="text-center">No.</th>
-                            <th class="text-center">Tanggal Pemesanan</th>
-                            <th class="text-center">Tanggal Pemakaian</th>
-                            <th class="text-center">Gambar</th>
-                            <th class="text-center">Nama Menu</th>
+                            <th colspan="3" style="text-align: right;">Tanggal Pemakaian : 31/12/2022 10:00:00 AM</th>
+                            <th class="text-center">Menu</th>
                             <th class="text-center">Jumlah Pesanan</th>
                             <th class="text-center">Total Harga</th>
                             <th class="text-center">Status</th>
+                            <th class="text-center">Nota</th>
                         </tr>
                     </thead>                                    
                     <tbody> 
                         <tr>
                             <td class="text-center">1</td>
-                            <td class="text-center">29/12/2022</td>
-                            <td class="text-center">31/12/2022 10:00:00 AM</td>
-                            <td class="text-center"><img src="assets/img/p-1.jpg" width="100px"></td>
-                            <td class="text-center">Tasty Burger</td>
+                            <td class="text-center"><img src="assets/img/p-1.jpg" width="100px"><br>Tasty Burger</td>
                             <td class="text-center">1</td>
                             <td class="text-center">Rp 10000</td>
                             <td class="text-center">Sedang Diproses</td>
+                            <td class="text-center">
+                                <a class="btn" href="nota.php"><i class="bi bi-printer" style="color: #E8853D;"></i></a>
+                            </td>
                         </tr>                                       
                     </tbody>
                 </table>
