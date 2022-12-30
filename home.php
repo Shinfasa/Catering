@@ -139,9 +139,9 @@
             <h4><a href="product_detail.php"><?php echo $d['nama_menu']; ?></a></h4>
             <h5 class="text-secondary" style="font-family: 'Open Sans', sans-serif;">Rp <?php echo $d['harga']; ?></h5>
           <div>
-          <button href="#" class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Beli Sekarang</button>
-          <button href="#" class="btn m-2" style="background-color: #E8853D;">
-            <a href="#" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
+          <button class="btn m-2 pt-2 pb-2" style="color: #E8853D;"><a href="check_out.php">Beli Sekarang</a></button>
+          <button class="btn m-2" style="background-color: #E8853D;">
+            <a href="cart.php" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
           </button>
         </div>
       </div>
