@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2022 at 02:07 PM
+-- Generation Time: Dec 30, 2022 at 02:55 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -153,15 +153,16 @@ CREATE TABLE `orderdetail` (
   `tgl_bayar` date DEFAULT NULL,
   `id_pembayaran` int(11) DEFAULT NULL,
   `catatan_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status_pesanan` enum('Belum Dibayar','Sedang Diproses','Selesai') COLLATE utf8mb4_unicode_ci NOT NULL
+  `status_pesanan` enum('Belum Dibayar','Sedang Diproses','Selesai') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bukti_pembayaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `orderdetail`
 --
 
-INSERT INTO `orderdetail` (`id_ordetail`, `id_order`, `total_harga`, `tgl_bayar`, `id_pembayaran`, `catatan_order`, `status_pesanan`) VALUES
-(5, 2, '75000', '2022-12-28', 1, 'Tepat waktu yaaaa hehe', 'Selesai');
+INSERT INTO `orderdetail` (`id_ordetail`, `id_order`, `total_harga`, `tgl_bayar`, `id_pembayaran`, `catatan_order`, `status_pesanan`, `bukti_pembayaran`) VALUES
+(5, 2, '75000', '2022-12-28', 1, 'Tepat waktu yaaaa hehe', 'Selesai', '');
 
 -- --------------------------------------------------------
 
@@ -195,17 +196,18 @@ INSERT INTO `orders` (`id_order`, `tgl_pesan`, `tgl_pakai`, `harga_satuan`, `jum
 
 CREATE TABLE `pembayaran` (
   `id_pembayaran` int(11) NOT NULL,
-  `metode_pembayaran` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+  `metode_pembayaran` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_rek` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `pembayaran`
 --
 
-INSERT INTO `pembayaran` (`id_pembayaran`, `metode_pembayaran`) VALUES
-(1, 'Bank Rakyat Indonesia (BRI)'),
-(2, 'Bank Central Asia (BCA)'),
-(3, 'Shopee Pay');
+INSERT INTO `pembayaran` (`id_pembayaran`, `metode_pembayaran`, `no_rek`) VALUES
+(1, 'Bank Rakyat Indonesia (BRI)', '0021-01-196169-50-6'),
+(2, 'Bank Central Asia (BCA)', '024-0653966'),
+(3, 'Shopee Pay', '+62 858-1531-3767');
 
 -- --------------------------------------------------------
 
