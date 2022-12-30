@@ -51,7 +51,7 @@ include('../header.php');
                           Edit
                           </a>
                           &nbsp;
-                          <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="hapus_kategori.php?id_kategori=<?php echo $d['id_kategori'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit kategori">
+                          <a onclick="return confirm('Anda Yakin Ingin Menghapus Data Kategori')" href="hapus_kategori.php?id_kategori=<?php echo $d['id_kategori'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit kategori">
                             Delete
                           </a>
                         </td>
