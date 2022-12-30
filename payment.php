@@ -14,26 +14,16 @@
 
     <!--Card-->
     <div class="card mb-3">
-        <div>
-          <div class="m-4">
-            <div>
-              <h6 style="text-align: right;">Upload Bukti Pembayaran</h6>
-            </div>            
+        <div class="m-4">
             <form action="" method="POST" class="user">
-              <div class="form-group pb-3">
-                <label for="txt_harga">Username</label>
-                <input type="text" class="form-control form-control-user" placeholder="Username" name="txt_harga" value="">
+              <div class="form-group pb-3">                
+                <h6 style="text-align: center;">Upload Bukti Transfer</h6>
+                <br>
+                <input type="file" class="form-control form-control-user">
               </div>
-              <div class="form-group pb-3">
-                <label for="txt_detail">Alamat</label>
-                <input type="text" class="form-control form-control-user" placeholder="Alamat" name="txt_detail" value="">
-              </div>
-              <div class="form-group">
-                <label for="txt_gambar">No. Handphone</label>
-                <input type="text" class="form-control form-control-user" placeholder="628*****" name="txt_gambar" value="">
-              </div>     
             </form>
-          </div>
+            <a href="payment.php"><button class="btn btn-user btn-block text-light font-weight-bold" style="background-color: #E8853D;">Lanjutkan</button></a>
+              <button type="submit" name="submit" class="btn btn-user btn-block" style="color: #E8853D;"><b>Kembali</b></button>
         </div>
     </div>
 </main>
