@@ -55,11 +55,11 @@ include('../header.php')
                           </div></td>
                         <td class="text-center"><?php echo $d['nama_kategori']; ?></td>
                         <td class="align-middle text-center">
-                          <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          <a href="edit_menu.php?id_menu=<?php echo $d['id_menu'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit menu">
                           Edit
                           </a>
                           &nbsp;
-                          <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          <a onclick="return confirm('Anda Yakin Ingin Menghapus Data User?')" href="hapus_menu.php?id_menu=<?php echo $d['id_menu'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit menu">
                             Delete
                           </a>
                         </td>
