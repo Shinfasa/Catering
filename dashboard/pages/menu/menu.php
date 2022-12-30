@@ -59,7 +59,7 @@ include('../header.php')
                           Edit
                           </a>
                           &nbsp;
-                          <a onclick="return confirm('Anda Yakin Ingin Menghapus Data User?')" href="hapus_menu.php?id_menu=<?php echo $d['id_menu'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit menu">
+                          <a onclick="return confirm('Anda Yakin Ingin Menghapus Data Menu?')" href="hapus_menu.php?id_menu=<?php echo $d['id_menu'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit menu">
                             Delete
                           </a>
                         </td>

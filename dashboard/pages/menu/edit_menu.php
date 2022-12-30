@@ -1,5 +1,26 @@
 <?php
-    include('../header.php')
+    include('../header.php');
+
+    if(isset($_POST['create'])){
+        $id = ($_POST['txt_id']); 
+        $nama = ($_POST['txt_nama']);
+        $harga = ($_POST['txt_harga']);
+        $detail = ($_POST['txt_detail']);
+        $gambar = ($_POST['txt_gambar']);
+        $kategori = ($_POST['txt_kategori']);
+      
+        $update=mysqli_query($koneksi,"UPDATE menu SET nama_menu='$nama', harga='$harga', detail='$detail', gambar='$gambar', id_kategori='$kategori' WHERE id_menu='$id'");
+        if($update){
+          echo "<script>alert('Data di Update')</script>";
+          echo "<script>location='menu.php'</script>";
+        }
+      }
+    
+    $id_menu = $_GET['id_menu'];
+    $query = "SELECT * FROM menu WHERE id_menu = '$id_menu'";
+    $result = mysqli_query($koneksi, $query);
+    $u = mysqli_fetch_array($result);
+
 ?>
 
 <body id="page-top">
@@ -23,25 +44,25 @@
                         </div>
                         <div>
                             <div class="m-4">
-                                <form action="edit_user.php" method="POST" class="user">
+                                <form action="edit_menu.php" method="POST" class="menu">
                                     <div class="form-group">
-                                        <input type="hidden" name="txt_id" value="">
+                                        <input type="hidden" name="txt_id" value="<?php echo $u['id_menu']; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="txt_nama">Nama Menu</label>
-                                        <input type="text" class="form-control form-control-user" placeholder="Nama Menu" name="txt_nama" value="" readonly>
+                                        <input type="nama_menu" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_nama" value="<?php echo $u['nama_menu']; ?>">
                                     </div> 
                                     <div class="form-group">
                                         <label for="txt_harga">Harga Menu</label>
-                                        <input type="number" class="form-control form-control-user" placeholder="Harga Menu" name="txt_harga" value="">
+                                        <input type="harga" class="form-control form-control-menu" placeholder="Harga Menu" name="txt_harga" value="<?php echo $u['harga']; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="txt_detail">Detail Menu</label>
-                                        <input type="text" class="form-control form-control-user" placeholder="Detail Menu" name="txt_detail" value="">
+                                        <input type="detail" class="form-control form-control-menu" placeholder="Detail Menu" name="txt_detail" value="<?php echo $u['detail']; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="txt_gambar">Gambar Menu</label>
-                                        <input type="file" class="form-control form-control-user" placeholder="Gambar Menu" name="txt_gambar" value="">
+                                        <input type="file" class="form-control form-control-menu" placeholder="Gambar Menu" name="txt_gambar" value="<?php echo $u['gambar']; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="txt_kategori">Kategori</label>
@@ -51,8 +72,8 @@
                                             <input type="radio" name="txt_kategori" value="2" style="margin-left: 100px;">  Kotakan
                                         </div>
                                     </div>
-                                    <button type="submit" name="update" class="btn btn-user btn-block text-light" style="background-color: #E8853D;"><b>Update</b></button>
-                                    <button class="btn btn-light btn-user btn-block"><a href="user.php">Kembali</button>
+                                    <button type="submit" name="update" class="btn btn-menu btn-block text-light" style="background-color: #E8853D;"><b>Update</b></button>
+                                    <button class="btn btn-light btn-menu btn-block"><a href="menu.php">Kembali</button>
                                 </form>
                             </div>
                         </div>
