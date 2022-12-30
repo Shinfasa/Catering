@@ -48,7 +48,7 @@ include('../header.php')
                         <td class="text-center"><?php echo $nomor++; ?></td>
                         <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['nama_menu']; ?></h6></td>
                         <td class="text-center"><?php echo $d['harga']; ?></td>
-                        <td class="text-center" style="width:10px; max-width:10px;"><?php echo $d['detail']; ?></td>
+                        <td class="text-center" style="width:10px; max-width:10px; word-break: break-word;"><?php echo $d['detail']; ?></td>
                         <td class="text-center">
                           <div>
                             <img src="../../../assets/img/menu/<?php echo $d['gambar']; ?>" class="avatar avatar-xxl me-3">
