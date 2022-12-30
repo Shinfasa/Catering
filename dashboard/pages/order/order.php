@@ -59,11 +59,11 @@ include('../header.php');
                         <td class="text-center"><?php echo $d['tgl_bayar']; ?></td>
                         <td class="text-center"><?php echo $d['status_pesanan']; ?></td>
                         <td class="align-middle text-center">
-                          <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          <a href="edit_order.php?id_order=<?php echo $d['id_order'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Order">
                           Edit
                           </a>
                           &nbsp;
-                          <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          <a onclick="return confirm('Anda Yakin Ingin Menghapus Data Order?')" href="hapus_order.php?id_order=<?php echo $d['id_order'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                             Delete
                           </a>
                         </td>
