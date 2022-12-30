@@ -90,7 +90,7 @@
                     <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;">  COD
                   </div>
               </div>
-              <a href="payment.php"><button class="btn btn-user btn-block text-light font-weight-bold" style="background-color: #E8853D;">Lanjutkan</button></a>
+              <a href="payment.php" class="btn btn-user btn-block text-light font-weight-bold" style="background-color: #E8853D;">Lanjutkan</a>
               <button type="submit" name="submit" class="btn btn-user btn-block" style="color: #E8853D;"><b>Kembali</b></button>
             </form>
           </div>
