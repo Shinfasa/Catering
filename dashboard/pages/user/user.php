@@ -19,7 +19,6 @@ include('../header.php')
             <thead>
               <tr>
                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Foto Profil</th>
                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama User</th>
                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Password</th>

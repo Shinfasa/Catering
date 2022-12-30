@@ -8,8 +8,14 @@ if(isset($_POST['create'])){
   $nohp = ($_POST['txt_nohp']);
   $password = ($_POST['txt_pass']);
   $akses = ($_POST['txt_akses']);
+  $fileName = $_FILES['gambar']['name'];
 
-  $query=mysqli_query($koneksi,"INSERT INTO user VALUES (NULL, '$user', '$email', '$alamat', '$nohp', '$password', '$akses')");
+  // Simpan di Folder Gambar
+  move_uploaded_file($_FILES['gambar']['tmp_name'], "../../../assets/img/user/".basename($_FILES['gambar']['name']));
+
+  $query=mysqli_query($koneksi,"INSERT INTO user VALUES (NULL, '$user', '$email', '$alamat', '$nohp', '$password', '$fileName', '$akses')");
+
+
     if($query){
       echo "<script>alert('Data Ditambahkan')</script>";
       echo "<script>location='user.php'</script>";
@@ -26,7 +32,7 @@ if(isset($_POST['create'])){
         </div>
         <div>
           <div class="m-4">
-            <form action="add_user.php" method="POST" class="user">
+            <form action="add_user.php" method="POST" class="user" enctype='multipart/form-data'>
               <div class="form-group">
                 <input type="hidden" name="txt_id" value="">
               </div>
@@ -58,8 +64,8 @@ if(isset($_POST['create'])){
                 <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="">
               </div>            
               <div class="form-group">
-                <label for="txt_gambar">Foto Profil</label>
-                <input type="file" class="form-control form-control-user" name="txt_gambar"> 
+                <label for="gambar">Foto Profil</label>
+                <input type="file" class="form-control form-control-user" name="gambar"> 
               </div>  
               <button type="submit" name="create" class="btn btn-user btn-block text-light" style="background-color: #E8853D;"><b>Simpan</b></button>
               <button class="btn btn-light btn-user btn-block"><a href="user.php">Kembali</button>
