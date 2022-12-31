@@ -8,7 +8,14 @@ if(isset($_POST['update'])){
   $nohp = ($_POST['txt_nohp']);
   $password = ($_POST['txt_pass']);
 
-  $update=mysqli_query($koneksi,"UPDATE user SET nama_user='$user', alamat='$alamat', nohp='$nohp', password='$password' WHERE id_user='$id'");
+  $oldfile = $_POST['old'];
+  $file = $_FILES['gambar']['name'];
+  if($file!="") {
+    move_uploaded_file($_FILES['gambar']['tmp_name'], "../../../assets/img/user/".basename($file));
+  }else {
+    $file = $oldfile;
+  }
+  $update=mysqli_query($koneksi,"UPDATE user SET nama_user='$user', alamat='$alamat', nohp='$nohp', password='$password', gambar='$file' WHERE id_user='$id'");
   if($update){
     echo "<script>alert('Data di Update')</script>";
     echo "<script>location='user.php'</script>";
@@ -56,6 +63,10 @@ $u = mysqli_fetch_array($result);
               <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="<?php echo $u['password']; ?>" id="myInput">
               <input type="checkbox" onclick="myFunction()" style="margin-left: 10px; margin-top: 10px;"><span style="font-size: 14px; margin-left: 10px;">Show Password</span>
             </div>
+            <div class="form-group">
+              <label for="gambar">Foto Profil</label>
+              <input type="file" class="form-control form-control-user" name="gambar"><span name="old" value="<?php echo $u['gambar']; ?>"></span>
+            </div>  
             <button type="submit" name="update" class="btn btn-user btn-block text-light" style="background-color: #E8853D;"><b>Update</b></button>
             <button class="btn btn-light btn-user btn-block"><a href="user.php">Kembali</button>
             </form>
