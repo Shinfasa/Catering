@@ -28,7 +28,7 @@
 
             if ($num != 0) {
                 if ($userMail == $email && $userPass == $pass) {
-                    header('Location: home.php');
+                    header('Location: index.php');
                     if($akses==1){
 						session_start();
 						$_SESSION['id'] 	= $idUser;
