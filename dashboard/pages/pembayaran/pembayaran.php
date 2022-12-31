@@ -9,7 +9,7 @@ include('../header.php');
             <div class="d-flex align-items-center mb-3">
                   <h6 class="mb-0">MetodePembayaran</h6>
                   <div class="text-end" style="flex: 0 0 auto; width: 83%;">
-                  <a href="add_pembayaran.php" class="btn btn-outline-primary btn-xs mb-0">+</a>
+                  <a href="add_pembayaran.php" class="btn btn-outline-primary btn-xs mb-0"><i class="uil uil-plus" style="font-size: 15px;"></i></a>
                   </div>
               </div>
             </div>
