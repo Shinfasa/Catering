@@ -20,7 +20,7 @@ if(isset($_POST['simpan'])){
         <div class="row gx-4">
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
-              <img src="../../assets/img/<?php echo $gambar; ?>" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+              <img src="../../assets/img/user/<?php echo $gambar; ?>" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
             </div>
           </div>
           <div class="col-auto my-auto">

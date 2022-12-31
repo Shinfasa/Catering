@@ -1,5 +1,4 @@
 <?php
-  require ('koneksi.php');
   include('header.php');
 ?>
 
