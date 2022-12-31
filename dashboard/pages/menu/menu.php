@@ -3,7 +3,8 @@ include('../header.php')
 ?>
     <div class="container-fluid py-3">
       <div class="row">
-
+        <div class="col-12">
+        <div class="card mb-4">
           <div class="card" style="height:130vh; max-height: 1000px;">
             <div class="card-header pb-0">
               <div class="d-flex align-items-center mb-3">

@@ -1,12 +1,15 @@
 <?php
 include('../header.php');
 ?>
-    <div class="container-fluid py-4">
-      <d class="row">
+    <div class="container-fluid py-3">
+      <div class="row">
         <div class="col-12">
-          <div class="card mb-4">
+      <div class="card" style="height:100vh; max-height: 540px;">
             <div class="card-header pb-0">
-              <h6>Order</h6>
+              <div class="d-flex align-items-center mb-3">
+          <h6 class="mb-0">Order</h6>
+
+        </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">

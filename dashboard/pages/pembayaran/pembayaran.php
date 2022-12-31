@@ -3,12 +3,12 @@ include('../header.php');
 ?>
     <div class="container-fluid py-3">
       <div class="row">
-
-          <div class="card" style="height:100vh; max-height: 540px;">
+        <div class="col-12">
+      <div class="card" style="height:100vh; max-height: 540px;">
             <div class="card-header pb-0">
             <div class="d-flex align-items-center mb-3">
-                  <h6 class="mb-0">Metode Pembayaran</h6>
-                  <div class="text-end" style="flex: 0 0 auto; width: 90%;">
+                  <h6 class="mb-0">MetodePembayaran</h6>
+                  <div class="text-end" style="flex: 0 0 auto; width: 83%;">
                   <a href="add_pembayaran.php" class="btn btn-outline-primary btn-xs mb-0">+</a>
                   </div>
               </div>

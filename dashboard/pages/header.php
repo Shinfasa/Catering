@@ -8,7 +8,6 @@ require ('../../../koneksi.php');
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../../../assets/img/logo/favicon.png">
   <title>
     Admin | WM Hana Asri
@@ -47,7 +46,7 @@ require ('../../../koneksi.php');
         <li class="nav-item">
           <a class="nav-link " href="../../pages/order/order.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+              <i class="ni ni-cart text-warning text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Order</span>
           </a>
@@ -55,7 +54,7 @@ require ('../../../koneksi.php');
         <li class="nav-item">
           <a class="nav-link " href="../../pages/menu/menu.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+              <i class="ni ni-bag-17 text-success text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Menu</span>
           </a>
@@ -63,7 +62,7 @@ require ('../../../koneksi.php');
         <li class="nav-item">
           <a class="nav-link " href="../../pages/kategori/kategori.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
+              <i class="ni ni-bullet-list-67 text-danger text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Kategori</span>
           </a>
@@ -71,7 +70,7 @@ require ('../../../koneksi.php');
         <li class="nav-item">
           <a class="nav-link " href="../../pages/user/user.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-app text-info text-sm opacity-10"></i>
+              <i class="ni ni-circle-08 text-info text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">User</span>
           </a>
@@ -79,9 +78,17 @@ require ('../../../koneksi.php');
         <li class="nav-item">
           <a class="nav-link " href="../../pages/pembayaran/pembayaran.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
+              <i class="ni ni-money-coins text-danger text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Pembayaran</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="../../pages/iklan/iklan.php">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-single-copy-04 text-danger text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Iklan</span>
           </a>
         </li>
         <li class="nav-item mt-3">
@@ -96,19 +103,11 @@ require ('../../../koneksi.php');
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../../pages/sign-in.html">
+          <a class="nav-link " href="../../pages/logout.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
+              <i class="ni ni-user-run text-warning text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Sign In</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="../../pages/sign-up.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-collection text-info text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Sign Up</span>
+            <span class="nav-link-text ms-1">Log Out</span>
           </a>
         </li>
       </ul>
@@ -136,7 +135,7 @@ require ('../../../koneksi.php');
             <li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
+                <span class="d-sm-inline d-none">Log Out</span>
               </a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
