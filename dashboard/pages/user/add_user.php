@@ -37,7 +37,7 @@ if(isset($_POST['create'])){
                 <input type="hidden" name="txt_id" value="">
               </div>
               <div class="form-group">
-                <label for="txt_level">Level Akses</label>
+                <label for="txt_akses">Level Akses</label>
                 <div style="font-size:15px;">
                   <input type="radio" name="txt_akses" value="1" style="margin-left:20px;">  1 - Admin
                   <input type="radio" name="txt_akses" value="2" style="margin-left: 100px;">  2 - Customer

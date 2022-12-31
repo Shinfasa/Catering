@@ -20,24 +20,36 @@
                 $userName   = $row['nama_user'];
                 $userMail   = $row['email'];
                 $userPass   = $row['password'];
+                $alamat   	= $row['alamat'];
+                $nohp   	= $row['nohp'];
+                $gambar   	= $row['gambar'];
                 $akses      = $row['id_akses'];
             }
 
             if ($num != 0) {
                 if ($userMail == $email && $userPass == $pass) {
-                    // header('Location: index.php?user_fullname=' . urlencode($userName));
                     header('Location: home.php');
                     if($akses==1){
 						session_start();
-						$_SESSION['id'] = $idUser;
-                    	$_SESSION['name'] = $userName;
-                    	$_SESSION['akses'] = $akses;
+						$_SESSION['id'] 	= $idUser;
+                    	$_SESSION['name'] 	= $userName;
+                    	$_SESSION['email'] 	= $userMail;
+                    	$_SESSION['pass'] 	= $userPass;
+                    	$_SESSION['alamat'] = $alamat;
+                    	$_SESSION['nohp'] 	= $nohp;
+                    	$_SESSION['gambar'] = $gambar;
+                    	$_SESSION['akses'] 	= $akses;
 						header('location:dashboard/');
 					}elseif($akses==2){
 						session_start();
-						$_SESSION['id'] = $idUser;
-                    	$_SESSION['name'] = $userName;
-                    	$_SESSION['akses'] = $akses;
+						$_SESSION['id'] 	= $idUser;
+                    	$_SESSION['name'] 	= $userName;
+                    	$_SESSION['email'] 	= $userMail;
+                    	$_SESSION['pass'] 	= $userPass;
+                    	$_SESSION['alamat'] = $alamat;
+                    	$_SESSION['nohp'] 	= $nohp;
+                    	$_SESSION['gambar'] = $gambar;
+                    	$_SESSION['akses'] 	= $akses;
 						header('location:home.php');
 					}
                 } else {
