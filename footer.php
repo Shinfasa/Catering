@@ -16,10 +16,11 @@
         <div class="col-lg-2 col-md-4 footer-links" style="margin-left: 50px;">
           <h4>Link Terkait</h4>
           <ul class="pt-4">
-            <li><i class="bx bx-chevron-right"></i> <a href="#myCarousel">Beranda</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#what-we-do">Kategori</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="index.php">Beranda</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#categories">Kategori</a></li>
             <li><i class="bx bx-chevron-right"></i> <a href="#menu">Menu</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Pesanan Saya</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="order.php">Pesanan Saya</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="faq.php">FAQ</a></li>
           </ul>
         </div>
   

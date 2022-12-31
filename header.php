@@ -52,7 +52,7 @@ if (!isset($_SESSION['id'])) {
   
     <nav id="navbar" class="navbar order-last order-lg-0">
       <ul>
-        <li><a class="nav-link scrollto active" href="">Beranda</a></li>
+        <li><a class="nav-link scrollto active" href="index.php">Beranda</a></li>
         <li class="dropdown"><a href="#categories"><span>Kategori</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="categories.php">Harian</a></li>
@@ -62,6 +62,7 @@ if (!isset($_SESSION['id'])) {
         </li>
         <li><a class="nav-link scrollto" href="#menu">Menu</a></li>
         <li><a class="nav-link scrollto" href="order.php">Pesanan Saya</a></li>
+        <li><a class="nav-link scrollto" href="faq.php">FAQ</a></li>
         <li class="dropdown"><a href="#search"><span class="bi-search"></span></a>
           <ul>
             <li>
@@ -138,7 +139,7 @@ $akses    =  $_SESSION['akses'] ;
   
     <nav id="navbar" class="navbar order-last order-lg-0">
       <ul>
-        <li><a class="nav-link scrollto active" href="home.php">Beranda</a></li>
+        <li><a class="nav-link scrollto active" href="index.php">Beranda</a></li>
         <li class="dropdown"><a href="#categories"><span>Kategori</span><i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="categories.php">Harian</a></li>
@@ -148,6 +149,7 @@ $akses    =  $_SESSION['akses'] ;
         </li>
         <li><a class="nav-link scrollto" href="menu.php">Menu</a></li>
         <li><a class="nav-link scrollto" href="order.php">Pesanan Saya</a></li>
+        <li><a class="nav-link scrollto" href="faq.php">FAQ</a></li>
         <li class="dropdown"><a href="#search"><span class="bi-search"></span></a>
           <ul>
             <li>
