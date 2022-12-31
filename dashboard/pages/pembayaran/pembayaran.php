@@ -7,7 +7,7 @@ include('../header.php');
       <div class="card" style="height:100vh; max-height: 540px;">
             <div class="card-header pb-0">
             <div class="d-flex align-items-center mb-3">
-                  <h6 class="mb-0">MetodePembayaran</h6>
+                  <h6 class="mb-0">Metode Pembayaran</h6>
                   <div class="text-end" style="flex: 0 0 auto; width: 83%;">
                   <a href="add_pembayaran.php" class="btn btn-outline-primary btn-xs mb-0"><i class="uil uil-plus" style="font-size: 15px;"></i></a>
                   </div>
@@ -20,6 +20,7 @@ include('../header.php');
                     <tr>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Metode Pembayaran</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No. Rekening</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                     </tr>
                   </thead>
@@ -43,6 +44,7 @@ include('../header.php');
                       <tr>
                       <td class="text-center"><?php echo $nomor++; ?></td>
                         <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['metode_pembayaran']; ?></h6></td>
+                        <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['no_rek']; ?></h6></td>
                         <td class="align-middle text-center">
                           <a href="edit_pembayaran.php?id_pembayaran=<?php echo $d['id_pembayaran'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Pembayaran">
                           Edit
