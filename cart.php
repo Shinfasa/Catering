@@ -1,369 +1,239 @@
-<?php
-	include('../header.php');
-	
-	session_start();
 
-    if(!isset($_SESSION['id'])) {
-        $_SESSION['msg'] = 'Anda harus login untuk mengakses halaman ini';
-        header('Location: login.php');
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="img/Logo rumah hitam.PNG" rel="shortcut icon">
+    <style>
+    #cart-container {
+        overflow-x: auto;
     }
+    #cart-container table {
+        border-collapse: collapse;
+        width: 100%;
+        table-layout: fixed;
+        white-space: nowrap;
+    }
+    #cart-container thead {
+        font-weight: 700;
+    }
+    #cart-container table thead td {
+        background: #62c3e7;
+        color: #fff;
+        border: none;
+        padding: 6px 0;
+    }
+    #cart-container table td {
+        border: 1px solid #b6b3b3;
+        text-align: center;
+    }
+    #cart-container table td:nth-child(1){
+        width: 100px;
+    }
+    #cart-container table td:nth-child(2),
+    #cart-container table td:nth-child(3) {
+        width: 200px;
+    }
+    #cart-container table td:nth-child(4),
+    #cart-container table td:nth-child(5),
+    #cart-container table td:nth-child(6) {
+        width: 170px;
+    }
+    #cart-container table tbody img {
+        width: 100px;
+        height: 80px;
+        object-fit: cover;
+    }
+    #cart-container table tbody i {
+        color: #8d8c89;
+    }
+    #cart-bottom .coupon>div,
+    #cart-bottom .total>div {
+        border: 1px solid #b6b3b3;
+    }
+    #cart-bottom .coupon h5,
+    #cart-bottom .total h5 {
+        background: #62c3e7;
+        color: #fff;
+        border: none;
+        padding: 6px 12px;
+        font-weight: 700;
+    }
+    #cart-bottom .coupon p,
+    #cart-bottom .coupon input {
+        padding: 0 12px;
+    }
+    #cart-bottom .coupon input {
+        height: 40px;
+    }
+    #cart-bottom .coupon input,
+    #cart-bottom .coupon button {
+        margin: 0 0 20px 12px;
+    }
+    #cart-bottom .coupon button {
+        background-color: #62c3e7;
+        color: #fff;
+        border: none;
+        padding: 7px 10px;
+    }
+    #cart-bottom .total div>div {
+        padding: 0 12px;
+    }
+    #cart-bottom .total h6 {
+        color: #2a2a2a;
+    }
+    .second-hr {
+        background: #b6b3b3;
+        width: 100%;
+        height: 1px;
+    }
+    #cart-bottom .total div>button {
+        background-color: #62c3e7;
+        border: none;
+        color: #fff;
+        padding: 10px 15px;
+        margin: 0 0 20px 12px;
+        display: flex;
+        justify-content: flex-end;
+    }
+</style>
+</head>
 
-    $sesID      = $_SESSION['id'];
-    $sesName    = $_SESSION['name'];
-    $sesLevel   = $_SESSION['level'];
+<?php
+include 'header.php';
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>Tokopekita - Keranjang Saya</title>
-<!-- for-mobile-apps -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Tokopekita, Richard's Lab" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- //for-mobile-apps -->
-<link href="css1/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css1/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- font-awesome icons -->
-<link href="css1/font-awesome.css" rel="stylesheet"> 
-<!-- //font-awesome icons -->
-<!-- js -->
-<script src="js1/jquery-1.11.1.min.js"></script>
-<!-- //js -->
-<link href='//fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<!-- start-smoth-scrolling -->
-<script type="text/javascript" src="js1/move-top.js"></script>
-<script type="text/javascript" src="js1/easing.js"></script>
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event){		
-			event.preventDefault();
-			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-		});
-	});
-</script>
-<!-- start-smoth-scrolling -->
-</head>
-	
+<br>
+<br>
+
 <body>
-<!-- header -->
-	<div class="agileits_header">
-		<div class="container">
-			<div class="w3l_offers">
-				<p>DAPATKAN PENAWARAN MENARIK KHUSUS HARI INI, <a href="products.html">BELANJA SEKARANG!</a></p>
-			</div>
-			<div class="agile-login">
-				<ul>
-				<?php
-				if(!isset($_SESSION['log'])){
-					echo '
-					<li><a href="registered.php"> Daftar</a></li>
-					<li><a href="login.php">Masuk</a></li>
-					';
-				} else {
-					
-					if($_SESSION['role']=='Member'){
-					echo '
-					<li style="color:white">Halo, '.$_SESSION["name"].'
-					<li><a href="logout.php">Keluar?</a></li>
-					';
-					} else {
-					echo '
-					<li style="color:white">Halo, '.$_SESSION["name"].'
-					<li><a href="admin">Admin Panel</a></li>
-					<li><a href="logout.php">Keluar?</a></li>
-					';
-					};
-					
-				}
-				?>
-					
-				</ul>
-			</div>
-			<div class="product_list_header">  
-					<a href="cart.php"><button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-					 </a>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
+<section id="menu" class="what-we-do">
+  <div class="container">
 
-	<div class="logo_products">
-		<div class="container">
-		<div class="w3ls_logo_products_left1">
-				<ul class="phone_email">
-					<li><i class="fa fa-phone" aria-hidden="true"></i>Hubungi Kami : (+6281) 222 333</li>
-				</ul>
-			</div>
-			<div class="w3ls_logo_products_left">
-				<h1><a href="index.php">Tokopekita</a></h1>
-			</div>
-		<div class="w3l_search">
-			<form action="search.php" method="post">
-				<input type="search" name="Search" placeholder="Cari produk...">
-				<button type="submit" class="btn btn-default search" aria-label="Left Align">
-					<i class="fa fa-search" aria-hidden="true"> </i>
-				</button>
-				<div class="clearfix"></div>
-			</form>
-		</div>
-			
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-<!-- //header -->
-<!-- navigation -->
-	<div class="navigation-agileits">
-		<div class="container">
-			<nav class="navbar navbar-default">
-							<!-- Brand and toggle get grouped for better mobile display -->
-							<div class="navbar-header nav_2">
-								<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-									<span class="sr-only">Toggle navigation</span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-								</button>
-							</div> 
-							<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-								<ul class="nav navbar-nav">
-									<li class="active"><a href="index.php" class="act">Home</a></li>	
-									<!-- Mega Menu -->
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Kategori Produk<b class="caret"></b></a>
-										<ul class="dropdown-menu multi-column columns-3">
-											<div class="row">
-												<div class="multi-gd-img">
-													<ul class="multi-column-dropdown">
-														<h6>Kategori</h6>
-														
-														<?php 
-														$kat=mysqli_query($conn,"SELECT * from kategori order by idkategori ASC");
-														while($p=mysqli_fetch_array($kat)){
+    <div class="section-title">
+      <h2>Keranjang Saya</h2>
+    </div>
+</div>
+</section>
 
-															?>
-														<li><a href="kategori.php?idkategori=<?php echo $p['idkategori'] ?>"><?php echo $p['namakategori'] ?></a></li>
-																				
-														<?php
-																	}
-														?>
-													</ul>
-												</div>	
-												
-											</div>
-										</ul>
-									</li>
-									<li><a href="cart.php">Keranjang Saya</a></li>
-									<li><a href="daftarorder.php">Daftar Order</a></li>
-								</ul>
-							</div>
-							</nav>
-			</div>
-		</div>
-		
-<!-- //navigation -->
-<!-- breadcrumbs -->
-	<div class="breadcrumbs">
-		<div class="container">
-			<ol class="breadcrumb breadcrumb1">
-				<li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-				<li class="active">Checkout</li>
-			</ol>
-		</div>
-	</div>
-<!-- //breadcrumbs -->
-<!-- checkout -->
-	<div class="checkout">
-		<div class="container">
-			<h2>Dalam keranjangmu ada : <span><?php echo $itungtrans3 ?> barang</span></h2>
-			<div class="checkout-right">
-				<table class="timetable_sub">
-					<thead>
-						<tr>
-							<th>No.</th>	
-							<th>Produk</th>
-							<th>Nama Produk</th>
-							<th>Jumlah</th>
-							
-						
-							<th>Harga Satuan</th>
-							<th>Hapus</th>
-						</tr>
-					</thead>
-					
-					<?php 
-						$brg=mysqli_query($conn,"SELECT * from detailorder d, produk p where orderid='$orderidd' and d.idproduk=p.idproduk order by d.idproduk ASC");
-						$no=1;
-						while($b=mysqli_fetch_array($brg)){
+    <section id="cart-container" class="container my-5">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Image</td>
+                    <td>Product Name</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Total</td>
+                    <td>Remove</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
 
-					?>
-					<tr class="rem1"><form method="post">
-						<td class="invert"><?php echo $no++ ?></td>
-						<td class="invert"><a href="product.php?idproduk=<?php echo $b['idproduk'] ?>"><img src="<?php echo $b['gambar'] ?>" width="100px" height="100px" /></a></td>
-						<td class="invert"><?php echo $b['namaproduk'] ?></td>
-						<td class="invert">
-							 <div class="quantity"> 
-								<div class="quantity-select">                     
-									<input type="number" name="jumlah" class="form-control" height="100px" value="<?php echo $b['qty'] ?>" \>
-								</div>
-							</div>
-						</td>
-				
-						<td class="invert">Rp<?php echo number_format($b['hargaafter']) ?></td>
-						<td class="invert">
-							<div class="rem">
-							
-								<input type="submit" name="update" class="form-control" value="Update" \>
-								<input type="hidden" name="idproduknya" value="<?php echo $b['idproduk'] ?>" \>
-								<input type="submit" name="hapus" class="form-control" value="Hapus" \>
-							</form>
-							</div>
-							<script>$(document).ready(function(c) {
-								$('.close1').on('click', function(c){
-									$('.rem1').fadeOut('slow', function(c){
-										$('.rem1').remove();
-									});
-									});	  
-								});
-						   </script>
-						</td>
-					</tr>
-					<?php
-						}
-					?>
-					
-								<!--quantity-->
-									<script>
-									$('.value-plus').on('click', function(){
-										var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
-										divUpd.text(newVal);
-									});
-
-									$('.value-minus').on('click', function(){
-										var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
-										if(newVal>=1) divUpd.text(newVal);
-									});
-									</script>
-								<!--quantity-->
-				</table>
-			</div>
-			<div class="checkout-left">	
-				<div class="checkout-left-basket">
-					<h4>Total Harga</h4>
-					<ul>
-						<?php 
-						$brg=mysqli_query($conn,"SELECT * from detailorder d, produk p where orderid='$orderidd' and d.idproduk=p.idproduk order by d.idproduk ASC");
-						$no=1;
-						$subtotal = 10000;
-						while($b=mysqli_fetch_array($brg)){
-						$hrg = $b['hargaafter'];
-						$qtyy = $b['qty'];
-						$totalharga = $hrg * $qtyy;
-						$subtotal += $totalharga
-						?>
-						<li><?php echo $b['namaproduk']?><i> - </i> <span>Rp<?php echo number_format($totalharga) ?> </span></li>
-						<?php
-						}
-						?>
-						<li>Total (inc. 10k Ongkir)<i> - </i> <span>Rp<?php echo number_format($subtotal) ?></span></li>
-					</ul>
-				</div>
-				<div class="checkout-right-basket">
-					<a href="index.php"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
-					<a href="checkout.php"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>Checkout</a>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-<!-- //checkout -->
-<!-- //footer -->
-<div class="footer">
-		<div class="container">
-			<div class="w3_footer_grids">
-				<div class="col-md-4 w3_footer_grid">
-					<h3>Hubungi Kami</h3>
-					
-					<ul class="address">
-						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Richard's Lab, DKI Jakarta.</li>
-						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@email">info@email</a></li>
-						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+62 8113 2322</li>
-					</ul>
-				</div>
-				<div class="col-md-3 w3_footer_grid">
-					<h3>Tentang Kami</h3>
-					<ul class="info"> 
-						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="about.html">About Us</a></li>
-						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="about.html">How To</a></li>
-						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="about.html">FAQ</a></li>
-					</ul>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-		
-		<div class="footer-copy">
-			
-			<div class="container">
-				<p>© 2020 Richard's Lab. All rights reserved</p>
-			</div>
-		</div>
-		
-	</div>	
-	<div class="footer-botm">
-			<div class="container">
-				<div class="w3layouts-foot">
-					<ul>
-						<li><a href="#" class="w3_agile_instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-						<li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-					</ul>
-				</div>
-				<div class="payment-w3ls">	
-					<img src="images/card.png" alt=" " class="img-responsive">
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-<!-- //footer -->	
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
-
-<!-- top-header and slider -->
-<!-- here stars scrolling icon -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 4000,
-				easingType: 'linear' 
-				};
-			
-								
-			$().UItoTop({ easingType: 'easeOutQuart' });
-								
-			});
-	</script>
-<!-- //here ends scrolling icon -->
-
-<!-- main slider-banner -->
-<script src="js/skdslider.min.js"></script>
-<link href="css/skdslider.css" rel="stylesheet">
-<script type="text/javascript">
-		jQuery(document).ready(function(){
-			jQuery('#demo1').skdslider({'delay':5000, 'animationSpeed': 2000,'showNextPrev':true,'showPlayButton':true,'autoSlide':true,'animationType':'fading'});
-						
-			jQuery('#responsive').change(function(){
-			  $('#responsive_wrapper').width(jQuery(this).val());
-			});
-			
-		});
-</script>	
-<!-- //main slider-banner --> 
+                    <td>
+                        <img src="image/Matcha.png" alt="">
+                    </td>
+                    <td>
+                        <h6>Ice Cream Cone</h6>
+                        <p>Matcha</p>
+                    </td>
+                    <td>Rp 10.000</td>
+                    <td><input class="w-25 pl-1" value="1" type="number"></td>
+                    <td>Rp 10.000</td>
+                    <td>
+                        <i class="fas fa-trash-alt" style=" color: #62c3e7"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="image/Strawberry.png" alt="">
+                    </td>
+                    <td>
+                        <h6>Ice Cream Cone</h6>
+                        <p>Strawberry</p>
+                    </td>
+                    <td>Rp 10.000</td>
+                    <td><input class="w-25 pl-1" value="1" type="number"></td>
+                    <td>Rp 10.000</td>
+                    <td>
+                        <i class="fas fa-trash-alt" style=" color: #62c3e7"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="image/Vanilla.png" alt="">
+                    </td>
+                    <td>
+                        <h6>Ice Cream Cone</h6>
+                        <p>Vanilla</p>
+                    </td>
+                    <td>Rp 10.000</td>
+                    <td><input class="w-25 pl-1" value="1" type="number"></td>
+                    <td>Rp 10.000</td>
+                    <td>
+                        <i class="fas fa-trash-alt" style=" color: #62c3e7"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="image/Chocolate.png" alt=""></td>
+                    <td>
+                        <h6>Ice Cream Cone</h6>
+                        <p>Chocolate</p>
+                    </td>
+                    <td>Rp 10.000</td>
+                    <td><input class="w-25 pl-1" value="1" type="number"></td>
+                    <td>Rp 10.000</td>
+                    <td>
+                        <i class="fas fa-trash-alt" style=" color: #62c3e7"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section id="cart-bottom" class="container">
+        <div class="row">
+            <div class="coupon col-lg-6 col-md-6 col-12 mb-4">
+                <div>
+                    <h5>COUPON</h5>
+                    <p>Enter your coupon code if you have one.</p>
+                    <input type="text" placeholder="Coupon Code">
+                    <button>APPLY COUPON</button>
+                </div>
+            </div>
+            <div class="total col-lg-6 col-md-6 col-12">
+                <div>
+                    <h5>CART TOTAL</h5>
+                    <div class="d-flex justify-content-between">
+                        <h6>Subtotal</h6>
+                        <p>Rp 40.000</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h6>Discount</h6>
+                        <p>Rp 10.000</p>
+                    </div>
+                    <hr style="margin: 10px;">
+                    <div class="d-flex justify-content-between">
+                        <h6>Shipping</h6>
+                        <p>Rp 10.000</p>
+                    </div>
+                    <hr style="padding: 2px; margin: 10px;">
+                    <div class="d-flex justify-content-between">
+                        <h6>Total</h6>
+                        <p>Rp 50.000</p>
+                    </div>
+                    <button onclick="window.location.href='check_out.php'">CHECKOUT</button>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
+<br>
+<?php
+include 'footer.php';
+?>
 </html>
