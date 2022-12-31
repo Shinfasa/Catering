@@ -53,7 +53,8 @@ $u = mysqli_fetch_array($result);
             </div>
             <div class="form-group">
               <label for="txt_pass">Password</label>
-              <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="<?php echo $u['password']; ?>">
+              <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="<?php echo $u['password']; ?>" id="myInput">
+              <input type="checkbox" onclick="myFunction()" style="margin-left: 10px; margin-top: 10px;"><span style="font-size: 14px; margin-left: 10px;">Show Password</span>
             </div>
             <button type="submit" name="update" class="btn btn-user btn-block text-light" style="background-color: #E8853D;"><b>Update</b></button>
             <button class="btn btn-light btn-user btn-block"><a href="user.php">Kembali</button>
@@ -64,6 +65,19 @@ $u = mysqli_fetch_array($result);
     </div>
   </div>
 </div>
+
+<!--- Show Password --->
+<script>
+  function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+
 <?php
 include('../footer.php')
 ?>
