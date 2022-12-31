@@ -54,7 +54,7 @@
     <nav id="navbar" class="navbar order-last order-lg-0">
       <ul>
         <li><a class="nav-link scrollto active" href="index.php">Beranda</a></li>
-        <li class="dropdown"><a href="#categories"><span>Kategori</span><i class="bi bi-chevron-down"></i></a>
+        <li class="dropdown"><a href="#categories"><span>Kategori</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="categories.php?id_kategori=1">Harian</a></li>
             <li><a href="categories.php?id_kategori=2">Prasmanan</a></li>
@@ -63,6 +63,7 @@
         </li>
         <li><a class="nav-link scrollto" href="menu.php">Menu</a></li>
         <li><a class="nav-link scrollto" href="order.php">Pesanan Saya</a></li>
+        <li><a class="nav-link scrollto" href="faq.php">FAQ</a></li>
         <li class="dropdown"><a href="#search"><span class="bi-search"></span></a>
           <ul>
             <li>
@@ -72,17 +73,16 @@
         </li>
         <li><a href="cart.php"><span class="bi-cart3"></span></a></li>
         <?php  
-if(isset($_SESSION['id'])) {
-    $idUser   =  $_SESSION['id']    ;
-$userName =  $_SESSION['name']  ;
-$userMail =  $_SESSION['email'] ;
-$userPass =  $_SESSION['pass']  ;
-$alamat   =  $_SESSION['alamat'];
-$nohp     =  $_SESSION['nohp']  ;
-$gambar   =  $_SESSION['gambar'];
-$akses    =  $_SESSION['akses'] ;
-
-?>
+          if(isset($_SESSION['id'])) {
+            $idUser   =  $_SESSION['id']    ;
+            $userName =  $_SESSION['name']  ;
+            $userMail =  $_SESSION['email'] ;
+            $userPass =  $_SESSION['pass']  ;
+            $alamat   =  $_SESSION['alamat'];
+            $nohp     =  $_SESSION['nohp']  ;
+            $gambar   =  $_SESSION['gambar'];
+            $akses    =  $_SESSION['akses'] ;
+        ?>
         <!-- Nav Item - User Information -->
         <li class="dropdown">
           <a href="#">
