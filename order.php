@@ -22,24 +22,24 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th class="text-center">No.</th>
-                            <th class="text-center">Tanggal Pemesanan</th>
-                            <th class="text-center">Menu</th>
-                            <th class="text-center">Jumlah Pesanan</th>
-                            <th class="text-center">Total Harga</th>
-                            <th class="text-center">Status</th>
-                            <th class="text-center">Nota</th>
+                            <th class="text-center" style="color: #384046;">No.</th>
+                            <th class="text-center" style="color: #384046;">Tanggal Pemesanan</th>
+                            <th class="text-center" style="color: #384046;">Menu</th>
+                            <th class="text-center" style="color: #384046;">Jumlah Pesanan</th>
+                            <th class="text-center" style="color: #384046;">Total Harga</th>
+                            <th class="text-center" style="color: #384046;">Status</th>
+                            <th class="text-center" style="color: #384046;">Nota</th>
                         </tr>
                     </thead>                                    
                     <tbody> 
                         <tr>
-                            <td class="text-center">1</td>
-                            <td class="text-center">29/12/2022</td>
-                            <td class="text-center"><img src="assets/img/p-1.jpg" width="100px"><span style="margin-left: 10px;">Tasty Burger</span></td>
-                            <td class="text-center">1</td>
-                            <td class="text-center">Rp 10000</td>
-                            <td class="text-center">Sedang Diproses</td>
-                            <td class="text-center">
+                            <td class="text-center" style="color: #384046;">1</td>
+                            <td class="text-center" style="color: #384046;">29/12/2022</td>
+                            <td class="text-center" style="color: #384046;"><img src="assets/img/p-1.jpg" width="100px"><span style="margin-left: 10px;">Tasty Burger</span></td>
+                            <td class="text-center" style="color: #384046;">1</td>
+                            <td class="text-center" style="color: #384046;">Rp 10000</td>
+                            <td class="text-center" style="color: #384046;">Sedang Diproses</td>
+                            <td class="text-center" style="color: #384046;">
                                 <a class="btn" href="nota.php"><i class="bi bi-printer"></i></a>
                             </td>
                         </tr>                                       
@@ -66,23 +66,23 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th class="text-center">No.</th>
-                            <th class="text-center">Tanggal Selesai</th>
-                            <th class="text-center">Menu</th>
-                            <th class="text-center">Jumlah Pesanan</th>
-                            <th class="text-center">Total Harga</th>
-                            <th class="text-center">Status</th>
-                            <th class="text-center">Nota</th>
+                            <th class="text-center" style="color: #384046;">No.</th>
+                            <th class="text-center" style="color: #384046;">Tanggal Selesai</th>
+                            <th class="text-center" style="color: #384046;">Menu</th>
+                            <th class="text-center" style="color: #384046;">Jumlah Pesanan</th>
+                            <th class="text-center" style="color: #384046;">Total Harga</th>
+                            <th class="text-center" style="color: #384046;">Status</th>
+                            <th class="text-center" style="color: #384046;">Nota</th>
                         </tr>
                     </thead>                                    
                     <tbody> 
                         <tr>
-                            <td class="text-center">1</td>
-                            <td class="text-center">31/12/2022</td>
-                            <td class="text-center"><img src="assets/img/p-1.jpg" width="100px"><span style="margin-left: 10px;">Tasty Burger</span></td>
-                            <td class="text-center">1</td>
-                            <td class="text-center">Rp 10000</td>
-                            <td class="text-center">Selesai</td>
+                            <td class="text-center" style="color: #384046;">1</td>
+                            <td class="text-center" style="color: #384046;">31/12/2022</td>
+                            <td class="text-center" style="color: #384046;"><img src="assets/img/p-1.jpg" width="100px"><span style="margin-left: 10px;">Tasty Burger</span></td>
+                            <td class="text-center" style="color: #384046;">1</td>
+                            <td class="text-center" style="color: #384046;">Rp 10000</td>
+                            <td class="text-center" style="color: #384046;">Selesai</td>
                             <td class="text-center">
                                 <a class="btn" href="nota.php"><i class="bi bi-printer" style="color: #E8853D;"></i></a>
                             </td>
