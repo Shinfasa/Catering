@@ -104,12 +104,13 @@
 												<i class="input-icon uil uil-at"></i>
 											</div>	
 											<div class="form-group mt-2">
-												<input type="password" name="logpass" class="form-style" placeholder="Password" id="logpass" autocomplete="off">
-												<i class="input-icon uil uil-lock-alt"></i>
+												<input type="password" name="logpass" class="form-style" placeholder="Password" id="logpassLogin" autocomplete="off">
+												<i class="input-icon uil uil-lock" id="togglePassword"></i>
+												<i class="input-icon uil uil-eye-slash" id="togglePasswordLogin" style="margin-left: 300px;"></i>
 											</div>
 											<button type="submit" name="login" class="btn mt-4">Log In</button>
 										</form>
-                            			<p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
+                            			<p class="mb-0 mt-4 text-center"><a href="forgot_password.php" class="link">Forgot your password?</a></p>
 				      				</div>
 			      				</div>
 			      			</div>
@@ -127,8 +128,9 @@
 												<i class="input-icon uil uil-at"></i>
 											</div>	
 											<div class="form-group mt-2">
-												<input type="password" name="logpass" class="form-style" placeholder="Password" id="logpass" autocomplete="off">
-												<i class="input-icon uil uil-lock-alt"></i>
+												<input type="password" name="logpass" class="form-style" placeholder="Password" id="logpassRegister" autocomplete="off">
+												<i class="input-icon uil uil-lock" id="togglePassword"></i>
+												<i class="input-icon uil uil-eye-slash" id="togglePasswordRegister" style="margin-left: 300px;"></i>
 											</div>
 											<button type="submit" name="register" class="btn mt-4">Sign Up</button>
 										</form>
@@ -142,6 +144,48 @@
 	    </div>
 	</div>
 </div>
+
+<!-- Show Password Login -->
+<script>
+	const togglePasswordLogin = document.querySelector('#togglePasswordLogin');
+
+	const passwordLogin = document.querySelector('#logpassLogin');
+
+	togglePasswordLogin.addEventListener('click', () => {
+
+		// Toggle the type attribute using
+		// getAttribure() method
+		const type = passwordLogin
+			.getAttribute('type') === 'password' ?
+			'text' : 'password';
+				
+		passwordLogin.setAttribute('type', type);
+
+		// Toggle the eye and bi-eye icon
+		this.classList.toggle('uil-eye');
+	});
+</script>
+
+<!-- Show Password Register -->
+<script>
+	const togglePasswordRegister = document.querySelector('#togglePasswordRegister');
+
+	const passwordRegister = document.querySelector('#logpassRegister');
+
+	togglePasswordRegister.addEventListener('click', () => {
+
+		// Toggle the type attribute using
+		// getAttribure() method
+		const type = passwordRegister
+			.getAttribute('type') === 'password' ?
+			'text' : 'password';
+				
+		passwordRegister.setAttribute('type', type);
+
+		// Toggle the eye and bi-eye icon
+		this.classList.toggle('uil-eye');
+	});
+</script>
 
 <!-- partial -->
 <script  src="./script.js"></script>
