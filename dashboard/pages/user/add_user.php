@@ -61,7 +61,8 @@ if(isset($_POST['create'])){
               </div>  
               <div class="form-group">
                 <label for="txt_pass">Password</label>
-                <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value=""> 
+                <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="" id="myInput">
+                <input type="checkbox" onclick="myFunction()" style="margin-left: 10px; margin-top: 10px;"><span style="font-size: 14px; margin-left: 10px;">Show Password</span>
               </div>            
               <div class="form-group">
                 <label for="gambar">Foto Profil</label>
@@ -76,6 +77,19 @@ if(isset($_POST['create'])){
       </div>
     </div>
   </div>
+
+<!--- Show Password --->
+<script>
+  function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+  
 <?php
 include('../footer.php')
 ?>
