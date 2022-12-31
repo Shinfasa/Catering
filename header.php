@@ -92,7 +92,7 @@
           </a>
           <ul>
             <li><a href="profile.php" class="bi bi-person-fill text-secondary">Profile</a></li>
-            <li><a href="logout.php" class="bi bi-box-arrow-right text-secondary">Logout</a></li>
+            <li><a onclick="return confirm('Apakah anda yakin ingin keluar dari halaman ini?')" href="logout.php" class="bi bi-box-arrow-right text-secondary">Logout</a></li>
           </ul>
         </li>
       <?php }else{ ?>
