@@ -50,9 +50,21 @@ include('../header.php')
                     <td class="text-center" hidden><?php echo $d['id_user']; ?></td>
                     <td class="text-center">
                       <div class="d-flex px-2 py-1">
+                        <?php  
+                          if($d['gambar'] == NULL) {
+                        ?>
+                        <div>
+                          <img src="../../../assets/img/user/default_profile.png" class="avatar avatar-sm me-3">
+                        </div>
+                        <?php 
+                          }else{
+                        ?>
                         <div>
                           <img src="../../../assets/img/user/<?php echo $d['gambar']; ?>" class="avatar avatar-sm me-3">
                         </div>
+                        <?php  
+                          }
+                        ?>
                         <h6 class="mb-0 text-sm"><?php echo $d['nama_user']; ?></h6>
                       </div>
                     </td>

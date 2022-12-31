@@ -58,10 +58,13 @@ include('../header.php');
                     ?>
                   </tbody>
                 </table>
-                <nav>
+                
+              </div>
+              <br>
+              <nav>
                   <ul class="pagination justify-content-center">
                     <li class="page-item">
-                      <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$Previous'"; } ?>> < </a>
+                      <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>> < </a>
                     </li>
                     <?php 
                     for($x=1;$x<=$total_halaman;$x++){
@@ -75,7 +78,6 @@ include('../header.php');
                     </li>
                   </ul>
                 </nav>
-              </div>
             </div>
           </div>
         </div>

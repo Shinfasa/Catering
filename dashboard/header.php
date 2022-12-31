@@ -1,3 +1,23 @@
+<?php 
+require ('../koneksi.php');
+
+session_start();
+
+if (!isset($_SESSION['id'])) {
+  header('Location: ../login.php');
+}
+
+$idUser   =  $_SESSION['id']    ;
+$userName =  $_SESSION['name']  ;
+$userMail =  $_SESSION['email'] ;
+$userPass =  $_SESSION['pass']  ;
+$alamat   =  $_SESSION['alamat'];
+$nohp     =  $_SESSION['nohp']  ;
+$gambar   =  $_SESSION['gambar'];
+$akses    =  $_SESSION['akses'] ;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,7 +119,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="./pages/logout.php">
+          <a class="nav-link " href="./logout.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-user-run text-warning text-sm opacity-10"></i>
             </div>
@@ -129,9 +149,9 @@
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
+              <a href="./pages/profile/profile.php" class="nav-link text-white font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Log Out</span>
+                <span class="d-sm-inline d-none"><?php echo $userName; ?></span>
               </a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">

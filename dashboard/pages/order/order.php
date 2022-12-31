@@ -55,7 +55,7 @@ include('../header.php');
                         <td class="text-center"><?php echo $d['tgl_pakai']; ?></td>
                         <td class="text-center"><?php echo $d['nama_menu']; ?></td>
                         <td class="text-center"><?php echo $d['catatan_order']; ?></td>
-                        <td class="text-center"><?php echo $d['harga_satuan']; ?></td>
+                        <td class="text-center"><?php number_format(number) echo $d['harga_satuan']; ?></td>
                         <td class="text-center"><?php echo $d['jumlah']; ?></td>
                         <td class="text-center"><?php echo $d['total_harga']; ?></td>
                         <td class="text-center"><?php echo $d['metode_pembayaran']; ?></td>
@@ -77,6 +77,24 @@ include('../header.php');
                     </tbody>
                 </table>
               </div>
+              <br>
+              <nav>
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                      <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>> < </a>
+                    </li>
+                    <?php 
+                    for($x=1;$x<=$total_halaman;$x++){
+                      ?> 
+                      <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+                      <?php
+                    }
+                    ?>        
+                    <li class="page-item">
+                      <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>> </a>
+                    </li>
+                  </ul>
+                </nav>
             </div>
           </div>
         </div>

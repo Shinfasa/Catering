@@ -3,14 +3,12 @@
 
   session_start();
 
-    if(!isset($_SESSION['id'])) {
-        $_SESSION['msg'] = 'Anda harus login untuk mengakses halaman ini';
-        header('Location: login.php');
-    }
+    if(isset($_SESSION['id'])) {
 
     $idUser      = $_SESSION['id'];
     $userName    = $_SESSION['name'];
     $akses       = $_SESSION['akses'];
+  }
 ?>
 
 <!DOCTYPE html>
