@@ -50,7 +50,7 @@
                     	$_SESSION['nohp'] 	= $nohp;
                     	$_SESSION['gambar'] = $gambar;
                     	$_SESSION['akses'] 	= $akses;
-						header('location:home.php');
+						header('location:index.php');
 					}
                 } else {
                     $error = 'Username atau Password Salah!!!';
