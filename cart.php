@@ -102,126 +102,60 @@ include 'header.php';
 <br>
 
 <body>
+
+<!-- popular section starts  -->
 <section id="menu" class="what-we-do">
   <div class="container">
 
     <div class="section-title">
       <h2>Keranjang Saya</h2>
     </div>
-</div>
-</section>
-
-    <section id="cart-container" class="container my-5">
-        <table width="100%">
-            <thead>
-                <tr>
-                    <td>Image</td>
-                    <td>Product Name</td>
-                    <td>Price</td>
-                    <td>Quantity</td>
-                    <td>Total</td>
-                    <td>Remove</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-
-                    <td>
-                        <img src="image/Matcha.png" alt="">
-                    </td>
-                    <td>
-                        <h6>Ice Cream Cone</h6>
-                        <p>Matcha</p>
-                    </td>
-                    <td>Rp 10.000</td>
-                    <td><input class="w-25 pl-1" value="1" type="number"></td>
-                    <td>Rp 10.000</td>
-                    <td>
-                        <i class="fas fa-trash-alt" style=" color: #62c3e7"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="image/Strawberry.png" alt="">
-                    </td>
-                    <td>
-                        <h6>Ice Cream Cone</h6>
-                        <p>Strawberry</p>
-                    </td>
-                    <td>Rp 10.000</td>
-                    <td><input class="w-25 pl-1" value="1" type="number"></td>
-                    <td>Rp 10.000</td>
-                    <td>
-                        <i class="fas fa-trash-alt" style=" color: #62c3e7"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="image/Vanilla.png" alt="">
-                    </td>
-                    <td>
-                        <h6>Ice Cream Cone</h6>
-                        <p>Vanilla</p>
-                    </td>
-                    <td>Rp 10.000</td>
-                    <td><input class="w-25 pl-1" value="1" type="number"></td>
-                    <td>Rp 10.000</td>
-                    <td>
-                        <i class="fas fa-trash-alt" style=" color: #62c3e7"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="image/Chocolate.png" alt=""></td>
-                    <td>
-                        <h6>Ice Cream Cone</h6>
-                        <p>Chocolate</p>
-                    </td>
-                    <td>Rp 10.000</td>
-                    <td><input class="w-25 pl-1" value="1" type="number"></td>
-                    <td>Rp 10.000</td>
-                    <td>
-                        <i class="fas fa-trash-alt" style=" color: #62c3e7"></i>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-    <section id="cart-bottom" class="container">
-        <div class="row">
-            <div class="coupon col-lg-6 col-md-6 col-12 mb-4">
-                <div>
-                    <h5>COUPON</h5>
-                    <p>Enter your coupon code if you have one.</p>
-                    <input type="text" placeholder="Coupon Code">
-                    <button>APPLY COUPON</button>
-                </div>
-            </div>
-            <div class="total col-lg-6 col-md-6 col-12">
-                <div>
-                    <h5>CART TOTAL</h5>
-                    <div class="d-flex justify-content-between">
-                        <h6>Subtotal</h6>
-                        <p>Rp 40.000</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <h6>Discount</h6>
-                        <p>Rp 10.000</p>
-                    </div>
-                    <hr style="margin: 10px;">
-                    <div class="d-flex justify-content-between">
-                        <h6>Shipping</h6>
-                        <p>Rp 10.000</p>
-                    </div>
-                    <hr style="padding: 2px; margin: 10px;">
-                    <div class="d-flex justify-content-between">
-                        <h6>Total</h6>
-                        <p>Rp 50.000</p>
-                    </div>
-                    <button onclick="window.location.href='check_out.php'">CHECKOUT</button>
-                </div>
+    
+    <!-- DataTables -->
+    <div class="row">                        
+        <div class="card-body col-8">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Checklist</th>
+                            <th class="text-center">Menu</th>
+                            <th class="text-center">Harga</th>
+                            <th class="text-center">Qty</th>
+                            <th class="text-center">Total Harga</th>
+                            <th class="text-center">Hapus</th>
+                        </tr>
+                    </thead>                                    
+                    <tbody> 
+                        <tr>
+                            <td class="text-center"><input type="checkbox" name="" id=""></td>
+                            <td class="text-center"><img src="assets/img/p-1.jpg" width="100px"><span style="margin-left: 10px;">Tasty Burger</span></td>
+                            <td class="text-center">Rp 10000</td>
+                            <td class="text-center"><input type="number" class="w-25" value="1"></td>
+                            <td class="text-center">Rp 10000</td>
+                            <td class="text-center"><a href="" class="btn"><i class="bi bi-trash"></i></a></td>
+                        </tr>                                       
+                    </tbody>
+                </table>
             </div>
         </div>
-    </section>
+        <div class="card col-md-3" style="margin-left: 30px; border-radius: 0;">
+                <div>
+                    <h5 class="text-center pt-3"><b>Total</b></h5>
+                    <hr style="padding: 2px; margin: 10px;">
+                    <div class="d-flex justify-content-between p-2">
+                        <p>1 menu</p>
+                        <p>Rp 50.000</p>
+                    </div>
+                    <hr style="padding: 2px; margin: 10px;">
+                    <a href="checkout.php" class="btn mb-3" style="margin-left: 120px;">Check Out</a>
+                </div>
+            </div>
+  </div>
+
+</section>
+<!-- End Section -->
+
 </body>
 <br>
 <?php

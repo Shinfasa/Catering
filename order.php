@@ -40,7 +40,7 @@
                             <td class="text-center">Rp 10000</td>
                             <td class="text-center">Sedang Diproses</td>
                             <td class="text-center">
-                                <a class="btn" href="nota.php"><i class="bi bi-printer" style="color: #E8853D;"></i></a>
+                                <a class="btn" href="nota.php"><i class="bi bi-printer"></i></a>
                             </td>
                         </tr>                                       
                     </tbody>
