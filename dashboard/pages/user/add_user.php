@@ -61,7 +61,7 @@ if(isset($_POST['create'])){
               </div>  
               <div class="form-group">
                 <label for="txt_pass">Password</label>
-                <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="">
+                <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value=""> 
               </div>            
               <div class="form-group">
                 <label for="gambar">Foto Profil</label>
