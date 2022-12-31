@@ -17,7 +17,7 @@
 
     <div class="row">
       <?php 
-        $batas = 6;
+        $batas = 100;
         $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
         $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
  

@@ -17,18 +17,20 @@
 
     <div class="row">
       <?php 
-        $batas = 6;
+        $batas = 100;
         $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
         $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
  
         $previous = $halaman - 1;
         $next = $halaman + 1;
         
-        $data = mysqli_query($koneksi,"SELECT * FROM menu;");
+        $id_kategori = $_GET['id_kategori'];
+
+        $data = mysqli_query($koneksi,"SELECT * FROM menu WHERE id_kategori = '$id_kategori';");
         $jumlah_data = mysqli_num_rows($data);
         $total_halaman = ceil($jumlah_data / $batas);
  
-        $data_menu = mysqli_query($koneksi,"SELECT * FROM menu LIMIT $halaman_awal, $batas");
+        $data_menu = mysqli_query($koneksi,"SELECT * FROM menu WHERE id_kategori = '$id_kategori' LIMIT $halaman_awal, $batas");
         $nomor = $halaman_awal+1;
         while($d = mysqli_fetch_array($data_menu)){
       ?>

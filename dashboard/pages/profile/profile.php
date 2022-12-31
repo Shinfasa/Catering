@@ -11,7 +11,7 @@ if(isset($_POST['simpan'])){
   $update=mysqli_query($koneksi,"UPDATE user SET nama_user='$user', alamat='$alamat', nohp='$nohp', password='$password' WHERE id_user='$id'");
   if($update){
     echo "<script>alert('Data di Update')</script>";
-    echo "<script>location='user.php'</script>";
+    echo "<script>location='profile.php'</script>";
   }
 }
 ?>
