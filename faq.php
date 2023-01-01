@@ -25,12 +25,8 @@
     <div id="basicAccordionCollapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
       data-mdb-parent="#basicAccordion">
       <div class="accordion-body">
-        <strong>This is the first item's accordion body.</strong> It is shown by default,
-        until the collapse plugin adds the appropriate classes that we use to style each
-        element. These classes control the overall appearance, as well as the showing and
-        hiding via CSS transitions. You can modify any of this with custom CSS or overriding
-        our default variables. It's also worth noting that just about any HTML can go within
-        the <code>.accordion-body</code>, though the transition does limit overflow.
+        Anda bisa membuat akun dengan cara :
+        Masuk pada halaman Login > Pilih ikon Sign Up untuk membuat akun > Kemudian masukkan Username Anda > masukkan E-mail yang Anda miliki > Masukkan juga Password Anda > kemudian klik ikon Sign Up yang berada di bawah > Setelah itu Anda akan dibawa pada halaman Login dan Anda bisa Login menggunakan akun yang sudah Anda buat.
       </div>
     </div>
   </div>
