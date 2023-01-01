@@ -31,14 +31,36 @@ include 'header.php';
                         </tr>
                     </thead>                                    
                     <tbody> 
+                        <?php 
+                            $batas = 10;
+                            $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+                            $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
+ 
+                            $previous = $halaman - 1;
+                            $next = $halaman + 1;
+        
+                            $data = mysqli_query($koneksi,"SELECT * FROM keranjang JOIN menu ON keranjang.id_menu = menu.id_menu JOIN user ON keranjang.id_user = user.id_user;");
+                            $jumlah_data = mysqli_num_rows($data);
+                            $total_halaman = ceil($jumlah_data / $batas);
+ 
+                            $data_order = mysqli_query($koneksi,"SELECT * FROM keranjang JOIN menu ON keranjang.id_menu = menu.id_menu JOIN user ON keranjang.id_user = user.id_user LIMIT $halaman_awal, $batas");
+                            $nomor = $halaman_awal+1;
+                            while($d = mysqli_fetch_array($data_order)){
+                        ?>
                         <tr>
-                            <td class="text-center" style="color: #384046;"><input type="checkbox" name="" id=""></td>
-                            <td class="text-center" style="color: #384046;"><img src="assets/img/p-1.jpg" width="100px"><span style="margin-left: 10px;">Tasty Burger</span></td>
-                            <td class="text-center" style="color: #384046;">Rp 10000</td>
-                            <td class="text-center" style="color: #384046;"><input type="number" class="w-25" value="1"></td>
-                            <td class="text-center" style="color: #384046;">Rp 10000</td>
+                            <td class="text-center"><input type="checkbox" name="" id=""></td>
+                            <td class="text-center">
+                                <img src="assets/img/menu/<?php echo $d['gambar']; ?>" alt="" height="100px" style="margin-left: 10px; margin-right: 15px; border-radius: 10px;">
+                                <br>
+                                <?php echo $d['nama_menu']; ?></td>
+                            <td class="text-center"><?php echo $d['harga']; ?></td>
+                            <td class="text-center"><?php echo $d['qty']; ?></td>
+                            <td class="text-center"><?php echo $d['total_harga']; ?></td>
                             <td class="text-center" style="color: #384046;"><a href="" class="btn"><i class="bi bi-trash"></i></a></td>
-                        </tr>                                       
+                        </tr>
+                        <?php
+                            }
+                        ?>             
                     </tbody>
                 </table>
             </div>
