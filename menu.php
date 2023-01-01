@@ -7,12 +7,12 @@
 
 <body>
     
-<!-- popular section starts -->
+<!-- popular section starts  -->
 <section id="menu" class="what-we-do">
   <div class="container">
 
     <div class="section-title">
-      <h2>Kategori Harian</h2>
+      <h2>Menu</h2>
     </div>
 
     <div class="row">
@@ -24,13 +24,11 @@
         $previous = $halaman - 1;
         $next = $halaman + 1;
         
-        $id_kategori = $_GET['id_kategori'];
-
-        $data = mysqli_query($koneksi,"SELECT * FROM menu WHERE id_kategori = '$id_kategori';");
+        $data = mysqli_query($koneksi,"SELECT * FROM menu;");
         $jumlah_data = mysqli_num_rows($data);
         $total_halaman = ceil($jumlah_data / $batas);
  
-        $data_menu = mysqli_query($koneksi,"SELECT * FROM menu WHERE id_kategori = '$id_kategori' LIMIT $halaman_awal, $batas");
+        $data_menu = mysqli_query($koneksi,"SELECT * FROM menu LIMIT $halaman_awal, $batas");
         $nomor = $halaman_awal+1;
         while($d = mysqli_fetch_array($data_menu)){
       ?>
@@ -50,7 +48,7 @@
         </div>
       </div>
     </div>
-      <?php } ?>        
+      <?php } ?>   
   </div>
 </section>
 <!-- End Section -->
