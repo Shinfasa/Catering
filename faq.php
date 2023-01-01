@@ -23,7 +23,7 @@
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <strong>Anda dapat membuat akun dengan cara berikut:</strong> <br>Masuk pada halaman Login > Pilih ikon Sign Up pada halaman Login > Kemudian masukkan Username anda > Masukkan E-mail yang Anda miliki > Masukkan Password > Setelah itu klik pada tombol Sign Up > Kemudian Anda akan diarahkan pada halaman Login dan Anda bisa Login dengan akun yang telah Anda buat.
+        <strong>Anda dapat membuat akun dengan cara berikut:</strong> <br>Masuk pada halaman Login > Pilih ikon Sign Up pada halaman Login > Kemudian masukkan Username anda > Masukkan Email yang Anda miliki > Masukkan Password > Setelah itu klik pada tombol Sign Up > Kemudian Anda akan diarahkan pada halaman Login dan Anda bisa Login dengan akun yang telah Anda buat.
       </div>
     </div>
   </div>
@@ -83,7 +83,7 @@
     </h2>
     <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <strong>Customer Service.</strong> <br>Apabila Anda memiliki pertanyaan lebih lanjut atau mengalami kendala saat menggunakan WM Hana Asri, silahkan hubungi No.Telp dan Email yang tercantum dibawah ini untuk informasi lebih lanjut: <br>Telp : +62 858-1531-3767 <br>Email : customerservice@gmail.com
+        <strong>Customer Service.</strong> <br>Apabila Anda memiliki pertanyaan lebih lanjut atau mengalami kendala saat menggunakan WM Hana Asri, silahkan hubungi No.Telp dan Email yang tercantum dibawah ini untuk informasi lebih lanjut: <br><strong>No. Telepon</strong><br>+62 858 1531 3767 <br>+62 822 2883 5524 <br><strong>Email</strong><br>wm.hanaasri@gmail.com
       </div>
     </div>
   </div>
