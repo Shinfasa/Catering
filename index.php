@@ -79,24 +79,24 @@
       <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
         <div class="icon-box">
           <div class="icon"><i class="bx bx-file"></i></div>
-            <h4><a href="">Harian</a></h4>
-            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+            <h4><a href="categories.php?id_kategori=1">Harian</a></h4>
+            <p>Paket Harian dengan banyak pilihan menu setiap harinya</p>
           </div>
         </div>
 
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
           <div class="icon-box">
             <div class="icon"><i class="bx bx-file"></i></div>
-              <h4><a href="">Prasmanan</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <h4><a href="categories.php?id_kategori=2">Prasmanan</a></h4>
+              <p>Paket Prasmanan dengan satu menu untuk bersama-sama</p>
           </div>
         </div>
 
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
           <div class="icon-box">
             <div class="icon"><i class="bx bx-file"></i></div>
-              <h4><a href="">Kotakan</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui official</p>
+              <h4><a href="categories.php?id_kategori=3">Kotakan</a></h4>
+              <p>Paket Kotakan dengan banyak pilihan menu untuk mendukung kegiatan anda</p>
             </div>
           </div>
         </div>  
@@ -139,7 +139,7 @@
             <h4><a href="product_detail.php"><?php echo $d['nama_menu']; ?></a></h4>
             <h5 class="text-secondary" style="font-family: 'Open Sans', sans-serif;">Rp <?php echo $d['harga']; ?></h5>
           <div>
-          <a href="check_out.php"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Beli Sekarang</button></a>
+          <a href="check_out.php"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</button></a>
           <button class="btn m-2" style="background-color: #E8853D;">
             <a href="cart.php" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
           </button>
