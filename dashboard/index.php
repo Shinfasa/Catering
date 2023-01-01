@@ -10,7 +10,7 @@ require ('../koneksi.php');
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pendapatan</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pendapatan Tahun Ini</p>
                     <h5 class="font-weight-bolder">
                       $53,000
                     </h5>
@@ -35,7 +35,7 @@ require ('../koneksi.php');
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Jumlah Customer</p>
                     <h5 class="font-weight-bolder">
                       2,300
                     </h5>
@@ -60,7 +60,7 @@ require ('../koneksi.php');
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Jumlah Orderan</p>
                     <h5 class="font-weight-bolder">
                       +3,462
                     </h5>
@@ -85,7 +85,7 @@ require ('../koneksi.php');
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pendapatan Bulan Ini</p>
                     <h5 class="font-weight-bolder">
                       $103,430
                     </h5>
