@@ -7,14 +7,10 @@ if(isset($_POST['update'])){
   $alamat = ($_POST['txt_alamat']);
   $nohp = ($_POST['txt_nohp']);
   $password = ($_POST['txt_pass']);
-
   $oldfile = $_POST['old'];
-  $file = $_FILES['gambar']['name'];
-  if($file!="") {
-    move_uploaded_file($_FILES['gambar']['tmp_name'], "../../../assets/img/user/".basename($file));
-  }else {
-    $file = $oldfile;
-  }
+  $file = $_FILES['txt_gambar']['name'];
+    move_uploaded_file($_FILES['txt_gambar']['tmp_name'], "../../../assets/img/user/".basename($_FILES['txt_gambar']['name']));
+
   $update=mysqli_query($koneksi,"UPDATE user SET nama_user='$user', alamat='$alamat', nohp='$nohp', password='$password', gambar='$file' WHERE id_user='$id'");
   if($update){
     echo "<script>alert('Data di Update')</script>";
@@ -37,11 +33,8 @@ $u = mysqli_fetch_array($result);
       </div>
       <div>
         <div class="m-4">
-          <form action="edit_user.php" method="POST" class="user">
-            <div class="form-group">
-              <input type="hidden" name="txt_id" value="">
-            </div>
-            <input type="text" class="text-center" hidden name="txt_id" value="<?php echo $u['id_user']; ?>">
+          <form action="edit_user.php" method="POST" class="user" enctype='multipart/form-data'>
+            <input type="hidden" class="text-center" hidden name="txt_id" value="<?php echo $u['id_user']; ?>">
             <div class="form-group">
               <label for="txt_email">Email</label>
               <input type="email" class="form-control form-control-user"  placeholder="Email" name="txt_email" value="<?php echo $u['email']; ?>" readonly>
@@ -65,7 +58,8 @@ $u = mysqli_fetch_array($result);
             </div>
             <div class="form-group">
               <label for="gambar">Foto Profil</label>
-              <input type="file" class="form-control form-control-user" name="gambar"><span name="old" value="<?php echo $u['gambar']; ?>"></span>
+              <input type="file" class="form-control form-control-user" name="txt_gambar">
+              <input type="hidden" name="old" value="<?php echo $u['gambar']; ?>">
             </div>  
             <button type="submit" name="update" class="btn btn-user btn-block text-light" style="background-color: #E8853D;"><b>Update</b></button>
             <button class="btn btn-light btn-user btn-block"><a href="user.php">Kembali</button>
