@@ -81,6 +81,10 @@
                 <input type="datetime-local" class="form-control form-control-user" name="txt_nama" value="">
               </div> 
               <div class="form-group pb-3">
+                <label for="txt_nama">Catatan</label>
+                <input type="text" class="form-control form-control-user" name="txt_nama" value="">
+              </div> 
+              <div class="form-group pb-3">
                 <label for="txt_bayar">Metode Pembayaran</label>
                   <div style="font-size:15px;">
                     <input type="radio" name="txt_bayar" value="1" style="margin-left: 20px;">  BRI

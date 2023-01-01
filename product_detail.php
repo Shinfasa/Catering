@@ -70,23 +70,11 @@ $detail = mysqli_fetch_array($result);
                     <p style="text-align: justify; font-size:15px;"><?php echo $detail['detail'] ?></p>
                 </div>
             </div>
-        </section>
-        <script>
-            var maining = document.getElementById('maining');
-            var smalling = document.getElementsByClassName('small-img');
-            smalling[0].onclick = function() {
-                maining.src = smalling[0].src;
-            }
-            smalling[1].onclick = function() {
-                maining.src = smalling[1].src;
-            }
-            smalling[2].onclick = function() {
-                maining.src = smalling[2].src;
-            }
-            smalling[3].onclick = function() {
-                maining.src = smalling[3].src;
-            }
-        </script>
-    <?php
-    include 'footer.php';
-    ?>
+        </div>
+    </section>
+
+</body>
+
+<?php
+include 'footer.php';
+?>
