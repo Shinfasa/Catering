@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 30, 2022 at 04:55 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jan 01, 2023 at 11:44 AM
+-- Server version: 5.7.21
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -27,10 +28,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `akses`
 --
 
-CREATE TABLE `akses` (
-  `id_akses` int(11) NOT NULL,
-  `hak_akses` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+DROP TABLE IF EXISTS `akses`;
+CREATE TABLE IF NOT EXISTS `akses` (
+  `id_akses` int(11) NOT NULL AUTO_INCREMENT,
+  `hak_akses` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id_akses`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `akses`
@@ -43,25 +46,15 @@ INSERT INTO `akses` (`id_akses`, `hak_akses`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `breadcrumb`
---
-
-CREATE TABLE `breadcrumb` (
-  `id_breadcrumb` int(11) NOT NULL,
-  `kategori` int(11) NOT NULL,
-  `nama_folder` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `carousel`
 --
 
-CREATE TABLE `carousel` (
-  `id_car` int(11) NOT NULL,
-  `gambar` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+DROP TABLE IF EXISTS `carousel`;
+CREATE TABLE IF NOT EXISTS `carousel` (
+  `id_car` int(11) NOT NULL AUTO_INCREMENT,
+  `gambar` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_car`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `carousel`
@@ -78,20 +71,22 @@ INSERT INTO `carousel` (`id_car`, `gambar`) VALUES
 -- Table structure for table `kategori`
 --
 
-CREATE TABLE `kategori` (
-  `id_kategori` int(11) NOT NULL,
+DROP TABLE IF EXISTS `kategori`;
+CREATE TABLE IF NOT EXISTS `kategori` (
+  `id_kategori` int(11) NOT NULL AUTO_INCREMENT,
   `nama_kategori` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `deskripsi` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `deskripsi` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id_kategori`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `kategori`
 --
 
 INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `deskripsi`) VALUES
-(1, 'Harian', 'fygjsedhbxcdhd'),
-(2, 'Prasmanan', 'jsfjhshjfgfjefsjhjsdh'),
-(3, 'Kotakan', 'hjsgdjhagduduwdhjsbx nzxjashidhd bjchzshdiwhiwr jzjchshfuwdhwjd jshcshyduywiusadkndad ');
+(1, 'Harian', 'Paket Harian dengan banyak pilihan menu setiap harinya'),
+(2, 'Prasmanan', 'Paket Prasmanan dengan satu menu untuk bersama-sama'),
+(3, 'Kotakan', 'Paket Kotakan dengan banyak pilihan menu untuk mendukung kegiatan anda');
 
 -- --------------------------------------------------------
 
@@ -99,13 +94,25 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `deskripsi`) VALUES
 -- Table structure for table `keranjang`
 --
 
-CREATE TABLE `keranjang` (
-  `id_keranjang` int(11) NOT NULL,
+DROP TABLE IF EXISTS `keranjang`;
+CREATE TABLE IF NOT EXISTS `keranjang` (
+  `id_keranjang` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL,
   `id_menu` int(11) NOT NULL,
   `qty` varchar(10) NOT NULL,
-  `total_harga` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `total_harga` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_keranjang`),
+  KEY `keranjang_ibfk_1` (`id_user`),
+  KEY `id_menu` (`id_menu`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `keranjang`
+--
+
+INSERT INTO `keranjang` (`id_keranjang`, `id_user`, `id_menu`, `qty`, `total_harga`) VALUES
+(1, 2, 1, '2', '30000'),
+(2, 2, 15, '1', '15000');
 
 -- --------------------------------------------------------
 
@@ -113,14 +120,17 @@ CREATE TABLE `keranjang` (
 -- Table structure for table `menu`
 --
 
-CREATE TABLE `menu` (
-  `id_menu` int(11) NOT NULL,
+DROP TABLE IF EXISTS `menu`;
+CREATE TABLE IF NOT EXISTS `menu` (
+  `id_menu` int(11) NOT NULL AUTO_INCREMENT,
   `nama_menu` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `harga` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `detail` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `gambar` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_kategori` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id_kategori` int(11) NOT NULL,
+  PRIMARY KEY (`id_menu`),
+  KEY `id_kategori` (`id_kategori`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `menu`
@@ -147,23 +157,28 @@ INSERT INTO `menu` (`id_menu`, `nama_menu`, `harga`, `detail`, `gambar`, `id_kat
 -- Table structure for table `orderdetail`
 --
 
-CREATE TABLE `orderdetail` (
-  `id_ordetail` int(11) NOT NULL,
+DROP TABLE IF EXISTS `orderdetail`;
+CREATE TABLE IF NOT EXISTS `orderdetail` (
+  `id_ordetail` int(11) NOT NULL AUTO_INCREMENT,
   `id_order` int(11) NOT NULL,
   `total_harga` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tgl_bayar` date DEFAULT NULL,
+  `tgl_bayar` datetime DEFAULT NULL,
   `id_pembayaran` int(11) DEFAULT NULL,
   `catatan_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status_pesanan` enum('Belum Dibayar','Sedang Diproses','Selesai') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `bukti_pembayaran` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `bukti_pembayaran` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id_ordetail`),
+  KEY `id_order` (`id_order`),
+  KEY `id_pengiriman` (`id_pembayaran`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `orderdetail`
 --
 
 INSERT INTO `orderdetail` (`id_ordetail`, `id_order`, `total_harga`, `tgl_bayar`, `id_pembayaran`, `catatan_order`, `status_pesanan`, `bukti_pembayaran`) VALUES
-(5, 2, '75000', '2022-12-28', 1, 'Tepat waktu yaaaa hehe', 'Sedang Diproses', '');
+(5, 2, '75000', '2022-12-28 00:00:00', 1, 'Tepat waktu yaaaa hehe', 'Sedang Diproses', ''),
+(8, 4, '72000', '2022-12-22 00:00:00', 2, NULL, 'Selesai', NULL);
 
 -- --------------------------------------------------------
 
@@ -171,24 +186,28 @@ INSERT INTO `orderdetail` (`id_ordetail`, `id_order`, `total_harga`, `tgl_bayar`
 -- Table structure for table `orders`
 --
 
-CREATE TABLE `orders` (
-  `id_order` int(11) NOT NULL,
-  `tgl_pesan` date NOT NULL,
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE IF NOT EXISTS `orders` (
+  `id_order` int(11) NOT NULL AUTO_INCREMENT,
+  `tgl_pesan` datetime NOT NULL,
   `tgl_pakai` datetime NOT NULL,
   `harga_satuan` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jumlah` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_menu` int(11) NOT NULL,
-  `id_keranjang` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id_keranjang` int(11) NOT NULL,
+  PRIMARY KEY (`id_order`),
+  KEY `id_menu` (`id_menu`),
+  KEY `id_user` (`id_user`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`id_order`, `tgl_pesan`, `tgl_pakai`, `harga_satuan`, `jumlah`, `id_user`, `id_menu`, `id_keranjang`) VALUES
-(2, '2022-12-28', '2023-01-02 10:14:33', '15000', '5', 2, 2, 0),
-(4, '2022-12-30', '2023-01-04 10:16:24', '12000', '6', 2, 4, 0);
+(2, '2022-12-28 00:00:00', '2023-01-02 10:14:33', '15000', '5', 2, 2, 0),
+(4, '2022-12-30 00:00:00', '2023-01-04 10:16:24', '12000', '6', 2, 4, 0);
 
 -- --------------------------------------------------------
 
@@ -196,11 +215,13 @@ INSERT INTO `orders` (`id_order`, `tgl_pesan`, `tgl_pakai`, `harga_satuan`, `jum
 -- Table structure for table `pembayaran`
 --
 
-CREATE TABLE `pembayaran` (
-  `id_pembayaran` int(11) NOT NULL,
+DROP TABLE IF EXISTS `pembayaran`;
+CREATE TABLE IF NOT EXISTS `pembayaran` (
+  `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT,
   `metode_pembayaran` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_rek` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `no_rek` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id_pembayaran`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `pembayaran`
@@ -217,16 +238,19 @@ INSERT INTO `pembayaran` (`id_pembayaran`, `metode_pembayaran`, `no_rek`) VALUES
 -- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
-  `id_user` int(11) NOT NULL,
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `nama_user` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `nohp` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `gambar` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_akses` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id_akses` int(11) NOT NULL,
+  PRIMARY KEY (`id_user`),
+  KEY `id_akses` (`id_akses`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `user`
@@ -236,142 +260,6 @@ INSERT INTO `user` (`id_user`, `nama_user`, `email`, `alamat`, `nohp`, `password
 (1, 'Yasin Alfaruq', 'yasin@gmail.com', 'Jl.Sumatra Sumbersari Jember', '082334567890', '123', 'team-3.jpg', 1),
 (2, 'Karisma Ayu', 'karisma@gmail.com', 'Jl.Jawa 6 Sumbersari Jember', '085678903422', '654', 'ivana-squar', 2),
 (5, 'Laura Cantik', 'laura@gmail.com', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '789', '', 2);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `akses`
---
-ALTER TABLE `akses`
-  ADD PRIMARY KEY (`id_akses`);
-
---
--- Indexes for table `breadcrumb`
---
-ALTER TABLE `breadcrumb`
-  ADD PRIMARY KEY (`id_breadcrumb`);
-
---
--- Indexes for table `carousel`
---
-ALTER TABLE `carousel`
-  ADD PRIMARY KEY (`id_car`);
-
---
--- Indexes for table `kategori`
---
-ALTER TABLE `kategori`
-  ADD PRIMARY KEY (`id_kategori`);
-
---
--- Indexes for table `keranjang`
---
-ALTER TABLE `keranjang`
-  ADD PRIMARY KEY (`id_keranjang`),
-  ADD KEY `keranjang_ibfk_1` (`id_user`),
-  ADD KEY `id_menu` (`id_menu`);
-
---
--- Indexes for table `menu`
---
-ALTER TABLE `menu`
-  ADD PRIMARY KEY (`id_menu`),
-  ADD KEY `id_kategori` (`id_kategori`);
-
---
--- Indexes for table `orderdetail`
---
-ALTER TABLE `orderdetail`
-  ADD PRIMARY KEY (`id_ordetail`),
-  ADD KEY `id_order` (`id_order`),
-  ADD KEY `id_pengiriman` (`id_pembayaran`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id_order`),
-  ADD KEY `id_menu` (`id_menu`),
-  ADD KEY `id_user` (`id_user`);
-
---
--- Indexes for table `pembayaran`
---
-ALTER TABLE `pembayaran`
-  ADD PRIMARY KEY (`id_pembayaran`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`),
-  ADD KEY `id_akses` (`id_akses`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `akses`
---
-ALTER TABLE `akses`
-  MODIFY `id_akses` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `breadcrumb`
---
-ALTER TABLE `breadcrumb`
-  MODIFY `id_breadcrumb` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `carousel`
---
-ALTER TABLE `carousel`
-  MODIFY `id_car` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `kategori`
---
-ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `keranjang`
---
-ALTER TABLE `keranjang`
-  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `menu`
---
-ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `orderdetail`
---
-ALTER TABLE `orderdetail`
-  MODIFY `id_ordetail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `pembayaran`
---
-ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
