@@ -9,12 +9,14 @@ if(isset($_POST['update'])){
   $password = ($_POST['txt_pass']);
   $oldfile = $_POST['old'];
   $file = $_FILES['txt_gambar']['name'];
+  if($file!="") {
     move_uploaded_file($_FILES['txt_gambar']['tmp_name'], "../../../assets/img/user/".basename($_FILES['txt_gambar']['name']));
-
-  $update=mysqli_query($koneksi,"UPDATE user SET nama_user='$user', alamat='$alamat', nohp='$nohp', password='$password', gambar='$file' WHERE id_user='$id'");
-  if($update){
-    echo "<script>alert('Data di Update')</script>";
-    echo "<script>location='user.php'</script>";
+    $update=mysqli_query($koneksi,"UPDATE user SET nama_user='$user', alamat='$alamat', nohp='$nohp', password='$password', gambar='$file' WHERE id_user='$id'");
+    unlink();
+    if($update){
+      echo "<script>alert('Data di Update')</script>";
+      echo "<script>location='user.php'</script>";
+    }
   }
 }
 
