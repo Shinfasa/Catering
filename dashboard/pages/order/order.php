@@ -46,7 +46,7 @@ include('../header.php');
  
                       $data_order = mysqli_query($koneksi,"SELECT * FROM orders JOIN orderdetail ON orders.id_order = orderdetail.id_order JOIN user ON orders.id_user = user.id_user JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orderdetail.id_pembayaran = pembayaran.id_pembayaran LIMIT $halaman_awal, $batas");
                       $nomor = $halaman_awal+1;
-                      while($d = mysqli_fetch_array($data_order)){
+                     while($d = mysqli_fetch_array($data_order)){
                     ?>
                       <tr>
                         <td class="text-center"><?php echo $nomor++; ?></td>
