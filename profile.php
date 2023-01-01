@@ -24,7 +24,7 @@
             <form action="" method="POST" class="user">
               <?php 
                 $data_user = mysqli_query($koneksi,"SELECT * FROM user WHERE id_user='$idUser'");                
-                while($p = mysqli_fetch_array($data_user)){
+                if($p = mysqli_fetch_array($data_user)){
               ?>
               <div class="form-group pb-3 text-center">
                 <img class="img-account-profile rounded-circle m-4" width="150px" src="assets/img/user/<?php echo $p['gambar']; ?>">
