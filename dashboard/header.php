@@ -1,23 +1,17 @@
-<?php 
-require ('../koneksi.php');
+<!--
+=========================================================
+* Argon Dashboard 2 - v2.0.4
+=========================================================
 
-session_start();
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
 
-if (!isset($_SESSION['id'])) {
-  header('Location: ../login.php');
-}
+=========================================================
 
-$idUser   =  $_SESSION['id']    ;
-$userName =  $_SESSION['name']  ;
-$userMail =  $_SESSION['email'] ;
-$userPass =  $_SESSION['pass']  ;
-$alamat   =  $_SESSION['alamat'];
-$nohp     =  $_SESSION['nohp']  ;
-$gambar   =  $_SESSION['gambar'];
-$akses    =  $_SESSION['akses'] ;
-
-?>
-
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,13 +40,13 @@ $akses    =  $_SESSION['akses'] ;
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="index.php">
-        <img src="../assets/img/logo/logo.png" class="navbar-brand-img h-100" alt="main_logo" style="margin-left: 30px;">
+        <img src="../assets/img/logo/logo.png" class="navbar-brand-img h-100" alt="main_logo">
       </a>
     </div>
     <hr class="horizontal dark mt-0">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link " href="./index.php">
+          <a class="nav-link active" href="index.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
             </div>
@@ -60,58 +54,50 @@ $akses    =  $_SESSION['akses'] ;
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="./pages/order/order.php">
+          <a class="nav-link " href="./pages/order.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-cart text-warning text-sm opacity-10"></i>
+              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Order</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="./pages/menu/menu.php">
+          <a class="nav-link " href="./pages/menu.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-bag-17 text-success text-sm opacity-10"></i>
+              <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Menu</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="./pages/kategori/kategori.php">
+          <a class="nav-link " href="../pages/kategori.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-bullet-list-67 text-danger text-sm opacity-10"></i>
+              <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Kategori</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="./pages/user/user.php">
+          <a class="nav-link " href="./pages/user.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-circle-08 text-info text-sm opacity-10"></i>
+              <i class="ni ni-app text-info text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">User</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../../pages/pembayaran/pembayaran.php">
+          <a class="nav-link " href="./pages/pembayaran.php">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-money-coins text-danger text-sm opacity-10"></i>
+              <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Pembayaran</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="./pages/iklan/iklan.php">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-single-copy-04 text-danger text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Iklan</span>
           </a>
         </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="./pages/profile/profile.php">
+          <a class="nav-link " href="./pages/profile.html">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
             </div>
@@ -119,11 +105,19 @@ $akses    =  $_SESSION['akses'] ;
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../logout.php">
+          <a class="nav-link " href="./pages/sign-in.html">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-user-run text-warning text-sm opacity-10"></i>
+              <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Log Out</span>
+            <span class="nav-link-text ms-1">Sign In</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="./pages/sign-up.html">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-collection text-info text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Sign Up</span>
           </a>
         </li>
       </ul>
@@ -149,9 +143,9 @@ $akses    =  $_SESSION['akses'] ;
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a href="./pages/profile/profile.php" class="nav-link text-white font-weight-bold px-0">
+              <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none"><?php echo $userName; ?></span>
+                <span class="d-sm-inline d-none">Log Out</span>
               </a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">

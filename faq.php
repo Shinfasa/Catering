@@ -19,7 +19,7 @@
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
         data-mdb-target="#basicAccordionCollapseOne" aria-expanded="false" aria-controls="collapseOne">
-        Question #1
+        1. Bagaimana cara membuat akun?
       </button>
     </h2>
     <div id="basicAccordionCollapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
@@ -38,7 +38,7 @@
     <h2 class="accordion-header" id="headingTwo">
       <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
         data-mdb-target="#basicAccordionCollapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Question #2
+        2. Bagaimana cara melakukan pesanan?
       </button>
     </h2>
     <div id="basicAccordionCollapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
@@ -57,7 +57,7 @@
     <h2 class="accordion-header" id="headingThree">
       <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
         data-mdb-target="#basicAccordionCollapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Question #3
+        3. Bagaimana cara membayar pesanan?
       </button>
     </h2>
     <div id="basicAccordionCollapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"

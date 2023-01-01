@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2022 at 04:55 PM
+-- Generation Time: Dec 27, 2022 at 12:26 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -80,18 +80,17 @@ INSERT INTO `carousel` (`id_car`, `gambar`) VALUES
 
 CREATE TABLE `kategori` (
   `id_kategori` int(11) NOT NULL,
-  `nama_kategori` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `deskripsi` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+  `nama_kategori` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `kategori`
 --
 
-INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `deskripsi`) VALUES
-(1, 'Harian', 'fygjsedhbxcdhd'),
-(2, 'Prasmanan', 'jsfjhshjfgfjefsjhjsdh'),
-(3, 'Kotakan', 'hjsgdjhagduduwdhjsbx nzxjashidhd bjchzshdiwhiwr jzjchshfuwdhwjd jshcshyduywiusadkndad ');
+INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
+(1, 'Harian'),
+(2, 'Prasmanan'),
+(3, 'Kotakan');
 
 -- --------------------------------------------------------
 
@@ -101,10 +100,10 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `deskripsi`) VALUES
 
 CREATE TABLE `keranjang` (
   `id_keranjang` int(11) NOT NULL,
+  `id_order` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_menu` int(11) NOT NULL,
-  `qty` varchar(10) NOT NULL,
-  `total_harga` varchar(50) NOT NULL
+  `tgl_order` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -127,19 +126,18 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id_menu`, `nama_menu`, `harga`, `detail`, `gambar`, `id_kategori`) VALUES
-(1, 'Ayam Brewok', '15000', 'Haloooo…..\r\n\r\nSiapa nih yang suka dengan ayam brewok, spesial menu dari kitaa\r\n\r\nYukk list menu ini di acaramu 🥰', 'ayam_brewok.jpg', 3),
-(2, 'Ayam Geprek', '15000', 'Siapa yang kangen Ayam Geprek dari @wm.hanaasri???\r\n\r\nEnduls banget pedesnya sesuai selera, yukk chat untuk pemesanan 🤗', 'ayam_geprek.jpg', 3),
-(3, 'Lele Terbang', '15000', 'Siapa yang suka lele? 😳\r\n\r\nMenu spesial kali ini adalah lele terbang atau bahasa gaulnya nih yee Flying catfish.\r\n\r\nDagingnya sudah di pisah untuk sayap jadi mudah untuk di makan apalagi untuk si kecil.\r\n', 'lele_terbang.jpg', 3),
-(4, 'Nasi Kuning', '12000', 'Halo Gengss…..\r\n\r\nSiapa nih yang suka dengan Nasi Kuning ?\r\nKali ini @wm.hanaasri lagi bikin Paket 4 Nasi Kuning versi 12K ya ☺️☺️☺️\r\n\r\nYuk… Agendakan acaramu dengan catering di @wm.hanaasri\r\n', 'nasi_kuning.jpg', 3),
-(5, 'Nasi Kuning Spesial', '15000', 'Selamat pagi Gengs !!\r\n\r\nGimana kabarnya hari ini? Awal taun, yuk bikin resolusi baru😘\r\n\r\nKali ini ada menu Nasi Kuning Spesial, yuk buruan cobain', 'nasi_kuning_spesial.jpg', 3),
-(6, 'Ramen', '10000', 'Pingin ramen tapi bingung karna harga mahal? 😱\r\nMau bikin tapi takut salah resep? 👀\r\n\r\nTenang disini kamu bisa dapetin ramen dengan harga terjangkau dan bisa req sesuai selera\r\nDimana lagi kalo bukan di @wm.hanaasri 😆', 'ramen.jpg', 1),
-(7, 'Semur Ayam', '15000', 'Morningggg......\r\nLumayan lama ya Mimin ga upld di medsos 😁😁\r\n\r\nMau cerita sedikit,\r\nJadi tadi pagi nyoba bikin semur ayam dan nyoba foto kaya orang di IG² walaupun agak riweh ternyata hasilnya lumayan juga wkwkw walaupun masih belum sama seperti yg lain. Oiya, kalo kalian suka sama menu yg satu ini boleh banget req buat catering lohhh atau bisa Dateng di lokasi untuk makan prasmanan. 🤭\r\n\r\nHARGA MURAH TAPI RASA & KUALITAS TERJAMIN!🤩🤩', 'semur_ayam.jpg', 1),
-(8, 'Telur Geprek', '12000', 'Ada yang tau ini apa?🤔🤔\r\n\r\nMasakan baru dari @wm.hanaasri Catering Jember\r\nIni namanya Telur Geprek guys bisa banget buat kamu yang bosen makan telur gitu² aja 😄\r\n\r\nYukkk order sekarang juga di @wm.hanaasri', 'telur_geprek.jpg', 1),
-(9, 'Tumis Kerang', '15000', 'Selamat pagi Gengs !!\r\n\r\nGimana kabarnya hari ini? Awal taun, yuk bikin resolusi baru😘\r\n\r\nKali ini ada menu Tumis Kerang, yuk buruan cobain', 'tumis_kerang.jpg', 1),
-(10, 'Tumpeng Ayam', '150000', 'Mau bikin acara tumpengan tapi gaada waktu?\r\nMau pesen tapi mau yang bisa req isian makanan dan harga miring?\r\n\r\nDimana lagi kalo ga di @wm.hanaasri ,yuk simpan gambar ini untuk jadi referensi Tumpenganmu selanjutnya 🤗\r\n', 'tumpeng_ayam.jpg', 2),
-(11, 'Telur Teriyaki', '12000', 'Telur Teriyaki???? 😮😮\r\n\r\nPernah denger ga gaiss?? Atau udah pernah coba ?\r\nKalau belum pas banget sih, kamu bisa bilang Mimin ya buat bikinin menu ini di catering kamu 🤗🤗', 'telur_teriyaki.jpg', 1),
-(12, 'Kimlo Soup', '12000', 'Siapa nih yang suka Soup?🤔\r\nNah.... Kali ini mimin masak Kimlo Soup lohhh\r\n\r\nIsinya banyak banget ya, komplit lagi. Ada telur puyuh, wortel, jamur, brokoli, baso, tofu dll\r\n\r\nYukkk segera merapat ke mimin buat catering menu ini 😉😉', 'kimlo_soup.jpg', 1),
-(15, 'Burger', '10000', 'Enak banget loh gess burgernya. Yuk langsung order dan cobain.', 'p-1.jpg', 1);
+(1, 'Ayam Brewok', '15000', '', 'ayam_brewok.jpg', 3),
+(2, 'Ayam Geprek', '15000', '', 'ayam_geprek.jpg', 3),
+(3, 'Lele Terbang', '15000', '', 'lele_terbang.jpg', 3),
+(4, 'Nasi Kuning', '12000', '', 'nasi_kuning.jpg', 3),
+(5, 'Nasi Kuning Spesial', '15000', '', 'nasi_kuning_spesial', 3),
+(6, 'Ramen', '10000', '', 'ramen.jpg', 1),
+(7, 'Semur Ayam', '15000', '', 'semur_ayam.jpg', 1),
+(8, 'Telur Geprek', '12000', '', 'telur_geprek.jpg', 1),
+(9, 'Tumis Kerang', '15000', '', 'tumis_kerang.jpg', 1),
+(10, 'Tumpeng Ayam', '150000', '', 'tumpeng_ayam.jpg', 2),
+(11, 'Telur Teriyaki', '12000', '', 'telur_teriyaki.jpg', 1),
+(12, 'Kimlo Soup', '12000', '', 'kimlo_soup.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -151,19 +149,18 @@ CREATE TABLE `orderdetail` (
   `id_ordetail` int(11) NOT NULL,
   `id_order` int(11) NOT NULL,
   `total_harga` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tgl_bayar` date DEFAULT NULL,
-  `id_pembayaran` int(11) DEFAULT NULL,
-  `catatan_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status_pesanan` enum('Belum Dibayar','Sedang Diproses','Selesai') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `bukti_pembayaran` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `tgl_bayar` date NOT NULL,
+  `id_pembayaran` int(11) NOT NULL,
+  `catatan_order` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_pesanan` enum('Belum Dibayar','Sedang Diproses','Selesai') COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `orderdetail`
 --
 
-INSERT INTO `orderdetail` (`id_ordetail`, `id_order`, `total_harga`, `tgl_bayar`, `id_pembayaran`, `catatan_order`, `status_pesanan`, `bukti_pembayaran`) VALUES
-(5, 2, '75000', '2022-12-28', 1, 'Tepat waktu yaaaa hehe', 'Sedang Diproses', '');
+INSERT INTO `orderdetail` (`id_ordetail`, `id_order`, `total_harga`, `tgl_bayar`, `id_pembayaran`, `catatan_order`, `status_pesanan`) VALUES
+(1, 1, '150000', '2022-12-27', 5, 'Yang cepet yak', 'Sedang Diproses');
 
 -- --------------------------------------------------------
 
@@ -178,17 +175,18 @@ CREATE TABLE `orders` (
   `harga_satuan` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jumlah` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_menu` int(11) NOT NULL,
-  `id_keranjang` int(11) NOT NULL
+  `id_menu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id_order`, `tgl_pesan`, `tgl_pakai`, `harga_satuan`, `jumlah`, `id_user`, `id_menu`, `id_keranjang`) VALUES
-(2, '2022-12-28', '2023-01-02 10:14:33', '15000', '5', 2, 2, 0),
-(4, '2022-12-30', '2023-01-04 10:16:24', '12000', '6', 2, 4, 0);
+INSERT INTO `orders` (`id_order`, `tgl_pesan`, `tgl_pakai`, `harga_satuan`, `jumlah`, `id_user`, `id_menu`) VALUES
+(1, '2022-12-27', '2023-01-01 10:10:11', '15000', '10', 2, 1),
+(2, '2022-12-28', '2023-01-02 10:14:33', '15000', '5', 2, 2),
+(3, '2022-12-29', '2023-01-03 10:14:33', '15000', '2', 2, 3),
+(4, '2022-12-30', '2023-01-04 10:16:24', '12000', '6', 2, 4);
 
 -- --------------------------------------------------------
 
@@ -198,18 +196,19 @@ INSERT INTO `orders` (`id_order`, `tgl_pesan`, `tgl_pakai`, `harga_satuan`, `jum
 
 CREATE TABLE `pembayaran` (
   `id_pembayaran` int(11) NOT NULL,
-  `metode_pembayaran` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_rek` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+  `metode_pembayaran` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `pembayaran`
 --
 
-INSERT INTO `pembayaran` (`id_pembayaran`, `metode_pembayaran`, `no_rek`) VALUES
-(1, 'Bank Rakyat Indonesia (BRI)', '0021-01-196169-50-6'),
-(2, 'Bank Central Asia (BCA)', '024-0653966'),
-(3, 'Shopee Pay', '+62 858-1531-3767');
+INSERT INTO `pembayaran` (`id_pembayaran`, `metode_pembayaran`) VALUES
+(1, 'Bank Rakyat Indonesia (BRI)'),
+(2, 'Bank Central Asia (BCA)'),
+(3, 'Shopee Pay'),
+(4, 'Dana'),
+(5, 'Cash On Delivery (COD)');
 
 -- --------------------------------------------------------
 
@@ -224,7 +223,6 @@ CREATE TABLE `user` (
   `alamat` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `nohp` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gambar` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_akses` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -232,10 +230,9 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `nama_user`, `email`, `alamat`, `nohp`, `password`, `gambar`, `id_akses`) VALUES
-(1, 'Yasin Alfaruq', 'yasin@gmail.com', 'Jl.Sumatra Sumbersari Jember', '082334567890', '123', 'team-3.jpg', 1),
-(2, 'Karisma Ayu', 'karisma@gmail.com', 'Jl.Jawa 6 Sumbersari Jember', '085678903422', '654', 'ivana-squar', 2),
-(5, 'Laura Cantik', 'laura@gmail.com', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '789', '', 2);
+INSERT INTO `user` (`id_user`, `nama_user`, `email`, `alamat`, `nohp`, `password`, `id_akses`) VALUES
+(1, 'Yasin Alfaruq', 'yasin@gmail.com', 'Jl.Karimata Sumbersari Jember', '082334567890', '123', 1),
+(2, 'Karisma Ayu', 'karisma@gmail.com', 'Jl.Jawa 6 Sumbersari Jember', '085678903422', '456', 2);
 
 --
 -- Indexes for dumped tables
@@ -270,8 +267,7 @@ ALTER TABLE `kategori`
 --
 ALTER TABLE `keranjang`
   ADD PRIMARY KEY (`id_keranjang`),
-  ADD KEY `keranjang_ibfk_1` (`id_user`),
-  ADD KEY `id_menu` (`id_menu`);
+  ADD KEY `id_order` (`id_order`);
 
 --
 -- Indexes for table `menu`
@@ -335,7 +331,7 @@ ALTER TABLE `carousel`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `keranjang`
@@ -347,13 +343,13 @@ ALTER TABLE `keranjang`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
-  MODIFY `id_ordetail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_ordetail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -365,13 +361,13 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -381,8 +377,7 @@ ALTER TABLE `user`
 -- Constraints for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  ADD CONSTRAINT `keranjang_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `keranjang_ibfk_2` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `keranjang_ibfk_1` FOREIGN KEY (`id_order`) REFERENCES `orders` (`id_order`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `menu`
@@ -394,8 +389,8 @@ ALTER TABLE `menu`
 -- Constraints for table `orderdetail`
 --
 ALTER TABLE `orderdetail`
-  ADD CONSTRAINT `orderdetail_ibfk_1` FOREIGN KEY (`id_order`) REFERENCES `orders` (`id_order`) ON DELETE CASCADE,
-  ADD CONSTRAINT `orderdetail_ibfk_2` FOREIGN KEY (`id_pembayaran`) REFERENCES `pembayaran` (`id_pembayaran`) ON DELETE CASCADE;
+  ADD CONSTRAINT `orderdetail_ibfk_1` FOREIGN KEY (`id_order`) REFERENCES `orders` (`id_order`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `orderdetail_ibfk_2` FOREIGN KEY (`id_pembayaran`) REFERENCES `pembayaran` (`id_pembayaran`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `orders`
