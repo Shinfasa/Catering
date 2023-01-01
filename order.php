@@ -22,27 +22,50 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th class="text-center">No.</th>
-                            <th class="text-center">Tanggal Pemesanan</th>
-                            <th class="text-center">Menu</th>
-                            <th class="text-center">Jumlah Pesanan</th>
-                            <th class="text-center">Total Harga</th>
-                            <th class="text-center">Status</th>
-                            <th class="text-center">Nota</th>
+                            <th class="text-center" style="color: #384046;">No.</th>
+                            <th class="text-center" style="color: #384046;">Tanggal Pesan</th>
+                            <th class="text-center" style="color: #384046;">Menu</th>
+                            <th class="text-center" style="color: #384046;">Harga</th>
+                            <th class="text-center" style="color: #384046;">Jumlah</th>
+                            <th class="text-center" style="color: #384046;">Total Harga</th>
+                            <th class="text-center" style="color: #384046;">Status</th>
+                            <th class="text-center" style="color: #384046;">Nota</th>
                         </tr>
                     </thead>                                    
-                    <tbody> 
+                    <tbody>
+                        <?php 
+                            $batas = 10;
+                            $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+                            $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
+ 
+                            $previous = $halaman - 1;
+                            $next = $halaman + 1;
+        
+                            $data = mysqli_query($koneksi,"SELECT * FROM orders JOIN orderdetail ON orders.id_order = orderdetail.id_order JOIN user ON orders.id_user = user.id_user JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orderdetail.id_pembayaran = pembayaran.id_pembayaran;");
+                            $jumlah_data = mysqli_num_rows($data);
+                            $total_halaman = ceil($jumlah_data / $batas);
+ 
+                            $data_order = mysqli_query($koneksi,"SELECT * FROM orders JOIN orderdetail ON orders.id_order = orderdetail.id_order JOIN user ON orders.id_user = user.id_user JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orderdetail.id_pembayaran = pembayaran.id_pembayaran WHERE status_pesanan!='Selesai' LIMIT $halaman_awal, $batas");
+                            $nomor = $halaman_awal+1;
+                            while($d = mysqli_fetch_array($data_order)){
+                        ?>
                         <tr>
-                            <td class="text-center">1</td>
-                            <td class="text-center">29/12/2022</td>
-                            <td class="text-center"><img src="assets/img/p-1.jpg" width="100px"><span style="margin-left: 10px;">Tasty Burger</span></td>
-                            <td class="text-center">1</td>
-                            <td class="text-center">Rp 10000</td>
-                            <td class="text-center">Sedang Diproses</td>
+                            <td class="text-center"><?php echo $nomor++; ?></td>
+                            <td class="text-center"><?php echo $d['tgl_pesan']; ?></td>
                             <td class="text-center">
-                                <a class="btn" href="nota.php"><i class="bi bi-printer" style="color: #E8853D;"></i></a>
+                                <img src="assets/img/menu/<?php echo $d['gambar']; ?>" alt="" width="100px" style="margin-left: 10px; margin-right: 15px; border-radius: 10px;">
+                                <?php echo $d['nama_menu']; ?></td>
+                            <td class="text-center"><?php echo $d['harga_satuan']; ?></td>
+                            <td class="text-center"><?php echo $d['jumlah']; ?></td>
+                            <td class="text-center"><?php echo $d['total_harga']; ?></td>
+                            <td class="text-center"><?php echo $d['status_pesanan']; ?></td>
+                            <td class="text-center" style="color: #384046;">
+                                <a class="btn" href="nota.php"><i class="bi bi-printer"></i></a>
                             </td>
-                        </tr>                                       
+                        </tr>
+                        <?php
+                            }
+                        ?>                                      
                     </tbody>
                 </table>
             </div>
@@ -66,27 +89,50 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th class="text-center">No.</th>
-                            <th class="text-center">Tanggal Selesai</th>
-                            <th class="text-center">Menu</th>
-                            <th class="text-center">Jumlah Pesanan</th>
-                            <th class="text-center">Total Harga</th>
-                            <th class="text-center">Status</th>
-                            <th class="text-center">Nota</th>
+                            <th class="text-center" style="color: #384046;">No.</th>
+                            <th class="text-center" style="color: #384046;">Tanggal Selesai</th>
+                            <th class="text-center" style="color: #384046;">Menu</th>
+                            <th class="text-center" style="color: #384046;">Harga</th>
+                            <th class="text-center" style="color: #384046;">Jumlah</th>
+                            <th class="text-center" style="color: #384046;">Total Harga</th>
+                            <th class="text-center" style="color: #384046;">Status</th>
+                            <th class="text-center" style="color: #384046;">Nota</th>
                         </tr>
                     </thead>                                    
-                    <tbody> 
+                    <tbody>
+                        <?php 
+                            $batas = 10;
+                            $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+                            $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
+ 
+                            $previous = $halaman - 1;
+                            $next = $halaman + 1;
+        
+                            $data = mysqli_query($koneksi,"SELECT * FROM orders JOIN orderdetail ON orders.id_order = orderdetail.id_order JOIN user ON orders.id_user = user.id_user JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orderdetail.id_pembayaran = pembayaran.id_pembayaran;");
+                            $jumlah_data = mysqli_num_rows($data);
+                            $total_halaman = ceil($jumlah_data / $batas);
+ 
+                            $data_order = mysqli_query($koneksi,"SELECT * FROM orders JOIN orderdetail ON orders.id_order = orderdetail.id_order JOIN user ON orders.id_user = user.id_user JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orderdetail.id_pembayaran = pembayaran.id_pembayaran WHERE status_pesanan='Selesai' LIMIT $halaman_awal, $batas");
+                            $nomor = $halaman_awal+1;
+                            while($d = mysqli_fetch_array($data_order)){
+                        ?>
                         <tr>
-                            <td class="text-center">1</td>
-                            <td class="text-center">31/12/2022</td>
-                            <td class="text-center"><img src="assets/img/p-1.jpg" width="100px"><span style="margin-left: 10px;">Tasty Burger</span></td>
-                            <td class="text-center">1</td>
-                            <td class="text-center">Rp 10000</td>
-                            <td class="text-center">Selesai</td>
+                            <td class="text-center"><?php echo $nomor++; ?></td>
+                            <td class="text-center"><?php echo $d['tgl_pakai']; ?></td>
                             <td class="text-center">
-                                <a class="btn" href="nota.php"><i class="bi bi-printer" style="color: #E8853D;"></i></a>
+                                <img src="assets/img/menu/<?php echo $d['gambar']; ?>" alt="" width="100px" style="margin-left: 10px; margin-right: 15px; border-radius: 10px;">
+                                <?php echo $d['nama_menu']; ?></td>
+                            <td class="text-center"><?php echo $d['harga_satuan']; ?></td>
+                            <td class="text-center"><?php echo $d['jumlah']; ?></td>
+                            <td class="text-center"><?php echo $d['total_harga']; ?></td>
+                            <td class="text-center"><?php echo $d['status_pesanan']; ?></td>
+                            <td class="text-center" style="color: #384046;">
+                                <a class="btn" href="nota.php"><i class="bi bi-printer"></i></a>
                             </td>
-                        </tr>                                       
+                        </tr>
+                        <?php
+                            }
+                        ?>                        
                     </tbody>
                 </table>
             </div>
