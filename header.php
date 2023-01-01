@@ -1,10 +1,11 @@
 <?php
-  require ('koneksi.php');
+  require('koneksi.php');
 
   session_start();
 
   //echo "<script>alert('Silahkan Login Terlebih Dahulu!')</script>";
   //echo "<script>location='login.php'</script>"; 
+  include('function/rupiah.php');
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +32,7 @@
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
   
   <!-- Template Main CSS File -->
   <link rel="stylesheet" href="assets/css/index.css">

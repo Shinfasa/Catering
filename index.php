@@ -137,9 +137,9 @@
             </div>
             <br>
             <h4><a href="product_detail.php"><?php echo $d['nama_menu']; ?></a></h4>
-            <h5 class="text-secondary" style="font-family: 'Open Sans', sans-serif;">Rp <?php echo $d['harga']; ?></h5>
+            <h5 class="text-secondary" style="font-family: 'Open Sans', sans-serif;"><?php echo rupiah($d['harga']); ?></h5>
           <div>
-          <a href="check_out.php"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</button></a>
+          <a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</button></a>
           <button class="btn m-2" style="background-color: #E8853D;">
             <a href="cart.php" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
           </button>
