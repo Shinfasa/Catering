@@ -86,7 +86,7 @@
   
       <a href="#" class="js-search-open p-0" style="font-size: 15px;"><span class="bi-search"></span></a>
 
-      <a href="#" class="p-3" style="font-size: 20px;"><span class="bi-cart2"></span></a>
+      <a href="cart.php" class="p-3" style="font-size: 20px;"><span class="bi-cart2"></span></a>
 
       <a href="#" class="p-3 text-secondary" style="font-size: 15px;">Username<span class="bi-person-circle p-2" style="font-size: 20px;"></span></a>
 
