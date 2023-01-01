@@ -52,7 +52,7 @@
     </div>
   
     <nav id="navbar" class="navbar order-last order-lg-0">
-      <ul>
+      <ul class="">
         <li><a class="nav-link scrollto active" href="index.php">Beranda</a></li>
         <li class="dropdown"><a href="#categories"><span>Kategori</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
@@ -67,7 +67,10 @@
         <li class="dropdown"><a href="#search"><span class="bi-search"></span></a>
           <ul>
             <li>
-              <input type="search" class="form-control border-1 small" placeholder="Search for...">
+              <form action="menu.php" method="get">
+                <input type="search" name="search" class="form-control border-1 small" placeholder="Search for...">
+                <a class="btn p-1"><span style="margin-left: 75px;">Cari</span></a>
+              </form>           
             </li>
           </ul>
         </li>
