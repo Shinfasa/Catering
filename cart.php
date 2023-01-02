@@ -30,39 +30,39 @@ switch($aksi){
     //Fungsi untuk menambah penyewaan kedalam cart
     case "tambah_produk":
     $itemArray = array($id_menu=>array('id_menu'=>$id_menu,'nama_menu'=>$nama_menu,'jumlah'=>$jumlah,'harga'=>$harga));
-    if(!empty($_SESSION["keranjang_belanja"])) {
-        if(in_array($data['id_menu'],array_keys($_SESSION["keranjang_belanja"]))) {
-            foreach($_SESSION["keranjang_belanja"] as $k => $v) {
+    if(!empty($_SESSION["keranjang"])) {
+        if(in_array($data['id_menu'],array_keys($_SESSION["keranjang"]))) {
+            foreach($_SESSION["keranjang"] as $k => $v) {
                 if($data['id_menu'] == $k) {
-                    $_SESSION["keranjang_belanja"] = array_merge($_SESSION["keranjang_belanja"],$itemArray);
+                    $_SESSION["keranjang"] = array_merge($_SESSION["keranjang"],$itemArray);
                 }
             }
         } else {
-            $_SESSION["keranjang_belanja"] = array_merge($_SESSION["keranjang_belanja"],$itemArray);
+            $_SESSION["keranjang"] = array_merge($_SESSION["keranjang"],$itemArray);
         }
     } else {
-        $_SESSION["keranjang_belanja"] = $itemArray;
+        $_SESSION["keranjang"] = $itemArray;
     }
     break;
     //Fungsi untuk menghapus item dalam cart
     case "hapus":
 
-    if(!empty($_SESSION["keranjang_belanja"])) {
-        foreach($_SESSION["keranjang_belanja"] as $k => $v) {
+    if(!empty($_SESSION["keranjang"])) {
+        foreach($_SESSION["keranjang"] as $k => $v) {
             if($_GET["id_menu"] == $k)
-                unset($_SESSION["keranjang_belanja"][$k]);
-            if(empty($_SESSION["keranjang_belanja"]))
-                unset($_SESSION["keranjang_belanja"]);
+                unset($_SESSION["keranjang"][$k]);
+            if(empty($_SESSION["keranjang"]))
+                unset($_SESSION["keranjang"]);
         }
     }
     break;
 
     case "update":
     $itemArray = array($id_menu=>array('id_menu'=>$id_menu,'nama_menu'=>$nama_menu,'jumlah'=>$jumlah,'harga'=>$harga));
-    if(!empty($_SESSION["keranjang_belanja"])) {
-        foreach($_SESSION["keranjang_belanja"] as $k => $v) {
+    if(!empty($_SESSION["keranjang"])) {
+        foreach($_SESSION["keranjang"] as $k => $v) {
             if($_GET["id_menu"] == $k)
-                $_SESSION["keranjang_belanja"] = array_merge($_SESSION["keranjang_belanja"],$itemArray);
+                $_SESSION["keranjang"] = array_merge($_SESSION["keranjang"],$itemArray);
         }
     }
     break;
@@ -104,15 +104,15 @@ switch($aksi){
                         $total=0;
                         $total_berat=0;
 
-                        if(!empty($_SESSION["keranjang_belanja"])):
-                            foreach ($_SESSION["keranjang_belanja"] as $item):
+                        if(!empty($_SESSION["keranjang"])):
+                            foreach ($_SESSION["keranjang"] as $item):
                                 $no++;
                                 $sub_total = $item["jumlah"]*$item['harga'];
                                 $total+=$sub_total;
                                 ?>
                                 <input type="hidden" name="id_menu[]" value="<?php echo $item["id_menu"]; ?>"/>
                                 <tr>
-                                    <td class="text-center"><td><?php echo $no; ?></td></td>
+                                    <td class="text-center"><?php echo $no; ?></td>
                                     <td class="text-center">
                                         <?php echo $item['nama_menu']; ?>
                                     </td>
