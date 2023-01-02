@@ -7,10 +7,10 @@
       
       <div class="row">
 
-        <div class="col-lg-4 col-md-6 footer-newsletter">
+        <div class="col-lg-4 col-md-6 footer-newsletter" style="margin-right: 50px;">
           <a href="index.html"><img src="assets/img/logo/logo.png" alt="" class="img-fluid" style="width: 150px;"></a>
           <br><br>
-          <p>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</p>
+          <p style="text-align: justify;">WM Hana Asri merupakan salah satu warung makan yang dibangun pada tahun 2012. Warung makan ini awalnya dibangun untuk membantu mahasiswa yang bertempat tinggal di sekitar wilayah patrang.</p>
         </div>
   
         <div class="col-lg-2 col-md-4 footer-links">
