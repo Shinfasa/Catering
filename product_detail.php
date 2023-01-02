@@ -52,10 +52,10 @@ $detail = mysqli_fetch_array($result);
     </div>
 
     <div class="row mt-1" style="margin-top: 30px;">
-        <div class="col-lg-5 col-md-12 col-12">
-            <img class="img-fluid pt-2" style="margin-left: 150px;" width="250px" src="assets/img/menu/<?php echo $detail['gambar']; ?>" id="maining" alt="">
-        </div>
-        <div class="col-lg-6 col-md-12 col-12">
+        <div class="col-lg-4 col-md-12 col-12 text-center pb-3">
+            <img class="img-responsive pt-2" width="250px" src="assets/img/menu/<?php echo $detail['gambar']; ?>" id="maining" alt="">
+        </div>        
+        <div class="col-lg-8 col-md-12 col-12">
             <h3><b><?php echo $detail['nama_menu']; ?></b></h3>
             <p style="font-size: 20px;"><?php echo rupiah($detail['harga']); ?></p>
             <input type="number" value="1">
