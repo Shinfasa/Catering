@@ -52,23 +52,12 @@ $detail = mysqli_fetch_array($result);
             </div>
             <div class="col-lg-6 col-md-12 col-12">
                 <h1 class="py-2" style="font-size: 28px;"><b><?php echo $detail['nama_menu']; ?></b></h1>
-                    <h2 class="py-3" style="font-size: 23px;"><?php echo $detail['harga']; ?></h2>
-                    <input type="number" value="1">
-                    <button class="buy-btn"><a href="#" class="p-3" style="font-size: 20px;"><span class="bi-cart2 text-light" style="font-size: 20px;"></span></a><b>Add to Cart</b></button>
-                    <h4 class="py-3"></h4>
-                    <div class="detail-product-rating mb-2 d-flex">
-                                    <div class="product-rating me-3" style="font-size: 15px;">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <span style="font-size: 15px;">5 / 5</span>
-                    </div>
-                    <h4 class="mt-5 mb-3" style="text-align: justify; font-size: 20px;">Description</h4>
-                    <p style="text-align: justify; font-size:15px;"><?php echo $detail['detail'] ?></p>
-                </div>
+                <h2 class="py-3" style="font-size: 23px;">Rp <?php echo $detail['harga']; ?></h2>
+                <input type="number" value="1">
+                <button class="buy-btn"><a href="#" class="p-3" style="font-size: 20px;"><span class="bi-cart2 text-light" style="font-size: 20px;"></span></a><b>Add to Cart</b></button>
+                <h4 class="py-3"></h4>                
+                <h4 class="mt-5 mb-3" style="text-align: justify; font-size: 20px;">Description</h4>
+                <p style="text-align: justify; font-size:15px;"><?php echo $detail['detail'] ?></p>
             </div>
         </div>
     </section>
