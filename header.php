@@ -91,8 +91,7 @@
         <!-- Nav Item - User Information -->
         <li class="dropdown">
           <a href="#">
-            <img class="img-profile rounded-circle" style="height: 33px;" src="./assets/img/user/<?php echo $gambar; ?>">&nbsp;
-            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $userName; ?></span>
+            <img class="img-profile rounded-circle" style="height: 33px;" src="./assets/img/user/<?php echo $gambar; ?>">&nbsp;<span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $userName; ?></span>
             <i class="bi bi-chevron-down"></i>
           </a>
           <ul>

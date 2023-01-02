@@ -13,7 +13,7 @@
           <p>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</p>
         </div>
   
-        <div class="col-lg-2 col-md-4 footer-links" style="margin-left: 50px;">
+        <div class="col-lg-2 col-md-4 footer-links">
           <h4>Link Terkait</h4>
           <ul class="pt-4">
             <li><i class="bx bx-chevron-right"></i> <a href="index.php">Beranda</a></li>
@@ -56,7 +56,7 @@
 
   <div class="footer p-5 pt-4 pb-3 d-md-flex text-light" style="background-color: #E8853D;">
 
-    <div class="me-md-auto text-center text-md-start" style="margin-left: 80px;">
+    <div class="me-md-auto text-center text-md-start">
       <div class="copyright">
         &copy; 2022 Copyright <strong><span>WM Hana Asri</span></strong>. All Rights Reserved
       </div>
@@ -65,7 +65,7 @@
       </div>
     </div>
       
-    <div class="social-links text-center text-md-right pt-3 pt-md-0" style="margin-right: 80px;">
+    <div class="social-links text-center text-md-right pt-3 pt-md-0">
       <a href="#" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
       <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
       <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>

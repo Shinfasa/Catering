@@ -17,7 +17,7 @@ include 'header.php';
     
     <!-- DataTables -->
     <div class="row">                        
-        <div class="card-body col-8">
+        <div class="card-body align-items-stretch mt-0">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -50,7 +50,7 @@ include 'header.php';
                         <tr>
                             <td class="text-center"><input type="checkbox" name="" id=""></td>
                             <td class="text-center">
-                                <img src="assets/img/menu/<?php echo $d['gambar']; ?>" alt="" height="100px" style="margin-left: 10px; margin-right: 15px; border-radius: 10px;">
+                                <img src="assets/img/menu/<?php echo $d['gambar']; ?>" alt="" height="100px" style="border-radius: 10px;">
                                 <br>
                                 <?php echo $d['nama_menu']; ?></td>
                             <td class="text-center"><?php echo $d['harga']; ?></td>
@@ -65,16 +65,16 @@ include 'header.php';
                 </table>
             </div>
         </div>
-        <div class="card col-md-3" style="margin-left: 30px; border-radius: 0;">
+        <div class="card align-items-stretch mt-0" style="border-radius:0;">
                 <div>
-                    <h5 class="text-center pt-3"><b>Total</b></h5>
+                    <h5 class="text-center pt-3"><b>Total Harga</b></h5>
                     <hr style="padding: 2px; margin: 10px;">
                     <div class="d-flex justify-content-between p-2">
                         <p style="color: #384046;">1 menu</p>
                         <p style="color: #384046;">Rp 50.000</p>
                     </div>
                     <hr style="padding: 2px; margin: 10px;">
-                    <a href="checkout.php" class="btn mb-3" style="margin-left: 120px;">Check Out</a>
+                    <a href="checkout.php" class="btn mb-3">Check Out</a>
                 </div>
             </div>
   </div>
