@@ -12,7 +12,9 @@ $id_kategori = $_GET['id_kategori'];
   <!-- popular section starts  -->
   <section id="menu" class="what-we-do">
     <div class="container">
-
+      <?php 
+if ($id_kategori == 0) {
+       ?>
       <div class="section-title">
         <h2>Menu</h2>
       </div>
@@ -25,8 +27,6 @@ $id_kategori = $_GET['id_kategori'];
 
         $previous = $halaman - 1;
         $next = $halaman + 1;
-        
-        if ($id_kategori == 0) {
 
           $data = mysqli_query($koneksi,"SELECT * FROM menu;");
           $jumlah_data = mysqli_num_rows($data);
@@ -55,12 +55,28 @@ $id_kategori = $_GET['id_kategori'];
             <?php 
           }
         }else{
-          $data = mysqli_query($koneksi,"SELECT * FROM menu WHERE id_kategori='$id_kategori';");
+
+        $batas = 100;
+        $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+        $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
+
+        $previous = $halaman - 1;
+        $next = $halaman + 1;
+
+          $data = mysqli_query($koneksi,"SELECT * FROM menu JOIN kategori ON menu.id_kategori = kategori.id_kategori WHERE menu.id_kategori='$id_kategori';");
           $jumlah_data = mysqli_num_rows($data);
           $total_halaman = ceil($jumlah_data / $batas);
 
-          $data_menu = mysqli_query($koneksi,"SELECT * FROM menu WHERE id_kategori='$id_kategori' LIMIT $halaman_awal, $batas");
+          $data_menu = mysqli_query($koneksi,"SELECT * FROM menu JOIN kategori ON menu.id_kategori = kategori.id_kategori WHERE menu.id_kategori='$id_kategori' LIMIT $halaman_awal, $batas");
           $nomor = $halaman_awal+1;
+          $c = mysqli_fetch_array($data);
+          ?>
+          <div class="section-title">
+        <h2><?php echo $c['nama_kategori'] ?></h2>
+      </div>
+
+      <div class="row">
+          <?php
           while($d = mysqli_fetch_array($data_menu)){
             ?>
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-0" style="margin-bottom: 30px;">
