@@ -146,8 +146,8 @@ if(isset($_GET['id_pembayaran'])){
                               <input type="text" class="form-control form-control-pembayaran" placeholder="Nama Metode Pembayaran" name="txt_metode" value="<?php echo $d['metode_pembayaran']; ?>">
                             </div>
                             <div class="form-group">
-                              <label for="txt_metode">No. Rekening</label>
-                              <input type="text" class="form-control form-control-pembayaran" placeholder="Nama Metode Pembayaran" name="txt_metode" value="<?php echo $d['no_rek']; ?>">
+                              <label for="txt_no">No. Rekening</label>
+                              <input type="text" class="form-control form-control-pembayaran" placeholder="No Rekening" name="txt_no" value="<?php echo $d['no_rek']; ?>">
                             </div> 
                           </div>
                           <div class="modal-footer">

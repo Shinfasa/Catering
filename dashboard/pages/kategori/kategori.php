@@ -1,5 +1,42 @@
 <?php
+//Memanggil Header
 include('../header.php');
+
+//Fungsi Create
+if(isset($_POST['create'])){
+  $nama = ($_POST['txt_nama']);
+  $deskripsi = ($_POST['txt_des']);
+
+  $query=mysqli_query($koneksi,"INSERT INTO kategori VALUES (NULL, '$nama', '$deskripsi')");
+    if($query){
+      echo "<script>alert('Data Ditambahkan')</script>";
+      echo "<script>location='kategori.php'</script>";
+    }
+  }
+
+//Fungsi Update
+if(isset($_POST['update'])){
+  $id = ($_POST['txt_id']);
+  $kategori = ($_POST['txt_nama']);
+  $deskripsi = ($_POST['txt_des']);
+
+  $update=mysqli_query($koneksi,"UPDATE kategori SET nama_kategori='$kategori', deskripsi='$deskripsi' WHERE id_kategori='$id'");
+  if($update){
+    echo "<script>alert('Data di Update')</script>";
+    echo "<script>location='kategori.php'</script>";
+  }
+}
+
+//Fungsi Delete
+if(isset($_GET['id_kategori'])){
+  $id_kategori = $_GET['id_kategori'];
+  $sql = "DELETE FROM kategori WHERE id_kategori='$id_kategori'";
+  $result = mysqli_query($koneksi,$sql);
+  if($result){
+    echo "<script>alert('Data di Delete')</script>";
+    echo "<script>location='kategori.php'</script>";
+  }
+}
 ?>
 <div class="container-fluid py-3">
   <div class="row">
@@ -9,7 +46,7 @@ include('../header.php');
           <div class="d-flex align-items-center mb-3">
             <h6 class="mb-0">Kategori</h6>
             <div class="text-end" style="flex: 0 0 auto; width: 93%;">
-              <a href="add_kategori.php" class="btn btn-outline-primary btn-xs mb-0"><i class="uil uil-plus" style="font-size: 15px;"></i></a>
+              <button class="btn btn-outline-primary btn-xs mb-0" data-bs-toggle="modal" data-bs-target="#exampleModalCreate"><i class="uil uil-plus" style="font-size: 15px;"></i></button>
             </div>
           </div>
         </div>
@@ -39,6 +76,8 @@ include('../header.php');
 
                 $data_pegawai = mysqli_query($koneksi,"SELECT * FROM kategori LIMIT $halaman_awal, $batas");
                 $nomor = $halaman_awal+1;
+
+                //Menampilkan List
                 while($d = mysqli_fetch_array($data_pegawai)){
                   ?>
                   <tr>
@@ -46,23 +85,91 @@ include('../header.php');
                     <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['nama_kategori']; ?></h6></td>
                     <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['deskripsi']; ?></h6></td>
                     <td class="align-middle text-center">
-                      <a href="edit_kategori.php?id_kategori=<?php echo $d['id_kategori'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit kategori">
+                      <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit kategori" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['id_kategori'] ?>">
                         Edit
                       </a>
                       &nbsp;
-                      <a onclick="return confirm('Anda Yakin Ingin Menghapus Data Kategori')" href="hapus_kategori.php?id_kategori=<?php echo $d['id_kategori'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit kategori">
+                      <a onclick="return confirm('Anda Yakin Ingin Menghapus Data Kategori')" href="kategori.php?id_kategori=<?php echo $d['id_kategori'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit kategori">
                         Delete
                       </a>
                     </td>
                   </tr>
+
+                  <!-- Modal Create -->
+                  <div class="modal fade" id="exampleModalCreate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Create Kategori</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="kategori.php" method="POST" class="kategori">
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <input type="hidden" name="txt_id" value="">
+                            </div>
+                            <div class="form-group">
+                              <label for="txt_nama">Nama Kategori</label>
+                              <input type="text" class="form-control form-control-kategori" placeholder="Nama Kategori" name="txt_nama" value="">
+                            </div>
+                            <div class="form-group">
+                              <label for="txt_des">Deskripsi</label>
+                              <input type="text" class="form-control form-control-kategori" placeholder="Deskripsi" name="txt_des" value="">
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" name="create" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Modal Create -->
+
+                  <!-- Modal Edit -->
+                  <div class="modal fade" id="exampleModalEdit<?php echo $d['id_kategori'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Kategori</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="kategori.php" method="POST" class="kategori">
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <input type="hidden" name="txt_id" value="<?php echo $d['id_kategori']; ?>">
+                            </div>
+                            <div class="form-group">
+                              <label for="txt_nama">Nama Kategori</label>
+                              <input type="nama_kategori" class="form-control form-control-kategori"  placeholder="Nama Kategori" name="txt_nama" value="<?php echo $d['nama_kategori']; ?>">
+                            </div>
+                            <div class="form-group">
+                              <label for="txt_des">Deskripsi</label>
+                              <input type="deskripsi" class="form-control form-control-kategori" placeholder="Deskripsi" name="txt_des" value="<?php echo $d['deskripsi']; ?>">
+                            </div>      
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" name="update" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- End Modal Edit -->
                   <?php
                 }
+                //End Menampilkan List
                 ?>
+                
               </tbody>
             </table>
             
           </div>
           <br>
+
+          <!-- Pagination -->
               <nav>
                   <ul class="pagination justify-content-center">
                     <li class="page-item">
@@ -85,6 +192,8 @@ include('../header.php');
     </div>
   </div>
 </div>
+
 <?php
+//Memanggil Footer8
 include('../footer.php');
 ?>
