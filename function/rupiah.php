@@ -8,6 +8,4 @@ function rupiah($angka){
 	return $hasil_rupiah;
  
 }
- 
-echo rupiah(1000000);
 ?>
