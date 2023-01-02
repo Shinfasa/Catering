@@ -94,7 +94,7 @@ switch($aksi){
                             <th class="text-center" style="color: #384046;">Harga</th>
                             <th class="text-center" style="color: #384046;">Qty</th>
                             <th class="text-center" style="color: #384046;">Total Harga</th>
-                            <th class="text-center" style="color: #384046;">Aksi</th>
+                            <th class="text-center" style="color: #384046;">Action</th>
                         </tr>
                     </thead>                                    
                     <tbody> 
