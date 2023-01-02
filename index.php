@@ -141,7 +141,7 @@
           <div>
           <a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</button></a>
           <button class="btn m-2" style="background-color: #E8853D;">
-            <a href="cart.php" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
+            <a href="cart.php?id_menu=<?php echo $d['id_menu'];?>&aksi=tambah_produk&jumlah=1" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
           </button>
         </div>
       </div>
