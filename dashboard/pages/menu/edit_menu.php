@@ -50,15 +50,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="txt_nama">Nama Menu</label>
-                                        <input type="nama_menu" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_nama" value="<?php echo $u['nama_menu']; ?>">
+                                        <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_nama" value="<?php echo $u['nama_menu']; ?>">
                                     </div> 
                                     <div class="form-group">
                                         <label for="txt_harga">Harga Menu</label>
-                                        <input type="harga" class="form-control form-control-menu" placeholder="Harga Menu" name="txt_harga" value="<?php echo $u['harga']; ?>">
+                                        <input type="number" class="form-control form-control-menu" placeholder="Harga Menu" name="txt_harga" value="<?php echo $u['harga']; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="txt_detail">Detail Menu</label>
-                                        <input type="detail" class="form-control form-control-menu" placeholder="Detail Menu" name="txt_detail" value="<?php echo $u['detail']; ?>">
+                                        <textarea class="form-control form-control-menu" name="txt_detail" placeholder="Detail Menu"><?php echo $u['detail']; ?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="txt_gambar">Gambar Menu</label>

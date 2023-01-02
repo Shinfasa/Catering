@@ -47,7 +47,7 @@ $u = mysqli_fetch_array($result);
     <div class="container-fluid py-3">
       <div class="row">
         <div class="col-auto">
-          <div class="card" style="height:66vh; max-height: 680px;">
+          <div class="card" style="height:68vh; max-height: 680px;">
             <div class="card-header pb-0">
               <div class="d-flex align-items-center">
                 <p class="mb-0">Edit Profile</p>
