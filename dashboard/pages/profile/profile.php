@@ -15,7 +15,7 @@ if(isset($_POST['update'])){
     unlink();
     if($update){
       echo "<script>alert('Data di Update')</script>";
-      echo "<script>location='user.php'</script>";
+      echo "<script>location='user/user.php'</script>";
     }
   }
 }

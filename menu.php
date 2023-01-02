@@ -42,10 +42,10 @@ $id_kategori = $_GET['id_kategori'];
                 <img src="assets/img/menu/<?php echo $d['gambar']; ?>" alt="" width="300px" height="250px" style="border-radius: 20px;">
               </div>
               <br>
-              <h4><a href="product_detail.php"><?php echo $d['nama_menu']; ?></a></h4>
+              <h4><a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><?php echo $d['nama_menu']; ?></a></h4>
               <h5 class="text-secondary" style="font-family: 'Open Sans', sans-serif;"><?php echo rupiah($d['harga']); ?></h5>
               <div>
-                <a href="product_detail.php"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</button></a>
+                <a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</button></a>
                 <button class="btn m-2" style="background-color: #E8853D;">
                   <a href="cart.php" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
                 </button>
@@ -73,7 +73,7 @@ $id_kategori = $_GET['id_kategori'];
         ?>
 
         <div class="section-title">
-          <h2><?php echo $c['nama_kategori'] ?></h2>
+          <h2>Kategori <?php echo $c['nama_kategori'] ?></h2>
         </div>
         <div class="row">
 
@@ -87,10 +87,10 @@ $id_kategori = $_GET['id_kategori'];
                   <img src="assets/img/menu/<?php echo $d['gambar']; ?>" alt="" width="300px" height="250px" style="border-radius: 20px;">
                 </div>
                 <br>
-                <h4><a href="product_detail.php"><?php echo $d['nama_menu']; ?></a></h4>
+                <h4><a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><?php echo $d['nama_menu']; ?></a></h4>
                 <h5 class="text-secondary" style="font-family: 'Open Sans', sans-serif;"><?php echo rupiah($d['harga']); ?></h5>
                 <div>
-                  <a href="product_detail.php"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</button></a>
+                  <a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</button></a>
                   <button class="btn m-2" style="background-color: #E8853D;">
                     <a href="cart.php" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
                   </button>
