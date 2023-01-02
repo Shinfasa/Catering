@@ -1,8 +1,8 @@
 <?php 
 require ('../../../koneksi.php');
 
-$id_user = $_GET['id_user'];
-$sql = "DELETE FROM user WHERE id_user='$id_user'";
+$id_car = $_GET['id_car'];
+$sql = "DELETE FROM carousel WHERE id_car='$id_car'";
 $result = mysqli_query($koneksi,$sql);
-header("location:user.php");
+header("location:iklan.php");
 ?>

@@ -1,5 +1,33 @@
 <?php
+//Memanggil Header  
 include('../header.php')
+
+//Fungsi Update
+if(isset($_POST['update'])){
+  $id = ($_POST['txt_id']);
+  $oldfile = $_POST['old'];
+  $file = $_FILES['txt_gambar']['name'];
+  if($file!="") {
+    move_uploaded_file($_FILES['txt_gambar']['tmp_name'], "../../../assets/img/iklan/".basename($_FILES['txt_gambar']['name']));
+    $update=mysqli_query($koneksi,"UPDATE use carousel SET gambar='$file' WHERE id_car='$id'"); 
+    unlink();
+    if($update){
+      echo "<script>alert('Data di Update')</script>";
+      echo "<script>location='iklan.php'</script>";
+    }
+  }
+}
+
+//Fungsi Delete
+if(isset($_GET['id_car'])){
+  $id_car = $_GET['id_car'];
+  $sql = "DELETE FROM carousel WHERE id_car='$id_car'";
+  $result = mysqli_query($koneksi,$sql);
+  if($result){
+    echo "<script>alert('Data di Delete')</script>";
+    echo "<script>location='iklan.php'</script>";
+  }
+}
 ?>
 <div class="container-fluid py-3">
   <div class="row">
@@ -38,6 +66,8 @@ include('../header.php')
                 
                 $data_pegawai = mysqli_query($koneksi,"SELECT * FROM carousel LIMIT $halaman_awal, $batas");
                 $nomor = $halaman_awal+1;
+
+                //Menampilkan List
                 while($d = mysqli_fetch_array($data_pegawai)){
                   ?>
                   <tr>
@@ -48,22 +78,55 @@ include('../header.php')
                           <img src="../../../assets/img/iklan/<?php echo $d['gambar']; ?>" class="avatar avatar-xxl me-3">
                         </div></td>
                         <td class="align-middle text-center">
-                          <a href="edit_user.php?id_user=<?php echo $d['id_car'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Iklan">
                             Edit
                           </a>
                           &nbsp;
-                          <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="hapus_user.php?id_user=<?php echo $d['id_car'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete user">
+                          <a onclick="return confirm('Anda Yakin Ingin Menghapus Data Iklan')" href="iklan.php?id_car=<?php echo $d['id_car'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete Iklan">
                             Delete
                           </a>
                         </td>
                       </tr>
+
+                      <!-- Modal Edit -->
+                      <div class="modal fade" id="exampleModalEdit<?php echo $d['id_car'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Iklan</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form action="pembayaran.php" method="POST" class="pembayaran">
+                              <div class="modal-body">
+                                <div class="form-group">
+                                  <input type="hidden" name="txt_id" value="<?php echo $d['id_car']; ?>">
+                                </div>
+                                <div class="form-group">
+                                  <label for="txt_gambar">Gambar</label>
+                                  <input type="file" class="form-control form-control-pembayaran" placeholder="Gambar" name="txt_gambar" value="<?php echo $d['gambar']; ?>">
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" name="update" class="btn btn-primary">Save changes</button>
+                              </div>
+                            </form>
+                          </div>
+                    <   /div>
+                      </div>
+
+                      <!-- End Modal Edit -->
                       <?php
                     }
+                    //End Menampilkan List
                     ?>
+                
                   </tbody>
                 </table>
               </div>
               <br>
+
+              <!-- Pagination -->
               <nav>
                 <ul class="pagination justify-content-center">
                   <li class="page-item">

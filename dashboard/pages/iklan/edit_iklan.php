@@ -3,20 +3,17 @@ include('../header.php');
 
 if(isset($_POST['update'])){
   $id = ($_POST['txt_id']);
-  $user = ($_POST['txt_nama']);
-  $alamat = ($_POST['txt_alamat']);
-  $nohp = ($_POST['txt_nohp']);
-  $password = ($_POST['txt_pass']);
+  $gambar = ($_POST['txt_gambar']);
 
-  $update=mysqli_query($koneksi,"UPDATE user SET nama_user='$user', alamat='$alamat', nohp='$nohp', password='$password' WHERE id_user='$id'");
+  $update=mysqli_query($koneksi,"UPDATE iklan SET gambar='$gambar' WHERE id_car='$id'");
   if($update){
     echo "<script>alert('Data di Update')</script>";
-    echo "<script>location='user.php'</script>";
+    echo "<script>location='iklan.php'</script>";
   }
 }
 
-$id_user = $_GET['id_user'];
-$query = "SELECT * FROM user WHERE id_user = '$id_user'";
+$id_car = $_GET['id_car'];
+$query = "SELECT * FROM carousel WHERE id_car = '$id_car'";
 $result = mysqli_query($koneksi, $query);
 $u = mysqli_fetch_array($result);
 
@@ -34,26 +31,10 @@ $u = mysqli_fetch_array($result);
             <div class="form-group">
               <input type="hidden" name="txt_id" value="">
             </div>
-            <input type="text" class="text-center" hidden name="txt_id" value="<?php echo $u['id_user']; ?>">
+            <input type="text" class="text-center" hidden name="txt_id" value="<?php echo $u['id_car']; ?>">
             <div class="form-group">
-              <label for="txt_email">Email</label>
-              <input type="email" class="form-control form-control-user"  placeholder="Email" name="txt_email" value="<?php echo $u['email']; ?>" readonly>
-            </div>
-            <div class="form-group">
-              <label for="txt_nama">Nama Lengkap</label>
-              <input type="text" class="form-control form-control-user" placeholder="Nama Lengkap" name="txt_nama" value="<?php echo $u['nama_user']; ?>">
-            </div>
-            <div class="form-group">
-              <label for="txt_alamat">Alamat</label>
-              <input type="text" class="form-control form-control-user" placeholder="Alamat" name="txt_alamat" value="<?php echo $u['alamat']; ?>">
-            </div>
-            <div class="form-group">
-              <label for="txt_nohp">No. Handphone</label>
-              <input type="number" class="form-control form-control-user" placeholder="No. Handphone" name="txt_nohp" value="<?php echo $u['nohp']; ?>">
-            </div>
-            <div class="form-group">
-              <label for="txt_pass">Password</label>
-              <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="<?php echo $u['password']; ?>">
+              <label for="txt_gambar">Gambar</label>
+              <input type="file" class="form-control form-control-user"  placeholder="Email" name="txt_email" value="<?php echo $u['gambar']; ?>">
             </div>
             <button type="submit" name="update" class="btn btn-user btn-block text-light" style="background-color: #E8853D;"><b>Update</b></button>
             <button class="btn btn-light btn-user btn-block"><a href="user.php">Kembali</button>
