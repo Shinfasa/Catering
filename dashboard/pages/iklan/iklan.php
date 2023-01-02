@@ -1,6 +1,6 @@
 <?php
 //Memanggil Header  
-include('../header.php')
+include('../header.php');
 
 //Fungsi Update
 if(isset($_POST['update'])){
