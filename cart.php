@@ -94,7 +94,7 @@ switch($aksi){
                             <th class="text-center" style="color: #384046;">Harga</th>
                             <th class="text-center" style="color: #384046;">Qty</th>
                             <th class="text-center" style="color: #384046;">Total Harga</th>
-                            <th class="text-center" style="color: #384046;">Aksi</th>
+                            <th class="text-center" style="color: #384046;">ACtion</th>
                         </tr>
                     </thead>                                    
                     <tbody> 
@@ -112,7 +112,7 @@ switch($aksi){
                                 ?>
                                 <input type="hidden" name="id_menu[]" value="<?php echo $item["id_menu"]; ?>"/>
                                 <tr>
-                                    <td class="text-center"><td><?php echo $no; ?></td></td>
+                                    <td class="text-center"><?php echo $no; ?></td>
                                     <td class="text-center">
                                         <?php echo $item['nama_menu']; ?>
                                     </td>
