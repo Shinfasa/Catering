@@ -133,7 +133,7 @@
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-0" style="margin-bottom: 30px;">
           <div class="card icon-box" style="border-radius: 20px;">
             <div class="img">
-              <img src="assets/img/menu/<?php echo $d['gambar']; ?>" alt="" width="300px" height="250px" style="margin-left: 10px; margin-right: 15px; border-radius: 20px;">
+              <img src="assets/img/menu/<?php echo $d['gambar']; ?>" alt="" width="300px" height="250px" style="border-radius: 20px;">
             </div>
             <br>
             <h4><a href="product_detail.php"><?php echo $d['nama_menu']; ?></a></h4>
