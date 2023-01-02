@@ -10,7 +10,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -32,7 +32,6 @@
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
   
   <!-- Template Main CSS File -->
   <link rel="stylesheet" href="assets/css/index.css">
