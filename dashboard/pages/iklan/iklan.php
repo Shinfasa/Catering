@@ -9,7 +9,7 @@ include('../header.php')
           <div class="d-flex align-items-center mb-3">
             <h6 class="mb-0">Iklan</h6>
             <div class="text-end" style="flex: 0 0 auto; width: 96%;">
-              <a href="add_user.php" class="btn btn-outline-primary btn-xs mb-0"><i class="uil uil-plus" style="font-size: 15px;"></i></a>
+              <button class="btn btn-outline-primary btn-xs mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="uil uil-plus" style="font-size: 15px;"></i></button>
             </div>
           </div>
         </div>
@@ -86,6 +86,25 @@ include('../header.php')
         </div>
       </div>
     </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
     <?php
     include('../footer.php')
   ?>
