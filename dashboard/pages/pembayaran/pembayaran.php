@@ -1,6 +1,8 @@
 <?php
+//Memanggil Header
 include('../header.php');
 
+//Fungsi Create
 if(isset($_POST['create'])){
   $pembayaran = ($_POST['txt_metode']);
   $no = ($_POST['txt_no']);
@@ -12,6 +14,7 @@ if(isset($_POST['create'])){
   }
 }
 
+//Fungsi Update
 if(isset($_POST['update'])){
   $id = ($_POST['txt_id']);
   $pembayaran = ($_POST['txt_metode']);
@@ -23,16 +26,19 @@ if(isset($_POST['update'])){
     echo "<script>location='pembayaran.php'</script>";
   }
 }
+
+//Fungsi Delete
 if(isset($_GET['id_pembayaran'])){
-$id_pembayaran = $_GET['id_pembayaran'];
-$sql = "DELETE FROM pembayaran WHERE id_pembayaran='$id_pembayaran'";
-$result = mysqli_query($koneksi,$sql);
-if($result){
+  $id_pembayaran = $_GET['id_pembayaran'];
+  $sql = "DELETE FROM pembayaran WHERE id_pembayaran='$id_pembayaran'";
+  $result = mysqli_query($koneksi,$sql);
+  if($result){
     echo "<script>alert('Data di Delete')</script>";
     echo "<script>location='pembayaran.php'</script>";
-}
+  }
 }
 ?>
+
 <div class="container-fluid py-3">
   <div class="row">
     <div class="col-12">
@@ -71,6 +77,8 @@ if($result){
 
                 $data_pegawai = mysqli_query($koneksi,"SELECT * FROM pembayaran LIMIT $halaman_awal, $batas");
                 $nomor = $halaman_awal+1;
+
+                //Menampilkan List
                 while($d = mysqli_fetch_array($data_pegawai)){
                   ?>
                   <tr>
@@ -87,7 +95,8 @@ if($result){
                       </a>
                     </td>
                   </tr>
-                  <!-- Modal -->
+
+                  <!-- Modal Create -->
                   <div class="modal fade" id="exampleModalCreate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -117,8 +126,9 @@ if($result){
                       </div>
                     </div>
                   </div>
+                  <!-- End Modal Create -->
 
-                  <!-- Modal -->
+                  <!-- Modal Edit -->
                   <div class="modal fade" id="exampleModalEdit<?php echo $d['id_pembayaran'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -148,14 +158,19 @@ if($result){
                       </div>
                     </div>
                   </div>
+
+                  <!-- End Modal Edit -->
                   <?php
                 }
+                //End Menampilkan List
                 ?>
+                
               </tbody>
             </table>
-
           </div>
           <br>
+
+          <!-- Pagination -->
           <nav>
             <ul class="pagination justify-content-center">
               <li class="page-item">
@@ -180,5 +195,6 @@ if($result){
 </div>
 
 <?php
+//Memanggil Footer
 include('../footer.php')
 ?>
