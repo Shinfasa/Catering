@@ -1,10 +1,24 @@
 <?php
   include('header.php');
 
-  session_start();
-
-  
-
+  if(isset($_POST['update'])){
+  $id = ($_POST['txt_id']);
+  $user = ($_POST['txt_nama']);
+  $alamat = ($_POST['txt_alamat']);
+  $nohp = ($_POST['txt_nohp']);
+  $password = ($_POST['txt_pass']);
+  $oldfile = $_POST['old'];
+  $file = $_FILES['txt_gambar']['name'];
+  if($file!="") {
+    move_uploaded_file($_FILES['txt_gambar']['tmp_name'], "assets/img/user/".basename($_FILES['txt_gambar']['name']));
+    $update=mysqli_query($koneksi,"UPDATE user SET nama_user='$user', alamat='$alamat', nohp='$nohp', password='$password', gambar='$file' WHERE id_user='$idUser'"); 
+    unlink();
+    if($update){
+      echo "<script>alert('Data di Update')</script>";
+      echo "<script>location='user.php'</script>";
+    }
+  }
+}
 ?>
 
 <br>
@@ -29,38 +43,39 @@
             <form action="" method="POST" class="user">
               <?php 
                 $data_user = mysqli_query($koneksi,"SELECT * FROM user WHERE id_user='$idUser'");                
-                if($p = mysqli_fetch_array($data_user)){
+                if($u = mysqli_fetch_array($data_user)){
               ?>
               <div class="form-group pb-3 text-center">
-                <img class="img-account-profile rounded-circle m-4" width="150px" src="assets/img/user/<?php echo $p['gambar']; ?>">
-                <br>
-                <input type="file" src="" alt="" class="form-control form-control-user" style="width: 300px;margin-left:400px;">
-                <br>
-                <button type="submit" name="submit" class="btn btn-user btn-block" style="color: #E8853D;"><b>Ubah Profil</b></button>
+                <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="assets/img/user/<?php echo $u['gambar']; ?>">                
               </div>
               <div class="form-group pb-3">
-                <label for="txt_nama">Email</label>
-                <input type="text" class="form-control form-control-user" placeholder="Email@gmail.com" name="txt_nama" value="<?php echo $p['email']; ?>" readonly>
+                <label for="txt_gambar">Foto Profil</label>
+                <input type="file" class="form-control form-control-user" name="txt_gambar">
+                <input type="hidden" name="old" value="<?php echo $u['gambar']; ?>">
               </div> 
               <div class="form-group pb-3">
-                <label for="txt_harga">Username</label>
-                <input type="text" class="form-control form-control-user" placeholder="Username" name="txt_harga" value="<?php echo $p['nama_user']; ?>">
+                <label for="txt_email">Email</label>
+                <input type="email" class="form-control form-control-user"  placeholder="Email" name="txt_email" value="<?php echo $u['email']; ?>">
+              </div> 
+              <div class="form-group pb-3">
+                <label for="txt_nama">Nama Lengkap</label>
+                <input type="text" class="form-control form-control-user" placeholder="Nama Lengkap" name="txt_nama" value="<?php echo $u['nama_user']; ?>">
               </div>
               <div class="form-group pb-3">
-                <label for="txt_detail">Alamat</label>
-                <input type="text" class="form-control form-control-user" placeholder="Alamat" name="txt_detail" value="<?php echo $p['alamat']; ?>">
+                <label for="txt_alamat">Alamat</label>
+                <input type="text" class="form-control form-control-user" placeholder="Alamat" name="txt_alamat" value="<?php echo $u['alamat']; ?>">
               </div>
               <div class="form-group pb-3">
-                <label for="txt_gambar">No. Handphone</label>
-                <input type="text" class="form-control form-control-user" placeholder="628*****" name="txt_gambar" value="<?php echo $p['nohp']; ?>">
+                <label for="txt_nohp">No. Handphone</label>
+                <input type="number" class="form-control form-control-user" placeholder="No. Handphone" name="txt_nohp" value="<?php echo $u['nohp']; ?>">
               </div>
               <div class="form-group pb-3">
-                <label for="txt_gambar">Password</label>
-                <input type="password" class="form-control form-control-user" placeholder="***" name="txt_gambar" value="<?php echo $p['password']; ?>" id="myInput">
+                <label for="txt_pass">Password</label>
+                <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="<?php echo $u['password']; ?>" id="myInput">
                 <input type="checkbox" onclick="myFunction()" style="margin-left: 10px; margin-top: 10px;"><span style="font-size: 14px; margin-left: 10px;">Show Password</span>
               </div>
-              <button type="submit" name="submit" class="btn btn-user btn-block text-light" style="background-color: #E8853D;"><b>Update</b></button>
-              <button type="submit" name="submit" class="btn btn-user btn-block" style="color: #E8853D;"><b>Kembali</b></button>
+              <button type="submit" name="update" class="btn btn-user btn-block text-light" style="background-color: #E8853D;"><b>Update</b></button>
+              <button class="btn btn-user btn-block" style="color: #E8853D;"><a href="index.php"><b>Kembali</b></a></button>
               <?php
                 }
               ?>                                         
