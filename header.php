@@ -58,12 +58,12 @@
         <li><a class="nav-link scrollto active" href="index.php">Beranda</a></li>
         <li class="dropdown"><a href="#categories"><span>Kategori</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
-            <li><a href="categories.php?id_kategori=1">Harian</a></li>
-            <li><a href="categories.php?id_kategori=2">Prasmanan</a></li>
-            <li><a href="categories.php?id_kategori=3">Kotakan</a></li>
+            <li><a href="menu.php?id_kategori=1">Harian</a></li>
+            <li><a href="menu.php?id_kategori=2">Prasmanan</a></li>
+            <li><a href="menu.php?id_kategori=3">Kotakan</a></li>
           </ul>
         </li>
-        <li><a class="nav-link scrollto" href="menu.php">Menu</a></li>
+        <li><a class="nav-link scrollto" href="menu.php?id_kategori=0">Menu</a></li>
         <li><a class="nav-link scrollto" href="order.php">Pesanan Saya</a></li>
         <li><a class="nav-link scrollto" href="faq.php">FAQ</a></li>
         <li class="dropdown"><a href="#search"><span class="bi-search"></span></a>
