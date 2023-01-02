@@ -16,7 +16,7 @@
   <div class="carousel-inner">
     <div class="carousel-item active" style="height: 600px;">
       <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-        <rect width="100%" height="100%" fill="#FFDA72" />
+        <rect width="100%" height="100%" fill="#FFDA72">
       </svg>
       <div class="container">
         <div class="carousel-caption text-start">
@@ -26,7 +26,6 @@
         </div>
       </div>
     </div>
-        
     <div class="carousel-item" style="height: 600px;">
       <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
         <rect width="100%" height="100%" fill="#FFDA72" />
@@ -140,13 +139,23 @@
             <h5 class="text-secondary" style="font-family: 'Open Sans', sans-serif;"><?php echo rupiah($d['harga']); ?></h5>
           <div>
           <a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</button></a>
+          <?php 
+          if(isset($_SESSION['id'])) {
+          ?>
           <button class="btn m-2" style="background-color: #E8853D;">
             <a href="cart.php?id_menu=<?php echo $d['id_menu'];?>&aksi=tambah_produk&jumlah=1" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
           </button>
         </div>
       </div>
     </div>
-      <?php } ?>        
+      <?php }else{ ?>
+        <button class="btn m-2" style="background-color: #E8853D;">
+            <a onclick="return confirm('Silahkan Login Terlebih Dahulu!')" href="login.php" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
+          </button>
+        </div>
+      </div>
+    </div>
+      <?php }} ?>       
   </div>
 </section>
 <!-- End Section -->

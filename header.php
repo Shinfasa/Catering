@@ -63,6 +63,18 @@
           </ul>
         </li>
         <li><a class="nav-link scrollto" href="menu.php?id_kategori=0">Menu</a></li>
+        
+        <?php  
+          if(isset($_SESSION['id'])) {
+            $idUser   =  $_SESSION['id']    ;
+            $userName =  $_SESSION['name']  ;
+            $userMail =  $_SESSION['email'] ;
+            $userPass =  $_SESSION['pass']  ;
+            $alamat   =  $_SESSION['alamat'];
+            $nohp     =  $_SESSION['nohp']  ;
+            $gambar   =  $_SESSION['gambar'];
+            $akses    =  $_SESSION['akses'] ;
+        ?>
         <li><a class="nav-link scrollto" href="order.php">Pesanan Saya</a></li>
         <li><a class="nav-link scrollto" href="faq.php">FAQ</a></li>
         <li class="dropdown"><a href="#search"><span class="bi-search"></span></a>
@@ -76,17 +88,6 @@
           </ul>
         </li>
         <li><a href="cart.php"><span class="bi-cart3"></span></a></li>
-        <?php  
-          if(isset($_SESSION['id'])) {
-            $idUser   =  $_SESSION['id']    ;
-            $userName =  $_SESSION['name']  ;
-            $userMail =  $_SESSION['email'] ;
-            $userPass =  $_SESSION['pass']  ;
-            $alamat   =  $_SESSION['alamat'];
-            $nohp     =  $_SESSION['nohp']  ;
-            $gambar   =  $_SESSION['gambar'];
-            $akses    =  $_SESSION['akses'] ;
-        ?>
         <!-- Nav Item - User Information -->
         <li class="dropdown">
           <a href="#">
@@ -99,6 +100,18 @@
           </ul>
         </li>
       <?php }else{ ?>
+        <li><a class="nav-link scrollto" href="faq.php">FAQ</a></li>
+        <li class="dropdown"><a href="#search"><span class="bi-search"></span></a>
+          <ul>
+            <li>
+              <form action="menu.php" method="get">
+                <input type="search" name="search" class="form-control border-1 small" placeholder="Search for...">
+                <a class="btn p-1"><span style="margin-left: 75px;">Cari</span></a>
+              </form>           
+            </li>
+          </ul>
+        </li>
+        <li><a href="cart.php"><span class="bi-cart3"></span></a></li>
         <li><a href="login.php"><button action="login.php" class="btn">Log In</button></a></li>
       <?php } ?>
       </ul>
