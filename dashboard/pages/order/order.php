@@ -5,7 +5,7 @@ include('../header.php');
 //Fungsi Update
 if(isset($_POST['update'])){
   $id = ($_POST['txt_id']);
-  $nama = ($POST_['txt_nama']);
+  $nama = ($_POST['txt_nama']);
   $tglpesan = ($_POST['txt_tglpesan']);
   $tglpakai = ($_POST['txt_tglpakai']);
   $nama = ($_POST['txt_menu']);
@@ -143,7 +143,7 @@ $result = mysqli_query($koneksi,$sql);
                                       <input type="number" class="form-control form-control-order" placeholder="Harga Satuan" name="txt_hrgsatuan" value="<?php echo $d['harga_satuan']; ?>" readonly>
                                   </div>
                                   <div class="form-group">
-                                      <label for="txt_jml">Jumlah Pesanan</label>d$d
+                                      <label for="txt_jml">Jumlah Pesanan</label>
                                       <input type="number" class="form-control form-control-order" placeholder="Harga Satuan" name="txt_jml" value="<?php echo $d['jumlah']; ?>" readonly>
                                   </div>
                                   <div class="form-group">
@@ -153,55 +153,14 @@ $result = mysqli_query($koneksi,$sql);
                                   <div class="form-group">
                                       <label for="txt_bayar">Metode Pembayaran</label>
                                       <?php 
-                                          if($d['id_pembayaran'] == 1 ){
+                                          
+                                            $data = mysqli_query($koneksi,"SELECT * FROM pembayaran");
+                                            while($u = mysqli_fetch_array($data)){
                                       ?>
                                       <div style="font-size:15px;">
-                                          <input type="radio" name="txt_bayar" value="1" style="margin-left:20px;" checked disabled>   BRI
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" disabled>  BCA
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" disabled>  Shopee Pay
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" disabled>  Dana
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" disabled>  COD
+                                          <input type="radio" name="txt_bayar" value="<?php echo $u['id_pembayaran'] ?>" style="margin-left:20px;" <?php if($d['id_pembayaran']==$u['id_pembayaran']){ echo "checked";}else{echo "";} ?> disabled>   <?php echo $u['metode_pembayaran']; ?>
                                       </div>
-                                      <?php 
-                                          }elseif($d['id_pembayaran'] == 2){
-                                      ?>
-                                      <div style="font-size:15px;">
-                                          <input type="radio" name="txt_bayar" value="1" style="margin-left:20px;" disabled>   BRI
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" checked disabled>  BCA
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" disabled>  Shopee Pay
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" disabled>  Dana
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" disabled>  COD
-                                      </div>
-                                      <?php
-                                          }elseif($d['id_pembayaran'] == 3){
-                                      ?>
-                                      <div style="font-size:15px;">
-                                          <input type="radio" name="txt_bayar" value="1" style="margin-left:20px;" disabled>   BRI
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" disabled> disabled BCA
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" checked disabled>  Shopee Pay
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" disabled>  Dana
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" disabled>  COD
-                                      </div>
-                                      <?php
-                                          }elseif($d['id_pembayaran'] == 4){
-                                      ?>
-                                      <div style="font-size:15px;">
-                                          <input type="radio" name="txt_bayar" value="1" style="margin-left:20px;" disabled>   BRI
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" disabled>  BCA
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" disabled>  Shopee Pay
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" checked disabled>  Dana
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" disabled>  COD
-                                      </div>
-                                      <?php
-                                          }elseif($d['id_pembayaran'] == 5){
-                                      ?>   
-                                      <div style="font-size:15px;">
-                                          <input type="radio" name="txt_bayar" value="1" style="margin-left:20px;" disabled>   BRI
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" disabled>  BCA
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" disabled>  Shopee Pay
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" disabled>  Dana
-                                          <input type="radio" name="txt_bayar" value="2" style="margin-left: 50px;" checked disabled>  COD
-                                      </div>
+                                  
                                       <?php
                                           }
                                       ?>   

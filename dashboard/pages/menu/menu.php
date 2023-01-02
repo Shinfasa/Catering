@@ -1,10 +1,23 @@
 <?php
-include('../header.php')
+include('../header.php');
+
+if(isset($_POST['create'])){
+  $nama = ($_POST['txt_nama']);
+  $harga = ($_POST['txt_harga']);
+  $detail = ($_POST['txt_detail']);
+  $gambar = ($_POST['txt_gambar']);
+  $kategori = ($_POST['txt_kategori']);
+
+  $query=mysqli_query($koneksi,"INSERT INTO menu VALUES (NULL, '$nama', '$harga', '$detail', '$gambar', '$kategori')");
+  if($query){
+    echo "<script>alert('Data Ditambahkan')</script>";
+    echo "<script>location='menu.php'</script>";
+  }
+}
 ?>
     <div class="container-fluid py-3">
       <div class="row">
         <div class="col-12">
-        <div class="card mb-4">
           <div class="card" style="height:130vh; max-height: 1000px;">
             <div class="card-header pb-0">
               <div class="d-flex align-items-center mb-3">
