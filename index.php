@@ -18,18 +18,11 @@
     $data_iklan = mysqli_query($koneksi,"SELECT * FROM carousel");
         while($i = mysqli_fetch_array($data_iklan)){
     ?>
-    <div class="carousel-item active" style="height: 600px;">
-      <img src="assets/img/iklan/<?php echo $i['gambar']; ?>" alt="" width="100%" height="100%">
+    <div class="carousel-item active" style="height: 650px;">
+      <img src="assets/img/iklan/<?php echo $i['gambar']; ?>" alt="" width="100%" height="100%" style="padding-top: 70px;">
       <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
         <rect width="100%" height="100%" fill="#FFDA72">
       </svg>
-      <div class="container">
-        <div class="carousel-caption text-start">
-          <h1><b>WM Hana Asri</b></h1>
-          <p>Some representative placeholder content for the first slide of the carousel.</p>
-          <p><a class="btn btn-lg" href="#">Sign up today</a></p>
-        </div>
-      </div>
     </div>
 
     
