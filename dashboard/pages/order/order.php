@@ -62,6 +62,7 @@ if(isset($_GET['id_order'])){
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pembayaran</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tgl. Bayar</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status Pesanan</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bukti Pembayaran</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                 </tr>
               </thead>
@@ -97,6 +98,7 @@ if(isset($_GET['id_order'])){
                     <td class="text-center"><?php echo $d['metode_pembayaran']; ?></td>
                     <td class="text-center"><?php echo $d['tgl_bayar']; ?></td>
                     <td class="text-center"><?php echo $d['status_pesanan']; ?></td>
+                    <td class="text-center"><a href="">Lihat</a></td>
                     <td class="align-middle text-center">
                       <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Order" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['id_order'] ?>"> 
                         Edit
@@ -195,6 +197,7 @@ if(isset($_GET['id_order'])){
                                   <input type="radio" name="txt_status" value="Sedang Diproses" style="margin-left: 50px;">  Sedang Diproses
                                   <input type="radio" name="txt_status" value="Selesai" style="margin-left: 50px;" checked>  Selesai
                                 </div>
+
                                 <?php
                               }
                               ?>
