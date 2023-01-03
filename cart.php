@@ -1,32 +1,6 @@
 <?php
 include 'header.php';
   if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
-$user_id = $idUser;
-
-if(isset($_POST['delete'])){
-   $cart_id = $_POST['id_keranjang'];
-   $delete_cart_item = $koneksi->prepare("DELETE FROM `keranjang` WHERE id_keranjang = ?");
-   $delete_cart_item->execute([$cart_id]);
-   $message[] = 'produk di keranjang dihapus!';
-}
-
-if(isset($_POST['delete_all'])){
-   $delete_cart_item = $koneksi->prepare("DELETE FROM `kategori` WHERE id_user = ?");
-   $delete_cart_item->execute([$user_id]);
-   // header('location:cart.php');
-   $message[] = 'dihapus semua produk di keranjang!';
-}
-
-if(isset($_POST['update_qty'])){
-   $cart_id = $_POST['id_keranjang'];
-   $qty = $_POST['qty'];
-   $qty = filter_var($qty, FILTER_SANITIZE_STRING);
-   $update_qty = $koneksi->prepare("UPDATE `keranjang` SET qty = ? WHERE id_keranjang = ?");
-   $update_qty->execute([$qty, $cart_id]);
-   $message[] = 'jumlah produk di keranjang diperbarui';
-}
-
-$grand_total = 0;
 ?>
 
 <br>
@@ -57,16 +31,8 @@ $grand_total = 0;
                             <th class="text-center" style="color: #384046;">Hapus</th>
                         </tr>
                     </thead>                                    
-                    <tbody> 
-                        <?php
-                            $grand_total = 0;
-                            $select_cart = $koneksi->prepare("SELECT * FROM `keranjang` WHERE id_user = ?  ORDER BY id_keranjang DESC");
-                            $select_cart->execute([$user_id]);
-                            if($select_cart->rowCount() > 0){
-                                while($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)){
-                        ?>                        
-                        <tr>
-                            <form action="" method="post" class=""> 
+                    <tbody>                                          
+                        <tr>                           
                             <input type="hidden" name="id_keranjang" value="<?= $fetch_cart['id_keranjang']; ?>">                        
                             <td class="text-center"> <?php echo $no++ ?> </td>
                             <td class="text-center"> 
@@ -80,15 +46,7 @@ $grand_total = 0;
                             </td>  
                             <td class="text-center"> <?php echo rupiah($sub_total = ($fetch_cart['harga'] * $fetch_cart['qty'])); ?></td> 
                             <td class="text-center"><button type="submit" class="bi bi-trash" name="delete" onclick="return confirm('Apakah anda yakin akan menghapus menu ini?')" ></button></td>
-                            </form>
-                        </tr>                        
-                        <?php
-     	                    $grand_total += $sub_total;
-                        }
-                            }else{
-                                echo '<p class="empty">keranjang kosong</p>';
-                            }
-                        ?>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -104,12 +62,6 @@ $grand_total = 0;
                 <hr style="padding: 2px; margin: 10px;">
                 <button type="submit" name="update_qty" class="btn mb-3" style="background-color: #E8853D; color:#fff;">Update</button>
                 <a href="checkout.php" class="btn mb-3 <?= ($grand_total > 1)?'':'disabled'; ?>">Check Out</a>
-            </div>
-            <div class="more-btn">
-                <form action="" method="post">
-                    <button type="submit" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>" name="delete_all" onclick="return confirm('Hapus semua produk dikeranjang?');">Kosongkan</button>
-                </form>
-                <a href="menu.php" class="btn">Lanjut belanja</a>
             </div>
         </div>
     </div>
