@@ -6,6 +6,8 @@
   //echo "<script>alert('Silahkan Login Terlebih Dahulu!')</script>";
   //echo "<script>location='login.php'</script>"; 
   include('function/rupiah.php');
+
+  $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +89,7 @@
             </li>
           </ul>
         </li>
-        <li><a href="cart.php"><span class="bi-cart3"></span></a></li>
+        <li><a href="cart.php"><span class="bi-cart3"><?php echo $num_items_in_cart ?></span></a></li>
         <!-- Nav Item - User Information -->
         <li class="dropdown">
           <a href="#">
