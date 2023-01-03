@@ -1,6 +1,8 @@
 <?php
 include("header.php");
-  if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
+
+if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
+
 $id_kategori = $_GET['id_kategori'];
 
 if(isset($_POST['add_to_cart'])){
@@ -48,7 +50,7 @@ if(isset($_POST['add_to_cart'])){
       <?php 
       if ($id_kategori == 0) {
        ?>
-       <div class="section-title">
+      <div class="section-title">
         <h2>Menu</h2>
       </div>
 
