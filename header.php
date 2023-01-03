@@ -3,8 +3,6 @@
 
   session_start();
 
-  //echo "<script>alert('Silahkan Login Terlebih Dahulu!')</script>";
-  //echo "<script>location='login.php'</script>"; 
   include('function/rupiah.php');
 ?>
 

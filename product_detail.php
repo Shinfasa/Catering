@@ -1,5 +1,6 @@
 <?php 
 include "header.php";
+  if ($_SESSION['akses'] == 2) {
 
 $id_menu = $_GET['id_menu'];
 $query = "SELECT * FROM menu WHERE id_menu = '$id_menu'";
@@ -69,5 +70,10 @@ $detail = mysqli_fetch_array($result);
 </body>
 
 <?php
+}else{
+
+  echo "<script>alert('Anda adalah Admin!')</script>";
+  echo "<script>location='dashboard/'</script>"; 
+}
 include 'footer.php';
 ?>
