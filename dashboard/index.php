@@ -27,9 +27,9 @@ if ($_SESSION['akses'] == 1) {
                     <h5 class="font-weight-bolder">
                       <?php
                       if (empty($pendapatanbln['SUM(total_harga)'])) {
-                        echo "0";
+                        echo rupiah(0);
                       }else{
-                      echo $pendapatanbln['SUM(total_harga)']; 
+                      echo rupiah($pendapatanbln['SUM(total_harga)']); 
                     }
                       ?>
                     </h5>
