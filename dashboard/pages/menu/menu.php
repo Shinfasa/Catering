@@ -213,7 +213,7 @@ if (isset($_GET['id_menu'])) {
                               </div>  
                               <div class="form-group">
                                 <label for="txt_gambar">Gambar Menu</label>
-                                <input type="file" class="form-control form-control-menu" placeholder="Gambar Menu" name="txt_gambar" accept="image/jpg, image/jpeg, image/png">
+                                <input type="file" class="form-control form-control-menu" placeholder="Gambar Menu" name="txt_gambar" accept="image/jpg, image/jpeg, image/png" value="<?php echo $d['gambar']; ?>">
                               </div>
                             </div>
                             <div class="modal-footer">
