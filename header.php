@@ -6,8 +6,6 @@
   //echo "<script>alert('Silahkan Login Terlebih Dahulu!')</script>";
   //echo "<script>location='login.php'</script>"; 
   include('function/rupiah.php');
-
-  $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 ?>
 
 <!DOCTYPE html>
@@ -82,14 +80,17 @@
         <li class="dropdown"><a href="#search"><span class="bi-search"></span></a>
           <ul>
             <li>
-              <form action="menu.php" method="get">
+              <form action="search.php" method="post">
                 <input type="search" name="search" class="form-control border-1 small" placeholder="Search for...">
+                <button type="submit" class="form-control border-1 small" aria-label="Left Align">
                 <a class="btn p-1"><span style="margin-left: 75px;">Cari</span></a>
+                </button>
+                <div class="clearfix"></div>
               </form>           
             </li>
           </ul>
         </li>
-        <li><a href="cart.php"><span class="bi-cart3"><?php echo $num_items_in_cart ?></span></a></li>
+        <li><a href="cart.php"><span class="bi-cart3"></span></a></li>
         <!-- Nav Item - User Information -->
         <li class="dropdown">
           <a href="#">
@@ -103,12 +104,14 @@
         </li>
       <?php }else{ ?>
         <li><a class="nav-link scrollto" href="faq.php">FAQ</a></li>
-        <li class="dropdown"><a href="#search"><span class="bi-search"></span></a>
+        <li class="dropdown"><a href="search.php"><span class="bi-search"></span></a>
           <ul>
             <li>
-              <form action="menu.php" method="get">
+              <form action="search.php" method="post">
                 <input type="search" name="search" class="form-control border-1 small" placeholder="Search for...">
-                <a class="btn p-1"><span style="margin-left: 75px;">Cari</span></a>
+                <button type="submit" class="form-control border-1 small" aria-Label="Left Align">
+                  <a class="btn p-1"><span style="margin-left: 75px;">Cari</span></a>
+                </button>
               </form>           
             </li>
           </ul>
