@@ -2,6 +2,39 @@
 include("header.php");
 
 $id_kategori = $_GET['id_kategori'];
+
+if(isset($_POST['add_to_cart'])){
+
+   if($idUser == ''){
+      header('location:login.php');
+   }else{
+
+      $pid = $_POST['pid'];
+      $pid = filter_var($pid, FILTER_SANITIZE_STRING);
+      $name = $_POST['name'];
+      $name = filter_var($name, FILTER_SANITIZE_STRING);
+      $price = $_POST['price'];
+      $price = filter_var($price, FILTER_SANITIZE_STRING);
+      $image = $_POST['image'];
+      $image = filter_var($image, FILTER_SANITIZE_STRING);
+      $qty = $_POST['qty'];
+      $qty = filter_var($qty, FILTER_SANITIZE_STRING);
+
+      $check_cart_numbers = $conn->prepare("SELECT * FROM `cart` WHERE name = ? AND user_id = ?");
+      $check_cart_numbers->execute([$name, $user_id]);
+
+      if($check_cart_numbers->rowCount() > 0){
+         $message[] = 'sudah ditambakan ke keranjang!';
+      }else{
+         $insert_cart = $conn->prepare("INSERT INTO `cart`(user_id, pid, name, price, quantity, image) VALUES(?,?,?,?,?,?)");
+         $insert_cart->execute([$user_id, $pid, $name, $price, $qty, $image]);
+         $message[] = 'ditambakan ke keranjang!';
+         
+      }
+
+   }
+
+}
 ?>
 
 <br>
@@ -49,8 +82,8 @@ $id_kategori = $_GET['id_kategori'];
                 <?php 
                 if(isset($_SESSION['id'])) {
                   ?>
-                  <button class="btn m-2" style="background-color: #E8853D;">
-                    <a href="cart.php?id_menu=<?php echo $d['id_menu'] ?> & action=add" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
+                  <button class="btn m-2" style="background-color: #E8853D;" type="submit" name="add_to_cart">
+                    <a href="cart.php" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
                   </button>
                 </div>
               </div>
