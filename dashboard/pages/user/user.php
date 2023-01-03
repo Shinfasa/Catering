@@ -225,7 +225,7 @@ if(isset($_GET['id_user'])){
                             </div>
                             <div class="form-group">
                               <label for="gambar">Foto Profil</label>
-                              <input type="file" class="form-control form-control-user" name="txt_gambar" accept="image/jpg, image/jpeg, image/png">
+                              <input type="file" class="form-control form-control-user" name="txt_gambar" accept="image/jpg, image/jpeg, image/png" value="<?php echo $d['gambar']; ?>">
                               <input type="hidden" name="old" value="<?php echo $d['gambar']; ?>">
                             </div>  
                           </div>
