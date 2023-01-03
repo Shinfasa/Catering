@@ -249,22 +249,22 @@ if(isset($_GET['id_user'])){
         </div>
         <br>
           <nav>
-            <ul class="pagination justify-content-center">
-              <li class="page-item">
-                <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$Previous'"; } ?>> <i class="ni ni-bold-left"></i> </a>
-              </li>
-              <?php 
-              for($x=1;$x<=$total_halaman;$x++){
-                ?> 
-                <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
-                <?php
-              }
-              ?>        
-              <li class="page-item">
-                <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>><i class="ni ni-bold-right"></i> </a>
-              </li>
-            </ul>
-          </nav>
+                <ul class="pagination justify-content-center">
+                  <li class="page-item">
+                    <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>> < </a>
+                  </li>
+                  <?php 
+                  for($x=1;$x<=$total_halaman;$x++){
+                    ?> 
+                    <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+                    <?php
+                  }
+                  ?>        
+                  <li class="page-item">
+                    <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>> </a>
+                  </li>
+                </ul>
+              </nav>
       </div>
     </div>
   </div>
