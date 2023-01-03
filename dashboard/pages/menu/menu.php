@@ -23,7 +23,7 @@ if(isset($_POST['create'])){
               <div class="d-flex align-items-center mb-3">
                   <h6 class="mb-0">Menu</h6>
                   <div class="text-end" style="flex: 0 0 auto; width: 96%;">
-                  <a href="add_menu.php" class="btn btn-outline-primary btn-xs mb-0"><i class="uil uil-plus" style="font-size: 15px;"></i></a>
+                  <button class="btn btn-outline-primary btn-xs mb-0" data-bs-toggle="modal" data-bs-target="#exampleModalCreate"><i class="uil uil-plus" style="font-size: 15px;"></i></button>
                   </div>
                 </div>
             </div>

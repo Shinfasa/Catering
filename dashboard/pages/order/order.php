@@ -67,7 +67,7 @@ if(isset($_GET['id_order'])){
               </thead>
               <tbody>
                 <?php 
-                $batas = 8;
+                $batas = 6;
                 $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
                 $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
 
@@ -175,7 +175,7 @@ if(isset($_GET['id_order'])){
                               if($d['status_pesanan'] == "Belum Dibayar" ){
                                 ?>
                                 <div style="font-size:15px;">
-                                  <input type="radio" name="txt_status" value="Belum Dibayar" style="margin-left:20px;">  Belum Dibayar
+                                  <input type="radio" name="txt_status" value="Belum Dibayar" style="margin-left:20px;" checked>  Belum Dibayar
                                   <input type="radio" name="txt_status" value="Sedang Diproses" style="margin-left: 50px;">  Sedang Diproses
                                   <input type="radio" name="txt_status" value="Selesai" style="margin-left: 50px;">  Selesai
                                 </div>
@@ -184,7 +184,7 @@ if(isset($_GET['id_order'])){
                                 ?>
                                 <div style="font-size:15px;">
                                   <input type="radio" name="txt_status" value="Belum Dibayar" style="margin-left:20px;">  Belum Dibayar
-                                  <input type="radio" name="txt_status" value="Sedang Diproses" style="margin-left: 50px;">  Sedang Diproses
+                                  <input type="radio" name="txt_status" value="Sedang Diproses" style="margin-left: 50px;" checked>  Sedang Diproses
                                   <input type="radio" name="txt_status" value="Selesai" style="margin-left: 50px;">  Selesai
                                 </div>
                                 <?php 
@@ -193,7 +193,7 @@ if(isset($_GET['id_order'])){
                                 <div style="font-size:15px;">
                                   <input type="radio" name="txt_status" value="Belum Dibayar" style="margin-left:20px;">  Belum Dibayar
                                   <input type="radio" name="txt_status" value="Sedang Diproses" style="margin-left: 50px;">  Sedang Diproses
-                                  <input type="radio" name="txt_status" value="Selesai" style="margin-left: 50px;">  Selesai
+                                  <input type="radio" name="txt_status" value="Selesai" style="margin-left: 50px;" checked>  Selesai
                                 </div>
                                 <?php
                               }
