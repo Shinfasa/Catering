@@ -67,7 +67,7 @@ if(isset($_GET['id_order'])){
               </thead>
               <tbody>
                 <?php 
-                $batas = 7;
+                $batas = 8;
                 $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
                 $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
 
@@ -218,7 +218,6 @@ if(isset($_GET['id_order'])){
               </table>
             </div>
           </div>
-          <br>
           <!-- Pagination -->
           <nav>
             <ul class="pagination justify-content-center">
