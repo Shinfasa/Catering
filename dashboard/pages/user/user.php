@@ -124,7 +124,7 @@ if(isset($_GET['id_user'])){
                     </td>
                     <td class="text-center"><?php echo $d['email']; ?></td>
                     <td class="text-center"><?php echo $d['password']; ?></td>
-                    <td class="text-center"><?php echo $d['alamat']; ?></td>
+                    <td class="text-center" style="word-wrap: break-word;min-width: 160px; max-width: 160px;white-space:normal;"><?php echo $d['alamat']; ?></td>
                     <td class="text-center"><?php echo $d['nohp']; ?></td>
                     <td class="text-center"><?php echo $d['hak_akses']; ?></td>
                     <td class="align-middle text-center">
@@ -132,7 +132,7 @@ if(isset($_GET['id_user'])){
                         Edit
                       </a>
                       &nbsp;
-                      <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="user.php?id_user=<?php echo $d['id_user']; ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete user">
+                      <a onclick="return confirm('Anda Yakin Ingin Menghapus Data User')" href="user.php?id_user=<?php echo $d['id_user']; ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete user">
                         Delete
                       </a>
                     </td>
@@ -174,7 +174,7 @@ if(isset($_GET['id_user'])){
                             <div class="form-group">
                               <label for="txt_pass">Password</label>
                               <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="" id="myInput" required>
-                              <input type="checkbox" onclick="myFunction()" style="margin-left: 10px; margin-top: 10px;"><span style="font-size: 14px; margin-left: 10px;">Show Password</span>
+                              <input type="checkbox" onclick="myFunctionInput()" style="margin-left: 10px; margin-top: 10px;"><span style="font-size: 14px; margin-left: 10px;">Show Password</span>
                             </div>            
                             <div class="form-group">
                               <label for="gambar">Foto Profil</label>
@@ -220,8 +220,8 @@ if(isset($_GET['id_user'])){
                             </div>
                             <div class="form-group">
                               <label for="txt_pass">Password</label>
-                              <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="<?php echo $d['password']; ?>" id="myInput">
-                              <input type="checkbox" onclick="myFunction()" style="margin-left: 10px; margin-top: 10px;"><span style="font-size: 14px; margin-left: 10px;">Show Password</span>
+                              <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="<?php echo $d['password']; ?>" id="myEdit">
+                              <input type="checkbox" onclick="myFunctionEdit()" style="margin-left: 10px; margin-top: 10px;"><span style="font-size: 14px; margin-left: 10px;">Show Password</span>
                             </div>
                             <div class="form-group">
                               <label for="gambar">Foto Profil</label>
@@ -268,6 +268,31 @@ if(isset($_GET['id_user'])){
     </div>
   </div>
 </div>
+
+<!--- Show Password Create --->
+<script>
+  function myFunctionInput() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+
+<!--- Show Password Edit --->
+<script>
+  function myFunctionEdit() {
+  var x = document.getElementById("myEdit");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+
 <?php
 include('../footer.php')
 ?>
