@@ -1,6 +1,19 @@
 <?php
 include('header.php');
 if ($_SESSION['akses'] == 1) {
+
+  $bln = date("n");
+  $data1 = mysqli_query($koneksi,"SELECT SUM(total_harga) FROM  orderdetail WHERE MONTH(tgl_bayar) = '$bln' AND status_pesanan = 'Sedang Diproses' OR status_pesanan = 'Selesai';");
+  $pendapatanbln = mysqli_fetch_array($data1);
+
+  $data2 = mysqli_query($koneksi,"SELECT * FROM user WHERE id_akses = 2;");
+  $jumlah_cust = mysqli_num_rows($data2);
+
+  $data3 = mysqli_query($koneksi,"SELECT * FROM orders JOIN orderdetail ON orders.id_order = orderdetail.id_order WHERE orderdetail.status_pesanan = 'Selesai';");
+  $pesanan = mysqli_num_rows($data3);
+
+  $data4 = mysqli_query($koneksi, "SELECT SUM(total_harga) FROM orderdetail WHERE status_pesanan = 'Sedang Diproses' OR status_pesanan = 'Selesai';");
+  $pendapatan = mysqli_fetch_array($data4)
 ?>
     <div class="container-fluid py-4">
       <div class="row">
@@ -10,14 +23,16 @@ if ($_SESSION['akses'] == 1) {
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pendapatan<br>Harian</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pendapatan Bulanan</p>
                     <h5 class="font-weight-bolder">
-                      $53,000
+                      <?php
+                      if (empty($pendapatanbln['SUM(total_harga)'])) {
+                        echo rupiah(0);
+                      }else{
+                      echo rupiah($pendapatanbln['SUM(total_harga)']); 
+                    }
+                      ?>
                     </h5>
-                    <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">+55%</span>
-                      since yesterday
-                    </p>
                   </div>
                 </div>
                 <div class="col-4 text-end">
@@ -35,14 +50,10 @@ if ($_SESSION['akses'] == 1) {
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Jumlah<br>User</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Jumlah Customer</p>
                     <h5 class="font-weight-bolder">
-                      2,300
+                      <?php echo $jumlah_cust; ?>
                     </h5>
-                    <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">+3%</span>
-                      since last week
-                    </p>
                   </div>
                 </div>
                 <div class="col-4 text-end">
@@ -60,14 +71,10 @@ if ($_SESSION['akses'] == 1) {
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Jumlah<br>Pesanan</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pesanan Selesai</p>
                     <h5 class="font-weight-bolder">
-                      +3,462
+                      <?php echo $pesanan; ?>
                     </h5>
-                    <p class="mb-0">
-                      <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                      since last quarter
-                    </p>
                   </div>
                 </div>
                 <div class="col-4 text-end">
@@ -85,13 +92,10 @@ if ($_SESSION['akses'] == 1) {
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total<br>Pendapatan</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Pendapatan</p>
                     <h5 class="font-weight-bolder">
-                      $103,430
+                      <?php echo rupiah($pendapatan['SUM(total_harga)']); ?>
                     </h5>
-                    <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
-                    </p>
                   </div>
                 </div>
                 <div class="col-4 text-end">
