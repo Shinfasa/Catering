@@ -21,21 +21,19 @@ if(isset($_GET['id_menu']) && !isset($_POST['update']))  {
     //Periksa produk dalam keranjang
     $index = -1;
     $cart = unserialize(serialize($_SESSION['cart']));
-    for($i=0; $i<count($cart);$i++) {
+    for($i=0; $i<count($cart);$i++)
         if ($cart[$i]->id_menu == $_GET['id_menu']){
             $index = $i;
             break;
         }
-        if($index == -1) {
+        if($index == -1) 
             $_SESSION['cart'][] = $item; //$ _SESSION ['cart']: set $ cart sebagai variabel _session
-        } else {
+        else {
             
-            if (($cart[$index]->qty)) {
+            if (($cart[$index]->qty))
                  $cart[$index]->qty ++;
                  $_SESSION['cart'] = $cart;
-            }
         }
-    }
 }
 
 //Menghapus produk dalam keranjang
