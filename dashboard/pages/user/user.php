@@ -35,7 +35,7 @@ if(isset($_POST['update'])){
   if($file!="") {
     move_uploaded_file($_FILES['txt_gambar']['tmp_name'], "../../../assets/img/user/".basename($_FILES['txt_gambar']['name']));
     $update=mysqli_query($koneksi,"UPDATE user SET nama_user='$user', alamat='$alamat', nohp='$nohp', password='$password', gambar='$file' WHERE id_user='$id'"); 
-    unlink();
+    unlink("../../../assets/img/user/".$oldfile);
     if($update){
       echo "<script>alert('Data di Update')</script>";
       echo "<script>location='user.php'</script>";
@@ -151,17 +151,17 @@ if(isset($_GET['id_user'])){
                             <div class="form-group">
                               <label for="txt_akses">Level Akses</label>
                               <div style="font-size:15px;">
-                                <input type="radio" name="txt_akses" value="1" style="margin-left:20px;">  1 - Admin
-                                <input type="radio" name="txt_akses" value="2" style="margin-left: 100px;">  2 - Customer
+                                <input type="radio" name="txt_akses" value="1" style="margin-left:20px;" required>  1 - Admin
+                                <input type="radio" name="txt_akses" value="2" style="margin-left: 100px;" required>  2 - Customer
                               </div>
                             </div>
                             <div class="form-group">
                               <label for="txt_email">Email</label>
-                              <input type="email" class="form-control form-control-user" placeholder="Email" name="txt_email" value="">
+                              <input type="email" class="form-control form-control-user" placeholder="Email" name="txt_email" value="" required>
                             </div>
                             <div class="form-group">
                               <label for="txt_nama">Nama Lengkap</label>
-                              <input type="text" class="form-control form-control-user" placeholder="Nama Lengkap" name="txt_nama" value="">
+                              <input type="text" class="form-control form-control-user" placeholder="Nama Lengkap" name="txt_nama" value="" required>
                             </div>
                             <div class="form-group">
                               <label for="txt_alamat">Alamat</label>
@@ -173,7 +173,7 @@ if(isset($_GET['id_user'])){
                             </div>  
                             <div class="form-group">
                               <label for="txt_pass">Password</label>
-                              <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="" id="myInput">
+                              <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="" id="myInput" required>
                               <input type="checkbox" onclick="myFunction()" style="margin-left: 10px; margin-top: 10px;"><span style="font-size: 14px; margin-left: 10px;">Show Password</span>
                             </div>            
                             <div class="form-group">
