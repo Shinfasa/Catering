@@ -143,7 +143,7 @@
           if(isset($_SESSION['id'])) {
           ?>
           <button class="btn m-2" style="background-color: #E8853D;">
-            <a href="cart.php?id_menu=<?php echo $d['id_menu'];?>&aksi=tambah_produk&jumlah=1" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
+            <a href="cart.php?id_menu=<?php echo $d['id_menu'] ?> & action=add" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
           </button>
         </div>
       </div>
