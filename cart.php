@@ -116,7 +116,7 @@ if(isset($_POST['update'])) {
                     <p style="color: #384046;">Rp <?php echo $s; ?> </p>
                 </div>
                 <hr style="padding: 2px; margin: 10px;">
-                <button class="btn mb-3">Update</button>
+                <button class="btn mb-3" style="background-color: #E8853D; color:#fff;">Update</button>
                 <a href="checkout.php" class="btn mb-3">Check Out</a>
             </div>
         </div>
