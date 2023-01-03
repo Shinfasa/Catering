@@ -1,6 +1,6 @@
 <?php
 include 'header.php';
-
+  if ($_SESSION['akses'] == 2) {
 $user_id = $idUser;
 
 if(isset($_POST['delete'])){
@@ -120,6 +120,10 @@ $grand_total = 0;
 </body>
 <br>
 <?php
-include 'footer.php';
+}else{
+
+  echo "<script>alert('Anda adalah Admin!')</script>";
+  echo "<script>location='dashboard/'</script>"; 
+}
+include('footer.php');
 ?>
-</html>

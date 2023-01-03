@@ -1,6 +1,6 @@
 <?php
 include("header.php");
-
+  if ($_SESSION['akses'] == 2) {
 $id_kategori = $_GET['id_kategori'];
 
 if(isset($_POST['add_to_cart'])){
@@ -168,5 +168,10 @@ if(isset($_POST['add_to_cart'])){
 </body>
 
 <?php
+}else{
+
+  echo "<script>alert('Anda adalah Admin!')</script>";
+  echo "<script>location='dashboard/'</script>"; 
+}
 include "footer.php";
 ?>
