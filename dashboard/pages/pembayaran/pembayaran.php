@@ -86,7 +86,7 @@ if(isset($_GET['id_pembayaran'])){
                     <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['metode_pembayaran']; ?></h6></td>
                     <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['no_rek']; ?></h6></td>
                     <td class="align-middle text-center">
-                      <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Pembayaran" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['id_pembayaran'] ?>">
+                      <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Pembayaran" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['id_pembayaran']; ?>">
                         Edit
                       </a>
                       &nbsp;
