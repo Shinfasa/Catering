@@ -16,9 +16,8 @@ $s = $_POST['search'];
 
                 <div class="row">                
                 <?php 
-                    $brgs=mysqli_query($koneksi,"SELECT * FROM menu where nama_menu like '%$s%' order by id_menu ASC");
-                    $x = mysqli_num_rows($brgs);
-
+                $brgs=mysqli_query($koneksi,"SELECT * FROM menu where nama_menu like '%$s%' order by id_menu ASC");
+                $x = mysqli_num_rows($brgs);
                     if($x>0){
                         while($p=mysqli_fetch_array($brgs)){
                             ?>                               
@@ -59,5 +58,5 @@ $s = $_POST['search'];
   </section>
 
 <?php 
-  include('footer.php')
+include('footer.php')
 ?>
