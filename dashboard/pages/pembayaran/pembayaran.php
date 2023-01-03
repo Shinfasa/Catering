@@ -168,9 +168,8 @@ if(isset($_GET['id_pembayaran'])){
               </tbody>
             </table>
           </div>
-          <br>
-
-          <!-- Pagination -->
+          
+        </div>
           <nav>
             <ul class="pagination justify-content-center">
               <li class="page-item">
@@ -188,7 +187,6 @@ if(isset($_GET['id_pembayaran'])){
               </li>
             </ul>
           </nav>
-        </div>
       </div>
     </div>
   </div>
