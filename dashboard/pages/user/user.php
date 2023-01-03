@@ -53,20 +53,6 @@ if(isset($_GET['id_user'])){
     echo "<script>location='user.php'</script>";
   }
 }
-
-$batas = 5;
-                $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
-                $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
-
-                $previous = $halaman - 1;
-                $next = $halaman + 1;
-
-                $data = mysqli_query($koneksi,"SELECT * FROM user JOIN akses ON user.id_akses = akses.id_akses;");
-                $jumlah_data = mysqli_num_rows($data);
-                $total_halaman = ceil($jumlah_data / $batas);
-
-                $data_pegawai = mysqli_query($koneksi,"SELECT * FROM user JOIN akses ON user.id_akses = akses.id_akses LIMIT $halaman_awal, $batas");
-                $nomor = $halaman_awal+1;
 ?>
 
 <div class="container-fluid py-3">
@@ -98,7 +84,19 @@ $batas = 5;
               </thead>
               <tbody>
                 <?php 
-                
+                $batas = 5;
+                $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+                $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
+
+                $previous = $halaman - 1;
+                $next = $halaman + 1;
+
+                $data = mysqli_query($koneksi,"SELECT * FROM user JOIN akses ON user.id_akses = akses.id_akses;");
+                $jumlah_data = mysqli_num_rows($data);
+                $total_halaman = ceil($jumlah_data / $batas);
+
+                $data_pegawai = mysqli_query($koneksi,"SELECT * FROM user JOIN akses ON user.id_akses = akses.id_akses LIMIT $halaman_awal, $batas");
+                $nomor = $halaman_awal+1;
                 while($d = mysqli_fetch_array($data_pegawai)){
                   ?>
                   <tr>
@@ -251,22 +249,22 @@ $batas = 5;
         </div>
         <br>
           <nav>
-            <ul class="pagination justify-content-center">
-              <li class="page-item">
-                <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$Previous'"; } ?>> <i class="ni ni-bold-left"></i> </a>
-              </li>
-              <?php 
-              for($x=1;$x<=$total_halaman;$x++){
-                ?> 
-                <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
-                <?php
-              }
-              ?>        
-              <li class="page-item">
-                <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>><i class="ni ni-bold-right"></i> </a>
-              </li>
-            </ul>
-          </nav>
+                <ul class="pagination justify-content-center">
+                  <li class="page-item">
+                    <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>> < </a>
+                  </li>
+                  <?php 
+                  for($x=1;$x<=$total_halaman;$x++){
+                    ?> 
+                    <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+                    <?php
+                  }
+                  ?>        
+                  <li class="page-item">
+                    <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>> </a>
+                  </li>
+                </ul>
+              </nav>
       </div>
     </div>
   </div>
