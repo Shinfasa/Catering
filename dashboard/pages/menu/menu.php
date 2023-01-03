@@ -27,6 +27,7 @@ if(isset($_POST['update'])){
   $oldfile = $_POST['old'];
   $file = $_FILES['txt_gambar']['name'];
 
+  if($file!="") {
     move_uploaded_file($_FILES['txt_gambar']['tmp_name'], "../../../assets/img/menu/".basename($_FILES['txt_gambar']['name']));
     $update=mysqli_query($koneksi,"UPDATE menu SET nama_menu='$nama', harga='$harga', detail='$detail', gambar='$file', id_kategori='$kategori' WHERE id_menu='$id'");
     unlink("../../../assets/img/menu/".$oldfile);
@@ -35,7 +36,15 @@ if(isset($_POST['update'])){
       echo "<script>alert('Data di Update')</script>";
       echo "<script>location='menu.php'</script>";
     }
+  }else{
+    $update=mysqli_query($koneksi,"UPDATE menu SET nama_menu='$nama', harga='$harga', detail='$detail', id_kategori='$kategori' WHERE id_menu='$id'");
+
+    if($update){
+      echo "<script>alert('Data di Update')</script>";
+      echo "<script>location='menu.php'</script>";
+    }
   }
+}
 
 if (isset($_GET['id_menu'])) {
   $id_menu = $_GET['id_menu'];
