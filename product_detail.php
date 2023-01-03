@@ -1,6 +1,6 @@
 <?php 
 include "header.php";
-  if ($_SESSION['akses'] == 2) {
+  if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 
 $id_menu = $_GET['id_menu'];
 $query = "SELECT * FROM menu WHERE id_menu = '$id_menu'";

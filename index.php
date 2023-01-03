@@ -1,6 +1,6 @@
 <?php
   include('header.php');
-  if ($_SESSION['akses'] == 2) {
+  if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 ?>
 
 <main id="main">
@@ -24,16 +24,14 @@
       <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
         <rect width="100%" height="100%" fill="#FFDA72">
       </svg>
-    </div>
-
-    
+    </div>    
         
   <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="bi-arrow-left-circle" style="color: #E8853D; font-size: 40px;" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
   <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="bi-arrow-right-circle" style="color: #E8853D; font-size: 40px;" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
   <?php } ?>

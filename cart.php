@@ -1,6 +1,6 @@
 <?php
 include 'header.php';
-  if ($_SESSION['akses'] == 2) {
+  if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 $user_id = $idUser;
 
 if(isset($_POST['delete'])){

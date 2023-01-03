@@ -1,6 +1,6 @@
 <?php
 include("header.php");
-  if ($_SESSION['akses'] == 2) {
+  if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 $id_kategori = $_GET['id_kategori'];
 
 if(isset($_POST['add_to_cart'])){
@@ -9,24 +9,24 @@ if(isset($_POST['add_to_cart'])){
       header('location:login.php');
    }else{
 
-      $pid = $_POST['pid'];
-      $pid = filter_var($pid, FILTER_SANITIZE_STRING);
-      $name = $_POST['name'];
-      $name = filter_var($name, FILTER_SANITIZE_STRING);
-      $price = $_POST['price'];
-      $price = filter_var($price, FILTER_SANITIZE_STRING);
-      $image = $_POST['image'];
+      $id_menu = $_POST['id_menu'];
+      $idmenu = filter_var($pid, FILTER_SANITIZE_STRING);
+      $nama_menu = $_POST['nama_menu'];
+      $nama_menu = filter_var($name, FILTER_SANITIZE_STRING);
+      $harga = $_POST['harga'];
+      $harga = filter_var($price, FILTER_SANITIZE_STRING);
+      $image = $_POST['gambar'];
       $image = filter_var($image, FILTER_SANITIZE_STRING);
       $qty = $_POST['qty'];
       $qty = filter_var($qty, FILTER_SANITIZE_STRING);
 
-      $check_cart_numbers = $conn->prepare("SELECT * FROM `cart` WHERE name = ? AND user_id = ?");
+      $check_cart_numbers = $koneksi->prepare("SELECT * FROM `keranjang` WHERE nama_menu = ? AND id_user = ?");
       $check_cart_numbers->execute([$name, $user_id]);
 
       if($check_cart_numbers->rowCount() > 0){
          $message[] = 'sudah ditambakan ke keranjang!';
       }else{
-         $insert_cart = $conn->prepare("INSERT INTO `cart`(user_id, pid, name, price, quantity, image) VALUES(?,?,?,?,?,?)");
+         $insert_cart = $koneksi->prepare("INSERT INTO `keranjang`(id_user, id_menu, nama_menu, qty) VALUES(?,?,?,?)");
          $insert_cart->execute([$user_id, $pid, $name, $price, $qty, $image]);
          $message[] = 'ditambakan ke keranjang!';
          
