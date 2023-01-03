@@ -90,7 +90,7 @@ if(isset($_GET['id_pembayaran'])){
                         Edit
                       </a>
                       &nbsp;
-                      <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="pembayaran.php?id_pembayaran=<?php echo $d['id_pembayaran'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Pembayaran">
+                      <a onclick="return confirm('Anda Yakin Ingin Menghapus Data Pembayaran')" href="pembayaran.php?id_pembayaran=<?php echo $d['id_pembayaran'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Pembayaran">
                         Delete
                       </a>
                     </td>
