@@ -14,7 +14,12 @@
   </div>
   
   <div class="carousel-inner">
+    <?php 
+    $data_iklan = mysqli_query($koneksi,"SELECT * FROM carousel");
+        while($i = mysqli_fetch_array($data_iklan)){
+    ?>
     <div class="carousel-item active" style="height: 600px;">
+      <img src="assets/img/iklan/<?php echo $i['gambar']; ?>" alt="" width="100%" height="100%">
       <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
         <rect width="100%" height="100%" fill="#FFDA72">
       </svg>
@@ -26,32 +31,8 @@
         </div>
       </div>
     </div>
-    <div class="carousel-item" style="height: 600px;">
-      <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-        <rect width="100%" height="100%" fill="#FFDA72" />
-      </svg>
-      <div class="container">
-        <div class="carousel-caption">
-          <h1><b>Recommended Catering</b></h1>
-          <p>Some representative placeholder content for the second slide of the carousel.</p>
-          <p><a class="btn btn-lg" href="#">Learn more</a></p>
-        </div>
-      </div>
-    </div>
-          
-    <div class="carousel-item" style="height: 600px;">
-      <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-        <rect width="100%" height="100%" fill="#FFDA72" />
-      </svg>
-      <div class="container">
-        <div class="carousel-caption text-end">
-          <h1><b>One more for good measure</b></h1>
-          <p>Some representative placeholder content for the third slide of this carousel.</p>
-          <p><a class="btn btn-lg" href="#">Browse gallery</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
+
+    
         
   <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -61,7 +42,7 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
-
+  <?php } ?>
 </div>
 <!-- End Carousel -->
 

@@ -8,11 +8,11 @@ if(isset($_POST['create'])){
   $deskripsi = ($_POST['txt_des']);
 
   $query=mysqli_query($koneksi,"INSERT INTO kategori VALUES (NULL, '$nama', '$deskripsi')");
-    if($query){
-      echo "<script>alert('Data Ditambahkan')</script>";
-      echo "<script>location='kategori.php'</script>";
-    }
+  if($query){
+    echo "<script>alert('Data Ditambahkan')</script>";
+    echo "<script>location='kategori.php'</script>";
   }
+}
 
 //Fungsi Update
 if(isset($_POST['update'])){
@@ -41,7 +41,7 @@ if(isset($_GET['id_kategori'])){
 <div class="container-fluid py-3">
   <div class="row">
     <div class="col-12">
-      <div class="card" style="height:82vh; max-height: 540px;">
+      <div class="card" style="height:100vh; max-height: 552px;">
         <div class="card-header pb-0">
           <div class="d-flex align-items-center mb-3">
             <h6 class="mb-0">Kategori</h6>
@@ -85,7 +85,7 @@ if(isset($_GET['id_kategori'])){
                     <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['nama_kategori']; ?></h6></td>
                     <td class="text-truncate" style="max-width: 200px;"><?php echo $d['deskripsi']; ?></td>
                     <td class="align-middle text-center">
-                      <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit kategori" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['id_kategori'] ?>">
+                      <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit kategori" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['id_kategori']; ?>">
                         Edit
                       </a>
                       &nbsp;
@@ -106,9 +106,6 @@ if(isset($_GET['id_kategori'])){
                         <form action="kategori.php" method="POST" class="kategori">
                           <div class="modal-body">
                             <div class="form-group">
-                              <input type="hidden" name="txt_id" value="">
-                            </div>
-                            <div class="form-group">
                               <label for="txt_nama">Nama Kategori</label>
                               <input type="text" class="form-control form-control-kategori" placeholder="Nama Kategori" name="txt_nama" value="">
                             </div>
@@ -128,7 +125,7 @@ if(isset($_GET['id_kategori'])){
                   <!-- End Modal Create -->
 
                   <!-- Modal Edit -->
-                  <div class="modal fade" id="exampleModalEdit<?php echo $d['id_kategori'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="exampleModalEdit<?php echo $d['id_kategori']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -148,52 +145,51 @@ if(isset($_GET['id_kategori'])){
                               <label for="txt_des">Deskripsi</label>
                               <input type="deskripsi" class="form-control form-control-kategori" placeholder="Deskripsi" name="txt_des" value="<?php echo $d['deskripsi']; ?>">
                             </div>      
-                          <div class="modal-footer">
-                            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" name="update" class="btn btn-primary">Save changes</button>
-                          </div>
-                        </form>
+                            <div class="modal-footer">
+                              <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="submit" name="update" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </form>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <!-- End Modal Edit -->
-                  <?php
-                }
+                    <!-- End Modal Edit -->
+                    <?php
+                  }
                 //End Menampilkan List
-                ?>
-                
-              </tbody>
-            </table>
-            
-          </div>
-          <br>
+                  ?>
 
+                </tbody>
+              </table>
+
+            </div>
+
+          </div>
           <!-- Pagination -->
-              <nav>
-                  <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                      <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>> < </a>
-                    </li>
-                    <?php 
-                    for($x=1;$x<=$total_halaman;$x++){
-                      ?> 
-                      <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
-                      <?php
-                    }
-                    ?>        
-                    <li class="page-item">
-                      <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>> </a>
-                    </li>
-                  </ul>
-                </nav>
+          <nav>
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>> < </a>
+              </li>
+              <?php 
+              for($x=1;$x<=$total_halaman;$x++){
+                ?> 
+                <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+                <?php
+              }
+              ?>        
+              <li class="page-item">
+                <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>> </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<?php
+  <?php
 //Memanggil Footer8
-include('../footer.php');
+  include('../footer.php');
 ?>

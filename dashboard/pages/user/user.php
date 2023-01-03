@@ -32,7 +32,7 @@ if(isset($_POST['update'])){
   $password = ($_POST['txt_pass']);
   $oldfile = $_POST['old'];
   $file = $_FILES['txt_gambar']['name'];
-  if($file!="") {
+
     move_uploaded_file($_FILES['txt_gambar']['tmp_name'], "../../../assets/img/user/".basename($_FILES['txt_gambar']['name']));
     $update=mysqli_query($koneksi,"UPDATE user SET nama_user='$user', alamat='$alamat', nohp='$nohp', password='$password', gambar='$file' WHERE id_user='$id'"); 
     unlink("../../../assets/img/user/".$oldfile);
@@ -40,7 +40,6 @@ if(isset($_POST['update'])){
       echo "<script>alert('Data di Update')</script>";
       echo "<script>location='user.php'</script>";
     }
-  }
 }
 
 //Fungsi Delete
@@ -132,7 +131,7 @@ if(isset($_GET['id_user'])){
                         Edit
                       </a>
                       &nbsp;
-                      <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="user.php?id_user=<?php echo $d['id_user']; ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete user">
+                      <a onclick="return confirm('Anda Yakin Ingin Menghapus Data User')" href="user.php?id_user=<?php echo $d['id_user']; ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete user">
                         Delete
                       </a>
                     </td>
@@ -174,7 +173,7 @@ if(isset($_GET['id_user'])){
                             <div class="form-group">
                               <label for="txt_pass">Password</label>
                               <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="" id="myInput" required>
-                              <input type="checkbox" onclick="myFunction()" style="margin-left: 10px; margin-top: 10px;"><span style="font-size: 14px; margin-left: 10px;">Show Password</span>
+                              <input type="checkbox" onclick="myFunctionInput()" style="margin-left: 10px; margin-top: 10px;"><span style="font-size: 14px; margin-left: 10px;">Show Password</span>
                             </div>            
                             <div class="form-group">
                               <label for="gambar">Foto Profil</label>
@@ -220,12 +219,12 @@ if(isset($_GET['id_user'])){
                             </div>
                             <div class="form-group">
                               <label for="txt_pass">Password</label>
-                              <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="<?php echo $d['password']; ?>" id="myInput">
-                              <input type="checkbox" onclick="myFunction()" style="margin-left: 10px; margin-top: 10px;"><span style="font-size: 14px; margin-left: 10px;">Show Password</span>
+                              <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="<?php echo $d['password']; ?>" id="myEdit">
+                              <input type="checkbox" onclick="myFunctionEdit()" style="margin-left: 10px; margin-top: 10px;"><span style="font-size: 14px; margin-left: 10px;">Show Password</span>
                             </div>
                             <div class="form-group">
                               <label for="gambar">Foto Profil</label>
-                              <input type="file" class="form-control form-control-user" name="txt_gambar" accept="image/jpg, image/jpeg, image/png">
+                              <input type="file" class="form-control form-control-user" name="txt_gambar" accept="image/jpg, image/jpeg, image/png" value="<?php echo $d['gambar']; ?>">
                               <input type="hidden" name="old" value="<?php echo $d['gambar']; ?>">
                             </div>  
                           </div>
@@ -244,31 +243,55 @@ if(isset($_GET['id_user'])){
                 ?>
               </tbody>
             </table>
-          </div>
-          
+          </div> 
         </div>
         <br>
-          <nav>
-                <ul class="pagination justify-content-center">
-                  <li class="page-item">
-                    <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>> < </a>
-                  </li>
-                  <?php 
-                  for($x=1;$x<=$total_halaman;$x++){
-                    ?> 
-                    <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
-                    <?php
-                  }
-                  ?>        
-                  <li class="page-item">
-                    <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>> </a>
-                  </li>
-                </ul>
-              </nav>
+        <nav>
+          <ul class="pagination justify-content-center">
+            <li class="page-item">
+              <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>> < </a>
+            </li>
+            <?php 
+            for($x=1;$x<=$total_halaman;$x++){
+              ?> 
+              <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+              <?php
+            }
+            ?>        
+            <li class="page-item">
+              <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>> </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   </div>
 </div>
+
+<!--- Show Password Create --->
+<script>
+  function myFunctionInput() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+
+<!--- Show Password Edit --->
+<script>
+  function myFunctionEdit() {
+  var x = document.getElementById("myEdit");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+
 <?php
 include('../footer.php')
 ?>
