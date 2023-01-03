@@ -54,7 +54,7 @@
   
     <nav id="navbar" class="navbar order-last order-lg-0">
       <ul class="">
-        <li><a class="nav-link scrollto active" href="index.php">Beranda</a></li>
+        <li><a class="nav-link scrollto" href="index.php">Beranda</a></li>
         <li class="dropdown"><a href="#categories"><span>Kategori</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="menu.php?id_kategori=1">Harian</a></li>
