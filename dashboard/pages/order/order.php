@@ -67,7 +67,7 @@ if(isset($_GET['id_order'])){
               </thead>
               <tbody>
                 <?php 
-                $batas = 10;
+                $batas = 9;
                 $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
                 $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
 
