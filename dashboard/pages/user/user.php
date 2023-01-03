@@ -58,7 +58,7 @@ if(isset($_GET['id_user'])){
 <div class="container-fluid py-3">
   <div class="row">
     <div class="col-12">
-      <div class="card" style="height:100vh; max-height: 540px;">
+      <div class="card" style="height:100vh; max-height: 552px;">
         <div class="card-header pb-0">
           <div class="d-flex align-items-center mb-3">
             <h6 class="mb-0">User</h6>
@@ -84,7 +84,7 @@ if(isset($_GET['id_user'])){
               </thead>
               <tbody>
                 <?php 
-                $batas = 10;
+                $batas = 8;
                 $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
                 $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
 
@@ -245,7 +245,9 @@ if(isset($_GET['id_user'])){
               </tbody>
             </table>
           </div>
-          <br>
+          
+        </div>
+        <br>
           <nav>
             <ul class="pagination justify-content-center">
               <li class="page-item">
@@ -263,7 +265,6 @@ if(isset($_GET['id_user'])){
               </li>
             </ul>
           </nav>
-        </div>
       </div>
     </div>
   </div>
