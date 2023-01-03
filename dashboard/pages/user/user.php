@@ -227,7 +227,7 @@ if(isset($_GET['id_user'])){
                             <div class="form-group">
                               <label for="txt_pass">Password</label>
                               <input type="password" class="form-control form-control-user" placeholder="Password" name="txt_pass" value="<?php echo $d['password']; ?>" id="myEdit">
-                              <input type="checkbox" onclick="myFunctionEdit()" style="margin-left: 10px; margin-top: 10px;"><span style="font-size: 14px; margin-left: 10px;">Show Password</span>
+                              <input type="checkbox" onclick="Edit()" style="margin-left: 10px; margin-top: 10px;"><span style="font-size: 14px; margin-left: 10px;">Show Password</span>
                             </div>
                             <div class="form-group">
                               <label for="gambar">Foto Profil</label>
@@ -289,7 +289,7 @@ if(isset($_GET['id_user'])){
 
 <!--- Show Password Edit --->
 <script>
-  function myFunctionEdit() {
+  function Edit() {
   var x = document.getElementById("myEdit");
   if (x.type === "password") {
     x.type = "text";
