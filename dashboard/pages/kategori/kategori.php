@@ -85,7 +85,7 @@ if(isset($_GET['id_kategori'])){
                     <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['nama_kategori']; ?></h6></td>
                     <td class="text-truncate" style="max-width: 200px;"><?php echo $d['deskripsi']; ?></td>
                     <td class="align-middle text-center">
-                      <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit kategori" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['id_kategori'] ?>">
+                      <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit kategori" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['id_kategori']; ?>">
                         Edit
                       </a>
                       &nbsp;
@@ -106,9 +106,6 @@ if(isset($_GET['id_kategori'])){
                         <form action="kategori.php" method="POST" class="kategori">
                           <div class="modal-body">
                             <div class="form-group">
-                              <input type="hidden" name="txt_id" value="">
-                            </div>
-                            <div class="form-group">
                               <label for="txt_nama">Nama Kategori</label>
                               <input type="text" class="form-control form-control-kategori" placeholder="Nama Kategori" name="txt_nama" value="">
                             </div>
@@ -128,7 +125,7 @@ if(isset($_GET['id_kategori'])){
                   <!-- End Modal Create -->
 
                   <!-- Modal Edit -->
-                  <div class="modal fade" id="exampleModalEdit<?php echo $d['id_kategori'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="exampleModalEdit<?php echo $d['id_kategori']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
