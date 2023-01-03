@@ -2,7 +2,7 @@
 require ('../koneksi.php');
 
 session_start();
-
+include('../function/rupiah.php');
 if (!isset($_SESSION['id'])) {
   header('Location: ../login.php');
 }
