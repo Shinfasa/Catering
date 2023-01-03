@@ -100,18 +100,18 @@ if(isset($_GET['id_order'])){
                     <td class="text-center"><?php echo $d['status_pesanan']; ?></td>
                     <td class="text-center"><a href="">Lihat</a></td>
                     <td class="align-middle text-center">
-                      <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Order" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['id_order'] ?>"> 
+                      <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Order" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['id_order']; ?>"> 
                         Edit
                       </a>
                       &nbsp;
-                      <a onclick="return confirm('Anda Yakin Ingin Menghapus Data Order?')" href="hapus_order.php?id_order=<?php echo $d['id_order'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Order">
+                      <a onclick="return confirm('Anda Yakin Ingin Menghapus Data Order?')" href="hapus_order.php?id_order=<?php echo $d['id_order']; ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Order">
                         Delete
                       </a>
                     </td>
                   </tr>
 
                   <!-- Modal Edit -->
-                  <div class="modal fade" id="exampleModalEdit<?php echo $d['id_order'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="exampleModalEdit<?php echo $d['id_order']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
