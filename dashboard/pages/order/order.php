@@ -91,7 +91,7 @@ if(isset($_GET['id_order'])){
                     <td class="text-center"><?php echo $d['tgl_pesan']; ?></td>
                     <td class="text-center"><?php echo $d['tgl_pakai']; ?></td>
                     <td class="text-center"><?php echo $d['nama_menu']; ?></td>
-                    <td class="text-center"><?php echo $d['catatan_order']; ?></td>
+                    <td class="text-center" style="word-wrap: break-word;min-width: 160px;max-width: 160px;white-space:normal;"><?php echo $d['catatan_order']; ?></td>
                     <td class="text-center"><?php echo $d['harga_satuan']; ?></td>
                     <td class="text-center"><?php echo $d['jumlah']; ?></td>
                     <td class="text-center"><?php echo $d['total_harga']; ?></td>
