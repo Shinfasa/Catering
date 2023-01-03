@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2023 at 02:38 PM
+-- Generation Time: Jan 03, 2023 at 04:25 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -56,9 +56,9 @@ CREATE TABLE `carousel` (
 --
 
 INSERT INTO `carousel` (`id_car`, `gambar`) VALUES
-(1, 'Carousel_1.png'),
-(2, 'Carousel_2.png'),
-(3, 'Carousel_3.png');
+(1, 'Carousel1.png'),
+(2, 'Carousel2.png'),
+(3, 'Carousel3.png');
 
 -- --------------------------------------------------------
 
