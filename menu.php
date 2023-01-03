@@ -1,6 +1,6 @@
 <?php
 include("header.php");
-  if ($_SESSION['akses'] == 2) {
+  if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 $id_kategori = $_GET['id_kategori'];
 
 if(isset($_POST['add_to_cart'])){

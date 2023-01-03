@@ -1,6 +1,6 @@
 <?php
   include('header.php');
-  if ($_SESSION['akses'] == 2) {
+  if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 ?>
 
 <main id="main">

@@ -1,5 +1,6 @@
 <?php
-    include "header.php";
+    include ("header.php");
+    if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 ?>
 
 <br>
@@ -144,5 +145,10 @@
 </body>
 
 <?php
+}else{
+
+  echo "<script>alert('Anda adalah Admin!')</script>";
+  echo "<script>location='dashboard/'</script>"; 
+}
     include "footer.php";
 ?>
