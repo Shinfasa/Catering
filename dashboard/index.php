@@ -1,6 +1,6 @@
 <?php
 include('header.php');
-require ('../koneksi.php');
+if ($_SESSION['akses'] == 1) {
 ?>
     <div class="container-fluid py-4">
       <div class="row">
@@ -483,3 +483,10 @@ require ('../koneksi.php');
 </body>
 
 </html>
+<?php  
+}else{
+
+  echo "<script>alert('Anda adalah Admin!')</script>";
+  echo "<script>location='dashboard/'</script>"; 
+}
+?>
