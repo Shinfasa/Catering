@@ -1,15 +1,36 @@
 <?php
 include("header.php");
 
-$id_kategori = $_GET['id_kategori'];
+if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 
-include('add_cart.php');
-?>
+  $id_kategori = $_GET['id_kategori'];
 
-<br>
-<br>
+  if(isset($_POST['add_to_cart'])){
+    $id_menu = $_POST['id_menu'];
+    $nama_menu = $_POST['nama_menu'];
+    $total_harga = $_POST['total_harga'];
+    $gambar = $_POST['gambar'];
+    $qty = 1;
 
-<body>
+    $check_cart_numbers = $koneksi->prepare("SELECT * FROM `keranjang` WHERE nama_menu = ? AND id_user = ?");
+    $check_cart_numbers->execute([$nama_menu, $idUser]);
+
+    if($check_cart_numbers->rowCount() > 0){
+     $message[] = 'Sudah ditambakan ke keranjang!';
+     echo "<script>alert('Sudah ditambakan ke keranjang!')</script>";
+   }else{
+     $insert_cart = $koneksi->prepare("INSERT INTO `keranjang`(id_user, id_menu, nama_menu, qty, total_harga, gambar) VALUES(?,?,?,?,?,?)");
+     $insert_cart->execute([$idUser, $id_menu, $nama_menu, $qty, $total_harga, $gambar]);
+     $message[] = 'Ditambakan ke keranjang!';
+     echo "<script>alert('Ditambakan ke keranjang!')</script>"; 
+   }
+ }
+ ?>
+
+ <br>
+ <br>
+
+ <body>
 
   <!-- popular section starts  -->
   <section id="menu" class="what-we-do">
@@ -38,8 +59,15 @@ include('add_cart.php');
         $nomor = $halaman_awal+1;
         while($d = mysqli_fetch_array($data_menu)){
           ?>
+
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-0" style="margin-bottom: 30px;">
             <div class="card icon-box" style="border-radius: 20px;">
+              <form action="menu.php" method="POST">
+                <input type="hidden" name="id_menu" value="<?php echo $d['id_menu'] ?>">
+                <input type="hidden" name="nama_menu" value="<?php echo $d['nama_menu'] ?>">
+                <input type="hidden" name="total_harga" value="<?php echo $d['harga'] ?>">
+                <input type="hidden" name="gambar" value="<?php echo $d['gambar'] ?>">
+              </form>
               <div class="img">
                 <img src="assets/img/menu/<?php echo $d['gambar']; ?>" alt="" width="300px" height="250px" style="border-radius: 20px;">
               </div>
@@ -51,9 +79,9 @@ include('add_cart.php');
                 <?php 
                 if(isset($_SESSION['id'])) {
                   ?>
-                  <button class="btn m-2" style="background-color: #E8853D;" type="submit" name="add_to_cart">
-                    <a href="cart.php" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
-                  </button>
+                  <a href="" ><button class="btn m-2" style="background-color: #E8853D;" type="submit" name="add_to_cart">
+                    <span style="color: #fff; font-size: 20px" class="bi-cart2"></span>
+                  </button></a>
                 </div>
               </div>
             </div>
@@ -69,6 +97,7 @@ include('add_cart.php');
       <?php 
     }
   }
+}
 }else{
 
   $batas = 100;

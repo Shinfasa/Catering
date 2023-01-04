@@ -1,12 +1,37 @@
 <?php
 include 'header.php';
-  if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
-?>
+if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 
-<br>
-<br>
+    if(isset($_POST['delete'])){
+     $cart_id = $_POST['cart_id'];
+     $delete_cart_item = $conn->prepare("DELETE FROM `cart` WHERE id = ?");
+     $delete_cart_item->execute([$cart_id]);
+     $message[] = 'produk di keranjang dihapus!';
+ }
 
-<body>
+ if(isset($_POST['delete_all'])){
+     $delete_cart_item = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
+     $delete_cart_item->execute([$user_id]);
+   // header('location:cart.php');
+     $message[] = 'dihapus semua produk di keranjang!';
+ }
+
+ if(isset($_POST['update_qty'])){
+     $cart_id = $_POST['cart_id'];
+     $qty = $_POST['qty'];
+     $qty = filter_var($qty, FILTER_SANITIZE_STRING);
+     $update_qty = $conn->prepare("UPDATE `cart` SET quantity = ? WHERE id = ?");
+     $update_qty->execute([$qty, $cart_id]);
+     $message[] = 'jumlah produk di keranjang diperbarui';
+ }
+
+ $grand_total = 0;
+ ?>
+
+ <br>
+ <br>
+
+ <body>
 
     <!-- popular section starts  -->
     <section id="menu" class="what-we-do">
@@ -28,25 +53,44 @@ include 'header.php';
                             <th class="text-center" style="color: #384046;">Harga</th>
                             <th class="text-center" style="color: #384046;">Qty</th>
                             <th class="text-center" style="color: #384046;">Sub Total Harga</th>
-                            <th class="text-center" style="color: #384046;">Hapus</th>
+                            <th class="text-center" style="color: #384046;">Aksi</th>
                         </tr>
                     </thead>                                    
-                    <tbody>                                          
-                        <tr>                           
-                            <input type="hidden" name="id_keranjang" value="<?= $fetch_cart['id_keranjang']; ?>">                        
-                            <td class="text-center"> <?php echo $no++ ?> </td>
-                            <td class="text-center"> 
-                                <img src="assets/img/menu/<?php $fetch_cart['gambar']; ?>" alt="">
-                                <br>
-                                <?php $fetch_cart['nama_menu']; ?>
-                            </td>
-                            <td class="text-center"><?php echo rupiah($fetch_cart['harga']); ?></td>
-                            <td class="text-center">
-                                <input type="number" name="qty" class="qty" min="1" max="99" value="<?= $fetch_cart['qty']; ?>" maxlength="2">
-                            </td>  
-                            <td class="text-center"> <?php echo rupiah($sub_total = ($fetch_cart['harga'] * $fetch_cart['qty'])); ?></td> 
-                            <td class="text-center"><button type="submit" class="bi bi-trash" name="delete" onclick="return confirm('Apakah anda yakin akan menghapus menu ini?')" ></button></td>
-                        </tr>
+                    <tbody> 
+                        <?php
+                        $grand_total = 0;
+                        $select_cart = $koneksi->prepare("SELECT * FROM `keranjang` WHERE id_user = ?  ORDER BY id_keranjang DESC");
+                        $select_cart->execute([$idUser]);
+                        if($select_cart->rowCount() > 0){
+                            while($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)){
+                                ?>                        
+                                <tr>
+                                    <form action="" method="post"> 
+                                        <input type="hidden" name="id_keranjang" value="<?= $fetch_cart['id_keranjang']; ?>">                        
+                                        <td class="text-center"> <?php echo "1"; ?> </td>
+                                        <td class="text-center"> 
+                                            <img src="assets/img/menu/<?php $fetch_cart['gambar']; ?>" alt="">
+                                            <br>
+                                            <?php $fetch_cart['nama_menu']; ?>
+                                        </td>
+                                        <td class="text-center"><?php echo rupiah($fetch_cart['total_harga']); ?></td>
+                                        <td class="text-center">
+                                            <input type="number" name="qty" class="qty" min="1" max="99" value="<?= $fetch_cart['qty']; ?>" maxlength="2">
+                                        </td>  
+                                        <td class="text-center"> <?php echo rupiah($sub_total = ($fetch_cart['total_harga'] * $fetch_cart['qty'])); ?></td> 
+                                        <td class="text-center">
+                                            <button type="submit" class="bi bi-trash" name="update_qty"></button>
+                                            <button type="submit" class="bi bi-trash" name="delete" onclick="return confirm('Apakah anda yakin akan menghapus menu ini?')" ></button>
+                                        </td>
+                                    </form>
+                                </tr>                        
+                                <?php
+                                $grand_total += $sub_total;
+                            }
+                        }else{
+                            echo '<p>keranjang kosong</p>';
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
