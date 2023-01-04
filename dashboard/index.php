@@ -23,7 +23,7 @@ if ($_SESSION['akses'] == 1) {
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pendapatan Bulanan</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pendapatan<br>Bulanan</p>
                     <h5 class="font-weight-bolder">
                       <?php
                       if (empty($pendapatanbln['SUM(total_harga)'])) {
@@ -50,7 +50,7 @@ if ($_SESSION['akses'] == 1) {
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Jumlah Customer</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Jumlah<br>Customer</p>
                     <h5 class="font-weight-bolder">
                       <?php echo $jumlah_cust; ?>
                     </h5>
@@ -71,7 +71,7 @@ if ($_SESSION['akses'] == 1) {
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pesanan Selesai</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pesanan<br>Selesai</p>
                     <h5 class="font-weight-bolder">
                       <?php echo $pesanan; ?>
                     </h5>
@@ -92,7 +92,7 @@ if ($_SESSION['akses'] == 1) {
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Pendapatan</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total<br>Pendapatan</p>
                     <h5 class="font-weight-bolder">
                       <?php echo rupiah($pendapatan['SUM(total_harga)']); ?>
                     </h5>
