@@ -19,11 +19,8 @@
     $data_iklan = mysqli_query($koneksi,"SELECT * FROM carousel");
         while($i = mysqli_fetch_array($data_iklan)){
     ?>
-    <div class="carousel-item active" style="height: 650px;">
-      <img src="assets/img/iklan/<?php echo $i['gambar']; ?>" alt="" width="100%" height="100%" style="padding-top: 70px;">
-      <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-        <rect width="100%" height="100%" fill="#FFDA72">
-      </svg>
+    <div class="carousel-item active" style="height: 550px;">
+      <img src="assets/img/iklan/<?php echo $i['gambar']; ?>" alt="" width="100%" height="90%" style="margin-top: 20px;">
     </div>    
         
   <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
