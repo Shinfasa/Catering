@@ -12,15 +12,14 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
     $gambar = $_POST['gambar'];
     $qty = 1;
 
-    $check_cart_numbers = $koneksi->prepare("SELECT * FROM `keranjang` WHERE nama_menu = ? AND id_user = ?");
-    $check_cart_numbers->execute([$nama_menu, $idUser]);
+    $data = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE nama_menu = '$nama_menu' AND id_user = '$idUser'");
+    $cek = mysqli_num_rows($data);
 
-    if($check_cart_numbers->rowCount() > 0){
+    if($cek > 0){
      $message[] = 'Sudah ditambakan ke keranjang!';
      echo "<script>alert('Sudah ditambakan ke keranjang!')</script>";
    }else{
-     $insert_cart = $koneksi->prepare("INSERT INTO `keranjang`(id_user, id_menu, nama_menu, qty, total_harga, gambar) VALUES(?,?,?,?,?,?)");
-     $insert_cart->execute([$idUser, $id_menu, $nama_menu, $qty, $total_harga, $gambar]);
+     $data = mysqli_query($koneksi,"INSERT INTO keranjang VALUES (NULL, '$idUser', '$id_menu', '$nama_menu', '$qty', '$total_harga', '$gambar')");
      $message[] = 'Ditambakan ke keranjang!';
      echo "<script>alert('Ditambakan ke keranjang!')</script>"; 
    }
@@ -67,7 +66,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
                 <input type="hidden" name="nama_menu" value="<?php echo $d['nama_menu'] ?>">
                 <input type="hidden" name="total_harga" value="<?php echo $d['harga'] ?>">
                 <input type="hidden" name="gambar" value="<?php echo $d['gambar'] ?>">
-              </form>
+              
               <div class="img">
                 <img src="assets/img/menu/<?php echo $d['gambar']; ?>" alt="" width="300px" height="250px" style="border-radius: 20px;">
               </div>
@@ -85,6 +84,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
                 </div>
               </div>
             </div>
+            </form>
             <?php 
           }else{ 
             ?>
@@ -96,7 +96,6 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
       </div>
       <?php 
     }
-  }
 }
 }else{
 
@@ -166,5 +165,10 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 </body>
 
 <?php
+}else{
+
+  echo "<script>alert('Anda adalah Admin!')</script>";
+  echo "<script>location='dashboard/'</script>"; 
+}
 include "footer.php";
 ?>

@@ -1,5 +1,40 @@
 <?php
   include 'header.php';
+
+  if(isset($_POST['submit'])){
+
+   $name = $_POST['name'];
+   $number = $_POST['number'];
+   $email = $_POST['email'];
+   $method = $_POST['method'];
+   $address = $_POST['address'];
+   $total_products = $_POST['total_products'];
+   $total_price = $_POST['total_price'];
+   $event_time = $_POST['event_time'];
+
+   $check_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
+   $check_cart->execute([$user_id]);
+
+   if($check_cart->rowCount() > 0){
+
+      if($address == ''){
+         $message[] = 'tambahkan alamat anda!';
+      }else{
+         
+         $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, address, total_products, total_price, event_time) VALUES(?,?,?,?,?,?,?,?,?)");
+         $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $total_price, $event_time]);
+
+         $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
+         $delete_cart->execute([$user_id]);
+
+         $message[] = 'pesanan berhasil dilakukan!';
+      }
+      
+   }else{
+      $message[] = 'keranjang Anda kosong';
+   }
+
+}
 ?>
 
 <!--Main layout -->
