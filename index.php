@@ -19,8 +19,8 @@
     $data_iklan = mysqli_query($koneksi,"SELECT * FROM carousel");
         while($i = mysqli_fetch_array($data_iklan)){
     ?>
-    <div class="carousel-item active" style="height: 560px;">
-      <img src="assets/img/iklan/<?php echo $i['gambar']; ?>" alt="" width="100%" height="90%" style="margin-top: 20px;">
+    <div class="carousel-item active" style="height: 570px;">
+      <img src="assets/img/iklan/<?php echo $i['gambar']; ?>" alt="" width="100%" height="90%" style="margin-top: 60px;">
     </div>    
         
   <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
