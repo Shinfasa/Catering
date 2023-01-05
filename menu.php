@@ -19,7 +19,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
      $message[] = 'Sudah ditambakan ke keranjang!';
      echo "<script>alert('Sudah ditambakan ke keranjang!')</script>";
    }else{
-     $data = mysqli_query($koneksi,"INSERT INTO keranjang VALUES (NULL, '$idUser', '$id_menu', '$nama_menu', '$qty', '$total_harga', '$gambar')");
+     $insert_keranjang = mysqli_query($koneksi,"INSERT INTO keranjang VALUES (NULL, '$idUser', '$id_menu', '$nama_menu', '$qty', '$total_harga', '$gambar')");
      $message[] = 'Ditambakan ke keranjang!';
      echo "<script>alert('Ditambakan ke keranjang!')</script>"; 
    }
