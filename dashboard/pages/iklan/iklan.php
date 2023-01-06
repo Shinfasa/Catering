@@ -26,6 +26,9 @@ if(isset($_POST['update'])){
         <div class="card-header pb-0">
           <div class="d-flex align-items-center mb-3">
             <h6 class="mb-0">Iklan</h6>
+            <div class="text-end" style="flex: 0 0 auto; width: 93%;">
+              <button class="btn btn-outline-primary btn-xs mb-0" data-bs-toggle="modal" data-bs-target="#exampleModalCreate"><i class="uil uil-plus" style="font-size: 15px;"></i></button>
+            </div>
           </div>
         </div>
         <div class="card-body px-0 pt-0 pb-2">
@@ -68,8 +71,37 @@ if(isset($_POST['update'])){
                         <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Iklan" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['id_car']; ?>">
                           Edit
                         </a>
+                        &nbsp;
+                        <a onclick="return confirm('Anda Yakin Ingin Menghapus Data Iklan')" href="iklan.php?id_car=<?php echo $d['id_car'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete Iklan">
+                          Delete
+                        </a>
                       </td>
                     </tr>
+
+                    <!-- Modal Create -->
+                    <div class="modal fade" id="exampleModalCreate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Create Iklan</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <form action="iklan.php" method="POST" class="iklan">
+                            <div class="modal-body">
+                              <div class="form-group">
+                                <label for="txt_gambar">Gambar</label>
+                                <input type="file" class="form-control form-control-iklan" placeholder="Gambar" name="gambar" value="">
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="submit" name="create" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End Modal Create -->
 
                     <!-- Modal Edit -->
                     <div class="modal fade" id="exampleModalEdit<?php echo $d['id_car'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
