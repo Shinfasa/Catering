@@ -3,28 +3,28 @@ include 'header.php';
 if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 
     if(isset($_POST['delete'])){
-     $id_keranjang = $_POST['id_keranjang'];
-     $delete_cart_item = mysqli_query($koneksi,"DELETE FROM keranjang WHERE id_keranjang='$id_keranjang'");
-     $message[] = 'produk di keranjang dihapus!';
-     echo "<script>alert('Produk di keranjang dihapus!')</script>";
- }
+       $id_keranjang = $_POST['id_keranjang'];
+       $delete_cart_item = mysqli_query($koneksi,"DELETE FROM keranjang WHERE id_keranjang='$id_keranjang'");
+       $message[] = 'produk di keranjang dihapus!';
+       echo "<script>alert('Produk di keranjang dihapus!')</script>";
+   }
 
- if(isset($_POST['delete_all'])){
-     $delete_cart_item = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
-     $delete_cart_item->execute([$user_id]);
+   if(isset($_POST['delete_all'])){
+       $delete_cart_item = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
+       $delete_cart_item->execute([$user_id]);
    // header('location:cart.php');
-     $message[] = 'dihapus semua produk di keranjang!';
- }
+       $message[] = 'dihapus semua produk di keranjang!';
+   }
 
- if(isset($_POST['update_qty'])){
-     $id_keranjang = $_POST['id_keranjang'];
-     $qty = $_POST['qty'];
-     $update_qty = mysqli_query($koneksi, "UPDATE keranjang SET qty = '$qty' WHERE id_keranjang ='$id_keranjang'");
-     $message[] = 'jumlah produk di keranjang diperbarui';
-     echo "<script>alert('Jumlah produk di keranjang diperbarui')</script>";
- }
+   if(isset($_POST['update_qty'])){
+       $id_keranjang = $_POST['id_keranjang'];
+       $qty = $_POST['qty'];
+       $update_qty = mysqli_query($koneksi, "UPDATE keranjang SET qty = '$qty' WHERE id_keranjang ='$id_keranjang'");
+       $message[] = 'jumlah produk di keranjang diperbarui';
+       echo "<script>alert('Jumlah produk di keranjang diperbarui')</script>";
+   }
 
- $grand_total = 0;
+   $grand_total = 0;
  ?>
 
  <br>
@@ -51,7 +51,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
                             <th class="text-center" style="color: #384046;">Menu</th>
                             <th class="text-center" style="color: #384046;">Harga</th>
                             <th class="text-center" style="color: #384046;">Qty</th>
-                            <th class="text-center" style="color: #384046;">Sub Total Harga</th>
+                            <th class="text-center" style="color: #384046;">Total Harga</th>
                             <th class="text-center" style="color: #384046;">Aksi</th>
                         </tr>
                     </thead>                                    
@@ -99,7 +99,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
                 <h5 class="text-center pt-3"><b>Total Harga</b></h5>
                 <hr style="padding: 2px; margin: 10px;">
                 <div class="d-flex justify-content-between p-2">
-                    <p style="color: #384046;">Grand Total</p>
+                    <p style="color: #384046;">Sub Total Harga</p>
                     <p style="color: #384046;"><?php echo rupiah($grand_total); ?> </p>
                 </div>
                 <hr style="padding: 2px; margin: 10px;">

@@ -61,7 +61,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-0" style="margin-bottom: 30px;">
             <div class="card icon-box" style="border-radius: 20px;">
-              <form action="menu.php" method="POST">
+              <form action="" method="POST">
                 <input type="hidden" name="id_menu" value="<?php echo $d['id_menu'] ?>">
                 <input type="hidden" name="nama_menu" value="<?php echo $d['nama_menu'] ?>">
                 <input type="hidden" name="total_harga" value="<?php echo $d['harga'] ?>">
