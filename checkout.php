@@ -17,13 +17,19 @@ if(isset($_POST['checkout'])){
  $data = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE id_user = '$idUser'");
 
  if($check_cart = mysqli_num_rows($data) > 0){
-  $insert_order = mysqli_query($koneksi,"INSERT INTO orders VALUES (NULL, '$tgl_pesan', '$tgl_pakai', '$harga_satuan', '$qty', '$total_harga', '$alamat', '$nohp', '$catatan', NULL, NULL, 'Belum Dibayar', '$idUser', '$id_menu', '$id_pembayaran')");
-  $delete_keranjang = mysqli_query($koneksi,"DELETE FROM keranjang WHERE id_user='$idUser'");
+  foreach ($id_menu as $menu => $menus) {
+    $s_menu = $menus;
+    $s_satuan = $harga_satuan[$menu];
+    $s_total = $total_harga[$menu];
+    $s_qty = $qty[$menu];
 
-  $message[] = 'pesanan berhasil dilakukan!';
-  echo "<script>alert('Pesanan berhasil dilakukan!')</script>";
-  echo "<script>location='payment.php'</script>";
+    $insert_order = mysqli_query($koneksi,"INSERT INTO orders VALUES (NULL, '$tgl_pesan', '$tgl_pakai', '$s_satuan', '$s_qty', '$s_total', '$alamat', '$nohp', '$catatan', NULL, NULL, 'Belum Dibayar', '$idUser', '$s_menu', '$id_pembayaran')");
+    $delete_keranjang = mysqli_query($koneksi,"DELETE FROM keranjang WHERE id_user='$idUser'");
 
+    $message[] = 'pesanan berhasil dilakukan!';
+    echo "<script>alert('Pesanan berhasil dilakukan!')</script>";
+    echo "<script>location='order.php'</script>";
+  }
 }else{
   $message[] = 'keranjang Anda kosong';
 }
@@ -102,10 +108,10 @@ if(isset($_POST['checkout'])){
                      <td class="text-center" style="color: #384046;"><?php echo $fetch_cart['qty']; ?></td>
                      <td class="text-center" style="color: #384046;"><?php echo rupiah($sub_total = ($fetch_cart['total_harga'] * $fetch_cart['qty'])); ?></td>
                    </tr>
-                   <input type="hidden" name="txt_idmenu" value="<?= $fetch_cart['id_menu']; ?>">
-                   <input type="hidden" name="harga_satuan" value="<?= $fetch_cart['total_harga']; ?>">
-                   <input type="hidden" name="qty" value="<?= $fetch_cart['qty']; ?>">
-                   <input type="hidden" name="total_harga" value="<?= $sub_total; ?>">
+                   <input type="hidden" name="txt_idmenu[]" value="<?= $fetch_cart['id_menu']; ?>">
+                   <input type="hidden" name="harga_satuan[]" value="<?= $fetch_cart['total_harga']; ?>">
+                   <input type="hidden" name="qty[]" value="<?= $fetch_cart['qty']; ?>">
+                   <input type="hidden" name="total_harga[]" value="<?= $sub_total; ?>">
                    <?php
                  }
                }else{

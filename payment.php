@@ -1,5 +1,21 @@
 <?php
-    include('header.php');    
+include('header.php');
+
+if(isset($_POST['pay'])){
+  $id = ($_POST['txt_id']);
+  $oldfile = $_POST['old'];
+  $file = $_FILES['txt_gambar']['name'];
+  if($file!="") {
+    move_uploaded_file($_FILES['txt_gambar']['tmp_name'], "../../../assets/img/iklan/".basename($_FILES['txt_gambar']['name']));
+    $update=mysqli_query($koneksi,"UPDATE carousel SET gambar='$file' WHERE id_car='$id'"); 
+    unlink("../../../assets/img/iklan/".$oldfile);
+    if($update){
+      echo "<script>alert('Data di Update')</script>";
+      echo "<script>location='iklan.php'</script>";
+    }
+  }
+}
+
 ?>
 
 <!--Main layout -->
@@ -14,22 +30,22 @@
 
     <!--Card-->
     <div class="card mb-3">
-        <div class="m-4">
-            <form action="" method="POST" class="user">
-              <div class="form-group pb-3">                
-                <h6 style="text-align: center;">Upload Bukti Transfer</h6>
-                <br>
-                <input type="file" class="form-control form-control-user">
-              </div>
-            </form>
-            <a href="index.php" class="btn btn-user btn-block text-light font-weight-bold" style="background-color: #E8853D;">Upload</a>
-              <button type="submit" name="submit" class="btn btn-user btn-block" style="color: #E8853D;"><b>Kembali</b></button>
-        </div>
+      <div class="m-4">
+        <form action="" method="POST" enctype="multipart/form-data">
+          <div class="form-group pb-3">                
+            <h6 style="text-align: center;">Upload Bukti Transfer</h6>
+            <br>
+            <input type="file" name="bukti" class="form-control form-control-user">
+          </div>
+        </form>
+        <a href="order.php" class="btn btn-user btn-block" style="color: #E8853D;"><b>Kembali</b></a>
+        <button type="submit" name="pay" class="btn btn-user btn-block text-light font-weight-bold" style="background-color: #E8853D;">Upload</button>
+      </div>
     </div>
-</main>
-<!--Main layout-->
+  </main>
+  <!--Main layout-->
 
 
-<?php
-    include('footer.php');
+  <?php
+  include('footer.php');
 ?>
