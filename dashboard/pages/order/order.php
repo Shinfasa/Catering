@@ -96,9 +96,7 @@ if(isset($_GET['id_order'])){
                     <td class="text-center"><?php echo $d['tgl_bayar']; ?></td>
                     <td class="text-center"><?php echo $d['status_pesanan']; ?></td>
                     <td class="text-center">
-                      <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Order" data-bs-toggle="modal" data-bs-target="#exampleModalBukti<?php echo $d['no_pesanan']; ?>"> 
-                        Lihat
-                      </a>
+                      <a href="" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#exampleModalBukti<?php echo $d['no_pesanan'] ?>">Lihat</a>
                     </td>
                     <td class="align-middle text-center">
                       <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Order" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['no_pesanan']; ?>"> 
@@ -110,6 +108,36 @@ if(isset($_GET['id_order'])){
                       </a>
                     </td>
                   </tr>
+
+                  <!-- Modal Create -->
+                  <div class="modal fade" id="exampleModalBukti<?php echo $d['no_pesanan'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Bukti Pembayaran</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="order.php" method="POST" class="iklan">
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <?php if (isset($d['bukti_pembayaran'])){ ?>
+                              <img src="assets/img/bukti/<?php echo $d['bukti_pembayaran']; ?>" style="width: 200px;">
+                              <input type="hidden" class="form-control form-control-iklan" placeholder="Gambar" name="gambar" value="<?php echo $d['bukti_pembayaran'] ?>">
+                            <?php }else{ ?>
+                              Bukti Pembayaran Belum Ada!
+                            <?php } ?>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" name="create" class="btn btn-danger">Save changes</button>
+                            <button type="submit" name="create" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Modal Create -->
 
                   <!-- Modal Edit -->
                   <div class="modal fade" id="exampleModalEdit<?php echo $d['no_pesanan']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -213,38 +241,6 @@ if(isset($_GET['id_order'])){
                     </div>
 
                     <!-- End Modal Edit -->
-
-                    <!-- Modal Bukti -->
-                    <div class="modal fade" id="exampleModalBukti<?php echo $d['no_pesanan']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Bukti Pembayaran</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <form action="order.php" method="POST" class="order" enctype='multipart/form-data'>
-                            <div class="modal-body">
-                              <div class="form-group">
-                                <?php if (isset($d['bukti_pembayaran'])) {
-                                 ?>
-                                <img src="../../../assets/img/buktitf/<?php echo $d['bukti_pembayaran']; ?>"  style="width: 200px;">
-                                <input type="hidden" class="form-control form-control-user" name="bukti" value="<?php echo $d['bukti_pembayaran']; ?>" disabled>
-                              <?php }else{ ?>
-                                Bukti Pembayaran Belum Ada!
-                              <?php } ?>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="submit" name="update" class="btn btn-danger">Save changes</button>
-                              <button type="submit" name="update" class="btn btn-primary">Save changes</button>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- End Modal Bukti -->
                     <?php
                   }
                     //End Menampilkan List
