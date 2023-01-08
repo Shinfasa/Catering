@@ -2,8 +2,26 @@
 session_start();
 
 include ("header.php");
-
+if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 $s = $_POST['search'];
+if(isset($_POST['add_to_cart'])){
+    $id_menu = $_POST['id_menu'];
+    $nama_menu = $_POST['nama_menu'];
+    $total_harga = $_POST['total_harga'];
+    $gambar = $_POST['gambar'];
+    $qty = 1;
+
+    $data = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE nama_menu = '$nama_menu' AND id_user = '$idUser'");
+    $cek = mysqli_num_rows($data);
+
+    if($cek > 0){
+     $message[] = 'Sudah ditambakan ke keranjang!';
+     echo "<script>alert('Sudah ditambakan ke keranjang!')</script>";
+   }else{
+     $insert_keranjang = mysqli_query($koneksi,"INSERT INTO keranjang VALUES (NULL, '$idUser', '$id_menu', '$nama_menu', '$qty', '$total_harga', '$gambar')");
+     $message[] = 'Ditambakan ke keranjang!';
+     echo "<script>alert('Ditambakan ke keranjang!')</script>"; 
+   }
 ?>
 
 <br>
@@ -58,5 +76,10 @@ $s = $_POST['search'];
   </section>
 
 <?php 
+}else{
+
+  echo "<script>alert('Anda adalah Admin!')</script>";
+  echo "<script>location='dashboard/'</script>"; 
+}
 include('footer.php')
 ?>

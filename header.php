@@ -78,7 +78,7 @@
         <li class="dropdown"><a href="#search"><span class="bi-search"></span></a>
           <ul>
             <li>
-              <form action="search.php" method="post">
+              <form action="menu.php?id_kategori=0" method="post">
                 <input type="search" name="search" class="form-control border-1 small" placeholder="Search for...">
                 <button type="submit" class="form-control border-1 small" aria-label="Left Align">
                 <a class="btn p-1"><span style="margin-left: 75px;">Cari</span></a>
@@ -102,10 +102,10 @@
         </li>
       <?php }else{ ?>
         <li><a class="nav-link scrollto" href="faq.php">FAQ</a></li>
-        <li class="dropdown"><a href="search.php"><span class="bi-search"></span></a>
+        <li class="dropdown"><a href="#search"><span class="bi-search"></span></a>
           <ul>
             <li>
-              <form action="search.php" method="post">
+              <form action="menu.php?id_kategori=0" method="post">
                 <input type="search" name="search" class="form-control border-1 small" placeholder="Search for...">
                 <button type="submit" class="form-control border-1 small" aria-Label="Left Align">
                   <a class="btn p-1"><span style="margin-left: 75px;">Cari</span></a>

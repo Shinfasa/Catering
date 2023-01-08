@@ -87,7 +87,11 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
                                 $grand_total += $sub_total;
                             }
                         }else{
-                            echo '<p>keranjang kosong</p>';
+                            ?>
+                            <tr>
+                                <td colspan="6" class="text-center"> <?php echo '<p>Keranjang Kosong</p>'; ?> </td>
+                            </tr>
+                            <?php
                         }
                         ?>
                     </tbody>

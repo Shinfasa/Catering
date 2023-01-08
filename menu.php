@@ -43,59 +43,124 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 
       <div class="row">
         <?php 
-        $batas = 100;
-        $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
-        $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
+        if(isset($_POST['search'])){
+          $s = $_POST['search'];
+          $batas = 100;
+          $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+          $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
 
-        $previous = $halaman - 1;
-        $next = $halaman + 1;
+          $previous = $halaman - 1;
+          $next = $halaman + 1;
 
-        $data = mysqli_query($koneksi,"SELECT * FROM menu;");
-        $jumlah_data = mysqli_num_rows($data);
-        $total_halaman = ceil($jumlah_data / $batas);
+          $data = mysqli_query($koneksi,"SELECT * FROM menu where nama_menu like '%$s%' order by id_menu;");
+          $jumlah_data = mysqli_num_rows($data);
+          $total_halaman = ceil($jumlah_data / $batas);
 
-        $data_menu = mysqli_query($koneksi,"SELECT * FROM menu LIMIT $halaman_awal, $batas");
-        $nomor = $halaman_awal+1;
-        while($d = mysqli_fetch_array($data_menu)){
-          ?>
+          $data_menu = mysqli_query($koneksi,"SELECT * FROM menu where nama_menu like '%$s%' order by id_menu LIMIT $halaman_awal, $batas");
+          $nomor = $halaman_awal+1;
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-0" style="margin-bottom: 30px;">
-            <div class="card icon-box" style="border-radius: 20px;">
-              <form action="" method="POST">
-                <input type="hidden" name="id_menu" value="<?php echo $d['id_menu'] ?>">
-                <input type="hidden" name="nama_menu" value="<?php echo $d['nama_menu'] ?>">
-                <input type="hidden" name="total_harga" value="<?php echo $d['harga'] ?>">
-                <input type="hidden" name="gambar" value="<?php echo $d['gambar'] ?>">
-              
-              <div class="img">
-                <img src="assets/img/menu/<?php echo $d['gambar']; ?>" alt="" width="300px" height="250px" style="border-radius: 20px;">
-              </div>
-              <br>
-              <h4><a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><?php echo $d['nama_menu']; ?></a></h4>
-              <h5 class="text-secondary" style="font-family: 'Open Sans', sans-serif;"><?php echo rupiah($d['harga']); ?></h5>
-              <div>
-                <a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</button></a>
+          if($jumlah_data > 0){
+
+            while($s = mysqli_fetch_array($data_menu)){
+              ?>
+              <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-0" style="margin-bottom: 30px;">
+                <div class="card icon-box" style="border-radius: 20px;">
+                  <form action="" method="POST">
+                    <input type="hidden" name="id_menu" value="<?php echo $s['id_menu'] ?>">
+                    <input type="hidden" name="nama_menu" value="<?php echo $s['nama_menu'] ?>">
+                    <input type="hidden" name="total_harga" value="<?php echo $s['harga'] ?>">
+                    <input type="hidden" name="gambar" value="<?php echo $s['gambar'] ?>">
+
+                    <div class="img">
+                      <img src="assets/img/menu/<?php echo $s['gambar']; ?>" alt="" width="300px" height="250px" style="border-radius: 20px;">
+                    </div>
+                    <br>
+                    <h4><a href="product_detail.php?id_menu=<?php echo $s['id_menu'] ?>"><?php echo $s['nama_menu']; ?></a></h4>
+                    <h5 class="text-secondary" style="font-family: 'Open Sans', sans-serif;"><?php echo rupiah($s['harga']); ?></h5>
+                    <div>
+                      <a href="product_detail.php?id_menu=<?php echo $s['id_menu'] ?>"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</button></a>
+                      <?php 
+                      if(isset($_SESSION['id'])) {
+                        ?>
+                        <a href="" ><button class="btn m-2" style="background-color: #E8853D;" type="submit" name="add_to_cart">
+                          <span style="color: #fff; font-size: 20px" class="bi-cart2"></span>
+                        </button></a>
+                      </div>
+                    </div>
+                  </div>
+                </form>
                 <?php 
-                if(isset($_SESSION['id'])) {
-                  ?>
-                  <a href="" ><button class="btn m-2" style="background-color: #E8853D;" type="submit" name="add_to_cart">
-                    <span style="color: #fff; font-size: 20px" class="bi-cart2"></span>
-                  </button></a>
-                </div>
+              }else{ 
+                ?>
+                <button class="btn m-2" style="background-color: #E8853D;">
+                  <a onclick="return confirm('Silahkan Login Terlebih Dahulu!')" href="login.php" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
+                </button>
               </div>
             </div>
-            </form>
-            <?php 
-          }else{ 
-            ?>
-            <button class="btn m-2" style="background-color: #E8853D;">
-              <a onclick="return confirm('Silahkan Login Terlebih Dahulu!')" href="login.php" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
-            </button>
           </div>
-        </div>
-      </div>
-      <?php 
+          <?php 
+        }
+      }
+    }else{
+      ?>
+      Menu Tidak Ditemukan!
+      <?php
     }
+  }else{
+    $batas = 100;
+    $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+    $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
+
+    $previous = $halaman - 1;
+    $next = $halaman + 1;
+
+    $data = mysqli_query($koneksi,"SELECT * FROM menu;");
+    $jumlah_data = mysqli_num_rows($data);
+    $total_halaman = ceil($jumlah_data / $batas);
+
+    $data_menu = mysqli_query($koneksi,"SELECT * FROM menu LIMIT $halaman_awal, $batas");
+    $nomor = $halaman_awal+1;
+    while($d = mysqli_fetch_array($data_menu)){
+      ?>
+
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-0" style="margin-bottom: 30px;">
+        <div class="card icon-box" style="border-radius: 20px;">
+          <form action="" method="POST">
+            <input type="hidden" name="id_menu" value="<?php echo $d['id_menu'] ?>">
+            <input type="hidden" name="nama_menu" value="<?php echo $d['nama_menu'] ?>">
+            <input type="hidden" name="total_harga" value="<?php echo $d['harga'] ?>">
+            <input type="hidden" name="gambar" value="<?php echo $d['gambar'] ?>">
+
+            <div class="img">
+              <img src="assets/img/menu/<?php echo $d['gambar']; ?>" alt="" width="300px" height="250px" style="border-radius: 20px;">
+            </div>
+            <br>
+            <h4><a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><?php echo $d['nama_menu']; ?></a></h4>
+            <h5 class="text-secondary" style="font-family: 'Open Sans', sans-serif;"><?php echo rupiah($d['harga']); ?></h5>
+            <div>
+              <a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</button></a>
+              <?php 
+              if(isset($_SESSION['id'])) {
+                ?>
+                <a href="" ><button class="btn m-2" style="background-color: #E8853D;" type="submit" name="add_to_cart">
+                  <span style="color: #fff; font-size: 20px" class="bi-cart2"></span>
+                </button></a>
+              </div>
+            </div>
+          </div>
+        </form>
+        <?php 
+      }else{ 
+        ?>
+        <button class="btn m-2" style="background-color: #E8853D;">
+          <a onclick="return confirm('Silahkan Login Terlebih Dahulu!')" href="login.php" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
+        </button>
+      </div>
+    </div>
+  </div>
+  <?php 
+}
+}
 }
 }else{
 
@@ -123,26 +188,33 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
     <?php
     while($d = mysqli_fetch_array($data_menu)){
       ?>
-      
+
       <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-0" style="margin-bottom: 30px;">
         <div class="card icon-box" style="border-radius: 20px;">
-          <div class="img">
-            <img src="assets/img/menu/<?php echo $d['gambar']; ?>" alt="" width="300px" height="250px" style="border-radius: 20px;">
-          </div>
-          <br>
-          <h4><a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><?php echo $d['nama_menu']; ?></a></h4>
-          <h5 class="text-secondary" style="font-family: 'Open Sans', sans-serif;"><?php echo rupiah($d['harga']); ?></h5>
-          <div>
-            <a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</button></a>
-            <?php 
-            if(isset($_SESSION['id'])) {
-              ?>
-              <button class="btn m-2" style="background-color: #E8853D;">
-                <a href="cart.php?id_menu=<?php echo $d['id_menu'] ?> & action=add" style="color: #fff; font-size: 20px"><span class="bi-cart2"></span></a>
-              </button>
+          <form action="" method="POST">
+            <input type="hidden" name="id_menu" value="<?php echo $d['id_menu'] ?>">
+            <input type="hidden" name="nama_menu" value="<?php echo $d['nama_menu'] ?>">
+            <input type="hidden" name="total_harga" value="<?php echo $d['harga'] ?>">
+            <input type="hidden" name="gambar" value="<?php echo $d['gambar'] ?>">
+
+            <div class="img">
+              <img src="assets/img/menu/<?php echo $d['gambar']; ?>" alt="" width="300px" height="250px" style="border-radius: 20px;">
+            </div>
+            <br>
+            <h4><a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><?php echo $d['nama_menu']; ?></a></h4>
+            <h5 class="text-secondary" style="font-family: 'Open Sans', sans-serif;"><?php echo rupiah($d['harga']); ?></h5>
+            <div>
+              <a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</button></a>
+              <?php 
+              if(isset($_SESSION['id'])) {
+                ?>
+                <a href="" ><button class="btn m-2" style="background-color: #E8853D;" type="submit" name="add_to_cart">
+                  <span style="color: #fff; font-size: 20px" class="bi-cart2"></span>
+                </button></a>
+              </div>
             </div>
           </div>
-        </div>
+        </form>
         <?php 
       }else{ 
         ?>
