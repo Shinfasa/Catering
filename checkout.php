@@ -3,36 +3,37 @@ include 'header.php';
 
 if(isset($_POST['checkout'])){
 
- $tgl_pesan = date("Y-m-d");
- $alamat = $_POST['txt_alamat'];
- $nohp = $_POST['txt_nohp'];
- $tgl_pakai = date('Y-m-d H:i:s', strtotime($_POST['txt_pakai']));
- $harga_satuan = $_POST['harga_satuan'];
- $total_harga = $_POST['total_harga'];
- $qty = $_POST['qty'];
- $catatan = $_POST['txt_catatan'];
- $id_pembayaran = $_POST['txt_bayar'];
- $id_menu = $_POST['txt_idmenu'];
+  $nopesanan = "HNSR".date("YmzHis");
+  $tgl_pesan = date("Y-m-d");
+  $alamat = $_POST['txt_alamat'];
+  $nohp = $_POST['txt_nohp'];
+  $tgl_pakai = date('Y-m-d H:i:s', strtotime($_POST['txt_pakai']));
+  $harga_satuan = $_POST['harga_satuan'];
+  $total_harga = $_POST['total_harga'];
+  $qty = $_POST['qty'];
+  $catatan = $_POST['txt_catatan'];
+  $id_pembayaran = $_POST['txt_bayar'];
+  $id_menu = $_POST['txt_idmenu'];
 
- $data = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE id_user = '$idUser'");
+  $data = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE id_user = '$idUser'");
 
- if($check_cart = mysqli_num_rows($data) > 0){
-  foreach ($id_menu as $menu => $menus) {
-    $s_menu = $menus;
-    $s_satuan = $harga_satuan[$menu];
-    $s_total = $total_harga[$menu];
-    $s_qty = $qty[$menu];
+  if($check_cart = mysqli_num_rows($data) > 0){
+    foreach ($id_menu as $menu => $menus) {
+      $s_menu = $menus;
+      $s_satuan = $harga_satuan[$menu];
+      $s_total = $total_harga[$menu];
+      $s_qty = $qty[$menu];
 
-    $insert_order = mysqli_query($koneksi,"INSERT INTO orders VALUES (NULL, '$tgl_pesan', '$tgl_pakai', '$s_satuan', '$s_qty', '$s_total', '$alamat', '$nohp', '$catatan', NULL, NULL, 'Belum Dibayar', '$idUser', '$s_menu', '$id_pembayaran')");
-    $delete_keranjang = mysqli_query($koneksi,"DELETE FROM keranjang WHERE id_user='$idUser'");
+      $insert_order = mysqli_query($koneksi,"INSERT INTO orders VALUES (NULL, '$nopesanan', '$tgl_pesan', '$tgl_pakai', '$s_satuan', '$s_qty', '$s_total', '$alamat', '$nohp', '$catatan', NULL, NULL, 'Belum Dibayar', '$idUser', '$s_menu', '$id_pembayaran')");
+      $delete_keranjang = mysqli_query($koneksi,"DELETE FROM keranjang WHERE id_user='$idUser'");
 
-    $message[] = 'pesanan berhasil dilakukan!';
-    echo "<script>alert('Pesanan berhasil dilakukan!')</script>";
-    echo "<script>location='order.php'</script>";
+      $message[] = 'pesanan berhasil dilakukan!';
+      echo "<script>alert('Pesanan berhasil dilakukan!')</script>";
+      echo "<script>location='order.php'</script>";
+    }
+  }else{
+    $message[] = 'keranjang Anda kosong';
   }
-}else{
-  $message[] = 'keranjang Anda kosong';
-}
 
 }
 ?>
