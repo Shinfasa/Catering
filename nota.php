@@ -7,7 +7,7 @@
         $idUser   =  $_SESSION['name'];
         $no_pesanan = $_GET['resi'];
         $select = mysqli_query($koneksi, "SELECT * FROM orders JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orders.id_pembayaran = pembayaran.id_pembayaran WHERE no_pesanan = '$no_pesanan'");
-        $data = mysqli_fetch_array($select);
+        
     ?>
       <section class="content">
         <div class="row">
@@ -61,6 +61,9 @@
                 </tr>
                 </thead>
                 <tbody>
+                    <?php 
+                    while($data = mysqli_fetch_array($select)){
+                    ?>
                     <tr>
                         <td><?php echo $data['no_pesanan']; ?></td>
                         <td><?php echo $data['tgl_pakai']; ?></td>
@@ -73,6 +76,7 @@
                         <td><b>Total Biaya</b></td>
                         <td><b><?php echo "0" ?></b></td>
                     </tr>
+                <?php } ?>
                 </tbody>
             </table>
           </div>
