@@ -3,7 +3,10 @@
     <div>
     <?php 
         include "koneksi.php";
-        $select = mysqli_query($koneksi, 'SELECT * FROM orders WHERE noresi = '.$_GET['resi']);
+        session_start();
+        $idUser   =  $_SESSION['name'];
+        $no_pesanan = $_GET['resi'];
+        $select = mysqli_query($koneksi, "SELECT * FROM orders JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orders.id_pembayaran = pembayaran.id_pembayaran WHERE no_pesanan = '$no_pesanan'");
         $data = mysqli_fetch_array($select);
     ?>
       <section class="content">
@@ -13,7 +16,7 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <td><h2><strong>No Tagihan </strong>#<?php echo $data['notagihan']; ?> </h2></td>
+                                <td><h2><strong>No. Pesanan </strong>#<?php echo $data['no_pesanan']; ?> </h2></td>
                             </tr>
                         </tbody>
                     </table>
@@ -36,7 +39,7 @@
             <div class="col-sm-4 invoice-col">
               To
               <address>
-                <strong><?php echo $data['pelanggan']; ?></strong><br>
+                <strong><?php echo $idUser; ?></strong><br>
                 Jl. Sudirman No. 3012, Palembang<br>
                 Kec. Palembang Raya, Palembang,<br>
                 Sumatera selatan 30961<br>
@@ -50,25 +53,25 @@
               <table class="table table-striped">
                 <thead>
                 <tr>
-                  <th>No Tagihan</th>
-                  <th>Tgl Tagihan</th>
-                  <th>Layanan</th>
-                  <th>Tarif</th>
-                  <th>Diskon</th>
+                  <th>No. Pesanan</th>
+                  <th>Tgl Pakai</th>
+                  <th>Nama menu</th>
+                  <th>harga</th>
+                  <th>qty</th>
                 </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><?php echo $data['notagihan']; ?></td>
-                        <td><?php echo date('d-m-Y', strtotime($data['tgltagihan'])); ?></td>
-                        <td><?php echo $data['layanan']; ?></td>
-                        <td><?php echo $data['tarif']; ?></td>
-                        <td><?php echo $data['diskon'].'%'; ?></td>
+                        <td><?php echo $data['no_pesanan']; ?></td>
+                        <td><?php echo $data['tgl_pakai']; ?></td>
+                        <td><?php echo $data['nama_menu']; ?></td>
+                        <td><?php echo $data['harga_satuan']; ?></td>
+                        <td><?php echo $data['qty'].'%'; ?></td>
                     </tr>
                     <tr>
                         <td colspan="3"></td>
                         <td><b>Total Biaya</b></td>
-                        <td><b><?php echo "Rp ".$data['total']; ?></b></td>
+                        <td><b><?php echo "0" ?></b></td>
                     </tr>
                 </tbody>
             </table>
