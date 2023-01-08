@@ -209,6 +209,33 @@ if(isset($_GET['id_order'])){
                     </div>
 
                     <!-- End Modal Edit -->
+
+                    <!-- Modal Edit -->
+                    <div class="modal fade" id="exampleModalEdit<?php echo $d['no_pesanan']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Bukti Pembayaran</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <form action="order.php" method="POST" class="order" enctype='multipart/form-data'>
+                            <div class="modal-body">
+                              <div class="form-group">
+                                <img src="../../../assets/img/buktitf/<?php echo $d['bukti_pembayaran']; ?>"  style="width: 200px;">
+                                <input type="hidden" class="form-control form-control-user" name="bukti" value="<?php echo $d['bukti_pembayaran']; ?>" disabled>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="submit" name="update" class="btn btn-danger">Save changes</button>
+                              <button type="submit" name="update" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- End Modal Edit -->
                     <?php
                   }
                     //End Menampilkan List
@@ -241,7 +268,7 @@ if(isset($_GET['id_order'])){
     </div>
   </div>
 
-<?php
+  <?php
 //Memanggil Footer
   include('../footer.php')
 ?>
