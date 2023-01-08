@@ -95,7 +95,11 @@ if(isset($_GET['id_order'])){
                     <td class="text-center"><?php echo $d['metode_pembayaran']; ?></td>
                     <td class="text-center"><?php echo $d['tgl_bayar']; ?></td>
                     <td class="text-center"><?php echo $d['status_pesanan']; ?></td>
-                    <td class="text-center"><a href="">Lihat</a></td>
+                    <td class="text-center">
+                      <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Order" data-bs-toggle="modal" data-bs-target="#exampleModalBukti<?php echo $d['no_pesanan']; ?>"> 
+                        Lihat
+                      </a>
+                    </td>
                     <td class="align-middle text-center">
                       <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Order" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['no_pesanan']; ?>"> 
                         Edit
@@ -210,8 +214,8 @@ if(isset($_GET['id_order'])){
 
                     <!-- End Modal Edit -->
 
-                    <!-- Modal Edit -->
-                    <div class="modal fade" id="exampleModalEdit<?php echo $d['no_pesanan']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <!-- Modal Bukti -->
+                    <div class="modal fade" id="exampleModalBukti<?php echo $d['no_pesanan']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -235,7 +239,7 @@ if(isset($_GET['id_order'])){
                       </div>
                     </div>
 
-                    <!-- End Modal Edit -->
+                    <!-- End Modal Bukti -->
                     <?php
                   }
                     //End Menampilkan List
