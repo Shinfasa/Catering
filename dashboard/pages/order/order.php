@@ -225,8 +225,13 @@ if(isset($_GET['id_order'])){
                           <form action="order.php" method="POST" class="order" enctype='multipart/form-data'>
                             <div class="modal-body">
                               <div class="form-group">
+                                <?php if (isset($d['bukti_pembayaran'])) {
+                                 ?>
                                 <img src="../../../assets/img/buktitf/<?php echo $d['bukti_pembayaran']; ?>"  style="width: 200px;">
                                 <input type="hidden" class="form-control form-control-user" name="bukti" value="<?php echo $d['bukti_pembayaran']; ?>" disabled>
+                              <?php }else{ ?>
+                                Bukti Pembayaran Belum Ada!
+                              <?php } ?>
                               </div>
                             </div>
                             <div class="modal-footer">
