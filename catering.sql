@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 06, 2023 at 07:03 PM
+-- Generation Time: Jan 08, 2023 at 06:00 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -97,13 +97,6 @@ CREATE TABLE `keranjang` (
   `gambar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `keranjang`
---
-
-INSERT INTO `keranjang` (`id_keranjang`, `id_user`, `id_menu`, `nama_menu`, `qty`, `total_harga`, `gambar`) VALUES
-(2, 5, 1, 'Ayam Brewok', '1', '15000', 'ayam_brewok.jpg');
-
 -- --------------------------------------------------------
 
 --
@@ -146,6 +139,7 @@ INSERT INTO `menu` (`id_menu`, `nama_menu`, `harga`, `detail`, `gambar`, `id_kat
 
 CREATE TABLE `orders` (
   `id_order` int(11) NOT NULL,
+  `no_pesanan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_pesan` date NOT NULL,
   `tgl_pakai` datetime NOT NULL,
   `harga_satuan` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -166,8 +160,10 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id_order`, `tgl_pesan`, `tgl_pakai`, `harga_satuan`, `qty`, `total_harga`, `alamat`, `nohp`, `catatan`, `tgl_bayar`, `bukti_pembayaran`, `status_pesanan`, `id_user`, `id_menu`, `id_pembayaran`) VALUES
-(14, '2023-01-06', '2023-01-08 10:30:00', '15000', '1', '15000', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '', NULL, NULL, 'Belum Dibayar', 5, 1, 1);
+INSERT INTO `orders` (`id_order`, `no_pesanan`, `tgl_pesan`, `tgl_pakai`, `harga_satuan`, `qty`, `total_harga`, `alamat`, `nohp`, `catatan`, `tgl_bayar`, `bukti_pembayaran`, `status_pesanan`, `id_user`, `id_menu`, `id_pembayaran`) VALUES
+(14, '', '2023-01-06', '2023-01-08 10:30:00', '15000', '1', '15000', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '', NULL, NULL, 'Belum Dibayar', 5, 1, 1),
+(15, 'HNSR2023017175327', '2023-01-08', '2023-01-09 13:00:00', '15000', '1', '15000', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '', NULL, NULL, 'Belum Dibayar', 5, 1, 1),
+(16, 'HNSR2023017175542', '2023-01-08', '2023-01-09 13:00:00', '15000', '1', '15000', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '', NULL, NULL, 'Belum Dibayar', 5, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -304,7 +300,7 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `menu`
@@ -316,7 +312,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
