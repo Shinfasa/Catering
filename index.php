@@ -26,13 +26,13 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 
   <!-- ======= Carousel ======= -->
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-    
+
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
-    
+
     <div class="carousel-inner">
       <?php 
       $data_iklan = mysqli_query($koneksi,"SELECT * FROM carousel");
@@ -56,7 +56,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 
     <!-- ======= Categories Section ======= -->
     <section id="categories" class="what-we-do">
-      
+
       <div class="container">
 
         <div class="section-title">
@@ -92,7 +92,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
     </div>
   </section>
   <!-- Categories Section -->
-  
+
   <!-- popular section starts  -->
   <section id="menu" class="what-we-do">
     <div class="container">
@@ -106,14 +106,14 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
         $batas = 6;
         $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
         $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
-        
+
         $previous = $halaman - 1;
         $next = $halaman + 1;
         
         $data = mysqli_query($koneksi,"SELECT * FROM menu;");
         $jumlah_data = mysqli_num_rows($data);
         $total_halaman = ceil($jumlah_data / $batas);
-        
+
         $data_menu = mysqli_query($koneksi,"SELECT * FROM menu LIMIT $halaman_awal, $batas");
         $nomor = $halaman_awal+1;
         while($d = mysqli_fetch_array($data_menu)){
@@ -134,7 +134,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
             <h4><a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><?php echo $d['nama_menu']; ?></a></h4>
             <h5 class="text-secondary" style="font-family: 'Open Sans', sans-serif;"><?php echo rupiah($d['harga']); ?></h5>
             <div>
-              <a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</button></a>
+              <a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>" class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</a>
               <?php 
               if(isset($_SESSION['id'])) {
                 ?>

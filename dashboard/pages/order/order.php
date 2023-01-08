@@ -17,7 +17,7 @@ if(isset($_POST['update'])){
   $tglbayar = ($_POST['txt_tglbayar']);
   $status = ($_POST['txt_status']);
 
-  $update=mysqli_query($koneksi,"UPDATE orderdetail SET status_pesanan ='$status' WHERE id_order='$id'");
+  $update=mysqli_query($koneksi,"UPDATE orders SET status_pesanan ='$status' WHERE id_order='$id'");
   if($update){
     echo "<script>alert('Data di Update')</script>";
     echo "<script>location='order.php'</script>";
@@ -27,7 +27,7 @@ if(isset($_POST['update'])){
 //Fungsi Delete
 if(isset($_GET['id_order'])){
   $id_order = $_GET['id_order'];
-  $sql = "DELETE orders FROM orders JOIN orderdetail ON orderdetail.id_order = orders.id_order WHERE orders.id_order = '$id_order';";
+  $sql = "DELETE orders FROM orders WHERE id_order = '$id_order';";
   $result = mysqli_query($koneksi,$sql);
   if($result){
     echo "<script>alert('Data di Delete')</script>";
@@ -51,14 +51,11 @@ if(isset($_GET['id_order'])){
               <thead>
                 <tr>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No. Pesanan</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Customer</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tgl. Pesan</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tgl. Pakai</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Menu</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Catatan</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Harga Satuan</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jumlah</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total Harga</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pembayaran</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tgl. Bayar</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status Pesanan</th>
@@ -75,11 +72,14 @@ if(isset($_GET['id_order'])){
                 $previous = $halaman - 1;
                 $next = $halaman + 1;
 
-                $data = mysqli_query($koneksi,"SELECT * FROM orders JOIN orderdetail ON orders.id_order = orderdetail.id_order JOIN user ON orders.id_user = user.id_user JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orderdetail.id_pembayaran = pembayaran.id_pembayaran;");
+                $data = mysqli_query($koneksi,"SELECT * FROM orders JOIN user ON orders.id_user = user.id_user JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orders.id_pembayaran = pembayaran.id_pembayaran;");
                 $jumlah_data = mysqli_num_rows($data);
                 $total_halaman = ceil($jumlah_data / $batas);
 
-                $data_order = mysqli_query($koneksi,"SELECT * FROM orders JOIN orderdetail ON orders.id_order = orderdetail.id_order JOIN user ON orders.id_user = user.id_user JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orderdetail.id_pembayaran = pembayaran.id_pembayaran LIMIT $halaman_awal, $batas");
+                $data_order = mysqli_query($koneksi,"SELECT DISTINCT no_pesanan, nama_user,tgl_pesan,tgl_pakai,metode_pembayaran, tgl_bayar,status_pesanan, catatan FROM orders JOIN user ON orders.id_user = user.id_user JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orders.id_pembayaran = pembayaran.id_pembayaran LIMIT $halaman_awal, $batas");
+
+                $data_order1 = mysqli_query($koneksi,"SELECT * FROM orders JOIN user ON orders.id_user = user.id_user JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orders.id_pembayaran = pembayaran.id_pembayaran LIMIT $halaman_awal, $batas");
+
                 $nomor = $halaman_awal+1;
 
                       //Menampilkan List
@@ -87,31 +87,28 @@ if(isset($_GET['id_order'])){
                   ?>
                   <tr>
                     <td class="text-center"><?php echo $nomor++; ?></td>
+                    <td class="text-center"><?php echo $d['no_pesanan']; ?></td>
                     <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['nama_user']; ?></h6></td>
                     <td class="text-center"><?php echo $d['tgl_pesan']; ?></td>
                     <td class="text-center"><?php echo $d['tgl_pakai']; ?></td>
-                    <td class="text-center"><?php echo $d['nama_menu']; ?></td>
-                    <td class="text-center" style="word-wrap: break-word;min-width: 160px;max-width: 160px;white-space:normal;"><?php echo $d['catatan_order']; ?></td>
-                    <td class="text-center"><?php echo $d['harga_satuan']; ?></td>
-                    <td class="text-center"><?php echo $d['jumlah']; ?></td>
-                    <td class="text-center"><?php echo $d['total_harga']; ?></td>
+                    <td class="text-center" style="word-wrap: break-word;min-width: 160px;max-width: 160px;white-space:normal;"><?php echo $d['catatan']; ?></td>
                     <td class="text-center"><?php echo $d['metode_pembayaran']; ?></td>
                     <td class="text-center"><?php echo $d['tgl_bayar']; ?></td>
                     <td class="text-center"><?php echo $d['status_pesanan']; ?></td>
                     <td class="text-center"><a href="">Lihat</a></td>
                     <td class="align-middle text-center">
-                      <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Order" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['id_order']; ?>"> 
+                      <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Order" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['no_pesanan']; ?>"> 
                         Edit
                       </a>
                       &nbsp;
-                      <a onclick="return confirm('Anda Yakin Ingin Menghapus Data Order?')" href="hapus_order.php?id_order=<?php echo $d['id_order']; ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Order">
+                      <a onclick="return confirm('Anda Yakin Ingin Menghapus Data Order?')" href="hapus_order.php?id_order=<?php echo $d['no_pesanan']; ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Order">
                         Delete
                       </a>
                     </td>
                   </tr>
 
                   <!-- Modal Edit -->
-                  <div class="modal fade" id="exampleModalEdit<?php echo $d['id_order']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="exampleModalEdit<?php echo $d['no_pesanan']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
