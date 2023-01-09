@@ -46,8 +46,12 @@ if(isset($_GET['id_pembayaran'])){
         <div class="card-header pb-0">
           <div class="d-flex align-items-center mb-3">
             <h6 class="mb-0">Metode Pembayaran</h6>
-            <div class="text-end" style="flex: 0 0 auto; width: 83%;">
-              <button class="btn btn-outline-primary btn-xs mb-0" data-bs-toggle="modal" data-bs-target="#exampleModalCreate"><i class="uil uil-plus" style="font-size: 15px;"></i></button>
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+              <div class="input-group">
+                <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" placeholder="Type here...">
+              </div>
+              <button class="btn btn-outline-primary btn-xs mb-0" style="margin-left: 10px;" data-bs-toggle="modal" data-bs-target="#exampleModalCreate"><i class="uil uil-plus" style="font-size: 15px;"></i></button>
             </div>
           </div>
         </div>
