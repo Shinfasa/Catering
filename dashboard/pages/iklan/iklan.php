@@ -32,6 +32,16 @@ if(isset($_POST['update'])){
   }
 }
 
+
+if (isset($_GET['id_car'])) {
+  $id_menu = $_GET['id_car'];
+  $sql = "DELETE FROM carousel WHERE id_car='$id_car'";
+  $result = mysqli_query($koneksi,$sql);
+  if($result){
+    echo "<script>alert('Data di Hapus')</script>";
+    echo "<script>location='iklan.php'</script>";
+  }
+}
 ?>
 <div class="container-fluid py-3">
   <div class="row">
