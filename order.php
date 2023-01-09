@@ -91,10 +91,24 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 														<h1 class="modal-title fs-5" id="exampleModalLabel">Upload Bukti Pembayaran</h1>
 														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 													</div>
-													<form action="iklan.php" method="POST" class="iklan">
+													<form action="order.php" method="POST">
 														<div class="modal-body">
+															<?php  
+															$pesanan = $d['no_pesanan'];
+															$data_bukti = mysqli_query($koneksi,"SELECT * FROM orders JOIN pembayaran ON orders.id_pembayaran = pembayaran.id_pembayaran WHERE no_pesanan = '$pesanan'");
+															$bukti = mysqli_fetch_array($data_bukti);
+															?>
 															<div class="form-group">
-																<label for="txt_gambar"></label>
+																<label for="txt_gambar">Metode Pembayaran</label>
+																<input type="text" class="form-control form-control-iklan" placeholder="Metode Pembayaran" name="metode" value="<?php echo $bukti['metode_pembayaran']; ?>">
+																<br>
+																<input type="text" class="form-control form-control-iklan" placeholder="no_rek" name="no_rek" value="<?php echo $bukti['no_rek']; ?>">
+																
+															</div>
+														
+															<div class="form-group">
+																<br>
+																<label for="txt_gambar">Bukti</label>
 																<input type="file" class="form-control form-control-iklan" placeholder="Gambar" name="gambar" value="">
 															</div>
 														</div>

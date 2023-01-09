@@ -71,7 +71,7 @@
         $userPass   = $_POST['logpass'];
         $userName   = $_POST['logname'];
 
-        $query  = "INSERT INTO user VALUES (NULL, '$userName', '$userMail', NULL, NUll, '$userPass', 2)";
+        $query  = "INSERT INTO user VALUES (NULL, '$userName', '$userMail', NULL, NUll, '$userPass', NULL, 2)";
         $result = mysqli_query($koneksi, $query);
 
         header('Location: login.php');
