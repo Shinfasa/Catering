@@ -67,7 +67,7 @@ if(isset($_GET['id_kategori'])){
               </thead>
               <tbody>
                 <?php 
-                if(){
+                
                 $batas = 10;
                 $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
                 $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
@@ -189,9 +189,6 @@ if(isset($_GET['id_kategori'])){
               </li>
             </ul>
           </nav>
-          <?php }else{ ?>
-           
-        <?php } ?>
         </div>
       </div>
     </div>
