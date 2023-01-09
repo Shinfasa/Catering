@@ -5,11 +5,12 @@ if(isset($_POST['checkout'])){
 
   $nopesanan = "HNSR".date("YmzHis");
   $tgl_pesan = date("Y-m-d");
+  $total_harga = $_POST['total_harga'];
   $alamat = $_POST['txt_alamat'];
   $nohp = $_POST['txt_nohp'];
   $tgl_pakai = date('Y-m-d H:i:s', strtotime($_POST['txt_pakai']));
   $harga_satuan = $_POST['harga_satuan'];
-  $total_harga = $_POST['total_harga'];
+  $subtotal_harga = $_POST['subtotal_harga'];
   $qty = $_POST['qty'];
   $catatan = $_POST['txt_catatan'];
   $id_pembayaran = $_POST['txt_bayar'];
@@ -21,10 +22,10 @@ if(isset($_POST['checkout'])){
     foreach ($id_menu as $menu => $menus) {
       $s_menu = $menus;
       $s_satuan = $harga_satuan[$menu];
-      $s_total = $total_harga[$menu];
+      $s_sub = $subtotal_harga[$menu];
       $s_qty = $qty[$menu];
 
-      $insert_order = mysqli_query($koneksi,"INSERT INTO orders VALUES (NULL, '$nopesanan', '$tgl_pesan', '$tgl_pakai', '$s_satuan', '$s_qty', '$s_total', '$alamat', '$nohp', '$catatan', NULL, NULL, 'Belum Dibayar', '$idUser', '$s_menu', '$id_pembayaran')");
+      $insert_order = mysqli_query($koneksi,"INSERT INTO orders VALUES (NULL, '$nopesanan', '$tgl_pesan', '$tgl_pakai', '$s_satuan', '$s_qty', '$s_sub', '$total_harga', '$alamat', '$nohp', '$catatan', NULL, NULL, 'Belum Dibayar', '$idUser', '$s_menu', '$id_pembayaran')");
       $delete_keranjang = mysqli_query($koneksi,"DELETE FROM keranjang WHERE id_user='$idUser'");
 
       $message[] = 'pesanan berhasil dilakukan!';
@@ -82,7 +83,7 @@ if(isset($_POST['checkout'])){
                   <th class="text-center" style="color: #384046;">Menu</th>
                   <th class="text-center" style="color: #384046;">Harga</th>
                   <th class="text-center" style="color: #384046;">Jumlah</th>
-                  <th class="text-center" style="color: #384046;">Total Harga</th>
+                  <th class="text-center" style="color: #384046;">Sub Total Harga</th>
                 </tr>
               </thead>                                    
               <tbody> 
@@ -112,7 +113,7 @@ if(isset($_POST['checkout'])){
                    <input type="hidden" name="txt_idmenu[]" value="<?= $fetch_cart['id_menu']; ?>">
                    <input type="hidden" name="harga_satuan[]" value="<?= $fetch_cart['total_harga']; ?>">
                    <input type="hidden" name="qty[]" value="<?= $fetch_cart['qty']; ?>">
-                   <input type="hidden" name="total_harga[]" value="<?= $sub_total; ?>">
+                   <input type="hidden" name="subtotal_harga[]" value="<?= $sub_total; ?>">
                    <?php
                  }
                }else{
@@ -122,7 +123,8 @@ if(isset($_POST['checkout'])){
             </tbody>
             <tfoot>
               <tr>
-                <th colspan="4" class="text-center" style="color: #384046;">Sub Total Harga</th>
+                <th colspan="4" class="text-center" style="color: #384046;">Total Harga</th>
+                <input type="hidden" name="total_harga" value="<?= $grand_total; ?>">
                 <th class="text-center" style="color: #384046;"><?php echo rupiah($grand_total); ?></th>
               </tr>
             </tfoot>
