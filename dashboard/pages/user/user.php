@@ -142,9 +142,15 @@ if(isset($_GET['id_user'])){
                         Edit
                       </a>
                       &nbsp;
+                      <?php 
+                      $id = $d['id_akses'];
+                      if ($id == $akses) {
+                      ?>
+                    <?php }else{ ?>
                       <a onclick="return confirm('Anda Yakin Ingin Menghapus Data User')" href="user.php?id_user=<?php echo $d['id_user']; ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete user">
                         Delete
                       </a>
+                    <?php } ?>
                     </td>
                   </tr>
 
