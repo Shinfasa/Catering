@@ -51,7 +51,6 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 								$grand_total = 0;
 								while($data = mysqli_fetch_array($data_order1)){
 									
-									
 									while($d = mysqli_fetch_array($data_order)){
 										$sub_total = ($data['harga_satuan'] * $data['qty']);
 										$grand_total += $sub_total;
@@ -79,7 +78,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 											<div class="modal-dialog">
 												<div class="modal-content">
 													<div class="modal-header">
-														<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+														<h1 class="modal-title fs-5" id="exampleModalLabel">Isi Pesanan</h1>
 														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 													</div>
 													<div class="modal-body">
