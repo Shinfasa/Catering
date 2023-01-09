@@ -50,69 +50,69 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 								$nomor = $halaman_awal+1;
 								$grand_total = 0;
 								while($data = mysqli_fetch_array($data_order1)){
-									
-									
+									$sub_total = ($data['harga_satuan'] * $data['qty']);
+									$grand_total += $sub_total;
+								}
 									while($d = mysqli_fetch_array($data_order)){
-										$sub_total = ($data['harga_satuan'] * $data['qty']);
-										$grand_total += $sub_total;
-										?>
-										<tr>
-											<td class="text-center"><?php echo $nomor++; ?></td>
-											<td class="text-center"><?php echo $d['no_pesanan']; ?></td>
-											<td class="text-center"><?php echo $d['tgl_pesan']; ?></td>
-											<td class="text-center">
-												<a href="" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#exampleModalView<?php echo $d['no_pesanan']; ?>">
-													Lihat
-												</a>
-											</td>
-											<td class="text-center"><?php echo rupiah($grand_total); ?></td>
-											<td class="text-center"><?php echo $d['catatan']; ?></td>
-											<td class="text-center">TF</td>
-											<td class="text-center"><?php echo $d['status_pesanan']; ?></td>
-											<td class="text-center" style="color: #384046;">
-												<a class="btn" href="nota.php?resi=<?php echo $d['no_pesanan']; ?>"><i class="bi bi-printer"></i></a>
-											</td>
-										</tr>
 
-										<!-- Modal -->
-										<div class="modal fade" id="exampleModalView<?php echo $d['no_pesanan']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-											<div class="modal-dialog">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									?>
+									<tr>
+										<td class="text-center"><?php echo $nomor++; ?></td>
+										<td class="text-center"><?php echo $d['no_pesanan']; ?></td>
+										<td class="text-center"><?php echo $d['tgl_pesan']; ?></td>
+										<td class="text-center">
+											<a href="" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#exampleModalView<?php echo $d['no_pesanan']; ?>">
+												Lihat
+											</a>
+										</td>
+										<td class="text-center"><?php echo rupiah($grand_total); ?></td>
+										<td class="text-center"><?php echo $d['catatan']; ?></td>
+										<td class="text-center">TF</td>
+										<td class="text-center"><?php echo $d['status_pesanan']; ?></td>
+										<td class="text-center" style="color: #384046;">
+											<a class="btn" href="nota.php?resi=<?php echo $d['no_pesanan']; ?>"><i class="bi bi-printer"></i></a>
+										</td>
+									</tr>
+
+									<!-- Modal -->
+									<div class="modal fade" id="exampleModalView<?php echo $d['no_pesanan']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													<form action="order.php" method="POST">
+														<?php 
+														$pesanan = $d['no_pesanan'];
+														$data_order1 = mysqli_query($koneksi,"SELECT * FROM orders JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orders.id_pembayaran = pembayaran.id_pembayaran WHERE no_pesanan= '$pesanan' AND id_user='$idUser' LIMIT $halaman_awal, $batas");
+
+														while($d2 = mysqli_fetch_array($data_order1)){ ?>
+															<br>
+															<img width="100px" src="assets/img/menu/<?php echo $d2['gambar']; ?>" alt="">
+															<div class="form-group">
+																<br>
+																<label for="txt_nama">Nama Menu</label>
+																<input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_nama" value="<?php echo $d2['nama_menu']; ?>">
+															</div> 
+															<br>
+															<div class="form-group">
+																<label for="txt_desk">Deskripsi</label>
+																<input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_desk" value="<?php echo rupiah($d2['harga_satuan']); ?> x <?php echo $d2['qty']; ?> = <?php echo rupiah($d2['total_harga']); ?>">
+															</div> 
+
+														<?php } ?>
 													</div>
-													<div class="modal-body">
-														<form action="order.php" method="POST">
-															<?php 
-															$pesanan = $d['no_pesanan'];
-															$data_order1 = mysqli_query($koneksi,"SELECT * FROM orders JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orders.id_pembayaran = pembayaran.id_pembayaran WHERE no_pesanan= '$pesanan' AND id_user='$idUser' LIMIT $halaman_awal, $batas");
-
-															while($d2 = mysqli_fetch_array($data_order1)){ ?>
-																<br>
-																<img width="100px" src="assets/img/menu/<?php echo $d2['gambar']; ?>" alt="">
-																<div class="form-group">
-																	<br>
-																	<label for="txt_nama">Nama Menu</label>
-																	<input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_nama" value="<?php echo $d2['nama_menu']; ?>">
-																</div> 
-																<br>
-																<div class="form-group">
-																	<label for="txt_desk">Deskripsi</label>
-																	<input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_desk" value="<?php echo rupiah($d2['harga_satuan']); ?> x <?php echo $d2['qty']; ?> = <?php echo rupiah($d2['total_harga']); ?>">
-																</div> 
-
-															<?php } ?>
-														</div>
-														<div class="modal-footer">
-															<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-														</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 													</div>
 												</div>
 											</div>
+										</div>
 
-											<?php
-										}
+										<?php
+
 									}
 									?>    
 								</tbody>
