@@ -2,6 +2,20 @@
 //Memanggil Header  
 include('../header.php');
 
+//Fungsi Create
+if(isset($_POST['create'])){
+  $fileName = $_FILES['txt_gambar']['name'];
+
+// Simpan di Folder Gambar
+  move_uploaded_file($_FILES['txt_gambar']['tmp_name'], "../../../assets/img/iklan/".basename($_FILES['txt_gambar']['name']));
+
+  $query=mysqli_query($koneksi,"INSERT INTO carousel VALUES (NULL, 'filename')");
+  if($query){
+    echo "<script>alert('Data Ditambahkan')</script>";
+    echo "<script>location='iklan.php'</script>";
+  }
+}
+
 //Fungsi Update
 if(isset($_POST['update'])){
   $id = ($_POST['txt_id']);
