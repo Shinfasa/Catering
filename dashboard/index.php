@@ -3,16 +3,17 @@ include('header.php');
 if ($_SESSION['akses'] == 1) {
 
   $bln = date("n");
-  $data1 = mysqli_query($koneksi,"SELECT SUM(total_harga) FROM  orderdetail WHERE MONTH(tgl_bayar) = '$bln' AND status_pesanan = 'Sedang Diproses' OR status_pesanan = 'Selesai';");
+
+  $data1 = mysqli_query($koneksi,"SELECT SUM(total_harga) FROM  orders WHERE MONTH(tgl_bayar) = '$bln' AND status_pesanan = 'Sedang Diproses' OR status_pesanan = 'Selesai';");
   $pendapatanbln = mysqli_fetch_array($data1);
 
   $data2 = mysqli_query($koneksi,"SELECT * FROM user WHERE id_akses = 2;");
   $jumlah_cust = mysqli_num_rows($data2);
 
-  $data3 = mysqli_query($koneksi,"SELECT * FROM orders JOIN orderdetail ON orders.id_order = orderdetail.id_order WHERE orderdetail.status_pesanan = 'Selesai';");
+  $data3 = mysqli_query($koneksi,"SELECT * FROM orders WHERE status_pesanan = 'Selesai';");
   $pesanan = mysqli_num_rows($data3);
 
-  $data4 = mysqli_query($koneksi, "SELECT SUM(total_harga) FROM orderdetail WHERE status_pesanan = 'Sedang Diproses' OR status_pesanan = 'Selesai';");
+  $data4 = mysqli_query($koneksi, "SELECT SUM(total_harga) FROM orders WHERE status_pesanan = 'Sedang Diproses' OR status_pesanan = 'Selesai';");
   $pendapatan = mysqli_fetch_array($data4)
 ?>
 
@@ -95,7 +96,13 @@ if ($_SESSION['akses'] == 1) {
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Total<br>Pendapatan</p>
                     <h5 class="font-weight-bolder">
-                      <?php echo rupiah($pendapatan['SUM(total_harga)']); ?>
+                      <?php 
+                      if (empty($pendapatanbln['SUM(total_harga)'])) {
+                        echo rupiah(0);
+                      }else{
+                      echo rupiah($pendapatan['SUM(total_harga)']); 
+                    }
+                     ?>
                     </h5>
                   </div>
                 </div>
@@ -176,9 +183,9 @@ if ($_SESSION['akses'] == 1) {
       <div class="row mt-4">
         <div class="col-lg-7 mb-lg-0 mb-4">
           <div class="card ">
-            <div class="card-header pb-0 p-3">
+            <div class="card-header pb-1 p-3">
               <div class="d-flex justify-content-between">
-                <h6 class="mb-2">Sales by Country</h6>
+                <h6 class="mb-4">Sales by Country</h6>
               </div>
             </div>
             <div class="table-responsive">
@@ -316,7 +323,7 @@ if ($_SESSION['akses'] == 1) {
         <div class="col-lg-5">
           <div class="card">
             <div class="card-header pb-0 p-3">
-              <h6 class="mb-0">Categories</h6>
+              <h6 class="mb-2">Categories</h6>
             </div>
             <div class="card-body p-3">
               <ul class="list-group">

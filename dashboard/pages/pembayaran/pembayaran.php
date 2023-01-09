@@ -42,7 +42,7 @@ if(isset($_GET['id_pembayaran'])){
 <div class="container-fluid py-3">
   <div class="row">
     <div class="col-12">
-      <div class="card" style="height:100vh; max-height: 540px;">
+      <div class="card" style="height:100vh; max-height: 552px;">
         <div class="card-header pb-0">
           <div class="d-flex align-items-center mb-3">
             <h6 class="mb-0">Metode Pembayaran</h6>

@@ -256,7 +256,7 @@ if(isset($_GET['id_user'])){
             </table>
           </div> 
         </div>
-        <br>
+        
         <nav>
           <ul class="pagination justify-content-center">
             <li class="page-item">
