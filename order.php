@@ -53,7 +53,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 									
 									while($d = mysqli_fetch_array($data_order)){
 										$sub_total = ($data['harga_satuan'] * $data['qty']);
-										$grand_total += $sub_total;
+										$grand_total += $sub_total;	
 										?>
 										<tr>
 											<td class="text-center"><?php echo $nomor++; ?></td>
