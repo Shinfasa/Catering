@@ -61,7 +61,7 @@
         &copy; 2022 Copyright <strong><span>WM Hana Asri</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        By Tim Catering
+        By Tim C5 - MIF'21
       </div>
     </div>
       
