@@ -67,8 +67,7 @@ if(isset($_GET['id_kategori'])){
               </thead>
               <tbody>
                 <?php 
-                if(isset($_POST['search'])){
-                $s = $_POST['search'];
+                if(){
                 $batas = 10;
                 $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
                 $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
@@ -191,131 +190,8 @@ if(isset($_GET['id_kategori'])){
             </ul>
           </nav>
           <?php }else{ ?>
-            <?php
-                if(isset($_POST['search'])){
-                $s = $_POST['search'];
-                $batas = 100;
-                $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
-                $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
-
-                $previous = $halaman - 1;
-                $next = $halaman + 1;
-
-                $data = mysqli_query($koneksi,"SELECT * FROM kategori WHERE nama_kategori like '%$s%' order by id_kategori;");
-                $jumlah_data = mysqli_num_rows($data);
-                $total_halaman = ceil($jumlah_data / $batas);
-
-                $data_pegawai = mysqli_query($koneksi,"SELECT * FROM kategori WHERE nama_kategori like '%$s%' order by id_kategori LIMIT $halaman_awal, $batas");
-                $nomor = $halaman_awal+1;
-
-                //Menampilkan List
-                while($d = mysqli_fetch_array($data_pegawai)){
-                  ?>
-                  <tr>
-                    <td class="text-center"><?php echo $nomor++; ?></td>
-                    <td class="text-center"><h6 class="mb-0 text-sm"><?php echo $d['nama_kategori']; ?></h6></td>
-                    <td class="text-truncate" style="max-width: 200px;"><?php echo $d['deskripsi']; ?></td>
-                    <td class="align-middle text-center">
-                      <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit kategori" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['id_kategori']; ?>">
-                        Edit
-                      </a>
-                      &nbsp;
-                      <a onclick="return confirm('Anda Yakin Ingin Menghapus Data Kategori')" href="kategori.php?id_kategori=<?php echo $d['id_kategori'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit kategori">
-                        Delete
-                      </a>
-                    </td>
-                  </tr>
-
-                  <!-- Modal Create -->
-                  <div class="modal fade" id="exampleModalCreate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="exampleModalLabel">Create Kategori</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <form action="kategori.php" method="POST" class="kategori">
-                          <div class="modal-body">
-                            <div class="form-group">
-                              <label for="txt_nama">Nama Kategori</label>
-                              <input type="text" class="form-control form-control-kategori" placeholder="Nama Kategori" name="txt_nama" value="">
-                            </div>
-                            <div class="form-group">
-                              <label for="txt_des">Deskripsi</label>
-                              <input type="text" class="form-control form-control-kategori" placeholder="Deskripsi" name="txt_des" value="">
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" name="create" class="btn btn-primary">Save changes</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- End Modal Create -->
-
-                  <!-- Modal Edit -->
-                  <div class="modal fade" id="exampleModalEdit<?php echo $d['id_kategori']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Kategori</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <form action="kategori.php" method="POST" class="kategori">
-                          <div class="modal-body">
-                            <div class="form-group">
-                              <input type="hidden" name="txt_id" value="<?php echo $d['id_kategori']; ?>">
-                            </div>
-                            <div class="form-group">
-                              <label for="txt_nama">Nama Kategori</label>
-                              <input type="nama_kategori" class="form-control form-control-kategori"  placeholder="Nama Kategori" name="txt_nama" value="<?php echo $d['nama_kategori']; ?>">
-                            </div>
-                            <div class="form-group">
-                              <label for="txt_des">Deskripsi</label>
-                              <input type="deskripsi" class="form-control form-control-kategori" placeholder="Deskripsi" name="txt_des" value="<?php echo $d['deskripsi']; ?>">
-                            </div>      
-                            <div class="modal-footer">
-                              <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="submit" name="update" class="btn btn-primary">Save changes</button>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- End Modal Edit -->
-                    <?php
-                  }
-                //End Menampilkan List
-                  ?>
-
-                </tbody>
-              </table>
-
-            </div>
-
-          </div>
-          <!-- Pagination -->
-          <nav>
-            <ul class="pagination justify-content-center">
-              <li class="page-item">
-                <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>> < </a>
-              </li>
-              <?php 
-              for($x=1;$x<=$total_halaman;$x++){
-                ?> 
-                <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
-                <?php
-              }
-              ?>        
-              <li class="page-item">
-                <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>> </a>
-              </li>
-            </ul>
-          </nav>
-        <?php } }?>
+           
+        <?php } ?>
         </div>
       </div>
     </div>
