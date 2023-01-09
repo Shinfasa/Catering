@@ -2,9 +2,21 @@
 //Memanggil Header
 include('../header.php');
 
+if(isset($_POST['accept'])){
+  $nopesanan = ($_POST['txt_id']);
+  $tglbayar = date('Y-m-d');
+  $status = "Sedang Diproses";
+
+  $update=mysqli_query($koneksi,"UPDATE orders SET tgl_bayar ='$tglbayar', status_pesanan = '$status' WHERE no_pesanan='$nopesanan'");
+  if($update){
+    echo "<script>alert('Bukti Diterima')</script>";
+    echo "<script>location='order.php'</script>";
+  }
+}
+
 //Fungsi Update
 if(isset($_POST['update'])){
-  $id = ($_POST['txt_id']);
+  $nopesanan = ($_POST['no_pesanan']);
   $nama = ($_POST['txt_nama']);
   $tglpesan = ($_POST['txt_tglpesan']);
   $tglpakai = ($_POST['txt_tglpakai']);
@@ -25,9 +37,9 @@ if(isset($_POST['update'])){
 }
 
 //Fungsi Delete
-if(isset($_GET['id_order'])){
-  $id_order = $_GET['id_order'];
-  $sql = "DELETE orders FROM orders WHERE id_order = '$id_order';";
+if(isset($_GET['no_pesanan'])){
+  $nopesanan = $_GET['no_pesanan'];
+  $sql = "DELETE orders FROM orders WHERE no_pesanan = '$nopesanan';";
   $result = mysqli_query($koneksi,$sql);
   if($result){
     echo "<script>alert('Data di Delete')</script>";
@@ -103,13 +115,13 @@ if(isset($_GET['id_order'])){
                         Edit
                       </a>
                       &nbsp;
-                      <a onclick="return confirm('Anda Yakin Ingin Menghapus Data Order?')" href="hapus_order.php?id_order=<?php echo $d['no_pesanan']; ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Order">
+                      <a onclick="return confirm('Anda Yakin Ingin Menghapus Data Order?')" href="hapus_order.php?no_pesanan=<?php echo $d['no_pesanan']; ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit Order">
                         Delete
                       </a>
                     </td>
                   </tr>
 
-                  <!-- Modal Create -->
+                  <!-- Modal Bukti -->
                   <div class="modal fade" id="exampleModalBukti<?php echo $d['no_pesanan'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -117,7 +129,7 @@ if(isset($_GET['id_order'])){
                           <h1 class="modal-title fs-5" id="exampleModalLabel">Bukti Pembayaran</h1>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="order.php" method="POST" class="iklan">
+                        <form action="order.php" method="POST" class="order">
                           <div class="modal-body">
                             <div class="form-group">
                               <?php if (isset($d['bukti_pembayaran'])){ ?>
@@ -130,14 +142,14 @@ if(isset($_GET['id_order'])){
                           </div>
                           <div class="modal-footer">
                             <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" name="create" class="btn btn-danger">Save changes</button>
-                            <button type="submit" name="create" class="btn btn-primary">Save changes</button>
+                            <button type="submit" name="reject" class="btn btn-danger"><i class="uil uil-times" style="font-size: 15px;"></i></button>
+                            <button type="submit" name="accept" class="btn btn-primary"><i class="uil uil-check" style="font-size: 15px;"></i></button>
                           </div>
                         </form>
                       </div>
                     </div>
                   </div>
-                  <!-- End Modal Create -->
+                  <!-- End Modal Bukti -->
 
                   <!-- Modal Edit -->
                   <div class="modal fade" id="exampleModalEdit<?php echo $d['no_pesanan']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
