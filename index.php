@@ -39,7 +39,11 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
       while($i = mysqli_fetch_array($data_iklan)){
         ?>
         <div class="carousel-item active" style="height: 650px;">
+          <?php if(isset($_SESSION['id'])){ ?>
           <img src="assets/img/iklan/<?php echo $i['gambar']; ?>" alt="" width="100%" style="margin-top: 60px; height: 600px;">
+        <?php }else{ ?>
+          <img src="assets/img/iklan/<?php echo $i['gambar']; ?>" alt="" width="100%" style="height: 600px;">
+        <?php } ?>
         </div>    
         
         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
