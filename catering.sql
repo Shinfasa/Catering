@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 08, 2023 at 06:00 PM
+-- Generation Time: Jan 09, 2023 at 06:40 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -129,7 +129,7 @@ INSERT INTO `menu` (`id_menu`, `nama_menu`, `harga`, `detail`, `gambar`, `id_kat
 (10, 'Tumpeng Ayam', '150000', 'Mau bikin acara tumpengan tapi gaada waktu?\r\nMau pesen tapi mau yang bisa req isian makanan dan harga miring?\r\n\r\nDimana lagi kalo ga di @wm.hanaasri ,yuk simpan gambar ini untuk jadi referensi Tumpenganmu selanjutnya 🤗\r\n', 'tumpeng_ayam.jpg', 2),
 (11, 'Telur Teriyaki', '12000', 'Telur Teriyaki???? 😮😮\r\n\r\nPernah denger ga gaiss?? Atau udah pernah coba ?\r\nKalau belum pas banget sih, kamu bisa bilang Mimin ya buat bikinin menu ini di catering kamu 🤗🤗', 'telur_teriyaki.jpg', 1),
 (12, 'Kimlo Soupp', '12000', 'Siapa nih yang suka Soup?🤔\r\nNah.... Kali ini mimin masak Kimlo Soup lohhh\r\n\r\nIsinya banyak banget ya, komplit lagi. Ada telur puyuh, wortel, jamur, brokoli, baso, tofu dll\r\n\r\nYukkk segera merapat ke mimin buat catering menu ini 😉😉', 'kimlo_soup.jpg', 1),
-(16, 'Burger', '11000', 'Enak banget loh gess burgernya. Yuk langsung order dan cobain.', 'p-1.jpg', 1);
+(17, 'Burger', '10000', 'Buruan gess cobain burger dari kita, enak banget lohh!!!', '', 1);
 
 -- --------------------------------------------------------
 
@@ -144,6 +144,7 @@ CREATE TABLE `orders` (
   `tgl_pakai` datetime NOT NULL,
   `harga_satuan` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `qty` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subtotal_harga` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `total_harga` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nohp` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -160,10 +161,12 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id_order`, `no_pesanan`, `tgl_pesan`, `tgl_pakai`, `harga_satuan`, `qty`, `total_harga`, `alamat`, `nohp`, `catatan`, `tgl_bayar`, `bukti_pembayaran`, `status_pesanan`, `id_user`, `id_menu`, `id_pembayaran`) VALUES
-(14, '', '2023-01-06', '2023-01-08 10:30:00', '15000', '1', '15000', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '', NULL, NULL, 'Belum Dibayar', 5, 1, 1),
-(15, 'HNSR2023017175327', '2023-01-08', '2023-01-09 13:00:00', '15000', '1', '15000', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '', NULL, NULL, 'Belum Dibayar', 5, 1, 1),
-(16, 'HNSR2023017175542', '2023-01-08', '2023-01-09 13:00:00', '15000', '1', '15000', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '', NULL, NULL, 'Belum Dibayar', 5, 1, 1);
+INSERT INTO `orders` (`id_order`, `no_pesanan`, `tgl_pesan`, `tgl_pakai`, `harga_satuan`, `qty`, `subtotal_harga`, `total_harga`, `alamat`, `nohp`, `catatan`, `tgl_bayar`, `bukti_pembayaran`, `status_pesanan`, `id_user`, `id_menu`, `id_pembayaran`) VALUES
+(14, '', '2023-01-06', '2023-01-08 10:30:00', '15000', '1', '15000', '', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '', NULL, NULL, 'Belum Dibayar', 5, 1, 1),
+(15, 'HNSR2023017175327', '2023-01-08', '2023-01-09 13:00:00', '15000', '1', '15000', '', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '', NULL, NULL, 'Belum Dibayar', 5, 1, 1),
+(16, 'HNSR2023017175542', '2023-01-08', '2023-01-09 13:00:00', '15000', '1', '15000', '', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '', NULL, NULL, 'Belum Dibayar', 5, 1, 1),
+(17, 'HNSR2023018055533', '2023-01-09', '2023-01-10 11:55:00', '15000', '1', '15000', '', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '', NULL, NULL, 'Belum Dibayar', 5, 2, 1),
+(18, 'HNSR2023018062910', '2023-01-09', '2023-01-10 12:28:00', '15000', '3', '45000', '', 'Jl.Kaliurang Sumbersari Jember', '085604947847', 'buat ayang', NULL, NULL, 'Belum Dibayar', 5, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -213,7 +216,7 @@ INSERT INTO `user` (`id_user`, `nama_user`, `email`, `alamat`, `nohp`, `password
 (5, 'Laura Cantik', 'laura@gmail.com', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '789', '', 2),
 (6, 'Kresna', 'kresna@gmail.com', 'Jl.Kaki Sumbersari Jember', '085434567889', '098', 'bruce-mars.jpg', 2),
 (8, 'Rehan', 'rehan@gmail.com', 'Jl.Mastrip  Pancoran Mas Jember', '085678900223', '67890', '', 2),
-(10, 'Gevin Oktoval', 'gevin@gmail.com', 'Jl.Mastrip gang 3 Sumbersari Jember', '085678009432', '6789', '', 2);
+(11, 'Lutfa Himayatus S', 'lutfa@gmail.com', 'Jl.Tegal Gede Sumbersari Jember', '085456789002', '000', 'ivana-square.jpg', 2);
 
 --
 -- Indexes for dumped tables
@@ -300,31 +303,31 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
