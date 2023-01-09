@@ -78,7 +78,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
                     <h4><a href="product_detail.php?id_menu=<?php echo $s['id_menu'] ?>"><?php echo $s['nama_menu']; ?></a></h4>
                     <h5 class="text-secondary" style="font-family: 'Open Sans', sans-serif;"><?php echo rupiah($s['harga']); ?></h5>
                     <div>
-                      <a href="product_detail.php?id_menu=<?php echo $s['id_menu'] ?>"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</button></a>
+                      <a href="product_detail.php?id_menu=<?php echo $s['id_menu'] ?>" class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</a>
                       <?php 
                       if(isset($_SESSION['id'])) {
                         ?>
@@ -138,7 +138,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
             <h4><a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><?php echo $d['nama_menu']; ?></a></h4>
             <h5 class="text-secondary" style="font-family: 'Open Sans', sans-serif;"><?php echo rupiah($d['harga']); ?></h5>
             <div>
-              <a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</button></a>
+              <a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>" class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</a>
               <?php 
               if(isset($_SESSION['id'])) {
                 ?>
@@ -204,7 +204,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
             <h4><a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><?php echo $d['nama_menu']; ?></a></h4>
             <h5 class="text-secondary" style="font-family: 'Open Sans', sans-serif;"><?php echo rupiah($d['harga']); ?></h5>
             <div>
-              <a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>"><button class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</button></a>
+              <a href="product_detail.php?id_menu=<?php echo $d['id_menu'] ?>" class="btn m-2 pt-2 pb-2" style="color: #E8853D;">Detail Menu</a>
               <?php 
               if(isset($_SESSION['id'])) {
                 ?>
