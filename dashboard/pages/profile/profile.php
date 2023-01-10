@@ -1,6 +1,6 @@
 <?php
 include('../header.php');
-
+if ($_SESSION['akses'] == 1) {
 if(isset($_POST['update'])){
   $id = ($_POST['txt_id']);
   $user = ($_POST['txt_nama']);
@@ -116,5 +116,10 @@ $u = mysqli_fetch_array($result);
   
 
 <?php
+}else{
+
+  echo "<script>alert('Anda adalah Customer!')</script>";
+  echo "<script>location='../../../index.php'</script>"; 
+}
 include('../footer.php')
 ?>

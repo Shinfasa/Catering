@@ -1,7 +1,7 @@
 <?php
 //Memanggil Header  
 include('../header.php');
-
+if ($_SESSION['akses'] == 1) {
 //Fungsi Create
 if(isset($_POST['create'])){
   $fileName = $_FILES['txt_gambar']['name'];
@@ -196,5 +196,10 @@ if (isset($_GET['id_car'])) {
     </div>
   </div>
   <?php
+  }else{
+
+  echo "<script>alert('Anda adalah Customer!')</script>";
+  echo "<script>location='../../../index.php'</script>"; 
+}
   include('../footer.php')
 ?>
