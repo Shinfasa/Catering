@@ -124,8 +124,8 @@ include('function/rupiah.php');
                 <li>
                   <form action="menu.php?id_kategori=0" method="post">
                     <input type="search" name="search" class="form-control border-1 small" placeholder="Search for...">
-                    <button type="submit" class="form-control border-1 small" aria-Label="Left Align">
-                      <a class="btn p-1"><span style="margin-left: 75px;">Cari</span></a>
+                    <button type="submit" class="btn p-1 form-control border-1 small" aria-Label="Left Align">
+                      <span style="text-align: center;">Cari</span></a>
                     </button>
                   </form>           
                 </li>
