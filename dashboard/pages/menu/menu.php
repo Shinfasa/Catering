@@ -29,8 +29,10 @@ if(isset($_POST['update'])){
 
   if($file!="") {
     move_uploaded_file($_FILES['txt_gambar']['tmp_name'], "../../../assets/img/menu/".basename($_FILES['txt_gambar']['name']));
-    $update=mysqli_query($koneksi,"UPDATE menu SET nama_menu='$nama', harga='$harga', detail='$detail', gambar='$file', id_kategori='$kategori' WHERE id_menu='$id'");
+    if($oldfile != NULL){
     unlink("../../../assets/img/menu/".$oldfile);
+    }
+    $update=mysqli_query($koneksi,"UPDATE menu SET nama_menu='$nama', harga='$harga', detail='$detail', gambar='$file', id_kategori='$kategori' WHERE id_menu='$id'");
 
     if($update){
       echo "<script>alert('Data di Update')</script>";
@@ -158,7 +160,7 @@ if (isset($_GET['id_menu'])) {
                                   $data = mysqli_query($koneksi,"SELECT * FROM kategori");
                                   while($u = mysqli_fetch_array($data)){
                                     ?>
-                                    <input type="radio" name="txt_kategori" value="<?php echo $d['id_kategori']; ?>" style="margin-left:20px;">  <?php echo $u['nama_kategori']; ?>
+                                    <input type="radio" name="txt_kategori" value="<?php echo $u['id_kategori']; ?>" style="margin-left:20px;">  <?php echo $u['nama_kategori']; ?>
 
                                     <?php 
                                   } 
