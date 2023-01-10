@@ -12,10 +12,16 @@
   if($file!="") {
     move_uploaded_file($_FILES['txt_gambar']['tmp_name'], "assets/img/user/".basename($_FILES['txt_gambar']['name']));
     $update=mysqli_query($koneksi,"UPDATE user SET nama_user='$user', alamat='$alamat', nohp='$nohp', password='$password', gambar='$file' WHERE id_user='$idUser'"); 
-    unlink();
+    unlink(".assets/img/user/".$oldfile);
     if($update){
       echo "<script>alert('Data di Update')</script>";
-      echo "<script>location='user.php'</script>";
+      echo "<script>location='profile.php'</script>";
+    }
+  }else{
+    $update=mysqli_query($koneksi,"UPDATE user SET nama_user='$user', alamat='$alamat', nohp='$nohp', password='$password' WHERE id_user='$idUser'"); 
+    if($update){
+      echo "<script>alert('Data di Update')</script>";
+      echo "<script>location='profile.php'</script>";
     }
   }
 }
@@ -40,13 +46,17 @@
       <div class="card">
         <div>
           <div class="m-4">
-            <form action="" method="POST" class="user">
+            <form action="" method="POST" class="user" enctype='multipart/form-data'>
               <?php 
                 $data_user = mysqli_query($koneksi,"SELECT * FROM user WHERE id_user='$idUser'");                
-                if($u = mysqli_fetch_array($data_user)){
+                $u = mysqli_fetch_array($data_user);
               ?>
               <div class="form-group pb-3 text-center">
-                <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="assets/img/user/<?php echo $u['gambar']; ?>">                
+                <?php if($u['gambar'] == NULL){ ?>
+                <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="assets/img/user/default_profile.png">    
+                <?php }else{ ?>
+                  <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="assets/img/user/<?php echo $u['gambar']; ?>"> 
+                <?php } ?>            
               </div>
               <div class="form-group pb-3">
                 <label for="txt_gambar">Foto Profil</label>
@@ -75,10 +85,7 @@
                 <input type="checkbox" onclick="myFunction()" style="margin-left: 10px; margin-top: 10px;"><span style="font-size: 14px; margin-left: 10px;">Show Password</span>
               </div>
               <button type="submit" name="update" class="btn btn-user btn-block text-light" style="background-color: #E8853D;"><b>Update</b></button>
-              <button class="btn btn-user btn-block" style="color: #E8853D;"><a href="index.php"><b>Kembali</b></a></button>
-              <?php
-                }
-              ?>                                         
+              <button class="btn btn-user btn-block" style="color: #E8853D;"><a href="index.php"><b>Kembali</b></a></button>                                       
               </form>
             </div>
           </div>

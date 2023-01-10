@@ -1,39 +1,50 @@
 <?php
-	include("header.php");
-	if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
-?>
+include("header.php");
+if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
+	if(isset($_POST['upload'])){
+		$id = ($_POST['nopesanan']);
+		$file = $_FILES['bukti']['name'];
+		move_uploaded_file($_FILES['bukti']['tmp_name'], "assets/img/buktitf/".basename($_FILES['bukti']['name']));
+		$update=mysqli_query($koneksi,"UPDATE orders SET bukti_pembayaran='$file' WHERE no_pesanan='$id'"); 
 
-<head>
-  <style>
-    .tabs-to-dropdown .nav-wrapper {
-      padding: 10px;
-    }
-    .tabs-to-dropdown .nav-pills .nav-link.active {
-      background-color: #E8853D;
-      color:#ffffff;
-    }
-	.tabs-to-dropdown .nav-pills .nav-link {
-      color:#444444;
-    }
-    .tabs-to-dropdown .dropdown-item {
-      padding: 10px;
-    }
-    @media (min-width: 1280px) {
-      .tabs-to-dropdown .nav-wrapper {
-        padding: 15px 30px;
-      }
-    }
-  </style>
-</head>
+		if($update){
+			echo "<script>alert('Bukti Pembayaran Telah Diupload!')</script>";
+			echo "<script>location='order.php'</script>";
+		}
+	}
+	?>
 
-<br><br>
-<!-- popular section starts  -->
-<section id="menu" class="what-we-do">
-	<div class="container">
+	<head>
+		<style>
+			.tabs-to-dropdown .nav-wrapper {
+				padding: 10px;
+			}
+			.tabs-to-dropdown .nav-pills .nav-link.active {
+				background-color: #E8853D;
+				color:#ffffff;
+			}
+			.tabs-to-dropdown .nav-pills .nav-link {
+				color:#444444;
+			}
+			.tabs-to-dropdown .dropdown-item {
+				padding: 10px;
+			}
+			@media (min-width: 1280px) {
+				.tabs-to-dropdown .nav-wrapper {
+					padding: 15px 30px;
+				}
+			}
+		</style>
+	</head>
 
-		<div class="section-title">
-			<h2>Pesanan Saya</h2>
-		</div>
+	<br><br>
+	<!-- popular section starts  -->
+	<section id="menu" class="what-we-do">
+		<div class="container">
+
+			<div class="section-title">
+				<h2>Pesanan Saya</h2>
+			</div>
 
 		<!--Tabs -->
 		<div class="tabs-to-dropdown">
@@ -296,14 +307,14 @@
 </section>
 <!-- End Section -->
 
-<!-- partial -->
-<script src='https://code.jquery.com/jquery-3.5.1.slim.min.js'></script>
-<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js'></script>
+				<!-- partial -->
+				<script src='https://code.jquery.com/jquery-3.5.1.slim.min.js'></script>
+				<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js'></script>
 
-<?php
-	}else{
-		echo "<script>alert('Anda adalah Admin!')</script>";
-		echo "<script>location='dashboard/'</script>"; 
-	}
-	include "footer.php";
-?>
+				<?php
+			}else{
+				echo "<script>alert('Anda adalah Admin!')</script>";
+				echo "<script>location='dashboard/'</script>"; 
+			}
+			include "footer.php";
+		?>
