@@ -51,7 +51,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
                             <th class="text-center" style="color: #384046;">Menu</th>
                             <th class="text-center" style="color: #384046;">Harga</th>
                             <th class="text-center" style="color: #384046;">Qty</th>
-                            <th class="text-center" style="color: #384046;">Total Harga</th>
+                            <th class="text-center" style="color: #384046;">Sub Total Harga</th>
                             <th class="text-center" style="color: #384046;">Aksi</th>
                         </tr>
                     </thead>                                    
@@ -61,12 +61,13 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
                         $data = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE id_user = '$idUser'");
                         $cek = mysqli_num_rows($data);
                         if($cek > 0){
+                            $no = 1;
                             while($fetch_cart = mysqli_fetch_array($data)){
                                 ?>                        
                                 <tr>
                                     <form action="" method="post"> 
                                         <input type="hidden" name="id_keranjang" value="<?= $fetch_cart['id_keranjang']; ?>">                        
-                                        <td class="text-center"> <?php echo "1"; ?> </td>
+                                        <td class="text-center"> <?php echo $no++; ?> </td>
                                         <td class="text-center"> 
                                             <img width="100px" src="assets/img/menu/<?php echo $fetch_cart['gambar']; ?>" alt="">
                                             <br>
@@ -78,8 +79,8 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
                                         </td>  
                                         <td class="text-center"> <?php echo rupiah($sub_total = ($fetch_cart['total_harga'] * $fetch_cart['qty'])); ?></td> 
                                         <td class="text-center">
-                                            <button type="submit" class="bi bi-arrow-clockwise" name="update_qty"></button>
-                                            <button type="submit" class="bi bi-trash" name="delete" onclick="return confirm('Apakah anda yakin akan menghapus menu ini?')" ></button>
+                                            <button type="submit" name="update_qty" class="btn btn-user btn-block" style="background-color: #fff; color:#E8853D;"><i class="bi bi-arrow-clockwise"></i></button>
+                                            <button type="submit" class="btn btn-user btn-block" name="delete" onclick="return confirm('Apakah anda yakin akan menghapus menu ini?')" style="background-color: #fff; color:#E8853D;"><i class="bi bi-trash"></i></button>
                                         </td>
                                     </form>
                                 </tr>                        
@@ -103,11 +104,13 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
                 <h5 class="text-center pt-3"><b>Total Harga</b></h5>
                 <hr style="padding: 2px; margin: 10px;">
                 <div class="d-flex justify-content-between p-2">
-                    <p style="color: #384046;">Sub Total Harga</p>
+                    <p style="color: #384046;">Total Pembayaran</p>
                     <p style="color: #384046;"><?php echo rupiah($grand_total); ?> </p>
                 </div>
                 <hr style="padding: 2px; margin: 10px;">
-                <a href="checkout.php" class="btn mb-3 <?= ($grand_total > 1)?'':'disabled'; ?>">Check Out</a>
+                <div style="text-align: right;">
+                    <a href="checkout.php" class="btn mb-3 text-light <?= ($grand_total > 1)?'':'disabled'; ?>" style="background-color: #E8853D;">Check Out</a>
+                </div>
             </div>
         </div>
     </div>

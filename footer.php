@@ -7,7 +7,7 @@
       
       <div class="row">
 
-        <div class="col-lg-4 col-md-6 footer-newsletter" style="margin-right: 50px;">
+        <div class="col-lg-3 col-md-6 footer-newsletter" style="margin-right: 50px;">
           <a href="index.html"><img src="assets/img/logo/logo.png" alt="" class="img-fluid" style="width: 150px;"></a>
           <br><br>
           <p style="text-align: justify;">WM Hana Asri merupakan salah satu warung makan yang dibangun pada tahun 2012. Warung makan ini awalnya dibangun untuk membantu mahasiswa yang bertempat tinggal di sekitar wilayah patrang.</p>
@@ -27,26 +27,22 @@
         <div class="col-lg-2 col-md-4 footer-links">
           <h4>Kategori Menu</h4>
           <ul class="pt-4">
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Harian</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Prasmanan</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Kotakan</a></a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="menu.php?id_kategori=1">Harian</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="menu.php?id_kategori=2">Prasmanan</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="menu.php?id_kategori=3">Kotakan</a></a></li>
           </ul>
         </div>
 
-        <div class="col-lg-3 col-md-4 footer-links">
+        <div class="col-lg-4 col-md-4 footer-links">
           <h4 style="font-size: 17px;">Kontak Kami</h4>
           <ul class="pt-4">
             <li><i class="bx bx-chevron-right"></i> <strong>Alamat</strong></li>
-            <p class="text-secondary" style="margin-left: 20px;">
-              Jalan Jambu Depan Tebek<br>
-              Sebelah SMKN 1 Jember<br>
-              Patrang, Jember<br>
+            <p style="margin-left: 20px;">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d252767.327915946!2d113.50369662302433!3d-8.153335899999975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695560bb710a5%3A0xaefaa8c282870b5f!2sWarung%20Makan%20Hana%20Asri!5e0!3m2!1sid!2sid!4v1673314342789!5m2!1sid!2sid" width="380" height="180" style="border:1px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </p>
             <li><i class="bx bx-chevron-right"></i> <strong>No. Telepon</strong></li>
-            <p class="text-secondary" style="margin-left: 20px;">+62 858 1531 3767</p>
-            <p class="text-secondary" style="margin-left: 20px;">+62 822 2883 5524</p>
-            <li><i class="bx bx-chevron-right"></i> <strong>Email</strong></a></li>
-            <p class="text-secondary" style="margin-left: 20px; text-transform: lowercase;">wm.hanaasri@gmail.com</p>
+            <p class="text-secondary" style="margin-left: 20px;">+62 812-5219-9599</p>
+            <p class="text-secondary" style="margin-left: 20px;">+62 858-1531-3767</p>            
           </ul>
         </div>
 
@@ -66,9 +62,9 @@
     </div>
       
     <div class="social-links text-center text-md-right pt-3 pt-md-0">
-      <a href="#" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
-      <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-      <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+      <a href="https://wa.me/6281252199599?text=Permisi,%20Saya%20mau%20pesan%20catering" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
+      <a href="https://web.facebook.com/wm.hanaasri/" class="facebook"><i class="bx bxl-facebook"></i></a>
+      <a href="https://www.instagram.com/wm.hanaasri/" class="instagram"><i class="bx bxl-instagram"></i></a>
     </div>
 
   </div>

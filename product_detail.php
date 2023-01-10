@@ -27,40 +27,6 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
    $result = mysqli_query($koneksi, $query);
    $detail = mysqli_fetch_array($result);
    ?>
-   <head>
-    <style>
-        .small-img-group {
-            display: flex;
-            justify-content: space-between;
-        }
-        .small-img-col {
-            flex-basis: 24%;
-            cursor: pointer;
-        }
-        .sproduct select {
-            display: block;
-            padding: 5px 10px;
-        }
-        .sproduct input {
-            width: 50px;
-            height: 40px;
-            padding-left: 10px;
-            font-size: 16px;
-            margin-right: 10px;
-        }
-        .sproduct input:focus {
-            outline: none;
-        }
-        .buy-btn {
-            background: #E8853D;
-            color: #fff;
-            border: none;
-            padding: 4px;
-            opacity: 1;
-            transition: 0.3s all;
-        }
-    </style>
-</head>
 
 <br>
 <br>
@@ -87,7 +53,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
                 <p style="font-size: 20px;"><?php echo rupiah($detail['harga']); ?></p>
                 <input type="number" name="qty" class="qty" min="1" max="99" value="1" maxlength="2">
 
-                <a  href=""><button class="buy-btn bi-cart2 p-2" type="submit" name="add_to_cart"><span style="margin-left: 5px;">Tambahkan</span></button></a>
+                <button type="submit" name="add_to_cart" class="btn text-light p-1 m-2" style="background-color: #E8853D;"><span class="bi bi-cart2" style="margin-right: 5px;"></span>Tambahkan</button>                
                 <h4 class="mt-5 mb-3" style="text-align: justify; font-size: 20px;">Deskripsi:</h4>
                 <p style="text-align: justify; font-size:15px;"><?php echo $detail['detail'] ?></p>
             </div>    

@@ -67,7 +67,7 @@ if(isset($_POST['checkout'])){
             <div class="form-group">
               <label for="txt_nohp">No. Handphone</label>
               <input type="text" class="form-control form-control-user" placeholder="628*****" name="txt_nohp" value="<?php echo $nohp; ?>" required>
-            </div>     
+            </div>
           </div>
         </div>
       </div>
@@ -89,12 +89,12 @@ if(isset($_POST['checkout'])){
               <tbody> 
 
                 <?php
-
                 $grand_total = 0;
                 $cart_items[] = '';
                 $select_cart = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE id_user = '$idUser'");
 
                 if(mysqli_num_rows($select_cart) > 0){
+                  $no = 1;
 
                   while($fetch_cart = mysqli_fetch_array($select_cart)){
 
@@ -104,8 +104,12 @@ if(isset($_POST['checkout'])){
 
                    ?>
                    <tr>
-                     <td class="text-center" style="color: #384046;">1</td>
-                     <td class="text-center" style="color: #384046;"><img src="assets/img/menu/<?php echo $fetch_cart['gambar']; ?>" width="100px"><span style="margin-left: 10px;"><?php echo $fetch_cart['nama_menu']; ?></span></td>
+                     <td class="text-center" style="color: #384046;"><?php echo $no++; ?></td>
+                     <td class="text-center" style="color: #384046;">
+                        <img src="assets/img/menu/<?php echo $fetch_cart['gambar']; ?>" width="100px">
+                        <br>
+                        <?php echo $fetch_cart['nama_menu']; ?>
+                     </td>
                      <td class="text-center" style="color: #384046;"><?php echo rupiah($fetch_cart['total_harga']); ?></td>
                      <td class="text-center" style="color: #384046;"><?php echo $fetch_cart['qty']; ?></td>
                      <td class="text-center" style="color: #384046;"><?php echo rupiah($sub_total = ($fetch_cart['total_harga'] * $fetch_cart['qty'])); ?></td>
@@ -152,15 +156,17 @@ if(isset($_POST['checkout'])){
               $pembayaran = mysqli_query($koneksi,"SELECT * FROM pembayaran");
               while($p = mysqli_fetch_array($pembayaran)){
                 ?>
-                <input type="radio" name="txt_bayar" value="<?php echo $p['id_pembayaran']; ?>" style="margin-left: 10px;" required>&nbsp;<?php echo $p['metode_pembayaran']; ?>
+                <input type="radio" name="txt_bayar" value="<?php echo $p['id_pembayaran']; ?>" style="margin: 10px;" required><span style="margin-right: 50px;"><?php echo $p['metode_pembayaran']; ?></span>
                 <?php
               }
               ?>
             </div>
           </div>
 
-          <a href="cart.php" class="btn btn-user btn-block" style="color: #E8853D;"><b>Kembali</b></a>
-          <button type="submit" name="checkout" class="btn btn-user btn-block text-light font-weight-bold" style="background-color: #E8853D;">Lanjutkan</button>
+          <div style="text-align: right;">
+            <a href="cart.php" class="btn btn-user btn-block" style="color: #E8853D;">Kembali</a>
+            <button type="submit" name="checkout" class="btn btn-user btn-block text-light font-weight-bold" style="background-color: #E8853D;">Lanjutkan</button>
+          </div>
 
         </div>
       </div>
