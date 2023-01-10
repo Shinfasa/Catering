@@ -4,6 +4,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 	if(isset($_POST['upload'])){
 		$id = ($_POST['nopesanan']);
 		$file = $_FILES['bukti']['name'];
+
 		move_uploaded_file($_FILES['bukti']['tmp_name'], "assets/img/buktitf/".basename($_FILES['bukti']['name']));
 		$update=mysqli_query($koneksi,"UPDATE orders SET bukti_pembayaran='$file' WHERE no_pesanan='$id'"); 
 
@@ -129,7 +130,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 																<h1 class="modal-title fs-5" id="exampleModalLabel">Upload Bukti Pembayaran</h1>
 																<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 															</div>
-															<form action="order.php" method="POST">
+															<form action="order.php" method="POST" enctype='multipart/form-data'>
 																<div class="modal-body">
 																	<?php  
 																	$pesanan = $d['no_pesanan'];
