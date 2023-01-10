@@ -12,7 +12,7 @@
           <br><br>
           <p style="text-align: justify;">WM Hana Asri merupakan salah satu warung makan yang dibangun pada tahun 2012. Warung makan ini awalnya dibangun untuk membantu mahasiswa yang bertempat tinggal di sekitar wilayah patrang.</p>
         </div>
-  
+        
         <div class="col-lg-2 col-md-4 footer-links">
           <h4>Link Terkait</h4>
           <ul class="pt-4">
@@ -23,14 +23,16 @@
             <li><i class="bx bx-chevron-right"></i> <a href="faq.php">FAQ</a></li>
           </ul>
         </div>
-  
+        
         <div class="col-lg-2 col-md-4 footer-links">
           <h4>Kategori Menu</h4>
           <ul class="pt-4">
-            <li><i class="bx bx-chevron-right"></i> <a href="menu.php?id_kategori=1">Harian</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="menu.php?id_kategori=2">Prasmanan</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="menu.php?id_kategori=3">Kotakan</a></a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="menu.php?id_kategori=4">Tumpengan</a></a></li>
+            <?php  
+            $data_kategori = mysqli_query($koneksi,"SELECT * FROM kategori");
+            while($k = mysqli_fetch_array($data_kategori)){
+              ?>
+              <li><i class="bx bx-chevron-right"></i> <a href="menu.php?id_kategori=<?php echo $k['id_kategori']; ?>"><?php echo $k['nama_kategori']; ?></a></li>
+            <?php } ?>
           </ul>
         </div>
 
@@ -61,7 +63,7 @@
         By Tim C5 - MIF'21
       </div>
     </div>
-      
+    
     <div class="social-links text-center text-md-right pt-3 pt-md-0">
       <a href="https://wa.me/6281252199599?text=Permisi,%20Saya%20mau%20pesan%20catering" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
       <a href="https://web.facebook.com/wm.hanaasri/" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -69,13 +71,13 @@
     </div>
 
   </div>
-    
+  
 </footer>
 
 <!-- End Footer -->
-  
+
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-  
+
 <!-- Vendor JS Files -->
 <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -85,7 +87,7 @@
 <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
 <script src="assets/vendor/php-email-form/validate.js"></script>
-  
+
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
 </body>
