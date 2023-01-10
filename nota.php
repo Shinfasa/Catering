@@ -29,67 +29,69 @@
                     </div>
                 </div>
             </div>
-            <div class="row invoice-info">
-                <div class="col-sm-4 invoice-col">
-                  Admin
-                  <address>
-                    <strong>WM Hana Asri</strong><br>
-                    Jl. Sudirman No.3012, Palembang<br>
-                    Kec. Palembang Raya, Palembang,<br>
-                    Sumatera selatan 30961<br>
-                    Phone: (804) 123-5432<br>
-                    Email: info@sahretech.com
-                </address>
+
+            <div class=" invoice-col">
+                <table>
+                    <tr>
+                        <td colspan="5"><strong><?php echo $idUser; ?></strong></td>
+                    </tr>
+                    <tr>
+                        <td>Alamat</td>
+                        <td>&nbsp;:&nbsp;</td>
+                        <td><?php echo $data1['alamat_lengkap']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td>&nbsp;:&nbsp;</td>
+                        <td><?php echo $data1['no_hp']; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>&nbsp;:&nbsp;</td>
+                        <td><?php echo $userMail; ?></td>
+                    </tr>
+                </table>
             </div>
-            <!-- /.col -->
-            <div class="col-sm-4 invoice-col">
-              Customer
-              <address>
-                <strong><?php echo $idUser; ?></strong><br>
-                <?php echo $data1['alamat']; ?><br>
-                Phone: <?php echo $data1['nohp']; ?><br>
-                Email: <?php echo $userMail; ?>
-            </address>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 table-responsive">
-          <table class="table table-striped">
-            <thead>
-                <tr>
-                  <th>No.</th>
-                  <th>Nama menu</th>
-                  <th>harga</th>
-                  <th>qty</th>
-                  <th>sub total harga</th>
-              </tr>
-          </thead>
-          <tbody>
-            <?php 
-            $no=1;
-            $grand_total = 0;
-            while($data = mysqli_fetch_array($select)){
+        <br>
+        <div class="row">
+            <div class="col-xs-12 table-responsive">
+              <table class="table table-striped">
+                <thead>
+                    <tr>
+                      <th>No.</th>
+                      <th>Nama menu</th>
+                      <th>harga</th>
+                      <th>qty</th>
+                      <th>sub total harga</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <?php 
+                $no=1;
+                $grand_total = 0;
+                while($data = mysqli_fetch_array($select)){
+                    ?>
+                    <tr>
+                        <td><?php echo $no++; ?></td>
+                        <td><?php echo $data['nama_menu']; ?></td>
+                        <td><?php echo rupiah($data['harga_satuan']); ?></td>
+                        <td><?php echo $data['qty']; ?></td>
+                        <td><?php echo rupiah($sub_total = ($data['harga_satuan'] * $data['qty'])); ?></td>
+                    </tr>
+                    <?php 
+                    $grand_total += $sub_total;
+                } 
                 ?>
                 <tr>
-                    <td><?php echo $no++; ?></td>
-                    <td><?php echo $data['nama_menu']; ?></td>
-                    <td><?php echo rupiah($data['harga_satuan']); ?></td>
-                    <td><?php echo $data['qty']; ?></td>
-                    <td><?php echo rupiah($sub_total = ($data['harga_satuan'] * $data['qty'])); ?></td>
+                    <td colspan="3"></td>
+                    <td><b>Total Harga</b></td>
+                    <td><b><?php echo rupiah($grand_total); ?></b></td>
                 </tr>
-                <?php 
-                $grand_total += $sub_total;
-            } 
-            ?>
-            <tr>
-                <td colspan="3"></td>
-                <td><b>Total Harga</b></td>
-                <td><b><?php echo rupiah($grand_total); ?></b></td>
-            </tr>
 
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+    </div>
 </section>
 </div>
 </body>

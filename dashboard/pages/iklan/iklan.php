@@ -1,7 +1,7 @@
 <?php
 //Memanggil Header  
 include('../header.php');
-
+if ($_SESSION['akses'] == 1) {
 //Fungsi Create
 if(isset($_POST['create'])){
   $fileName = $_FILES['txt_gambar']['name'];
@@ -112,9 +112,8 @@ if (isset($_GET['id_car'])) {
                         <div class="modal-content">
                           <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Create Iklan</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
-                          <form action="iklan.php" method="POST" class="iklan">
+                          <form action="iklan.php" method="POST" class="iklan" enctype='multipart/form-data'>
                             <div class="modal-body">
                               <div class="form-group">
                                 <label for="txt_gambar">Gambar</label>
@@ -196,5 +195,10 @@ if (isset($_GET['id_car'])) {
     </div>
   </div>
   <?php
+  }else{
+
+  echo "<script>alert('Anda adalah Customer!')</script>";
+  echo "<script>location='../../../index.php'</script>"; 
+}
   include('../footer.php')
 ?>

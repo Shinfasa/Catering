@@ -1,6 +1,6 @@
 <?php
 include('../header.php');
-
+if ($_SESSION['akses'] == 1) {
 if(isset($_POST['create'])){
   $nama = ($_POST['txt_nama']);
   $harga = ($_POST['txt_harga']);
@@ -268,5 +268,10 @@ if (isset($_GET['id_menu'])) {
     </div>
   </div>
   <?php
+  }else{
+
+  echo "<script>alert('Anda adalah Customer!')</script>";
+  echo "<script>location='../../../index.php'</script>"; 
+}
   include('../footer.php');
   ?>

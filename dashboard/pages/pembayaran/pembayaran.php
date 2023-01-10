@@ -1,7 +1,7 @@
 <?php
 //Memanggil Header
 include('../header.php');
-
+if ($_SESSION['akses'] == 1) {
 //Fungsi Create
 if(isset($_POST['create'])){
   $pembayaran = ($_POST['txt_metode']);
@@ -197,6 +197,11 @@ if(isset($_GET['id_pembayaran'])){
 </div>
 
 <?php
+}else{
+
+  echo "<script>alert('Anda adalah Customer!')</script>";
+  echo "<script>location='../../../index.php'</script>"; 
+}
 //Memanggil Footer
 include('../footer.php')
 ?>
