@@ -31,30 +31,14 @@ if ($_SESSION['akses'] == 1) {
 
   //Fungsi Update
   if(isset($_POST['update'])){
-    $id = ($_POST['txt_id']);
-    $user = ($_POST['txt_nama']);
-    $alamat = ($_POST['txt_alamat']);
-    $nohp = ($_POST['txt_nohp']);
-    $password = ($_POST['txt_pass']);
-    $oldfile = $_POST['old'];
-    $file = $_FILES['txt_gambar']['name'];
-    if($file!="") {
-      move_uploaded_file($_FILES['txt_gambar']['tmp_name'], "../../../assets/img/user/".basename($_FILES['txt_gambar']['name']));
-      if($oldfile != NULL){
-        unlink("../../../assets/img/user/".$oldfile);
-      }
-      $update=mysqli_query($koneksi,"UPDATE user SET nama_user='$user', alamat='$alamat', nohp='$nohp', password='$password', gambar='$file' WHERE id_user='$id'"); 
+    $no_pesanan = ($_POST['nopesanan']);
+    $status = ($_POST['status']);
 
-      if($update){
-        echo "<script>alert('Data di Update')</script>";
-        echo "<script>location='user.php'</script>";
-      }
-    }else{
-      $update=mysqli_query($koneksi,"UPDATE user SET nama_user='$user', alamat='$alamat', nohp='$nohp', password='$password' WHERE id_user='$id'"); 
-      if($update){
-        echo "<script>alert('Data di Update')</script>";
-        echo "<script>location='user.php'</script>";
-      }
+    $update=mysqli_query($koneksi,"UPDATE orders SET status_pesanan='$status' WHERE no_pesanan='$no_pesanan'"); 
+
+    if($update){
+      echo "<script>alert('Data di Update')</script>";
+      echo "<script>location='order.php'</script>";
     }
   }
 
@@ -186,7 +170,7 @@ if ($_SESSION['akses'] == 1) {
                               </td>
                               <td class="text-center"><?php echo $d['status_pesanan']; ?></td>
                               <td class="text-center">
-                                <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit order" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php //echo $d['id_user']; ?>">
+                                <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit order" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['no_pesanan']; ?>">
                                   Edit
                                 </a>
                                 &nbsp;
@@ -316,6 +300,122 @@ if ($_SESSION['akses'] == 1) {
                           </div>
                           <!-- End Modal Bukti -->
 
+                          <!-- Modal Edit -->
+                          <div class="modal fade" id="exampleModalEdit<?php echo $d['no_pesanan'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Order</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form action="user.php" method="POST" class="user" enctype='multipart/form-data'>
+                                  <div class="modal-body">
+                                    <div class="form-group">
+                                      <label for="nopesanan">No. Pesanan</label>
+                                      <input type="text" class="form-control form-control-user" name="nopesanan" value="<?php echo $d['no_pesanan']; ?>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="tglpesan">Tgl. Pesan</label>
+                                      <input type="text" class="form-control form-control-user" name="tglpesan" value="<?php echo $d['tgl_pesan']; ?>" readonly>
+                                    </div>
+                                    <?php  
+                                    $pesanan = $d['no_pesanan'];
+                                    $data_cust = mysqli_query($koneksi,"SELECT * FROM orders JOIN user ON orders.id_user = user.id_user WHERE no_pesanan = '$pesanan'");
+                                    $cust = mysqli_fetch_array($data_cust);
+                                    ?>
+                                    <div class="form-group">
+                                      <label for="txt_nama">Nama Customer</label>
+                                      <input type="text" class="form-control form-control-user" name="txt_nama" value="<?php echo $cust['nama_user']; ?>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="txt_alamat">Alamat</label>
+                                      <input type="text" class="form-control form-control-user" placeholder="Alamat" name="txt_alamat" value="<?php echo $cust['alamat_lengkap']; ?>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="txt_nohp">No. Handphone</label>
+                                      <input type="number" class="form-control form-control-user" placeholder="No. Handphone" name="txt_nohp" value="<?php echo $cust['no_hp']; ?>" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label for="tglpakai">Tgl.Pakai</label>
+                                      <input type="text" class="form-control form-control-user" name="tglpakai" value="<?php echo $d['tgl_pakai']; ?>" readonly>
+                                    </div>
+
+                                    <?php 
+                                    $data_menu = mysqli_query($koneksi,"SELECT * FROM orders JOIN menu ON orders.id_menu = menu.id_menu WHERE no_pesanan= '$pesanan'");
+                                    while($menu = mysqli_fetch_array($data_menu)){ ?>
+                                      <br>
+                                      <img width="100px" src="../../../assets/img/menu/<?php echo $menu['gambar']; ?>" alt="">
+                                      <div class="form-group">
+                                        <br>
+                                        <label for="txt_nama">Nama Menu</label>
+                                        <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_nama" value="<?php echo $menu['nama_menu']; ?>" readonly>
+                                      </div> 
+                                      <div class="form-group">
+                                        <label for="txt_desk">Deskripsi</label>
+                                        <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_desk" value="<?php echo rupiah($menu['harga_satuan']); ?> x <?php echo $menu['qty']; ?> = <?php echo rupiah($menu['subtotal_harga']); ?>" readonly>
+                                      </div> 
+                                    <?php } ?>
+
+                                    <div class="form-group">
+                                      <label for="total">Total Harga</label>
+                                      <input type="text" class="form-control form-control-user" name="total" value="<?php echo $d['total_harga']; ?>" readonly>
+                                    </div> 
+                                    <div class="form-group">
+                                      <label for="catatan">Catatan</label>
+                                      <input type="text" class="form-control form-control-user" name="catatan" value="<?php echo $d['catatan']; ?>" readonly>
+                                    </div> 
+                                    <div class="form-group">
+                                      <label for="tglbayar">Tgl. Bayar</label>
+                                      <input type="text" class="form-control form-control-user" name="tglbayar" value="<?php echo $d['tgl_bayar']; ?>" readonly>
+                                    </div> 
+
+                                    <?php  
+                                    $pesanan = $d['no_pesanan'];
+                                    $data_bukti = mysqli_query($koneksi,"SELECT * FROM orders JOIN pembayaran ON orders.id_pembayaran = pembayaran.id_pembayaran WHERE no_pesanan = '$pesanan'");
+                                    $bukti = mysqli_fetch_array($data_bukti);
+                                    ?>
+                                    <input type="hidden" class="form-control form-control-iklan" placeholder="" name="nopesanan" value="<?php echo $pesanan; ?>">
+                                    <div class="form-group">
+                                      <label for="txt_gambar">Metode Pembayaran</label>
+                                      <input type="text" class="form-control form-control-iklan" placeholder="Metode Pembayaran" name="metode" value="<?php echo $bukti['metode_pembayaran']; ?>">
+                                    </div>                          
+                                    <div class="form-group">
+                                      <br>
+                                      <?php if($bukti['bukti_pembayaran']==NULL){?>
+                                        Bukti Pembayaran Belum Ada
+                                      </div>
+                                    <?php }else{ ?>
+                                      <div class="form-group">
+                                        <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
+                                      </div>
+                                    <?php } ?>
+
+                                    <div class="form-group">
+                                      <?php if($d['status_pesanan']=="Belum Dibayar"){ ?>
+                                        <input type="radio" name="status" value="Belum Dibayar" style="margin-left:20px;" checked>&nbsp;Belum Dibayar
+                                        <input type="radio" name="status" value="Sedang Diproses" style="margin-left:20px;">&nbsp;Sedang Proses
+                                        <input type="radio" name="status" value="Selesai" style="margin-left:20px;">&nbsp;Selesai
+                                      <?php }elseif($d['status_pesanan']=="Sedang Diproses"){ ?>
+                                        <input type="radio" name="status" value="Belum Dibayar" style="margin-left:20px;">&nbsp;Belum Dibayar
+                                        <input type="radio" name="status" value="Sedang Diproses" style="margin-left:20px;" checked>&nbsp;Sedang Proses
+                                        <input type="radio" name="status" value="Selesai" style="margin-left:20px;">&nbsp;Selesai
+                                      <?php }else{ ?>
+                                        <input type="radio" name="status" value="Belum Dibayar" style="margin-left:20px;">&nbsp;Belum Dibayar
+                                        <input type="radio" name="status" value="Sedang Diproses" style="margin-left:20px;">&nbsp;Sedang Proses
+                                        <input type="radio" name="status" value="Selesai" style="margin-left:20px;" checked>&nbsp;Selesai
+                                      <?php } ?>
+                                    </div>  
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" name="update" class="btn btn-primary">Save changes</button>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- End Modal Edit -->
 
                         <?php } ?>                      
                       </tbody>
@@ -386,7 +486,7 @@ if ($_SESSION['akses'] == 1) {
                             </td>
                             <td class="text-center"><?php echo $d['status_pesanan']; ?></td>
                             <td class="text-center">
-                              <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit order" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php //echo $d['id_user']; ?>">
+                              <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit order" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['no_pesanan']; ?>">
                                 Edit
                               </a>
                               &nbsp;
@@ -505,6 +605,123 @@ if ($_SESSION['akses'] == 1) {
                             </div>
                             <!-- End Modal Bukti -->
 
+                            <!-- Modal Edit -->
+                            <div class="modal fade" id="exampleModalEdit<?php echo $d['no_pesanan'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Order</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <form action="user.php" method="POST" class="user" enctype='multipart/form-data'>
+                                    <div class="modal-body">
+                                      <div class="form-group">
+                                        <label for="nopesanan">No. Pesanan</label>
+                                        <input type="text" class="form-control form-control-user" name="nopesanan" value="<?php echo $d['no_pesanan']; ?>" readonly>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="tglpesan">Tgl. Pesan</label>
+                                        <input type="text" class="form-control form-control-user" name="tglpesan" value="<?php echo $d['tgl_pesan']; ?>" readonly>
+                                      </div>
+                                      <?php  
+                                      $pesanan = $d['no_pesanan'];
+                                      $data_cust = mysqli_query($koneksi,"SELECT * FROM orders JOIN user ON orders.id_user = user.id_user WHERE no_pesanan = '$pesanan'");
+                                      $cust = mysqli_fetch_array($data_cust);
+                                      ?>
+                                      <div class="form-group">
+                                        <label for="txt_nama">Nama Customer</label>
+                                        <input type="text" class="form-control form-control-user" name="txt_nama" value="<?php echo $cust['nama_user']; ?>" readonly>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="txt_alamat">Alamat</label>
+                                        <input type="text" class="form-control form-control-user" placeholder="Alamat" name="txt_alamat" value="<?php echo $cust['alamat_lengkap']; ?>" readonly>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="txt_nohp">No. Handphone</label>
+                                        <input type="number" class="form-control form-control-user" placeholder="No. Handphone" name="txt_nohp" value="<?php echo $cust['no_hp']; ?>" readonly>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="tglpakai">Tgl.Pakai</label>
+                                        <input type="text" class="form-control form-control-user" name="tglpakai" value="<?php echo $d['tgl_pakai']; ?>" readonly>
+                                      </div>
+
+                                      <?php 
+                                      $data_menu = mysqli_query($koneksi,"SELECT * FROM orders JOIN menu ON orders.id_menu = menu.id_menu WHERE no_pesanan= '$pesanan'");
+                                      while($menu = mysqli_fetch_array($data_menu)){ ?>
+                                        <br>
+                                        <img width="100px" src="../../../assets/img/menu/<?php echo $menu['gambar']; ?>" alt="">
+                                        <div class="form-group">
+                                          <br>
+                                          <label for="txt_nama">Nama Menu</label>
+                                          <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_nama" value="<?php echo $menu['nama_menu']; ?>" readonly>
+                                        </div> 
+                                        <div class="form-group">
+                                          <label for="txt_desk">Deskripsi</label>
+                                          <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_desk" value="<?php echo rupiah($menu['harga_satuan']); ?> x <?php echo $menu['qty']; ?> = <?php echo rupiah($menu['subtotal_harga']); ?>" readonly>
+                                        </div> 
+                                      <?php } ?>
+
+                                      <div class="form-group">
+                                        <label for="total">Total Harga</label>
+                                        <input type="text" class="form-control form-control-user" name="total" value="<?php echo $d['total_harga']; ?>" readonly>
+                                      </div> 
+                                      <div class="form-group">
+                                        <label for="catatan">Catatan</label>
+                                        <input type="text" class="form-control form-control-user" name="catatan" value="<?php echo $d['catatan']; ?>" readonly>
+                                      </div> 
+                                      <div class="form-group">
+                                        <label for="tglbayar">Tgl. Bayar</label>
+                                        <input type="text" class="form-control form-control-user" name="tglbayar" value="<?php echo $d['tgl_bayar']; ?>" readonly>
+                                      </div> 
+
+                                      <?php  
+                                      $pesanan = $d['no_pesanan'];
+                                      $data_bukti = mysqli_query($koneksi,"SELECT * FROM orders JOIN pembayaran ON orders.id_pembayaran = pembayaran.id_pembayaran WHERE no_pesanan = '$pesanan'");
+                                      $bukti = mysqli_fetch_array($data_bukti);
+                                      ?>
+                                      <input type="hidden" class="form-control form-control-iklan" placeholder="" name="nopesanan" value="<?php echo $pesanan; ?>">
+                                      <div class="form-group">
+                                        <label for="txt_gambar">Metode Pembayaran</label>
+                                        <input type="text" class="form-control form-control-iklan" placeholder="Metode Pembayaran" name="metode" value="<?php echo $bukti['metode_pembayaran']; ?>">
+                                      </div>                          
+                                      <div class="form-group">
+                                        <br>
+                                        <?php if($bukti['bukti_pembayaran']==NULL){?>
+                                          Bukti Pembayaran Belum Ada
+                                        </div>
+                                      <?php }else{ ?>
+                                        <div class="form-group">
+                                          <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
+                                        </div>
+                                      <?php } ?>
+
+                                      <div class="form-group">
+                                        <?php if($d['status_pesanan']=="Belum Dibayar"){ ?>
+                                          <input type="radio" name="status" value="Belum Dibayar" style="margin-left:20px;" checked>&nbsp;Belum Dibayar
+                                          <input type="radio" name="status" value="Sedang Diproses" style="margin-left:20px;">&nbsp;Sedang Proses
+                                          <input type="radio" name="status" value="Selesai" style="margin-left:20px;">&nbsp;Selesai
+                                        <?php }elseif($d['status_pesanan']=="Sedang Diproses"){ ?>
+                                          <input type="radio" name="status" value="Belum Dibayar" style="margin-left:20px;">&nbsp;Belum Dibayar
+                                          <input type="radio" name="status" value="Sedang Diproses" style="margin-left:20px;" checked>&nbsp;Sedang Proses
+                                          <input type="radio" name="status" value="Selesai" style="margin-left:20px;">&nbsp;Selesai
+                                        <?php }else{ ?>
+                                          <input type="radio" name="status" value="Belum Dibayar" style="margin-left:20px;">&nbsp;Belum Dibayar
+                                          <input type="radio" name="status" value="Sedang Diproses" style="margin-left:20px;">&nbsp;Sedang Proses
+                                          <input type="radio" name="status" value="Selesai" style="margin-left:20px;" checked>&nbsp;Selesai
+                                        <?php } ?>
+                                      </div>  
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <button type="submit" name="update" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- End Modal Edit -->
+
                           <?php } ?>                      
                         </tbody>
                       </table>
@@ -574,7 +791,7 @@ if ($_SESSION['akses'] == 1) {
                               </td>
                               <td class="text-center"><?php echo $d['status_pesanan']; ?></td>
                               <td class="text-center">
-                                <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit order" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php //echo $d['id_user']; ?>">
+                                <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit order" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php echo $d['no_pesanan']; ?>">
                                   Edit
                                 </a>
                                 &nbsp;
@@ -692,6 +909,122 @@ if ($_SESSION['akses'] == 1) {
                               </div>
                               <!-- End Modal Bukti -->
 
+                              <!-- Modal Edit -->
+                              <div class="modal fade" id="exampleModalEdit<?php echo $d['no_pesanan'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Order</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form action="user.php" method="POST" class="user" enctype='multipart/form-data'>
+                                      <div class="modal-body">
+                                        <div class="form-group">
+                                          <label for="nopesanan">No. Pesanan</label>
+                                          <input type="text" class="form-control form-control-user" name="nopesanan" value="<?php echo $d['no_pesanan']; ?>" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="tglpesan">Tgl. Pesan</label>
+                                          <input type="text" class="form-control form-control-user" name="tglpesan" value="<?php echo $d['tgl_pesan']; ?>" readonly>
+                                        </div>
+                                        <?php  
+                                        $pesanan = $d['no_pesanan'];
+                                        $data_cust = mysqli_query($koneksi,"SELECT * FROM orders JOIN user ON orders.id_user = user.id_user WHERE no_pesanan = '$pesanan'");
+                                        $cust = mysqli_fetch_array($data_cust);
+                                        ?>
+                                        <div class="form-group">
+                                          <label for="txt_nama">Nama Customer</label>
+                                          <input type="text" class="form-control form-control-user" name="txt_nama" value="<?php echo $cust['nama_user']; ?>" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="txt_alamat">Alamat</label>
+                                          <input type="text" class="form-control form-control-user" placeholder="Alamat" name="txt_alamat" value="<?php echo $cust['alamat_lengkap']; ?>" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="txt_nohp">No. Handphone</label>
+                                          <input type="number" class="form-control form-control-user" placeholder="No. Handphone" name="txt_nohp" value="<?php echo $cust['no_hp']; ?>" readonly>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <label for="tglpakai">Tgl.Pakai</label>
+                                          <input type="text" class="form-control form-control-user" name="tglpakai" value="<?php echo $d['tgl_pakai']; ?>" readonly>
+                                        </div>
+
+                                        <?php 
+                                        $data_menu = mysqli_query($koneksi,"SELECT * FROM orders JOIN menu ON orders.id_menu = menu.id_menu WHERE no_pesanan= '$pesanan'");
+                                        while($menu = mysqli_fetch_array($data_menu)){ ?>
+                                          <br>
+                                          <img width="100px" src="../../../assets/img/menu/<?php echo $menu['gambar']; ?>" alt="">
+                                          <div class="form-group">
+                                            <br>
+                                            <label for="txt_nama">Nama Menu</label>
+                                            <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_nama" value="<?php echo $menu['nama_menu']; ?>" readonly>
+                                          </div> 
+                                          <div class="form-group">
+                                            <label for="txt_desk">Deskripsi</label>
+                                            <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_desk" value="<?php echo rupiah($menu['harga_satuan']); ?> x <?php echo $menu['qty']; ?> = <?php echo rupiah($menu['subtotal_harga']); ?>" readonly>
+                                          </div> 
+                                        <?php } ?>
+
+                                        <div class="form-group">
+                                          <label for="total">Total Harga</label>
+                                          <input type="text" class="form-control form-control-user" name="total" value="<?php echo $d['total_harga']; ?>" readonly>
+                                        </div> 
+                                        <div class="form-group">
+                                          <label for="catatan">Catatan</label>
+                                          <input type="text" class="form-control form-control-user" name="catatan" value="<?php echo $d['catatan']; ?>" readonly>
+                                        </div> 
+                                        <div class="form-group">
+                                          <label for="tglbayar">Tgl. Bayar</label>
+                                          <input type="text" class="form-control form-control-user" name="tglbayar" value="<?php echo $d['tgl_bayar']; ?>" readonly>
+                                        </div> 
+
+                                        <?php  
+                                        $pesanan = $d['no_pesanan'];
+                                        $data_bukti = mysqli_query($koneksi,"SELECT * FROM orders JOIN pembayaran ON orders.id_pembayaran = pembayaran.id_pembayaran WHERE no_pesanan = '$pesanan'");
+                                        $bukti = mysqli_fetch_array($data_bukti);
+                                        ?>
+                                        <input type="hidden" class="form-control form-control-iklan" placeholder="" name="nopesanan" value="<?php echo $pesanan; ?>">
+                                        <div class="form-group">
+                                          <label for="txt_gambar">Metode Pembayaran</label>
+                                          <input type="text" class="form-control form-control-iklan" placeholder="Metode Pembayaran" name="metode" value="<?php echo $bukti['metode_pembayaran']; ?>">
+                                        </div>                          
+                                        <div class="form-group">
+                                          <br>
+                                          <?php if($bukti['bukti_pembayaran']==NULL){?>
+                                            Bukti Pembayaran Belum Ada
+                                          </div>
+                                        <?php }else{ ?>
+                                          <div class="form-group">
+                                            <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
+                                          </div>
+                                        <?php } ?>
+
+                                        <div class="form-group">
+                                          <?php if($d['status_pesanan']=="Belum Dibayar"){ ?>
+                                            <input type="radio" name="status" value="Belum Dibayar" style="margin-left:20px;" checked>&nbsp;Belum Dibayar
+                                            <input type="radio" name="status" value="Sedang Diproses" style="margin-left:20px;">&nbsp;Sedang Proses
+                                            <input type="radio" name="status" value="Selesai" style="margin-left:20px;">&nbsp;Selesai
+                                          <?php }elseif($d['status_pesanan']=="Sedang Diproses"){ ?>
+                                            <input type="radio" name="status" value="Belum Dibayar" style="margin-left:20px;">&nbsp;Belum Dibayar
+                                            <input type="radio" name="status" value="Sedang Diproses" style="margin-left:20px;" checked>&nbsp;Sedang Proses
+                                            <input type="radio" name="status" value="Selesai" style="margin-left:20px;">&nbsp;Selesai
+                                          <?php }else{ ?>
+                                            <input type="radio" name="status" value="Belum Dibayar" style="margin-left:20px;">&nbsp;Belum Dibayar
+                                            <input type="radio" name="status" value="Sedang Diproses" style="margin-left:20px;">&nbsp;Sedang Proses
+                                            <input type="radio" name="status" value="Selesai" style="margin-left:20px;" checked>&nbsp;Selesai
+                                          <?php } ?>
+                                        </div>  
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" name="update" class="btn btn-primary">Save changes</button>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- End Modal Edit -->
 
                             <?php } ?>                      
                           </tbody>
