@@ -55,10 +55,12 @@ include('function/rupiah.php');
           <li><a class="nav-link scrollto" href="index.php">Beranda</a></li>
           <li class="dropdown"><a href="#categories"><span>Kategori</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="menu.php?id_kategori=1">Harian</a></li>
-              <li><a href="menu.php?id_kategori=2">Prasmanan</a></li>
-              <li><a href="menu.php?id_kategori=3">Kotakan</a></li>
-              <li><a href="menu.php?id_kategori=4">Tumpengan</a></li>
+              <?php  
+              $data_kategori = mysqli_query($koneksi,"SELECT * FROM kategori");
+              while($k = mysqli_fetch_array($data_kategori)){
+                ?>
+                <li><a href="menu.php?id_kategori=<?php echo $k['id_kategori']; ?>"><?php echo $k['nama_kategori']; ?></a></li>
+              <?php } ?>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="menu.php?id_kategori=0">Menu</a></li>
