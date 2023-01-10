@@ -201,11 +201,11 @@ if ($_SESSION['akses'] == 1) {
                                       </div>
                                       <div class="form-group">
                                         <label for="txt_nama">Alamat</label>
-                                        <input type="text" class="form-control form-control-user" placeholder="Nama Lengkap" name="txt_nama" value="<?php echo $cust['alamat_lengkap']; ?>">
+                                        <input type="text" class="form-control form-control-user" placeholder="Nama Lengkap" name="txt_nama" value="<?php echo $cust['alamat_lengkap']; ?>" readonly>
                                       </div>
                                       <div class="form-group">
                                         <label for="txt_alamat">No. Handphone</label>
-                                        <input type="text" class="form-control form-control-user" placeholder="Alamat" name="txt_alamat" value="<?php echo $cust['no_hp']; ?>">
+                                        <input type="text" class="form-control form-control-user" placeholder="Alamat" name="txt_alamat" value="<?php echo $cust['no_hp']; ?>" readonly>
                                       </div>
                                     </div>
                                     <div class="modal-footer">
@@ -236,11 +236,11 @@ if ($_SESSION['akses'] == 1) {
                                         <div class="form-group">
                                           <br>
                                           <label for="txt_nama">Nama Menu</label>
-                                          <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_nama" value="<?php echo $menu['nama_menu']; ?>">
+                                          <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_nama" value="<?php echo $menu['nama_menu']; ?>" readonly>
                                         </div> 
                                         <div class="form-group">
                                           <label for="txt_desk">Deskripsi</label>
-                                          <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_desk" value="<?php echo rupiah($menu['harga_satuan']); ?> x <?php echo $menu['qty']; ?> = <?php echo rupiah($menu['subtotal_harga']); ?>">
+                                          <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_desk" value="<?php echo rupiah($menu['harga_satuan']); ?> x <?php echo $menu['qty']; ?> = <?php echo rupiah($menu['subtotal_harga']); ?>" readonly>
                                         </div> 
                                       <?php } ?>
                                     </div>
@@ -270,9 +270,9 @@ if ($_SESSION['akses'] == 1) {
                                         <input type="hidden" class="form-control form-control-iklan" placeholder="" name="nopesanan" value="<?php echo $pesanan; ?>">
                                         <div class="form-group">
                                           <label for="txt_gambar">Metode Pembayaran</label>
-                                          <input type="text" class="form-control form-control-iklan" placeholder="Metode Pembayaran" name="metode" value="<?php echo $bukti['metode_pembayaran']; ?>">
+                                          <input type="text" class="form-control form-control-iklan" placeholder="Metode Pembayaran" name="metode" value="<?php echo $bukti['metode_pembayaran']; ?>" readonly>
                                           <br>
-                                          <input type="text" class="form-control form-control-iklan" placeholder="no_rek" name="no_rek" value="<?php echo $bukti['no_rek']; ?>">                              
+                                          <input type="text" class="form-control form-control-iklan" placeholder="no_rek" name="no_rek" value="<?php echo $bukti['no_rek']; ?>" readonly>                              
                                         </div>                          
                                         <div class="form-group">
                                           <br>
@@ -378,7 +378,7 @@ if ($_SESSION['akses'] == 1) {
                                     <input type="hidden" class="form-control form-control-iklan" placeholder="" name="nopesanan" value="<?php echo $pesanan; ?>">
                                     <div class="form-group">
                                       <label for="txt_gambar">Metode Pembayaran</label>
-                                      <input type="text" class="form-control form-control-iklan" placeholder="Metode Pembayaran" name="metode" value="<?php echo $bukti['metode_pembayaran']; ?>">
+                                      <input type="text" class="form-control form-control-iklan" placeholder="Metode Pembayaran" name="metode" value="<?php echo $bukti['metode_pembayaran']; ?>" readonly>
                                     </div>                          
                                     <div class="form-group">
                                       <br>
@@ -517,11 +517,11 @@ if ($_SESSION['akses'] == 1) {
                                     </div>
                                     <div class="form-group">
                                       <label for="txt_nama">Alamat</label>
-                                      <input type="text" class="form-control form-control-user" placeholder="Nama Lengkap" name="txt_nama" value="<?php echo $cust['alamat_lengkap']; ?>">
+                                      <input type="text" class="form-control form-control-user" placeholder="Nama Lengkap" name="txt_nama" value="<?php echo $cust['alamat_lengkap']; ?>" readonly>
                                     </div>
                                     <div class="form-group">
                                       <label for="txt_alamat">No. Handphone</label>
-                                      <input type="text" class="form-control form-control-user" placeholder="Alamat" name="txt_alamat" value="<?php echo $cust['no_hp']; ?>">
+                                      <input type="text" class="form-control form-control-user" placeholder="Alamat" name="txt_alamat" value="<?php echo $cust['no_hp']; ?>" readonly>
                                     </div>
                                   </div>
                                   <div class="modal-footer">
@@ -552,11 +552,11 @@ if ($_SESSION['akses'] == 1) {
                                       <div class="form-group">
                                         <br>
                                         <label for="txt_nama">Nama Menu</label>
-                                        <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_nama" value="<?php echo $menu['nama_menu']; ?>">
+                                        <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_nama" value="<?php echo $menu['nama_menu']; ?>" readonly>
                                       </div> 
                                       <div class="form-group">
                                         <label for="txt_desk">Deskripsi</label>
-                                        <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_desk" value="<?php echo rupiah($menu['harga_satuan']); ?> x <?php echo $menu['qty']; ?> = <?php echo rupiah($menu['subtotal_harga']); ?>">
+                                        <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_desk" value="<?php echo rupiah($menu['harga_satuan']); ?> x <?php echo $menu['qty']; ?> = <?php echo rupiah($menu['subtotal_harga']); ?>" readonly>
                                       </div> 
                                     <?php } ?>
                                   </div>
@@ -586,9 +586,9 @@ if ($_SESSION['akses'] == 1) {
                                       <input type="hidden" class="form-control form-control-iklan" placeholder="" name="nopesanan" value="<?php echo $pesanan; ?>">
                                       <div class="form-group">
                                         <label for="txt_gambar">Metode Pembayaran</label>
-                                        <input type="text" class="form-control form-control-iklan" placeholder="Metode Pembayaran" name="metode" value="<?php echo $bukti['metode_pembayaran']; ?>">
+                                        <input type="text" class="form-control form-control-iklan" placeholder="Metode Pembayaran" name="metode" value="<?php echo $bukti['metode_pembayaran']; ?>" readonly>
                                         <br>
-                                        <input type="text" class="form-control form-control-iklan" placeholder="no_rek" name="no_rek" value="<?php echo $bukti['no_rek']; ?>">                              
+                                        <input type="text" class="form-control form-control-iklan" placeholder="no_rek" name="no_rek" value="<?php echo $bukti['no_rek']; ?>" readonly>                       
                                       </div>                          
                                       <div class="form-group">
                                         <br>
@@ -683,7 +683,7 @@ if ($_SESSION['akses'] == 1) {
                                       <input type="hidden" class="form-control form-control-iklan" placeholder="" name="nopesanan" value="<?php echo $pesanan; ?>">
                                       <div class="form-group">
                                         <label for="txt_gambar">Metode Pembayaran</label>
-                                        <input type="text" class="form-control form-control-iklan" placeholder="Metode Pembayaran" name="metode" value="<?php echo $bukti['metode_pembayaran']; ?>">
+                                        <input type="text" class="form-control form-control-iklan" placeholder="Metode Pembayaran" name="metode" value="<?php echo $bukti['metode_pembayaran']; ?>" readonly>
                                       </div>                          
                                       <div class="form-group">
                                         <br>
@@ -822,11 +822,11 @@ if ($_SESSION['akses'] == 1) {
                                       </div>
                                       <div class="form-group">
                                         <label for="txt_nama">Alamat</label>
-                                        <input type="text" class="form-control form-control-user" placeholder="Nama Lengkap" name="txt_nama" value="<?php echo $cust['alamat_lengkap']; ?>">
+                                        <input type="text" class="form-control form-control-user" placeholder="Nama Lengkap" name="txt_nama" value="<?php echo $cust['alamat_lengkap']; ?>" readonly>
                                       </div>
                                       <div class="form-group">
                                         <label for="txt_alamat">No. Handphone</label>
-                                        <input type="text" class="form-control form-control-user" placeholder="Alamat" name="txt_alamat" value="<?php echo $cust['no_hp']; ?>">
+                                        <input type="text" class="form-control form-control-user" placeholder="Alamat" name="txt_alamat" value="<?php echo $cust['no_hp']; ?>" readonly>
                                       </div>
                                     </div>
                                     <div class="modal-footer">
@@ -857,11 +857,11 @@ if ($_SESSION['akses'] == 1) {
                                         <div class="form-group">
                                           <br>
                                           <label for="txt_nama">Nama Menu</label>
-                                          <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_nama" value="<?php echo $menu['nama_menu']; ?>">
+                                          <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_nama" value="<?php echo $menu['nama_menu']; ?>" readonly>
                                         </div> 
                                         <div class="form-group">
                                           <label for="txt_desk">Deskripsi</label>
-                                          <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_desk" value="<?php echo rupiah($menu['harga_satuan']); ?> x <?php echo $menu['qty']; ?> = <?php echo rupiah($menu['subtotal_harga']); ?>">
+                                          <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_desk" value="<?php echo rupiah($menu['harga_satuan']); ?> x <?php echo $menu['qty']; ?> = <?php echo rupiah($menu['subtotal_harga']); ?>" readonly>
                                         </div> 
                                       <?php } ?>
                                     </div>
@@ -891,9 +891,9 @@ if ($_SESSION['akses'] == 1) {
                                         <input type="hidden" class="form-control form-control-iklan" placeholder="" name="nopesanan" value="<?php echo $pesanan; ?>">
                                         <div class="form-group">
                                           <label for="txt_gambar">Metode Pembayaran</label>
-                                          <input type="text" class="form-control form-control-iklan" placeholder="Metode Pembayaran" name="metode" value="<?php echo $bukti['metode_pembayaran']; ?>">
+                                          <input type="text" class="form-control form-control-iklan" placeholder="Metode Pembayaran" name="metode" value="<?php echo $bukti['metode_pembayaran']; ?>" readonly>
                                           <br>
-                                          <input type="text" class="form-control form-control-iklan" placeholder="no_rek" name="no_rek" value="<?php echo $bukti['no_rek']; ?>">                              
+                                          <input type="text" class="form-control form-control-iklan" placeholder="no_rek" name="no_rek" value="<?php echo $bukti['no_rek']; ?>" readonly>                              
                                         </div>                          
                                         <div class="form-group">
                                           <br>
@@ -987,7 +987,7 @@ if ($_SESSION['akses'] == 1) {
                                         <input type="hidden" class="form-control form-control-iklan" placeholder="" name="nopesanan" value="<?php echo $pesanan; ?>">
                                         <div class="form-group">
                                           <label for="txt_gambar">Metode Pembayaran</label>
-                                          <input type="text" class="form-control form-control-iklan" placeholder="Metode Pembayaran" name="metode" value="<?php echo $bukti['metode_pembayaran']; ?>">
+                                          <input type="text" class="form-control form-control-iklan" placeholder="Metode Pembayaran" name="metode" value="<?php echo $bukti['metode_pembayaran']; ?>" readonly>
                                         </div>                          
                                         <div class="form-group">
                                           <br>
