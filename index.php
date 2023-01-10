@@ -73,7 +73,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
           $data_kategori = mysqli_query($koneksi,"SELECT * FROM kategori");
           while($k = mysqli_fetch_array($data_kategori)){
             ?>
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="col-lg-3 col-md-4 d-flex align-items-stretch">
               <div class="icon-box">
                 <div class="icon"><i class="bx bx-file"></i></div>
                 <h4><a href="menu.php?id_kategori=<?php echo $k['id_kategori']; ?>"><?php echo $k['nama_kategori']; ?></a></h4>
