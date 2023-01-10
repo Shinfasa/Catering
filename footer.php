@@ -48,7 +48,6 @@
             <p class="text-secondary" style="margin-left: 20px;">+62 858-1531-3767</p>            
           </ul>
         </div>
-
       </div>
     </div>
   </div>
