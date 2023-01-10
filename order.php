@@ -1,6 +1,7 @@
 <?php
 include("header.php");
 if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
+	
 	?>
 
 	<br><br>
