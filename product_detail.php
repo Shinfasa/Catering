@@ -55,7 +55,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 
                 <button type="submit" name="add_to_cart" class="btn text-light p-1 m-2" style="background-color: #E8853D;"><span class="bi bi-cart2" style="margin-right: 5px;"></span>Tambahkan</button>
 
-                <h4 class="mt-5 mb-3" style="text-align: justify; font-size: 20px;">Deskripsi:</h4>
+                <h4 class="mt-5 mb-3" style="text-align: justify; font-size: 20px;">Detail Menu:</h4>
                 <p style="text-align: justify; font-size:15px;">
                     <?php 
                     $desk = $detail['detail'];
