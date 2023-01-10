@@ -8,7 +8,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 		$update=mysqli_query($koneksi,"UPDATE orders SET bukti_pembayaran='$file' WHERE no_pesanan='$id'"); 
 
 		if($update){
-			echo "<script>alert('Data di Update')</script>";
+			echo "<script>alert('Bukti Pembayaran Telah Diupload!')</script>";
 			echo "<script>location='order.php'</script>";
 		}
 	}
