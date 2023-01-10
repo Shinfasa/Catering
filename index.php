@@ -38,20 +38,20 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
       $data_iklan = mysqli_query($koneksi,"SELECT * FROM carousel");
       while($i = mysqli_fetch_array($data_iklan)){
         ?>
-        <div class="carousel-item active" style="height: 650px;">
+        <div class="carousel-item active">
           <?php if(isset($_SESSION['id'])){ ?>
-          <img src="assets/img/iklan/<?php echo $i['gambar']; ?>" alt="" width="100%" style="margin-top: 60px; height: 600px;">
+          <img class="d-block w-100" src="assets/img/iklan/<?php echo $i['gambar']; ?>" alt="carousel" style="margin-top: 60px;">
         <?php }else{ ?>
-          <img src="assets/img/iklan/<?php echo $i['gambar']; ?>" alt="" width="100%" style="height: 600px;">
+          <img class="d-block w-100" src="assets/img/iklan/<?php echo $i['gambar']; ?>" alt="carousel">
         <?php } ?>
         </div>    
         
         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-          <span class="bi-arrow-left-circle" style="color: #E8853D; font-size: 40px;" aria-hidden="true"></span>
+          <span class="bi-chevron-left" style="color: #E8853D; font-size:20px;" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-          <span class="bi-arrow-right-circle" style="color: #E8853D; font-size: 40px;" aria-hidden="true"></span>
+          <span class="bi-chevron-right" style="color: #E8853D; font-size:20px;" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
       <?php } ?>

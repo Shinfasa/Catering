@@ -57,7 +57,7 @@
 								<th class="text-center" style="color: #384046;">No.</th>
 								<th class="text-center" style="color: #384046;">No. Pesanan</th>
 								<th class="text-center" style="color: #384046;">Tanggal Pesan</th>
-								<th class="text-center" style="color: #384046;">Isi Pesanan</th>
+								<th class="text-center" style="color: #384046;">Detail Pesanan</th>
 								<th class="text-center" style="color: #384046;">Total Harga</th>
 								<th class="text-center" style="color: #384046;">Catatan</th>
 								<th class="text-center" style="color: #384046;">Bukti Pembayaran</th>
@@ -130,6 +130,7 @@
 															<label for="txt_gambar">Metode Pembayaran</label>
 															<input type="text" class="form-control form-control-iklan" placeholder="Metode Pembayaran" name="metode" value="<?php echo $bukti['metode_pembayaran']; ?>">
 															<br>
+															<label for="no_rek">Nomor Rekening</label>
 															<input type="text" class="form-control form-control-iklan" placeholder="no_rek" name="no_rek" value="<?php echo $bukti['no_rek']; ?>">															
 														</div>													
 														<div class="form-group">
@@ -139,8 +140,8 @@
 														</div>
 													</div>
 													<div class="modal-footer">
-														<button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-														<button type="submit" name="create" class="btn btn-primary">Save changes</button>
+														<button type="submit" class="btn" data-bs-dismiss="modal">Tutup</button>
+														<button type="submit" name="create" class="btn text-light" style="background-color: #E8853D;">Simpan</button>
 													</div>
 												</form>
 											</div>
@@ -153,7 +154,7 @@
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
-													<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+													<h1 class="modal-title fs-5" id="exampleModalLabel">Detail Pesanan</h1>
 													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 												</div>
 												<div class="modal-body">
@@ -171,13 +172,13 @@
 															</div> 
 															<br>
 															<div class="form-group">
-																<label for="txt_desk">Deskripsi</label>
+																<label for="txt_desk">Sub Total Harga</label>
 																<input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_desk" value="<?php echo rupiah($d2['harga_satuan']); ?> x <?php echo $d2['qty']; ?> = <?php echo rupiah($d2['subtotal_harga']); ?>">
 															</div> 
 														<?php } ?>
 													</div>
 													<div class="modal-footer">
-														<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+														<button type="button" class="btn" data-bs-dismiss="modal">Tutup</button>
 													</div>
 												</div>
 											</div>
@@ -282,7 +283,7 @@
 									}
 								}else{ ?>
 									<tr>
-										<td colspan="9" class="text-center">Belum Ada Pesanan</td>
+										<td colspan="9" class="text-center">Belum Ada Riwayat Pesanan</td>
 									</tr>
 								<?php } ?>
 								</tbody>
