@@ -160,7 +160,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 																</div>
 															</div>
 															<div class="modal-footer">
-																<button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+																<button type="submit" class="btn" data-bs-dismiss="modal" style="background-color: #ffffff; color:#E8853D;">Close</button>
 															</div>
 														<?php } ?>
 													</form>
