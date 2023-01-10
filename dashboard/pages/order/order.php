@@ -54,7 +54,7 @@ include('../header.php');
                 </ul>
               </div>
               <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="belum-dibayar" role="tabpanel" aria-labelledby="pills-tab-1">
+                <div class="tab-pane fade show active" id="belum-dibayar" role="tabpanel" aria-labelledby="pills-belum-dibayar-tab">
                   <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                       <table class="table align-items-center mb-0">
@@ -96,7 +96,7 @@ include('../header.php');
                     </div>
                   </div>
                 </div>
-                <div class="tab-pane fade" id="sedang-diproses" role="tabpanel" aria-labelledby="pills-tab-2">
+                <div class="tab-pane fade" id="sedang-diproses" role="tabpanel" aria-labelledby="pills-sedang-diproses-tab">
                   <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                       <table class="table align-items-center mb-0">
@@ -138,7 +138,7 @@ include('../header.php');
                     </div>
                   </div>
                 </div>  
-                <div class="tab-pane fade" id="pesanan-selesai" role="tabpanel" aria-labelledby="pills-tab-3">
+                <div class="tab-pane fade" id="pesanan-selesai" role="tabpanel" aria-labelledby="pills-pesanan-selesai-tab">
                   <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                       <table class="table align-items-center mb-0">
