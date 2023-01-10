@@ -13,25 +13,25 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
         $cek = mysqli_num_rows($data);
 
         if($cek > 0){
-         $message[] = 'Sudah ditambakan ke keranjang!';
-         echo "<script>alert('Sudah ditambakan ke keranjang!')</script>";
-     }else{
-         $insert_keranjang = mysqli_query($koneksi,"INSERT INTO keranjang VALUES (NULL, '$idUser', '$id_menu', '$nama_menu', '$qty', '$total_harga', '$gambar')");
-         $message[] = 'Ditambakan ke keranjang!';
-         echo "<script>alert('Ditambakan ke keranjang!')</script>"; 
-     }
- }
+           $message[] = 'Sudah ditambakan ke keranjang!';
+           echo "<script>alert('Sudah ditambakan ke keranjang!')</script>";
+       }else{
+           $insert_keranjang = mysqli_query($koneksi,"INSERT INTO keranjang VALUES (NULL, '$idUser', '$id_menu', '$nama_menu', '$qty', '$total_harga', '$gambar')");
+           $message[] = 'Ditambakan ke keranjang!';
+           echo "<script>alert('Ditambakan ke keranjang!')</script>"; 
+       }
+   }
 
- $id_menu = $_GET['id_menu'];
- $query = "SELECT * FROM menu WHERE id_menu = '$id_menu'";
- $result = mysqli_query($koneksi, $query);
- $detail = mysqli_fetch_array($result);
- ?>
+   $id_menu = $_GET['id_menu'];
+   $query = "SELECT * FROM menu WHERE id_menu = '$id_menu'";
+   $result = mysqli_query($koneksi, $query);
+   $detail = mysqli_fetch_array($result);
+   ?>
 
- <br>
- <br>
+   <br>
+   <br>
 
- <body>
+   <body>
     <form action="" method="POST">
         <input type="hidden" name="id_menu" value="<?php echo $id_menu; ?>">
         <input type="hidden" name="nama_menu" value="<?php echo $detail['nama_menu']; ?>">
@@ -58,13 +58,20 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
                 <h4 class="mt-5 mb-3" style="text-align: justify; font-size: 20px;">Deskripsi:</h4>
                 <p style="text-align: justify; font-size:15px;">
                     <?php 
-                    echo $detail['detail']; 
-                    ?>
-                </p>
+                    $desk = $detail['detail'];
+                    $pecah = explode("\r", $desk); 
+                    $text = "";
+                    for ($i=0; $i<=count($pecah)-1; $i++){
+                     $part = str_replace($pecah[$i], "<p>".$pecah[$i]."</p>", $pecah[$i]);
+                     $text .= $part;
+                    }
+                    echo $text;
+                 ?>
+             </p>
 
-            </div>    
-        </form>    
-    </div>
+         </div>    
+     </form>    
+ </div>
 </section>
 
 </body>
