@@ -284,7 +284,7 @@ if ($_SESSION['akses'] == 1) {
                                           <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         </div>
                                       <?php }else{ ?>
-                                        <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
+                                        <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="../../../assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
                                         <input type="hidden" class="form-control form-control-iklan" placeholder="" name="gbr" value="<?php echo $bukti['bukti_pembayaran']; ?>">
                                       </div>
                                     </div>
@@ -387,7 +387,7 @@ if ($_SESSION['akses'] == 1) {
                                       </div>
                                     <?php }else{ ?>
                                       <div class="form-group">
-                                        <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
+                                        <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="../../../assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
                                       </div>
                                     <?php } ?>
 
@@ -592,7 +592,7 @@ if ($_SESSION['akses'] == 1) {
                                       </div>                          
                                       <div class="form-group">
                                         <br>
-                                        <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
+                                        <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="../../../assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
                                         <input type="hidden" class="form-control form-control-iklan" placeholder="" name="gbr" value="<?php echo $bukti['bukti_pembayaran']; ?>">
                                       </div>
                                     </div>
@@ -692,7 +692,7 @@ if ($_SESSION['akses'] == 1) {
                                         </div>
                                       <?php }else{ ?>
                                         <div class="form-group">
-                                          <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
+                                          <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="../../../assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
                                         </div>
                                       <?php } ?>
 
@@ -897,7 +897,7 @@ if ($_SESSION['akses'] == 1) {
                                         </div>                          
                                         <div class="form-group">
                                           <br>
-                                          <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
+                                          <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="../../../assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
                                         </div>
                                       </div>
                                       <div class="modal-footer">
@@ -996,7 +996,7 @@ if ($_SESSION['akses'] == 1) {
                                           </div>
                                         <?php }else{ ?>
                                           <div class="form-group">
-                                            <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
+                                            <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="../../../assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
                                           </div>
                                         <?php } ?>
 
