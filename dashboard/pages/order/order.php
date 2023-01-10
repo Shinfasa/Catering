@@ -106,7 +106,7 @@ if ($_SESSION['akses'] == 1) {
                               </td>
                               <td class="text-center"><?php echo $d['tgl_pakai']; ?></td>
                               <td class="text-center">
-                                <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit order" data-bs-toggle="modal" data-bs-target="#exampleModalEdit<?php //echo $d['id_user']; ?>">
+                                <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit order" data-bs-toggle="modal" data-bs-target="#exampleModalMenu<?php echo $d['no_pesanan']; ?>">
                                   Lihat
                                 </a>
                               </td>
@@ -129,7 +129,7 @@ if ($_SESSION['akses'] == 1) {
                                 </a>
                               </td>
                             </tr>
-                            <!-- Modal Edit -->
+                            <!-- Modal Cust -->
                             <div class="modal fade" id="exampleModalCust<?php echo $d['no_pesanan'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog">
                                 <div class="modal-content">
@@ -164,114 +164,149 @@ if ($_SESSION['akses'] == 1) {
                                 </div>
                               </div>
                             </div>
-                            <!-- End Modal Edit -->
-                          <?php } ?>                      
-                        </tbody>
-                      </table>
+                            <!-- End Modal Cust -->
+
+                            <!-- Modal Menu -->
+                            <div class="modal fade" id="exampleModalMenu<?php echo $d['no_pesanan']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Data Pesanan</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form action="order.php" method="POST">
+                                      <?php 
+                                      $pesanan = $d['no_pesanan'];
+                                      $data_menu = mysqli_query($koneksi,"SELECT * FROM orders JOIN menu ON orders.id_menu = menu.id_menu WHERE no_pesanan= '$pesanan'");
+                                      while($menu = mysqli_fetch_array($data_menu)){ ?>
+                                        <br>
+                                        <img width="100px" src="../../../assets/img/menu/<?php echo $menu['gambar']; ?>" alt="">
+                                        <div class="form-group">
+                                          <br>
+                                          <label for="txt_nama">Nama Menu</label>
+                                          <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_nama" value="<?php echo $menu['nama_menu']; ?>">
+                                        </div> 
+                                        <div class="form-group">
+                                          <label for="txt_desk">Deskripsi</label>
+                                          <input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_desk" value="<?php echo rupiah($menu['harga_satuan']); ?> x <?php echo $menu['qty']; ?> = <?php echo rupiah($menu['subtotal_harga']); ?>">
+                                        </div> 
+                                      <?php } ?>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- End Modal Menu -->
+                            <?php } ?>                      
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="sedang-diproses" role="tabpanel" aria-labelledby="pills-sedang-diproses-tab">
+                    <div class="card-body px-0 pt-0 pb-2">
+                      <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
+                          <thead>
+                            <tr>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No. Pesanan</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tgl. Pesan</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Data Customer</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tgl. Pakai</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Data Pesanan</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total Harga</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Catatan</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tgl. Bayar</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bukti Pembayaran</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status Pesanan</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>                    
+                            <tr>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                            </tr>                      
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>  
+                  <div class="tab-pane fade" id="pesanan-selesai" role="tabpanel" aria-labelledby="pills-pesanan-selesai-tab">
+                    <div class="card-body px-0 pt-0 pb-2">
+                      <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
+                          <thead>
+                            <tr>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No. Pesanan</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tgl. Pesan</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Data Customer</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tgl. Pakai</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Data Pesanan</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total Harga</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Catatan</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tgl. Bayar</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bukti Pembayaran</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status Pesanan</th>
+                              <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>                    
+                            <tr>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                              <td class="text-center">-</td>
+                            </tr>                      
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="tab-pane fade" id="sedang-diproses" role="tabpanel" aria-labelledby="pills-sedang-diproses-tab">
-                  <div class="card-body px-0 pt-0 pb-2">
-                    <div class="table-responsive p-0">
-                      <table class="table align-items-center mb-0">
-                        <thead>
-                          <tr>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No. Pesanan</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tgl. Pesan</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Data Customer</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tgl. Pakai</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Data Pesanan</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total Harga</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Catatan</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tgl. Bayar</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bukti Pembayaran</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status Pesanan</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>                    
-                          <tr>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                          </tr>                      
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>  
-                <div class="tab-pane fade" id="pesanan-selesai" role="tabpanel" aria-labelledby="pills-pesanan-selesai-tab">
-                  <div class="card-body px-0 pt-0 pb-2">
-                    <div class="table-responsive p-0">
-                      <table class="table align-items-center mb-0">
-                        <thead>
-                          <tr>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No. Pesanan</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tgl. Pesan</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Data Customer</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tgl. Pakai</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Data Pesanan</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total Harga</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Catatan</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tgl. Bayar</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bukti Pembayaran</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status Pesanan</th>
-                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>                    
-                          <tr>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                            <td class="text-center">-</td>
-                          </tr>                      
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>            
+              </div>            
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-  </body>
+    </body>
 
-  <!-- partial -->
-  <script src='https://code.jquery.com/jquery-3.5.1.slim.min.js'></script>
-  <script src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js'></script>
+    <!-- partial -->
+    <script src='https://code.jquery.com/jquery-3.5.1.slim.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js'></script>
 
-  <?php
-}else{
+    <?php
+  }else{
 
-  echo "<script>alert('Anda adalah Customer!')</script>";
-  echo "<script>location='../../../index.php'</script>"; 
-}
+    echo "<script>alert('Anda adalah Customer!')</script>";
+    echo "<script>location='../../../index.php'</script>"; 
+  }
 //Memanggil Footer
-include('../footer.php')
+  include('../footer.php')
 ?>
