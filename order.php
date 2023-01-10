@@ -147,7 +147,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 																	<div class="form-group">
 																		<br>
 																		<?php if($bukti['bukti_pembayaran']==NULL){?>
-																			<label for="txt_gambar">Bukti</label>
+																			<label for="bukti">Bukti</label>
 																			<input type="file" class="form-control form-control-iklan" placeholder="Gambar" name="bukti" value="">
 																		<?php }else{ ?>
 																			<img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
