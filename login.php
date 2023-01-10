@@ -84,6 +84,9 @@
 <head>
 	<meta charset="UTF-8">
   	<title>Log In / Sign Up</title>
+	<!-- Favicons -->
+  	<link href="assets/img/logo/favicon.png" rel="icon">
+  	<link href="assets/img/logo/favicon.png" rel="apple-touch-icon">
   	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
 	<link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'>
 	<link rel="stylesheet" href="./assets/css/login.css">
