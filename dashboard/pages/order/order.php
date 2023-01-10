@@ -276,7 +276,7 @@ if ($_SESSION['akses'] == 1) {
                                         </div>                          
                                         <div class="form-group">
                                           <br>
-                                          <?php if($bukti['bukti_pembayaran']==NULL){?>
+                                          <?php if($bukti['bukti_pembayaran']==NULL||$bukti['bukti_pembayaran']=="NULL"){?>
                                             Bukti Pembayaran Belum Ada
                                           </div>
                                         </div>
@@ -382,7 +382,7 @@ if ($_SESSION['akses'] == 1) {
                                     </div>                          
                                     <div class="form-group">
                                       <br>
-                                      <?php if($bukti['bukti_pembayaran']==NULL){?>
+                                      <?php if($bukti['bukti_pembayaran']==NULL||$bukti['bukti_pembayaran']=="NULL"){?>
                                         Bukti Pembayaran Belum Ada
                                       </div>
                                     <?php }else{ ?>
@@ -687,14 +687,8 @@ if ($_SESSION['akses'] == 1) {
                                       </div>                          
                                       <div class="form-group">
                                         <br>
-                                        <?php if($bukti['bukti_pembayaran']==NULL){?>
-                                          Bukti Pembayaran Belum Ada
-                                        </div>
-                                      <?php }else{ ?>
-                                        <div class="form-group">
-                                          <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="../../../assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
-                                        </div>
-                                      <?php } ?>
+                                        <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="../../../assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
+                                      </div>
 
                                       <div class="form-group">
                                         <?php if($d['status_pesanan']=="Belum Dibayar"){ ?>
@@ -991,14 +985,8 @@ if ($_SESSION['akses'] == 1) {
                                         </div>                          
                                         <div class="form-group">
                                           <br>
-                                          <?php if($bukti['bukti_pembayaran']==NULL){?>
-                                            Bukti Pembayaran Belum Ada
-                                          </div>
-                                        <?php }else{ ?>
-                                          <div class="form-group">
-                                            <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="../../../assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
-                                          </div>
-                                        <?php } ?>
+                                          <img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="../../../assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
+                                        </div>
 
                                         <div class="form-group">
                                           <?php if($d['status_pesanan']=="Belum Dibayar"){ ?>

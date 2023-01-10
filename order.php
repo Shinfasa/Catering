@@ -146,7 +146,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 																	</div>													
 																	<div class="form-group">
 																		<br>
-																		<?php if($bukti['bukti_pembayaran']==NULL){?>
+																		<?php if($bukti['bukti_pembayaran']==NULL||$bukti['bukti_pembayaran']=="NULL"){?>
 																			<label for="bukti">Bukti</label>
 																			<input type="file" class="form-control form-control-iklan" placeholder="Gambar" name="bukti" value="">
 																		</div>
@@ -157,12 +157,12 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 																	</div>
 																<?php }else{ ?>
 																	<img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
-																	</div>
 																</div>
-																<div class="modal-footer">
-																	<button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-																</div>
-																<?php } ?>
+															</div>
+															<div class="modal-footer">
+																<button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+															</div>
+														<?php } ?>
 													</form>
 												</div>
 											</div>
