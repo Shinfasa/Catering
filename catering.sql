@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2023 at 06:40 AM
+-- Generation Time: Jan 09, 2023 at 04:59 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -128,8 +128,7 @@ INSERT INTO `menu` (`id_menu`, `nama_menu`, `harga`, `detail`, `gambar`, `id_kat
 (9, 'Tumis Kerang', '15000', 'Selamat pagi Gengs !!\r\n\r\nGimana kabarnya hari ini? Awal taun, yuk bikin resolusi baru😘\r\n\r\nKali ini ada menu Tumis Kerang, yuk buruan cobain', 'tumis_kerang.jpg', 1),
 (10, 'Tumpeng Ayam', '150000', 'Mau bikin acara tumpengan tapi gaada waktu?\r\nMau pesen tapi mau yang bisa req isian makanan dan harga miring?\r\n\r\nDimana lagi kalo ga di @wm.hanaasri ,yuk simpan gambar ini untuk jadi referensi Tumpenganmu selanjutnya 🤗\r\n', 'tumpeng_ayam.jpg', 2),
 (11, 'Telur Teriyaki', '12000', 'Telur Teriyaki???? 😮😮\r\n\r\nPernah denger ga gaiss?? Atau udah pernah coba ?\r\nKalau belum pas banget sih, kamu bisa bilang Mimin ya buat bikinin menu ini di catering kamu 🤗🤗', 'telur_teriyaki.jpg', 1),
-(12, 'Kimlo Soupp', '12000', 'Siapa nih yang suka Soup?🤔\r\nNah.... Kali ini mimin masak Kimlo Soup lohhh\r\n\r\nIsinya banyak banget ya, komplit lagi. Ada telur puyuh, wortel, jamur, brokoli, baso, tofu dll\r\n\r\nYukkk segera merapat ke mimin buat catering menu ini 😉😉', 'kimlo_soup.jpg', 1),
-(17, 'Burger', '10000', 'Buruan gess cobain burger dari kita, enak banget lohh!!!', '', 1);
+(12, 'Kimlo Soupp', '12000', 'Siapa nih yang suka Soup?🤔\r\nNah.... Kali ini mimin masak Kimlo Soup lohhh\r\n\r\nIsinya banyak banget ya, komplit lagi. Ada telur puyuh, wortel, jamur, brokoli, baso, tofu dll\r\n\r\nYukkk segera merapat ke mimin buat catering menu ini 😉😉', 'kimlo_soup.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -156,17 +155,6 @@ CREATE TABLE `orders` (
   `id_menu` int(11) NOT NULL,
   `id_pembayaran` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`id_order`, `no_pesanan`, `tgl_pesan`, `tgl_pakai`, `harga_satuan`, `qty`, `subtotal_harga`, `total_harga`, `alamat`, `nohp`, `catatan`, `tgl_bayar`, `bukti_pembayaran`, `status_pesanan`, `id_user`, `id_menu`, `id_pembayaran`) VALUES
-(14, '', '2023-01-06', '2023-01-08 10:30:00', '15000', '1', '15000', '', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '', NULL, NULL, 'Belum Dibayar', 5, 1, 1),
-(15, 'HNSR2023017175327', '2023-01-08', '2023-01-09 13:00:00', '15000', '1', '15000', '', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '', NULL, NULL, 'Belum Dibayar', 5, 1, 1),
-(16, 'HNSR2023017175542', '2023-01-08', '2023-01-09 13:00:00', '15000', '1', '15000', '', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '', NULL, NULL, 'Belum Dibayar', 5, 1, 1),
-(17, 'HNSR2023018055533', '2023-01-09', '2023-01-10 11:55:00', '15000', '1', '15000', '', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '', NULL, NULL, 'Belum Dibayar', 5, 2, 1),
-(18, 'HNSR2023018062910', '2023-01-09', '2023-01-10 12:28:00', '15000', '3', '45000', '', 'Jl.Kaliurang Sumbersari Jember', '085604947847', 'buat ayang', NULL, NULL, 'Belum Dibayar', 5, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -202,7 +190,7 @@ CREATE TABLE `user` (
   `alamat` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `nohp` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gambar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gambar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id_akses` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -211,12 +199,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nama_user`, `email`, `alamat`, `nohp`, `password`, `gambar`, `id_akses`) VALUES
-(1, 'Yasin Alfaruq', 'yasin@gmail.com', 'Jl.Sumatra Sumbersari Jember', '082334567890', '123', 'team-3.jpg', 1),
-(2, 'Karisma Ayu', 'karisma@gmail.com', 'Jl.Jawa 6 Sumbersari Jember', '085678903422', '654', 'ivana-square.jpg', 2),
-(5, 'Laura Cantik', 'laura@gmail.com', 'Jl.Kaliurang Sumbersari Jember', '085604947847', '789', '', 2),
-(6, 'Kresna', 'kresna@gmail.com', 'Jl.Kaki Sumbersari Jember', '085434567889', '098', 'bruce-mars.jpg', 2),
-(8, 'Rehan', 'rehan@gmail.com', 'Jl.Mastrip  Pancoran Mas Jember', '085678900223', '67890', '', 2),
-(11, 'Lutfa Himayatus S', 'lutfa@gmail.com', 'Jl.Tegal Gede Sumbersari Jember', '085456789002', '000', 'ivana-square.jpg', 2);
+(1, 'Admin', 'admin@gmail.com', 'phpMyAdmin', '082334567890', 'admin', 'team-3.jpg', 1),
+(12, 'Customer', 'customer@gmail.com', 'Jl.Kalimantan Sumbersari Jember', '085486789003', 'customer', 'Jaemin.jpg', 2);
 
 --
 -- Indexes for dumped tables
@@ -291,19 +275,19 @@ ALTER TABLE `akses`
 -- AUTO_INCREMENT for table `carousel`
 --
 ALTER TABLE `carousel`
-  MODIFY `id_car` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_car` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `menu`
@@ -315,19 +299,19 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables

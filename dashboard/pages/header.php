@@ -40,6 +40,8 @@ $akses    =  $_SESSION['akses'] ;
   <link id="pagestyle" href="../../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
   <!-- Unicons -->
   <link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'>
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body class="g-sidenav-show" style="background-color: #E8853D;">
