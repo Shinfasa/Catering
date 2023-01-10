@@ -160,7 +160,7 @@ if (isset($_GET['id_menu'])) {
                                   $data = mysqli_query($koneksi,"SELECT * FROM kategori");
                                   while($u = mysqli_fetch_array($data)){
                                     ?>
-                                    <input type="radio" name="txt_kategori" value="<?php echo $d['id_kategori']; ?>" style="margin-left:20px;">  <?php echo $u['nama_kategori']; ?>
+                                    <input type="radio" name="txt_kategori" value="<?php echo $u['id_kategori']; ?>" style="margin-left:20px;">  <?php echo $u['nama_kategori']; ?>
 
                                     <?php 
                                   } 
