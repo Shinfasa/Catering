@@ -308,7 +308,7 @@ if ($_SESSION['akses'] == 1) {
                                   <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Order</h1>
                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form action="user.php" method="POST" class="user" enctype='multipart/form-data'>
+                                <form action="order.php" method="POST" class="user" enctype='multipart/form-data'>
                                   <div class="modal-body">
                                     <div class="form-group">
                                       <label for="nopesanan">No. Pesanan</label>
@@ -613,7 +613,7 @@ if ($_SESSION['akses'] == 1) {
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Order</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                   </div>
-                                  <form action="user.php" method="POST" class="user" enctype='multipart/form-data'>
+                                  <form action="order.php" method="POST" class="user" enctype='multipart/form-data'>
                                     <div class="modal-body">
                                       <div class="form-group">
                                         <label for="nopesanan">No. Pesanan</label>
@@ -911,7 +911,7 @@ if ($_SESSION['akses'] == 1) {
                                       <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Order</h1>
                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <form action="user.php" method="POST" class="user" enctype='multipart/form-data'>
+                                    <form action="order.php" method="POST" class="user" enctype='multipart/form-data'>
                                       <div class="modal-body">
                                         <div class="form-group">
                                           <label for="nopesanan">No. Pesanan</label>

@@ -239,10 +239,10 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 									$halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
 									$previous = $halaman - 1;
 									$next = $halaman + 1;
-									$data = mysqli_query($koneksi,"SELECT * FROM orders JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orders.id_pembayaran = pembayaran.id_pembayaran WHERE status_pesanan='Selesai' AND id_user = $idUser;");
+									$data = mysqli_query($koneksi,"SELECT * FROM orders JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orders.id_pembayaran = pembayaran.id_pembayaran WHERE id_user = $idUser;");
 									$jumlah_data = mysqli_num_rows($data);
 									$total_halaman = ceil($jumlah_data / $batas);
-									$data_order = mysqli_query($koneksi,"SELECT DISTINCT tgl_pesan, no_pesanan, status_pesanan FROM orders WHERE status_pesanan='Selesai' AND id_user=$idUser LIMIT $halaman_awal, $batas");
+									$data_order = mysqli_query($koneksi,"SELECT DISTINCT tgl_pesan, no_pesanan, status_pesanan, catatan, total_harga FROM orders WHERE status_pesanan='Selesai' AND id_user=$idUser LIMIT $halaman_awal, $batas");
 									$nomor = $halaman_awal+1;
 									$grand_total = 0;
 									if ($jumlah_data>0) {
