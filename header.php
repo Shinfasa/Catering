@@ -91,7 +91,15 @@ include('function/rupiah.php');
                 </li>
               </ul>
             </li>
-            <li><a href="cart.php"><span class="bi-cart3"></span></a></li>
+            <?php  
+            $data = mysqli_query($koneksi,"SELECT * FROM keranjang WHERE id_user = '$idUser'");
+            $cek = mysqli_num_rows($data);
+            ?>
+            <li><a href="cart.php"><span class="bi-cart3">
+              <?php 
+              echo $cek; 
+              ?>
+              </span></a></li>
             <!-- Nav Item - User Information -->
             <li class="dropdown">
               <a href="#">
