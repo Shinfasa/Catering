@@ -41,7 +41,7 @@
           <ul class="pt-4">
             <li><i class="bx bx-chevron-right"></i> <strong>Alamat</strong></li>
             <p style="margin-left: 20px;">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d252767.327915946!2d113.50369662302433!3d-8.153335899999975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695560bb710a5%3A0xaefaa8c282870b5f!2sWarung%20Makan%20Hana%20Asri!5e0!3m2!1sid!2sid!4v1673314342789!5m2!1sid!2sid" width="300" height="180" style="border:1px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d252767.327915946!2d113.50369662302433!3d-8.153335899999975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd695560bb710a5%3A0xaefaa8c282870b5f!2sWarung%20Makan%20Hana%20Asri!5e0!3m2!1sid!2sid!4v1673314342789!5m2!1sid!2sid" width="300px" height="180px" style="border:1px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </p>
             <li><i class="bx bx-chevron-right"></i> <strong>No. Telepon</strong></li>
             <p class="text-secondary" style="margin-left: 20px;">+62 812-5219-9599</p>
