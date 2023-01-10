@@ -68,27 +68,35 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
         </div>
 
         <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
               <h4><a href="categories.php?id_kategori=1">Harian</a></h4>
-              <p>Paket Harian dengan banyak pilihan menu setiap harinya</p>
+              <p>Menyediakan berbagai pilihan menu yang berbeda setiap harinya</p>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+          <div class="col-lg-3 col-md-5 d-flex align-items-stretch mt-4 mt-md-0">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
               <h4><a href="categories.php?id_kategori=2">Prasmanan</a></h4>
-              <p>Paket Prasmanan dengan satu menu untuk bersama-sama</p>
+              <p>Menyediakan berbagai macam menu atau request menu favorit anda</p>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+          <div class="col-lg-3 col-md-5 d-flex align-items-stretch mt-4 mt-lg-0">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
               <h4><a href="categories.php?id_kategori=3">Kotakan</a></h4>
-              <p>Paket Kotakan dengan banyak pilihan menu untuk mendukung kegiatan anda</p>
+              <p>Menyediakan berbagai pilihan menu untuk berbagai acara dan instansi</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-5 d-flex align-items-stretch mt-4 mt-lg-0">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4><a href="categories.php?id_kategori=4">Tumpengan</a></h4>
+              <p>Menyediakan paket lengkap dengan dekorasi menu pilihan anda</p>
             </div>
           </div>
         </div>  

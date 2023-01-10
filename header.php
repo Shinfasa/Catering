@@ -58,6 +58,7 @@ include('function/rupiah.php');
               <li><a href="menu.php?id_kategori=1">Harian</a></li>
               <li><a href="menu.php?id_kategori=2">Prasmanan</a></li>
               <li><a href="menu.php?id_kategori=3">Kotakan</a></li>
+              <li><a href="menu.php?id_kategori=4">Tumpengan</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="menu.php?id_kategori=0">Menu</a></li>
