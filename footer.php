@@ -30,6 +30,7 @@
             <li><i class="bx bx-chevron-right"></i> <a href="menu.php?id_kategori=1">Harian</a></li>
             <li><i class="bx bx-chevron-right"></i> <a href="menu.php?id_kategori=2">Prasmanan</a></li>
             <li><i class="bx bx-chevron-right"></i> <a href="menu.php?id_kategori=3">Kotakan</a></a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="menu.php?id_kategori=4">Tumpengan</a></a></li>
           </ul>
         </div>
 
