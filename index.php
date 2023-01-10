@@ -67,7 +67,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
           <h2>Kategori</h2>
         </div>
 
-        <div class="row" style="align-items: center;">
+        <div class="row">
 
           <?php  
           $data_kategori = mysqli_query($koneksi,"SELECT * FROM kategori");
