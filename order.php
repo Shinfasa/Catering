@@ -69,7 +69,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 											<th class="text-center" style="color: #384046;">No.</th>
 											<th class="text-center" style="color: #384046;">No. Pesanan</th>
 											<th class="text-center" style="color: #384046;">Tanggal Pesan</th>
-											<th class="text-center" style="color: #384046;">Isi Pesanan</th>
+											<th class="text-center" style="color: #384046;">Detail Pesanan</th>
 											<th class="text-center" style="color: #384046;">Total Harga</th>
 											<th class="text-center" style="color: #384046;">Catatan</th>
 											<th class="text-center" style="color: #384046;">Bukti Pembayaran</th>
@@ -152,8 +152,8 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 																		</div>
 																	</div>
 																	<div class="modal-footer">
-																		<button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-																		<button type="submit" name="upload" class="btn btn-primary">Save changes</button>
+																		<button type="submit" class="btn" data-bs-dismiss="modal" style="background-color: #ffffff; color:#E8853D;">Tutup</button>
+																		<button type="submit" name="upload" class="btn text-light" style="background-color: #E8853D;">Simpan</button>
 																	</div>
 																<?php }else{ ?>
 																	<img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
@@ -174,7 +174,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 											<div class="modal-dialog">
 												<div class="modal-content">
 													<div class="modal-header">
-														<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+														<h1 class="modal-title fs-5" id="exampleModalLabel">Detail Menu</h1>
 														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 													</div>
 													<div class="modal-body">
@@ -192,13 +192,13 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 																</div> 
 																<br>
 																<div class="form-group">
-																	<label for="txt_desk">Deskripsi</label>
+																	<label for="txt_desk">Detail</label>
 																	<input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_desk" value="<?php echo rupiah($d2['harga_satuan']); ?> x <?php echo $d2['qty']; ?> = <?php echo rupiah($d2['subtotal_harga']); ?>">
 																</div> 
 															<?php } ?>
 														</div>
 														<div class="modal-footer">
-															<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+															<button type="button" class="btn" data-bs-dismiss="modal" style="background-color: #ffffff; color:#E8853D;">Tutup</button>
 														</div>
 													</div>
 												</div>
@@ -224,7 +224,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 										<th class="text-center" style="color: #384046;">No.</th>
 										<th class="text-center" style="color: #384046;">No. Pesanan</th>
 										<th class="text-center" style="color: #384046;">Tanggal Pesan</th>
-										<th class="text-center" style="color: #384046;">Isi Pesanan</th>
+										<th class="text-center" style="color: #384046;">Detail Pesanan</th>
 										<th class="text-center" style="color: #384046;">Total Harga</th>
 										<th class="text-center" style="color: #384046;">Catatan</th>
 										<th class="text-center" style="color: #384046;">Bukti Pembayaran</th>
@@ -321,7 +321,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 												<div class="modal-dialog">
 													<div class="modal-content">
 														<div class="modal-header">
-															<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+															<h1 class="modal-title fs-5" id="exampleModalLabel">Detail Pesanan</h1>
 															<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 														</div>
 														<div class="modal-body">
@@ -339,13 +339,13 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 																	</div> 
 																	<br>
 																	<div class="form-group">
-																		<label for="txt_desk">Deskripsi</label>
+																		<label for="txt_desk">Detail</label>
 																		<input type="text" class="form-control form-control-menu" placeholder="Nama Menu" name="txt_desk" value="<?php echo rupiah($d2['harga_satuan']); ?> x <?php echo $d2['qty']; ?> = <?php echo rupiah($d2['subtotal_harga']); ?>">
 																	</div> 
 																<?php } ?>
 															</div>
 															<div class="modal-footer">
-																<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+																<button type="button" class="btn" style="background-color: #ffffff; color:#E8853D;" data-bs-dismiss="modal">Close</button>
 															</div>
 														</div>
 													</div>
@@ -354,7 +354,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 											}
 										}else{ ?>
 											<tr>
-												<td colspan="9" class="text-center">Belum Ada Pesanan</td>
+												<td colspan="9" class="text-center">Belum Ada Riwayat Pesanan</td>
 											</tr>
 										<?php } ?>
 									</tbody>
