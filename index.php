@@ -42,7 +42,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
           <?php if(isset($_SESSION['id'])){ ?>
             <img class="d-block w-100" src="assets/img/iklan/<?php echo $i['gambar']; ?>" alt="carousel" style="margin-top: 60px;">
           <?php }else{ ?>
-            <img class="d-block w-100" src="assets/img/iklan/<?php echo $i['gambar']; ?>" alt="carousel">
+            <img class="d-block w-100" src="assets/img/iklan/<?php echo $i['gambar']; ?>" alt="carousel" style="margin-top: 60px;">
           <?php } ?>
         </div>    
         
