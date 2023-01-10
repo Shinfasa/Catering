@@ -45,11 +45,11 @@ include('function/rupiah.php');
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
-      
+
       <div class="logo me-auto">
         <a href="index.php"><img src="assets/img/logo/logo.png" alt="" class="img-fluid"></a>
       </div>
-      
+
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul class="">
           <li><a class="nav-link scrollto" href="index.php">Beranda</a></li>
@@ -61,7 +61,7 @@ include('function/rupiah.php');
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="menu.php?id_kategori=0">Menu</a></li>
-          
+
           <?php  
           if(isset($_SESSION['id'])) {
             $idUser   =  $_SESSION['id']    ;
@@ -92,8 +92,8 @@ include('function/rupiah.php');
             <!-- Nav Item - User Information -->
             <li class="dropdown">
               <a href="#">
-                <?php if($gambar   =  $_SESSION['gambar'] == NULL){ ?>
-                  
+                <?php if($gambar == NULL){ ?>
+
                   <img class="img-profile rounded-circle" style="height: 33px;" src="./assets/img/user/default_profile.png">
                 <?php }else{ ?>
                   <img class="img-profile rounded-circle" style="height: 33px;" src="./assets/img/user/<?php echo $gambar; ?>">
