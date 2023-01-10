@@ -146,7 +146,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 																	</div>													
 																	<div class="form-group">
 																		<br>
-																		<?php if($bukti['bukti_pembayaran']==NULL){?>
+																		<?php if($bukti['bukti_pembayaran']==NULL||$bukti['bukti_pembayaran']=="NULL"){?>
 																			<label for="bukti">Bukti</label>
 																			<input type="file" class="form-control form-control-iklan" placeholder="Gambar" name="bukti" value="">
 																		</div>
@@ -157,12 +157,12 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 																	</div>
 																<?php }else{ ?>
 																	<img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
-																	</div>
 																</div>
-																<div class="modal-footer">
-																	<button type="submit" class="btn" data-bs-dismiss="modal" style="background-color: #ffffff; color:#E8853D;">Tutup</button>
-																</div>
-																<?php } ?>
+															</div>
+															<div class="modal-footer">
+																<button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+															</div>
+														<?php } ?>
 													</form>
 												</div>
 											</div>
@@ -239,10 +239,10 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 									$halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
 									$previous = $halaman - 1;
 									$next = $halaman + 1;
-									$data = mysqli_query($koneksi,"SELECT * FROM orders JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orders.id_pembayaran = pembayaran.id_pembayaran WHERE status_pesanan='Selesai' AND id_user = $idUser;");
+									$data = mysqli_query($koneksi,"SELECT * FROM orders JOIN menu ON orders.id_menu = menu.id_menu JOIN pembayaran ON orders.id_pembayaran = pembayaran.id_pembayaran WHERE id_user = $idUser;");
 									$jumlah_data = mysqli_num_rows($data);
 									$total_halaman = ceil($jumlah_data / $batas);
-									$data_order = mysqli_query($koneksi,"SELECT DISTINCT tgl_pesan, no_pesanan, status_pesanan FROM orders WHERE status_pesanan='Selesai' AND id_user=$idUser LIMIT $halaman_awal, $batas");
+									$data_order = mysqli_query($koneksi,"SELECT DISTINCT tgl_pesan, no_pesanan, status_pesanan, catatan, total_harga FROM orders WHERE status_pesanan='Selesai' AND id_user=$idUser LIMIT $halaman_awal, $batas");
 									$nomor = $halaman_awal+1;
 									$grand_total = 0;
 									if ($jumlah_data>0) {
