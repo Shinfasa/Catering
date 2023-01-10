@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2023 at 08:29 AM
+-- Generation Time: Jan 10, 2023 at 08:37 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -129,7 +129,7 @@ INSERT INTO `menu` (`id_menu`, `nama_menu`, `harga`, `detail`, `gambar`, `id_kat
 (9, 'Paket Ayam 2\r\n', '15000', '• AYAM BAKAR / BREWOK / GORENG / TERIYAKI\r\n• SAMBAL GORENG KENTANG\r\n• TEMPE GORENG TEPUNG\r\n• CAH SAYUR\r\n• SAMBAL\r\n', 'ayam_brewok.jpg', 3),
 (10, 'Paket Nasi Kuning 1\r\n', '150000', '• AYAM BAKAR\r\n• TELUR BUMBU MERAH\r\n• PERKEDEL\r\n• OSENG TEMPE\r\n• SERUNDENG\r\n• SAMBAL\r\n', 'nasi_kuning.jpg', 3),
 (11, 'Nasi Gurih\r\n', '15000', '• NASI GURIH\r\n• AYAM GORENG / AYAM BREWOK ( LENGKUAS)\r\n• TELUR BELAH BUMBU MERAH / GORENG\r\n• TIMUN\r\n• CAPCAY / PERKEDEL\r\n', 'nasi_gurih.jpg', 3),
-(12, 'Ayam Nasi Kuning 2', '12000', '• SAMBAL GORENG KENTANG \r\n• TELUR\r\n• SAMBAL GORENG TEMPE\r\n• SERUNDENG \r\n• NASI KUNING\r\n', 'nasi_kuning.jpg', 3),
+(12, 'Ayam Nasi Kuning 2', '15000', '• SAMBAL GORENG KENTANG \r\n• TELUR\r\n• SAMBAL GORENG TEMPE\r\n• SERUNDENG \r\n• NASI KUNING\r\n', 'nasi_kuning.jpg', 3),
 (19, 'Lalapan Lele', '15000', '• LELE BUMBU GORENG\r\n• LALAPAN + TIMUN\r\n• TEMPE / TAHU\r\n• SAMBAL / SAOS\r\n• MIE GORENG \r\n• NASI PUTIH\r\n', 'lele_terbang.jpg', 3),
 (20, 'Paket Ayam 3', '18000', '• AYAM BAKAR/GORENG/BREWOK / TERIYAKI\r\n• CAH SAYUR/ CAPCAY\r\n• TELUR BUMBU MERAH / TELUR ASIN\r\n• MIE GORENG\r\n• SAMBAL \r\n• NASI PUTIH\r\n', 'ayam_brewok.jpg', 3),
 (21, 'Paket Nasi Pecel', '18000', '• SAMBAL GORENG KERING KENTANG \r\n• SAYUR PECEL\r\n• TELUR BUMBU KUNING / MERAH\r\n• TEMPE GORENG\r\n• BUMBU PECEL\r\n• SERUNDENG\r\n', 'nasi_pecel.jpg', 3),
