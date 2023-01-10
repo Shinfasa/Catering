@@ -120,83 +120,128 @@ if ($_SESSION['akses'] == 1) {
         <div class="col-lg-7 mb-lg-0 mb-4">
           <div class="card z-index-2 h-100">
             <div class="card-header pb-0 pt-3 bg-transparent">
-              <h6 class="text-capitalize">Sales overview</h6>
-              <p class="text-sm mb-0">
-                <i class="fa fa-arrow-up text-success"></i>
-                <span class="font-weight-bold">4% more</span> in 2021
-              </p>
+              <h6 class="text-capitalize">Grafik Penjualan</h6>            
             </div>
             <div class="card-body p-3">
-              <div class="chart">
-                <canvas id="chart-line" class="chart-canvas" height="315"></canvas>
+              <?php
+                $label = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+
+                for($bulan = 1;$bulan < 13;$bulan++){
+	                $query = mysqli_query($koneksi,"SELECT SUM(qty) AS qty FROM orders WHERE MONTH(tgl_bayar)='$bulan'");
+	                $row = $query->fetch_array();
+	                $jumlah_produk[] = $row['qty'];
+                }
+              ?>
+              <div class="chart" style="width: 530px;height: 335px">
+                <canvas id="barChart" class="chart-canvas" height="190px"></canvas>
               </div>
+              <script>
+		            var ctx = document.getElementById("barChart").getContext('2d');
+		            var barChart = new Chart(ctx, {
+		            	type: 'line',
+		            	data: {
+		            		labels: <?php echo json_encode($label); ?>,
+		            		datasets: [{
+		            			label: 'Jumlah Penjualan',
+		            			data: <?php echo json_encode($jumlah_produk); ?>,
+                      backgroundColor: [
+					              'rgba(255, 99, 132, 0.5)',
+					              'rgba(54, 162, 235, 0.5)',
+					              'rgba(255, 206, 86, 0.5)',
+					              'rgba(75, 192, 192, 0.5)'
+					            ],
+					            borderColor: [
+					              'rgba(255, 99, 132, 1)',
+					              'rgba(54, 162, 235, 1)',
+					              'rgba(255, 206, 86, 1)',
+					              'rgba(75, 192, 192, 1)'
+					            ],
+		            			borderWidth: 1
+		            		}]
+		            	},
+		            	options: {
+		            		scales: {
+		            			yAxes: [{
+		            				ticks: {
+		            					beginAtZero:true
+		            				}
+		            			}]
+		            		}
+		            	}
+		            });
+	            </script>
             </div>
           </div>
         </div>        
         <div class="col-lg-5">
           <div class="card">
             <div class="card-header pb-0 p-3">
-              <h6 class="mb-2">Categories</h6>
+              <h6 class="mb-2">Grafik Kategori</h6>
             </div>
-            <div class="card-body p-3">
-              <ul class="list-group">
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                      <i class="ni ni-mobile-button text-white opacity-10"></i>
-                    </div>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Devices</h6>
-                      <span class="text-xs">250 in stock, <span class="font-weight-bold">346+ sold</span></span>
-                    </div>
-                  </div>
-                  <div class="d-flex">
-                    <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                      <i class="ni ni-tag text-white opacity-10"></i>
-                    </div>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Tickets</h6>
-                      <span class="text-xs">123 closed, <span class="font-weight-bold">15 open</span></span>
-                    </div>
-                  </div>
-                  <div class="d-flex">
-                    <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                      <i class="ni ni-box-2 text-white opacity-10"></i>
-                    </div>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Error logs</h6>
-                      <span class="text-xs">1 is active, <span class="font-weight-bold">40 closed</span></span>
-                    </div>
-                  </div>
-                  <div class="d-flex">
-                    <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                      <i class="ni ni-satisfied text-white opacity-10"></i>
-                    </div>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Happy users</h6>
-                      <span class="text-xs font-weight-bold">+ 430</span>
-                    </div>
-                  </div>
-                  <div class="d-flex">
-                    <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto"><i class="ni ni-bold-right" aria-hidden="true"></i></button>
-                  </div>
-                </li>
-              </ul>
+            <div class="card-body p-3">              
+              <div class="chart" style="width: 350px;height: 335px">
+                <canvas id="pieChart" class="chart-canvas" height="270px"></canvas>
+              </div>
+              <script>
+		            var ctx = document.getElementById("pieChart").getContext('2d');
+		            var pieChart = new Chart(ctx, {
+		            	type: 'pie',
+		            	data: {
+		            		labels: ["Harian", "Prasmanan", "Kotakan", "Tumpengan"],
+		            		datasets: [{
+		            			label: 'Menu Terjual',
+		            			data: [
+		            			<?php 
+		            			$harian = mysqli_query($koneksi,"SELECT SUM(qty) AS qty FROM orders JOIN menu ON orders.id_menu=menu.id_menu WHERE id_kategori='1'");
+                      $h = $harian->fetch_array();
+	                    $jumlah_harian[] = $h['qty'];
+		            			echo json_encode($jumlah_harian);
+		            			?>, 
+		            			<?php 
+		            			$prasmanan = mysqli_query($koneksi,"SELECT SUM(qty) AS qty FROM orders JOIN menu ON orders.id_menu=menu.id_menu WHERE id_kategori='2'");
+		            			$p = $prasmanan->fetch_array();
+	                    $jumlah_prasmanan[] = $p['qty'];
+		            			echo json_encode($jumlah_prasmanan);
+		            			?>,
+                      <?php 
+		            			$kotakan = mysqli_query($koneksi,"SELECT SUM(qty) AS qty FROM orders JOIN menu ON orders.id_menu=menu.id_menu WHERE id_kategori='3'");
+		            			$k = $kotakan->fetch_array();
+	                    $jumlah_kotakan[] = $k['qty'];
+		            			echo json_encode($jumlah_kotakan);
+		            			?>, 
+		            			<?php 
+		            			$tumpengan = mysqli_query($koneksi,"SELECT SUM(qty) AS qty FROM orders JOIN menu ON orders.id_menu=menu.id_menu WHERE id_kategori='4'");
+		            			$t = $tumpengan->fetch_array();
+	                    $jumlah_tumpengan[] = $t['qty'];
+		            			echo json_encode($jumlah_tumpengan);
+		            			?>
+		            			],
+		            			backgroundColor: [
+					              'rgba(255, 99, 132, 0.5)',
+					              'rgba(54, 162, 235, 0.5)',
+					              'rgba(255, 206, 86, 0.5)',
+					              'rgba(75, 192, 192, 0.5)'
+					            ],
+					            borderColor: [
+					              'rgba(255, 99, 132, 1)',
+					              'rgba(54, 162, 235, 1)',
+					              'rgba(255, 206, 86, 1)',
+					              'rgba(75, 192, 192, 1)'
+					            ],
+		            			borderWidth: 1
+		            		}]
+		            	},
+		            	options: {
+		            		scales: {
+		            			yAxes: [{
+		            				ticks: {
+		            					beginAtZero:true
+		            				}
+		            			}]
+		            		}
+		            	}
+		            });
+	            </script>
             </div>
           </div>
         </div>

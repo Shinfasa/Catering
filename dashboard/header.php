@@ -38,6 +38,8 @@ $akses    =  $_SESSION['akses'] ;
   <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="./assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+  <!-- Chart JS -->
+  <script type="text/javascript" src="../assets/js/Chart.js"></script>
 </head>
 
 <body class="g-sidenav-show" style="background-color: #E8853D;">
