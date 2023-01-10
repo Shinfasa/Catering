@@ -9,7 +9,7 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 
 		if($update){
 			echo "<script>alert('Data di Update')</script>";
-			echo "<script>location='profile.php'</script>";
+			echo "<script>location='order.php'</script>";
 		}
 	}
 	?>
