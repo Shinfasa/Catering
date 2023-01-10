@@ -8,11 +8,16 @@
   $nohp = ($_POST['txt_nohp']);
   $password = ($_POST['txt_pass']);
   $oldfile = $_POST['old'];
-  $file = $_FILES['txt_gambar']['name'];
+  $file = $_FILES['profile']['name'];
   if($file!="") {
-    move_uploaded_file($_FILES['txt_gambar']['tmp_name'], "assets/img/user/".basename($_FILES['txt_gambar']['name']));
-    $update=mysqli_query($koneksi,"UPDATE user SET nama_user='$user', alamat='$alamat', nohp='$nohp', password='$password', gambar='$file' WHERE id_user='$idUser'"); 
+    move_uploaded_file($_FILES['profile']['tmp_name'], "assets/img/user/".basename($_FILES['profile']['name']));
+
+    if($oldfile != NULL){
     unlink(".assets/img/user/".$oldfile);
+    }
+
+    $update=mysqli_query($koneksi,"UPDATE user SET nama_user='$user', alamat='$alamat', nohp='$nohp', password='$password', gambar='$file' WHERE id_user='$idUser'"); 
+
     if($update){
       echo "<script>alert('Data di Update')</script>";
       echo "<script>location='profile.php'</script>";
@@ -59,8 +64,8 @@
                 <?php } ?>            
               </div>
               <div class="form-group pb-3">
-                <label for="txt_gambar">Foto Profil</label>
-                <input type="file" class="form-control form-control-user" name="txt_gambar">
+                <label for="profile">Foto Profil</label>
+                <input type="file" class="form-control form-control-user" name="profile">
                 <input type="hidden" name="old" value="<?php echo $u['gambar']; ?>">
               </div> 
               <div class="form-group pb-3">
