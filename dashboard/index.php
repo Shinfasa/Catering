@@ -498,7 +498,7 @@ if ($_SESSION['akses'] == 1) {
 <?php  
 }else{
 
-  echo "<script>alert('Anda adalah Admin!')</script>";
-  echo "<script>location='dashboard/'</script>"; 
+  echo "<script>alert('Anda adalah Customer!')</script>";
+  echo "<script>location='../index.php'</script>"; 
 }
 ?>

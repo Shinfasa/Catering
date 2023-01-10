@@ -1,7 +1,7 @@
 <?php
 //Memanggil Header
 include('../header.php');
-
+if ($_SESSION['akses'] == 1) {
 //Fungsi Create
 if(isset($_POST['create'])){
   $user = ($_POST['txt_nama']);
@@ -313,5 +313,10 @@ if(isset($_GET['id_user'])){
 </script>
 
 <?php
+}else{
+
+  echo "<script>alert('Anda adalah Customer!')</script>";
+  echo "<script>location='../../../index.php'</script>"; 
+}
 include('../footer.php')
 ?>

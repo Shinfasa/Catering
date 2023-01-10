@@ -1,6 +1,7 @@
 <?php
 //Memanggil Header
 include('../header.php');
+if ($_SESSION['akses'] == 1) {
 ?>
 
 <head>
@@ -230,6 +231,11 @@ include('../header.php');
 <script src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js'></script>
 
 <?php
+}else{
+
+  echo "<script>alert('Anda adalah Customer!')</script>";
+  echo "<script>location='../../../index.php'</script>"; 
+}
 //Memanggil Footer
 include('../footer.php')
 ?>
