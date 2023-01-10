@@ -259,12 +259,63 @@ if ($_SESSION['akses'] == 2 || empty($_SESSION['akses'])) {
 												</td>
 												<td class="text-center"><?php echo rupiah($d['total_harga']); ?></td>
 												<td class="text-center"><?php echo $d['catatan']; ?></td>
-												<td class="text-center">TF</td>
+												<td class="text-center">
+													<a href="" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#exampleModalUpload<?php echo $d['no_pesanan']; ?>">
+														Upload
+													</a>
+												</td>
 												<td class="text-center"><?php echo $d['status_pesanan']; ?></td>
 												<td class="text-center" style="color: #384046;">
 													<a class="btn" href="nota.php?resi=<?php echo $d['no_pesanan']; ?>" ><i class="bi bi-printer"></i></a>
 												</td>
 											</tr>
+											<!-- Modal Create -->
+												<div class="modal fade" id="exampleModalUpload<?php echo $d['no_pesanan']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+													<div class="modal-dialog">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h1 class="modal-title fs-5" id="exampleModalLabel">Upload Bukti Pembayaran</h1>
+																<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+															</div>
+															<form action="order.php" method="POST" enctype='multipart/form-data'>
+																<div class="modal-body">
+																	<?php  
+																	$pesanan = $d['no_pesanan'];
+																	$data_bukti = mysqli_query($koneksi,"SELECT * FROM orders JOIN pembayaran ON orders.id_pembayaran = pembayaran.id_pembayaran WHERE no_pesanan = '$pesanan'");
+																	$bukti = mysqli_fetch_array($data_bukti);
+																	?>
+																	<input type="hidden" class="form-control form-control-iklan" placeholder="" name="nopesanan" value="<?php echo $pesanan; ?>">
+																	<div class="form-group">
+																		<label for="txt_gambar">Metode Pembayaran</label>
+																		<input type="text" class="form-control form-control-iklan" placeholder="Metode Pembayaran" name="metode" value="<?php echo $bukti['metode_pembayaran']; ?>">
+																		<br>
+																		<input type="text" class="form-control form-control-iklan" placeholder="no_rek" name="no_rek" value="<?php echo $bukti['no_rek']; ?>">															
+																	</div>													
+																	<div class="form-group">
+																		<br>
+																		<?php if($bukti['bukti_pembayaran']==NULL||$bukti['bukti_pembayaran']=="NULL"){?>
+																			<label for="bukti">Bukti</label>
+																			<input type="file" class="form-control form-control-iklan" placeholder="Gambar" name="bukti" value="">
+																		</div>
+																	</div>
+																	<div class="modal-footer">
+																		<button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+																		<button type="submit" name="upload" class="btn btn-primary">Save changes</button>
+																	</div>
+																<?php }else{ ?>
+																	<img class="img-account-profile rounded-circle-1 m-4" style="border:1px; border-color:#444444;" width="150px" src="assets/img/buktitf/<?php echo $bukti['bukti_pembayaran'] ?>">
+																</div>
+															</div>
+															<div class="modal-footer">
+																<button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+															</div>
+														<?php } ?>
+													</form>
+												</div>
+											</div>
+										</div>
+										<!-- End Modal Create -->
+											
 											<!-- Modal -->
 											<div class="modal fade" id="exampleModalView<?php echo $d['no_pesanan']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 												<div class="modal-dialog">
