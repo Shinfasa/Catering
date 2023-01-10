@@ -23,8 +23,8 @@ if(isset($_POST['update'])){
   $file = $_FILES['txt_gambar']['name'];
   if($file!="") {
     move_uploaded_file($_FILES['txt_gambar']['tmp_name'], "../../../assets/img/iklan/".basename($_FILES['txt_gambar']['name']));
-    $update=mysqli_query($koneksi,"UPDATE carousel SET gambar='$file' WHERE id_car='$id'"); 
     unlink("../../../assets/img/iklan/".$oldfile);
+    $update=mysqli_query($koneksi,"UPDATE carousel SET gambar='$file' WHERE id_car='$id'"); 
     if($update){
       echo "<script>alert('Data di Update')</script>";
       echo "<script>location='iklan.php'</script>";
